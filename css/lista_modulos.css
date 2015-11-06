@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+	ul.lista, ul.listaxusuario{ list-style-type: none; padding: 0; margin:30px auto; width:300px;font-size:0.9em; color:#06c;  font-family:Verdana, Geneva, sans-serif;}
+	ul.lista li, ul.listaxusuario li{margin:0px; }
+	ul.lista li , ul.listaxusuario li{ border-bottom:1px #CCC solid; min-height:16px; cursor:pointer }
+	ul.listaxusuario li.activo{  color: #06C;  }
+	ul.listaxusuario li.inactivo{  color: #444;  }
+	ul.lista li:hover{ color:#090 ;  }
+	ul.listaxusuario li:hover{ color:#090 ; }
+	
+	div#contenedor{ clear:both}
+	div#contenedor div#etiquetas { float:left; width:200px; }
+	div#contenedor div#botones { float:left; width:100px; }
+	
+	

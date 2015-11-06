@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+	div.confoto{ background:#FFF url(imagenes/photo.gif) no-repeat 0px 0px; width:16px; height:16px}
+
+	table.resultados{ color:#090; border-collapse:collapse; border:#aaa 1px solid; margin-top:20px; font-size:1em}
+	table.resultados th, table.resultados td { padding:3px}
+	table.resultados th{ background-color:#eee; border-bottom:#aaa 1px solid;}
+	table.resultados tbody tr:hover { background: url(imagenes/bg_5.png);}
+	table.resultados tbody{ color:#666;}
+	table.resultados tbody tr { border:#aaa 1px solid; cursor:pointer }
+	table.resultados caption{ color:#444; text-align:left; font-weight:bold; font-size:1.4em; margin:0.2em 0em; }

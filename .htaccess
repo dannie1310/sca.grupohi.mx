@@ -1,0 +1,35 @@
+Options FollowSymLinks 
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	
+	########################################
+	# Set up UTF-8 encoding
+	########################################
+
+	AddDefaultCharset UTF-8
+	AddCharset UTF-8 .php
+
+	php_value default_charset "iso-8859-1"
+
+	php_value iconv.input_encoding "UTF-8"
+	php_value iconv.internal_encoding "UTF-8"
+	php_value iconv.output_encoding "UTF-8"
+
+	php_value mbstring.internal_encoding UTF-8
+	php_value mbstring.http_output UTF-8
+	php_value mbstring.encoding_translation On
+	php_value mbstring.func_overload 6
+
+	########################################
+	# FIN Locale settings
+	########################################
+
+	php_value short_open_tag 1
+	php_flag display_startup_errors on
+	php_flag display_errors on
+	php_flag html_errors on
+	php_flag  log_errors on
+</IfModule>
+<IfModule !mod_rewrite.c>
+ErrorDocument 404 index.php
+</IfModule>

@@ -1,0 +1,52 @@
+﻿<!doctype html>
+<html lang="en" ng-app="app">
+    <head>
+        <!--<meta charset="UTF-8">-->
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Conciliación de viajes por medio de lector de codigo de barras</title>
+        <link rel="stylesheet" href="css/foundation.min.css" />
+        <link href="css/estilo.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="angularjs/lib/jquery-1.9.1.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    </head>
+    <body >
+
+            <nav class="top-bar" data-topbar >
+                <ul class="title-area">
+                    <li class="name">
+                        <h1><a href="#">Conciliación con código</a></h1>
+                    </li>
+                    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+                </ul>
+
+                <section class="top-bar-section" ng-controller="permisosController">
+                    <!-- Right Nav Section -->
+                    <ul class="right">
+                        <!--<li class="active"><a href="#">Captura de código</a></li>-->
+                         <li ng-repeat="obj in permisos" >
+                             <a href="#" ng-show="obj.id==113">{{obj.descripcion}}</a> 
+                        </li>
+                        <li><a href="#/conciliaciones" >Conciliaciones</a> </li>
+                    </ul>
+                </section>
+            </nav>
+             <div ng-view></div>
+
+        <script  type="text/javascript" src="angularjs/lib/angular.min.js"></script>
+        <script  type="text/javascript" src="angularjs/lib/ngStorage.js"></script>
+        <script  type="text/javascript" src="angularjs/lib/keypress.js"></script>
+        <script  type="text/javascript" src="angularjs/app.js"></script>
+        <script  type="text/javascript" src="angularjs/controllers/conciliacionController.js"></script>
+        <script  type="text/javascript" src="angularjs/controllers/ModificarConciliacionController.js"></script>
+        <script  type="text/javascript" src="angularjs/controllers/ConciliacionesController.js"></script>
+        <script  type="text/javascript" src="angularjs/controllers/LoginController.js"></script>
+        <script  type="text/javascript" src="angularjs/controllers/MenuMainController.js"></script>
+        <script  type="text/javascript" src="angularjs/controllers/capturaController.js"></script>
+        <script  type="text/javascript" src="angularjs/controllers/AddViajesConciliacionController.js"></script>
+        <script  type="text/javascript" src="angularjs/controllers/HomeController.js"></script>
+
+    </body>
+</html>
+

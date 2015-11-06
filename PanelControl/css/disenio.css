@@ -1,0 +1,94 @@
+
+ul { list-style: none }
+a.button {
+     float:left;
+     margin: 3px 7px 10px 0;
+     color: #333333;
+     border: 1px solid #CCCCCC;
+    /* background: url("../Imgs/add_user.png") repeat-x center bottom;*/
+     display: block;
+     white-space: nowrap;
+     text-decoration: none;
+}
+a.button:hover {
+    background:#006699 repeat-x center bottom;
+    cursor: pointer;
+}
+
+a.btn_file_add span{
+     background-image: url("../../Imgs/add_user.png");
+     background-position: 10px 7px;
+     background-repeat: no-repeat;
+     border: 1px solid #FFFFFF;
+     display: block;
+     padding: 0 15px 0 33px;
+}
+a.btn_file_kill span{
+     background-image: url("../../Imgs/kill_user.jpeg");
+     background-position: 10px 7px;
+     background-repeat: no-repeat;
+     border: 1px solid #FFFFFF;
+     display: block;
+     padding: 0 15px 0 33px;
+}
+
+a.button span span{
+     background: none;
+     border: none;
+     display: inline;
+     height: auto;
+     line-height: 28px;
+     padding: 0;
+}
+
+
+
+input.button {
+     /*float:left;*/
+     margin: 3px 7px 10px 0;
+     color: #333333;
+     border: 1px solid #CCCCCC;
+     background: #CCCCCC repeat-x center bottom;
+     display: block;
+     white-space: nowrap;
+     text-decoration: none;
+}
+input.button:hover {
+    background:#006699 repeat-x center bottom;
+    cursor: pointer;
+    background-image: url("../../Imgs/add_user.png");
+    background-position: 10px 7px;
+    background-repeat: no-repeat;
+}
+
+input.btn_file_add {
+     background-image: url("../../Imgs/add_user.png");
+     background-position: 10px 7px;
+     background-repeat: no-repeat;
+     border: 1px solid #FFFFFF;
+     display: block;
+     padding: 10 15px 10 33px;
+}
+select {
+    border: 0 none;
+    color:  #333333;
+    background: transparent;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 4px 2px;
+    width: 378px;
+    /*width: 350px;
+    background: #58B14C;*/
+    }
+
+.mainselection {
+    overflow: hidden;
+    width: 350px;
+    -moz-border-radius: 9px 9px 9px 9px;
+    -webkit-border-radius: 9px 9px 9px 9px;
+    border-radius: 9px 9px 9px 9px;
+    /*box-shadow: 1px 1px 11px #330033;*/
+    background: /*url("arrow.gif")*/ no-repeat scroll 319px 5px #CCCCCC;
+    }
+     #alta_usuario .ui-dialog-titlebar-close {
+         display: none; } 

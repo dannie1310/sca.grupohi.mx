@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>error calendar</title>
+<link href="../../../Estilos/Principal.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="../../../Funciones/JS/Calendario_n/src/css/jscal2.css" />
+<link type="text/css" rel="stylesheet" href="../../../Funciones/JS/Calendario_n/src/css/border-radius.css" />
+<link id="skinhelper-compact" type="text/css" rel="alternate stylesheet" href="../../../Funciones/JS/Calendario_n/src/css/reduce-spacing.css" />
+</head>
+
+<body>
+ <div >
+
+    <table class="reporte2" width="100%">
+    <thead>
+    <tr style="background-color:#FFF"><th colspan="10"><div><div id="d_cargados" style="width:30%;float: left;" align="left">Documentos Cargados: 1</div><div style="width:60%;float:right;" align="right"><span class="boton">[Eliminar Todos]</span><span class="boton">[Guardar Todo]</span></div></div></th></tr>
+     <tr>
+      <th scope="col" class="encabezado" align="center"  title="Tipo Documento">TD</th>
+      <th scope="col" class="encabezado" align="center" style="width:90px">Fecha</th>
+      <th scope="col" class="encabezado" align="center" >Folio</th>
+      <th scope="col" class="encabezado" align="center" >Concepto</th>
+      <th scope="col" class="encabezado" align="center" >Importe</th>
+      <th scope="col" class="encabezado" align="center" >IVA</th>
+      <th scope="col" class="encabezado" align="center" >2% H</th>
+      <th scope="col" class="encabezado" align="center" >Total</th>
+      <th scope="col" class="encabezado" align="center" style="width:120px">Observaciones</th>
+      <th scope="col" class="encabezado" align="center" >&nbsp;</th>
+    </tr>
+    </thead>
+    <tbody>
+        <form id="frm_d33857">
+    <input name="idDocumento" id="idDocumento" type="hidden" value="33857">
+    <tr class="detalle" id="tr_d33857">
+        <td align="center" valign="top">
+		
+		<select  size='0' name='tiposdocto' id='tiposdocto_33857' onchange="onChange_tipo_docto(33857)"  ><option value='1' title='Factura'selected>F</option><option value='2' title='Comprobante Fiscal'>CF</option><option value='3' title='Nota'>N</option><option value='4' title='Sin Comprobante'>SC</option></select>		&nbsp;</td>
+        <td align="center" valign="top"><input name="fecha[]" id="fecha_33857" type="text" class="texto"  value="14-01-2009" size="7" maxlength="25" onChange="this.value=valida_rango_documentos_relacion(xajax.$('minima_rel').value,xajax.$('maxima_rel').value,xajax.$('fecha_33857').value)"> <img src="../../../Imagenes/calendario2.gif" width="16" height="16" class="boton" id="b_fecha_33857"  onMouseOver='new Calendar({
+                          inputField:"fecha_33857",
+                          dateFormat: "%d-%m-%Y",
+                          trigger: "b_fecha_33857",
+                          weekNumbers: true,
+                          bottomBar: true,
+        				  min: Calendar.intToDate("20090114"),
+                          max: Calendar.intToDate("20090114"),
+                          onSelect: function() {
+                                  this.hide();
+                          }
+                  });'></td>
+        <td align="center" valign="top"><input name="folio[]" type="text" class="texto" onKeyPress="withoutSpaces(event,'decOK')" value="77650" size="6" maxlength="25"></td>
+        <td align="center" valign="top"><select  size='0' name='concepto' id='concepto_33857' onChange="onChange_concepto(33857)" style='width:100px' ><option value='26' title='Aceros'>Aceros</option><option value='19' title='Agua'>Agua</option><option value='22' title='ArtÃ­culos de Limpieza'>Artículos de Limpieza</option><option value='13' title='Boleto de Autobus'>Boleto de Autobus</option><option value='14' title='Boleto de AviÃ³n'>Boleto de Avión</option><option value='2' title='Caseta'>Caseta</option><option value='27' title='Cementos'>Cementos</option><option value='9' title='Cena'>Cena</option><option value='7' title='Comida'>Comida</option><option value='40' title='Comida y Fes. de Per.'>Comida y Fes. de Per.</option><option value='8' title='Desayuno'>Desayuno</option><option value='17' title='Despensa'>Despensa</option><option value='23' title='Diesel'>Diesel</option><option value='11' title='Estacionamiento'>Estacionamiento</option><option value='34' title='Gas'>Gas</option><option value='6' title='Gasolina'>Gasolina</option><option value='15' title='Gastos Varios'selected>Gastos Varios</option><option value='28' title='Herramientas'>Herramientas</option><option value='5' title='Hospedaje'>Hospedaje</option><option value='42' title='Intendencia y Limpieza'>Intendencia y Limpieza</option><option value='41' title='LavanderÃ­a'>Lavandería</option><option value='30' title='Lubricantes'>Lubricantes</option><option value='35' title='Luz'>Luz</option><option value='45' title='Materiales p/Reparac. de Maquinaria'>Materiales p/Reparac. de Maquinaria</option><option value='18' title='Medicamento'>Medicamento</option><option value='20' title='MensajerÃ­a'>Mensajería</option><option value='29' title='Mtto. de Oficina'>Mtto. de Oficina</option><option value='3' title='Mtto./Limp. de VehÃ­c.'>Mtto./Limp. de Vehíc.</option><option value='16' title='PapelerÃ­a'>Papelería</option><option value='12' title='Pasaje'>Pasaje</option><option value='38' title='Pinturas'>Pinturas</option><option value='10' title='Propina'>Propina</option><option value='25' title='Refacciones'>Refacciones</option><option value='32' title='Renta de VehÃ­culos'>Renta de Vehículos</option><option value='33' title='Renta Ofnas/Camp.'>Renta Ofnas/Camp.</option><option value='4' title='Revista/PeriÃ³dico'>Revista/Periódico</option><option value='31' title='Seg. de Gast. MÃ©d.'>Seg. de Gast. Méd.</option><option value='43' title='Seguro de Vida'>Seguro de Vida</option><option value='37' title='Seguros de VehÃ­culos'>Seguros de Vehículos</option><option value='24' title='Servicio TelefÃ³nico'>Servicio Telefónico</option><option value='44' title='Suministros de CÃ³mputo'>Suministros de Cómputo</option><option value='1' title='Taxi'>Taxi</option><option value='21' title='TrÃ¡mites'>Trámites</option></select></td>
+        <td align="right" valign="top"><input name="importe[]" id="importe_33857" type="text" class="texto" onKeyPress="onlyDigits(event,'decOK')" value="4,801.88" size="4" maxlength="20" style="text-align:right"></td>
+        <td align="right" valign="top"><input name="iva[]" id="iva_33857" type="text" onKeyPress="onlyDigits(event,'decOK')" value="720.28" size="3" maxlength="20" style="text-align:right" class="texto"></td>
+        <td align="right" valign="top"><input name="hospedaje[]"  id="hospedaje_33857" onKeyPress="onlyDigits(event,'decOK')" value="0.00" size="3" maxlength="20" style="text-align:right"   readonly class="texto_reon" ></td>
+        <td align="right" valign="top"><input name="total[]" id="total_33857" type="text"  onKeyPress="onlyDigits(event,'decOK')" value="5,522.16" size="4" maxlength="20" style="text-align:right" class="texto"></td>
+        <td valign="top"><textarea cols="18" rows="2" class="texto" onKeyPress="withoutSpaces(event,'decOK')">2  CAMARAS DIGITALES MOD. W110BK SONY</textarea></td>
+         
+        <td valign="top" align="center"><img src="../../../Imagenes/Guardar_inc.gif" onMouseOver="this.src='../../../Imagenes/Guardar.gif'" onMouseOut="this.src='../../../Imagenes/Guardar_inc.gif'" class="boton"/>&nbsp;<img src="../../../Imagenes/-16_inc.gif" width="16" height="16" alt="Eliminar Documento de Relaci&oacute;n" class="boton" onMouseOver="this.src='../../../Imagenes/-16.gif'" onMouseOut="this.src='../../../Imagenes/-16_inc.gif'" onClick="carga_load('../../../Imagenes/eliminando.gif','Eliminando...');if( valida('frm_d33857','&iquest;EST&Aacute; SEGURO DE ELIMINAR EL DOCUMENTO?')){xajax_eliminar_documento_relacion(xajax.getFormValues('frm_d33857'))}"></td>
+        
+      </tr>
+      </form>
+             
+      </tbody>
+    </table>
+ </div>
+  <script src="../../../Funciones/JS/Calendario_n/src/js/jscal2.js"></script>
+<script src="../../../Funciones/JS/Calendario_n/src/js/lang/es.js"></script>
+</body>
+</html>

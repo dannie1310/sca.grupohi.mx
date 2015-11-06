@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* CSS Document 090 06C 444 */
+
+html,body{ height:100%}
+body {
+background: url(imagenes/backg.gif) repeat-y scroll center center #D4D4D4;
+color:#06C;
+font: 62.5%  Calibri,Trebuchet,Verdana,Arial,sans-serif;
+margin:0;
+
+}
+div#layout { 	background:none repeat scroll 0 0 #fff; margin:0 auto; width:960px; min-height:100%;}
+	div#encabezado{background:url(imagenes/banner.jpg) no-repeat 0 0 #FFF;height:150px; width:960px;}
+	div#cuerpo{ overflow:hidden; }
+	
+
+	
+	div#menu_p{ font-size:1.2em; color:#fff; background-color:#444;  height:28px}
+	div#menu_p ul { list-style:none outside none; padding:7px 3px; margin:0px;}
+	div#menu_p ul li { display:inline; background: url(imagenes/tr_w.png); padding:  4px 0px; margin-top:2px;  cursor:pointer; color:#FFF  }
+	div#menu_p ul li:hover, div#menu_p ul li.current:hover { background: url(imagenes/tr_gb.png); color:#fff  }
+	div#menu_p ul li.current { background: url(imagenes/tr_g.png); color:#FFF   }
+	div#menu_p ul li a { text-decoration:none; color:#fff; padding:6px}
+	
+	div#menu{ margin-top:20px; color:#FFF; font-size:1.2em; width:120px; background: url(imagenes/bg_4.png); background:#444; float:left; overflow:hidden}
+	div#menu ul { list-style:none; padding:0px 0px; margin:0px;}
+	div#menu ul li { background: url(imagenes/tr_w.png);   margin:2px; cursor:pointer; border-left:#7bc641 4px solid ;  color:#fff; }
+	div#menu ul li:hover, div#menu ul li.current:hover { background: url(imagenes/tr_gb.png); color:#fff; border-left:#06F 4px solid ;  }
+	div#menu ul li.current { background: url(imagenes/tr_g.png); color:#fff ;  }
+	div#menu ul li a { text-decoration:none; color:#fff; padding:4px 0px 4px 8px; display:block }
+	
+	div#menu_h{ font-size:1.2em; width:100%; }
+	div#menu_h ul { list-style:none; padding:0px 0px; margin:0px;}
+	div#menu_h ul li { display:inline; background: url(imagenes/tr_w.png); padding: 4px 8px; margin:0px; line-height: 15px; cursor:pointer; border-left:#090 2px solid ;  color:#090; }
+	div#menu_h ul li:first-child { border:none;}
+	div#menu_h ul li:hover, div#menu ul li.current:hover { color:#06C  }
+	div#menu_h ul li.current { background: url(imagenes/tr_g.png); color:#FFF ;  }
+	div#menu_h ul li a{ text-decoration:none; color:#fff}
+	
+	div#contenido{ width:910px; float:left; margin: 20px 0px  0px 20px;   margin-bottom:25px  }
+	div#contenido div#seleccion{ font-size:1.2em; margin:20px 0 0 20px}
+	
+	div#footer{ background:url(imagenes/bg_foot.gif)  #d4d4d4;color:#3c3;  font: normal normal bold 1em/1em Verdana, Geneva, sans-serif; text-align:center; width:960px; height:20px; position:fixed; bottom:0px;  }
+	div#footer p{ margin-top:5px}
+	
+	div#contenido div#opc_ctg, div#contenido div#frm_ctg{ font-size:1.5em;}
+	div#opc_ctg a.modificar_big
+	,a.modificar_big:active
+	,a.modificar_big:visited
+	,a.registrar_big
+	,a.registrar_big:active
+	,a.registrar_big:visited{ color:#06C;}
+	div#opc_ctg a.registrar_big{ padding:3px 2px 3px 24px;background:#FFF url(../Imagenes/001_01.gif) no-repeat 0 0  ; text-decoration:none}
+	div#opc_ctg a.registrar_big:hover{text-decoration:underline; color:#090;}
+	a.modificar_big{ padding:3px 2px 3px 24px;background:#FFF url(../Imagenes/modificar.gif) no-repeat 0 0  ; text-decoration:none}
+	div#opc_ctg a.modificar_big:hover{text-decoration:underline; color:#090;}
+	div#opc_ctg a.current{text-decoration:underline;}
+	
+	
+	#loading {
+background:none repeat scroll 0 0 #000000;
+display:none;
+height:100%;
+left:0;
+margin:0;
+opacity:0.7;
+filter:alpha(opacity=70);
+
+position:fixed;
+top:0;
+width:100%;
+z-index:2999;
+}
+	
+	
+	
+
+
+	

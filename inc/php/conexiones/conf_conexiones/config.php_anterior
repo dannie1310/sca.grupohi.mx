@@ -1,0 +1,113 @@
+<?php 
+$host["SCA"] = '172.20.74.7';
+$user["SCA"] = 'sca_global';
+$password["SCA"] = '%_sca_global_%';
+$db["SCA"] = 'scatest34';
+
+$host["scatest34"] = '172.20.74.7';
+$user["scatest34"] = 'sca_global';
+$password["scatest34"] = '%_sca_global_%';
+$db["scatest34"] = 'scatest34';
+
+//para las configuracion de inicio de sesion
+//$host["SCA_config"] = '172.20.74.232';
+$host["SCA_config"] = '172.20.74.7';
+$user["SCA_config"] = 'sca_global';
+$password["SCA_config"] = '%_sca_global_%';
+$db["SCA_config"] = 'sca_configuracion';
+
+
+
+$host['scaatlacomulco_xiii_pruebas']='172.20.74.7';
+$host['sca_atlacomulco_xi']='172.20.74.7';
+$host['scaatlacomulco_xii']='172.20.74.7';
+$host['scacaracol']='172.20.74.7';
+$host['SCALerma']='172.20.74.7';
+$host['scaatlacomulco_maravatio']='172.20.74.7';
+$host['SCADurango']='172.20.74.7';
+$host['scaevantigua']='172.20.74.7';
+$host['scaevjamapa']='172.20.74.7';
+$host['scamisantla']='172.20.74.7';
+$host['scatexcoco']='172.20.74.7';
+$host['scasinaloa']='172.20.74.7';
+$host['scacarrizal_i']='172.20.74.7';
+$host['scacarrizal_ii']='172.20.74.7';
+$host['scasuchiate']='172.20.74.7';
+$host['scarcii']='172.20.74.7';
+$host['scarciii']='172.20.74.7';
+$host['scatest34']='172.20.74.7';
+$host['scacutzamala']='172.20.74.7';
+
+$db['sca_atlacomulco_xi']='sca_atlacomulco_xi';
+$db['scaatlacomulco_xii']='scaatlacomulco_xii';
+$db['scacaracol']='scacaracol';
+$db['SCALerma']='SCALerma';
+$db['scaatlacomulco_maravatio']='scaatlacomulco_maravatio';
+$db['SCADurango']='SCADurango';
+$db['scaevantigua']='scaevantigua';
+$db['scaevjamapa']='scaevjamapa';
+$db['scamisantla']='scamisantla';
+$db['scatexcoco']='scatexcoco';
+$db['scasinaloa']='scasinaloa';
+$db['scacarrizal_i']='scacarrizal_i';
+$db['scacarrizal_ii']='scacarrizal_ii';
+$db['scasuchiate']='scasuchiate';
+$db['scarcii']='scarcii';
+$db['scarciii']='scarciii';
+$db['scatest34']='scatest34';
+$db['scaatlacomulco_xiii_pruebas']='scaatlacomulco_xiii_pruebas';
+$db['scacutzamala']='scacutzamala';
+
+$user['sca_atlacomulco_xi']='sca_global';
+$user['scaatlacomulco_xii']='sca_global'; 
+$user['scacaracol']='sca_global';
+$user['SCALerma']='sca_global';
+$user['scaatlacomulco_maravatio']='sca_global';
+$user['SCADurango']='sca_global';
+$user['scaevantigua']='sca_global';
+$user['scaevjamapa']='sca_global';
+$user['scamisantla']='sca_global';
+$user['scatexcoco']='sca_global';
+$user['scasinaloa']='sca_global';
+$user['scacarrizal_i']='sca_global';
+$user['scacarrizal_ii']='sca_global';
+$user['scasuchiate']='sca_global';
+$user['scarcii']='sca_global';
+$user['scarciii']='sca_global';
+$user['scatest34']='sca_global';
+$user['scaatlacomulco_xiii_pruebas']='sca_global';
+$user['scacutzamala']='sca_global';
+
+$password['sca_atlacomulco_xi']='%_sca_global_%';
+$password['scaatlacomulco_xii']='%_sca_global_%';
+$password['scacaracol']='%_sca_global_%';
+$password['SCALerma']='%_sca_global_%';
+$password['scaatlacomulco_maravatio']='%_sca_global_%';
+$password['SCADurango']='%_sca_global_%';
+$password['scaevantigua']='%_sca_global_%';
+$password['scaevjamapa']='%_sca_global_%';
+$password['scamisantla']='%_sca_global_%';
+$password['scatexcoco']='%_sca_global_%';
+$password['scasinaloa']='%_sca_global_%';
+$password['scacarrizal_i']='%_sca_global_%';
+$password['scacarrizal_ii']='%_sca_global_%';
+$password['scasuchiate']='%_sca_global_%';
+$password['scarcii']='%_sca_global_%';
+$password['scarciii']='%_sca_global_%';
+$password['scatest34']='%_sca_global_%';
+$password['scaatlacomulco_xiii_pruebas']='%_sca_global_%';
+$password['scacutzamala']='%_sca_global_%';
+
+
+$host["scaatlacomulco_xiv"] = '172.20.74.7';
+$user["scaatlacomulco_xiv"] = 'sca_global';
+$password["scaatlacomulco_xiv"] = '%_sca_global_%';
+$db["scaatlacomulco_xiv"] = 'scaatlacomulco_xiv';
+
+$host["scaatlamara"] = '172.20.74.7';
+$user["scaatlamara"] = 'sca_global';
+$password["scaatlamara"] = '%_sca_global_%';
+$db["scaatlamara"] = 'scaatlamara';
+
+
+?>

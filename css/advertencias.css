@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+#mensajes{bottom:25px;position:fixed;font-size:1.5em}
+#mnsj { font: normal normal normal 0.8em/1.2em Verdana, Geneva, sans-serif; padding:0.8em 2.5em;  max-width:300px; margin-top:20px; border: 1px solid; display:none }
+	#mnsj.blue{background:#FBFBFB url(imagenes/74.gif) 0.5em 0.5em no-repeat; border-color: #6CF;}
+	#mnsj.orange{background:#FFD7AE url(imagenes/73.gif) 0.5em 0.5em no-repeat; border-color: #F60; color:#F60;}
+	#mnsj.yellow{background:#FFC url(imagenes/75.gif) 0.5em 0.5em no-repeat; border-color: #FC0; color:#F60}
+	#mnsj.green{background:#D6ffc1 url(imagenes/10.gif) 0.5em 0.5em no-repeat; border-color: #090; color:#090 }
+	#mnsj.instrucciones{background:#FFF url(imagenes/043.gif) 0.5em 0.5em no-repeat; border:none; color: #444; display:block; max-width:600px; font-weight:bold; margin-top:0px;}
+	#mnsj.red{background:#FFDFDF url(imagenes/eliminar.gif) 0.5em 0.5em no-repeat; border-color: #F00; color:#F00;}
+	#mnsj.alert{background:#FFC url(imagenes/alert-16.gif) 0.5em 0.5em no-repeat; border-color: #FC0; color:#F60;}

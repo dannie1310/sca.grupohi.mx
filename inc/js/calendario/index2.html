@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="src/css/jscal2.css" />
+    <link type="text/css" rel="stylesheet" href="src/css/border-radius.css" />
+    <link id="skinhelper-compact" type="text/css" rel="alternate stylesheet" href="src/css/reduce-spacing.css" />
+    <script src="src/js/jscal2.js"></script>
+     <script src="src/js/lang/es.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="demopage.css" />
+  </head>
+  <body>
+
+    <table>
+      <tr>
+        <td valign="top" style="width: 30em;">
+         
+         <input readonly="readonly" id="f_rangeStart" />
+                <button id="f_rangeStart_trigger" onmouseover='new Calendar({
+                          inputField: "f_rangeStart",
+                          dateFormat: "%d-%m-%Y",
+                          trigger: "f_rangeStart_trigger",
+                          weekNumbers: true,
+                          bottomBar: true,
+        				  max: Calendar.intToDate("20091013"),
+                          min: Calendar.intToDate("20091013"),
+                          onSelect: function() {
+                                  var date = Calendar.intToDate(this.selection.get());
+                                 
+                                  LEFT_CAL.args.min = date;
+                                  LEFT_CAL.redraw();
+                                  this.hide();
+                          }
+                  });'>...</button>
+                  
+                  <input name="fecha[]" id="fecha_33857" type="text" class="texto"  value="14-01-2009" size="7" maxlength="25" onChange="this.value=valida_rango_documentos_relacion(xajax.$('minima_rel').value,xajax.$('maxima_rel').value,xajax.$('fecha_33857').value)"> <img src="../../../Imagenes/calendario2.gif" width="16" height="16" class="boton" id="b_fecha_33857"  onMouseOver='new Calendar({
+                          inputField:"fecha_33857",
+                          dateFormat: "%d-%m-%Y",
+                          trigger: "b_fecha_33857",
+                          weekNumbers: true,
+                          bottomBar: true,
+        				  min: Calendar.intToDate("20090114"),
+                          max: Calendar.intToDate("20090114"),
+                          onSelect: function() {
+                                  this.hide();
+                          }
+                  });'>
+         
+         <input name="fecha[]" id="fecha_338571" type="text" class="texto"  value="14-01-2009" size="7" maxlength="25" onChange="this.value=valida_rango_documentos_relacion(xajax.$('minima_rel').value,xajax.$('maxima_rel').value,xajax.$('fecha_338571').value)"> <img src="../../../Imagenes/calendario2.gif" width="16" height="16" class="boton" id="b_fecha_338571"  onMouseOver='new Calendar({
+                          inputField:"fecha_338571",
+                          dateFormat: "%d-%m-%Y",
+                          trigger: "b_fecha_338571",
+                          weekNumbers: true,
+                          bottomBar: true,
+        				  min: Calendar.intToDate("20090114"),
+                          max: Calendar.intToDate("20090114"),
+                          onSelect: function() {
+                                  this.hide();
+                          }
+                  });'>
+         
+          <div id="cont"></div>
+          <script type="text/javascript">
+            var LEFT_CAL = Calendar.setup({
+                    cont: "cont",
+                    weekNumbers: true,
+                    selectionType: Calendar.SEL_MULTIPLE,
+					max: Calendar.intToDate('20091013')
+
+            });
+
+          </script>
+
+     
+        </td>
+
+       
+      </tr>
+    </table>
+
+  </body>
+</html>

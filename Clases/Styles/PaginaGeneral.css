@@ -1,0 +1,296 @@
+/*
+	Hoja General de Estilos
+	By Aguayo and Morris, 2007
+*/
+
+/* 
+Primera Versión de Estilos
+Actualizada Elizabeth Martinez 31 Marzo 2011
+  */
+  
+ html,body{ height:100%; }
+#layout{width:1000px; margin:0px auto;background-color:#FFF; overflow:hidden;min-height:100%;}
+body {
+	
+color:#06C;
+font:font-size: 11px;  Calibri,Trebuchet,Verdana,Arial,sans-serif;
+margin:0;
+
+}
+div#bienvenida{ float:left;}
+div#version{ float:right; font-weight:bold; font-family:Verdana, Geneva, sans-serif}
+div#bandera{ float:right;}
+body,td,th {
+	font-size: 11px;
+} 
+ 
+  .separacion
+  {
+	  font-size:2px;
+	  color:#fff;
+  }
+  .textoG {
+	font-size: 12px;
+	font-weight: bold;
+	color: #0A8FC7;
+}
+ 
+ .texto
+ {
+   vertical-align: middle;
+   font-size: 11px;
+	color: #0A8FC7;
+ }
+  td
+{
+   padding-left: 5px;
+	padding-right: 5px;
+}
+ 
+ .Titulo 
+{
+  font-size: 18px;
+  font-weight: bolder;
+  text-align: center;
+  color: #0A8FC7;
+}
+.Subtitulo 
+{
+  font-size: 14px;
+  font-weight: bolder;
+  text-align: center;
+  color: #0A8FC7;
+} 
+.TituloDeAdvertencia
+{
+  font-size: 22px;
+  font-weight: bolder;
+  text-align: center;
+  color: Red;
+}
+.EncabezadoGlobal
+{
+  font-size: 16px;
+  font-weight: bolder;
+  
+  color: #FFFFFF;
+  background-color: #006699;
+}
+.EncabezadoPagina 
+{
+  font-size: 18px;
+  font-weight: bolder;
+  text-align: left;
+  color: #0A8FC7;
+}
+.EncabezadoTabla
+{
+	
+	color: #CEEBF2;
+	font-style: italic;
+    font-family: Trebuchet MS;
+	font-size: 13px;
+	background-color: #1B98CC;
+	padding-left: 5px;
+	padding-right: 5px;
+	background-image: url(siguiente.png);
+    text-align: center;
+	font-weight: bold;
+}
+
+.Concepto
+{
+	color: #CEEBF2;
+	font-style: italic;
+	font-family: Trebuchet MS;
+	font-size: 13px;
+	background-color: #1B98CC;
+	padding-left: 5px;
+	padding-right: 5px;
+	vertical-align: middle;
+	/*text-align: center;*/
+}
+
+.ConceptoTop
+{
+	color: #CEEBF2;
+	font-style: italic;
+   font-family: Trebuchet MS;
+	font-size: 13px;
+	background-color: #1B98CC;
+	padding-left: 5px;
+	padding-right: 5px;
+	vertical-align: top;
+   text-align: left;
+}
+
+.Item1
+{
+  background-color: #E7F3F7;
+   color: #0A8FC7;
+	font-size: 10px;
+ vertical-align: baseline;
+  font-family: Trebuchet MS;
+  
+  
+}
+
+.ItemV2
+{
+  background-color: #B2F0B3;
+  color:#177818;
+	font-size: 10px;
+  vertical-align: baseline;
+  font-family: Trebuchet MS;
+  
+  
+}
+
+.ItemV1
+{
+ background-color:#E0F8E1;
+ color:#2CD53A;
+	font-size: 10px;
+  vertical-align: baseline;
+  font-family: Trebuchet MS;
+ 
+  
+}
+
+.Item2
+{
+ background-color: #C6E2F1;
+ color: #0A8FC7;
+	font-size: 10px;
+  vertical-align: baseline;
+  font-family: Trebuchet MS;
+ 
+  
+}
+
+.boton
+{
+	
+	cursor:hand;
+	color: #1B98CC;
+	border-style: solid;
+	border:none;
+	border-width: 1px;
+	font-family: Trebuchet MS;
+}
+textarea
+{
+	color: #1B98CC;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Trebuchet MS;
+	font-size:10px;
+}
+select {
+
+color: #1B98CC;
+border-color: #1B98CC;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Trebuchet MS;
+	
+	font-size:10px;
+	
+}
+input.text {
+
+
+	color: #1B98CC;
+	border-style: solid;
+	border-width: 1px;
+	font-family: Trebuchet MS;
+	font-size:10px;
+
+}
+body {
+	color: #1B98CC;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: Trebuchet MS;
+	font-size: 10px;
+}
+a:link {
+	color: #006699;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #006699;
+}
+a:hover {
+	text-decoration: none;
+	color: #FF0000;
+}
+a:active {
+	text-decoration: none;
+	color: #006699;
+}
+
+/*Estilos del Login*/
+
+	.Casillas
+	{
+		font-size:14px;
+		background:#F0F8FF;
+		color:#006699;
+		border: 1px solid;
+	}
+	.Casillas_small
+	{
+		font-size:10px;
+		background:#F0F8FF;
+		color:#006699;
+		border: 1px solid;
+	}
+	.CasillasParaFechas
+	{
+		font-size:10px;
+		font-family: Trebuchet MS;
+		background:#F0F8FF;
+		color:Red;
+		border-color: #006699;
+		border: 1px solid;
+	}
+	.CasillasParaObservaciones
+	{
+		font-size:10px;
+		font-family: Trebuchet MS;
+		background:#F0F8FF;
+		color:Red;
+		border: none;
+	}	
+	.FondoCasillas
+	{
+		background:#F0F8FF;
+	}
+	
+.Green
+{
+	color:#090;	
+}
+.Red
+{
+	color:#f00;	
+}
+
+/*Estilos de la Pagina Principal*/	
+	.Bienvenida
+	{
+		color:#FFFFFF;
+		font-weight:bold;
+		font-size:12px;
+		font-style:italic;
+	}
+	.EncabezadoMenu
+	{
+		color:#006699;
+		font-size:12px;
+		font-weight:bold;
+	}

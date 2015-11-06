@@ -1,0 +1,221 @@
+<form name="form" class="row fondogris" action="">
+    <div class="row ">
+        <div class="medium-5 large-5 columns">	
+            <div class="row collapse">
+                <div class="medium-5  small-5 columns">
+                    <label>Fecha inicial</label>
+                    <input type="text" name="fechainiacial" id="fechainiacial" value="{{fcinicial}}"
+                           class="support attribute fecha" placeholder="Fecha inicial"
+                           disabled/>
+                </div>
+                <div class="medium-5  small-5 columns">
+                    <label>Fecha final</label>
+                    <input type="text" name="fechafinal" value="{{fcfinal}}" class="support attribute fecha" 
+                           id="fechafinal"
+                          disabled/>
+
+                </div>
+            </div>
+        </div>
+        <div class="medium-7 large-7 columns ">	
+            <div class="row collapse">		      
+                <label>Sindicatos</label>
+                <select name="sindicatos" disabled>                       
+                    <option >{{sindicato}}</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" >
+        <div class="medium-6 large-6 columns ">									
+            <div class="row collapse">	
+                <label>Código del ticket</label> 
+
+                <div class="small-9 columns">
+                    <input type="text"  ng-enter="buscarCode()" ng-model="code" class="support attribute" placeholder="Código del ticket">
+                </div>
+                <div class="small-3 columns">
+                    <a  class="button postfix" ng-click="buscarCode()">Enviar</a>
+                </div>	
+
+            </div>
+        </div>
+        <div class="medium-6 large-6 columns ">									
+            <div class="row collapse" ng-show="viajestemp.length > 0">	
+                <label>Buscar (total de elementos {{viajestemp.length}})</label>
+                <div class="small-9 columns">
+                    <input type="text" ng-model="codetemp"   class="support attribute" placeholder="Ejemplo: P34 ó 478D837B0E238C">
+                </div>                	
+
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<div class="row" >
+    <div class="medium-6 large-6 columns ">									
+        <div class="row collapse info" ng-show="error != ''" ng-class="{mensajes:error}" >	
+            <div class="small-12 large-12 columns" ng-modelo="error">
+                {{error}}
+            </div>	
+
+        </div>
+    </div>
+    <div class="medium-6 large-6 columns ">									
+
+    </div>
+
+</div>
+
+</form>
+
+<div class="radius pendiente" ng-repeat="(index,viajecode) in viajestemp | filter: byStatusId | filter: codetemp | filter:bysindicato | filter:bydateiniciofin">
+    <div class="row ">
+        <div class="medium-3 large-3 columns">  &nbsp;</div>
+        <div class="button medium-6 large-6 columns" ng-show="index == 0" ng-click="addSelectedAll()">Agregar todos los selecionados a conciliar</div>
+        <div class="medium-3 large-3 columns"> &nbsp; </div>
+    </div>
+
+    <div class="row ">
+        <div class="medium-2 large-2 columns">
+            <label>Camión</label>
+            <span class="postfix">{{viajecode.economico}}</span>
+        </div>
+        <div class="medium-2 large-2 columns">
+            <label>Fecha</label>
+            <span class="postfix">{{viajecode.fechallegada}}</span>
+        </div>
+        <div class="medium-2 large-2 columns">
+            <label>H. salida/llegada</label>
+            <span class="postfix">{{viajecode.Horasalida}}/{{viajecode.horallegada}}</span>
+        </div>
+        <div class="medium-1 large-1 columns">
+            <label>Turno</label>
+            <span class="postfix">{{viajecode.turno}}</span>
+        </div>
+        <div class="medium-1 large-1 columns">
+            <label>Cubicación</label>
+            <span class="postfix">{{viajecode.cubicacionCamion}}</span>
+        </div>
+        <div class="medium-2 large-2 columns">
+            <label>Volumen total</label>
+            <span class="postfix">{{viajecode.volumentotal}}</span>
+        </div>
+        <div class="medium-2 large-2 columns">
+            <label>Dist.</label>
+            <span class="postfix">{{viajecode.DIST}}</span>
+        </div>
+    </div>
+    <div class="row ">
+
+        <div class="medium-3 large-3 columns">
+            <label>Material</label>
+            <span class="postfix" >{{viajecode.material}}</span>
+        </div>
+        <div class="medium-3 large-3 columns">
+            <label>Origen</label>
+            <span class="postfix">{{viajecode.origen}}</span>
+        </div>
+        <div class="medium-3 large-3 columns">
+            <label>Destino</label>
+            <span class="postfix">{{viajecode.tiro}}</span>
+        </div>
+        <div class="medium-2 large-2 columns">
+            <label>Importe total</label>
+            <span class="postfix">{{viajecode.importetotal}}</span>
+        </div>
+        <div class="medium-1 large-1 columns">
+            <input type="checkbox" id="{{viajecode.code}}"  ng-model="viajecode.seleccionado" />
+            <label for="{{viajecode.code}}"> &nbsp;</label>
+
+        </div>
+    </div>
+    <div class="row ">
+        <a class="medium-4 large-4 columns "> &nbsp;</a>
+        <a class="code medium-3 large-3 columns ">Código: {{viajecode.code}}</a>
+        <a class="medium-3 large-3 columns "> &nbsp;</a>
+        <a  class="button medium-2 large-2 columns" ng-click="addConciliacion(viajecode.code, 1)">Agregar</a>
+
+    </div>
+
+</div>
+<hr/>
+
+<div class="radius aceptado" ng-repeat="(index,viajecode) in viajestemp | filter:byStatusId2 | filter: codetemp  | filter:bysindicato">
+    <div class="row operacion">
+        <a  class="button  medium-6 large-6 columns " ng-show="index == 0" ng-click="deleteSelectedAll()">Eliminar todos los selecionados de conciliar</a>
+        <a  class="button medium-6 large-6 columns " ng-show="index == 0" ng-click="actualizarConciliacion()">Actualizar la conciliacion</a>
+    </div>
+     <div class="row operacion" >
+        <label  class="medium-2 large-2 columns " ng-show="index == 0">Observación</label>
+        <textarea  class="medium-10 large-10 columns " ng-show="index == 0" id="observaciones" ng-model="observacion"></textarea>
+    </div>
+
+    <div class="row ">
+        <div class="medium-2 large-2 columns">
+            <label>Camión</label>
+            <span class="postfix">{{viajecode.economico}}</span>
+        </div>
+        <div class="medium-2 large-2 columns">
+            <label>Fecha</label>
+            <span class="postfix">{{viajecode.fechallegada}}</span>
+        </div>
+        <div class="medium-2 large-2 columns">
+            <label>H. salida/llegada</label>
+            <span class="postfix">{{viajecode.Horasalida}}/{{viajecode.horallegada}}</span>
+        </div>
+        <div class="medium-1 large-1 columns">
+            <label>Turno</label>
+            <span class="postfix">{{viajecode.turno}}</span>
+        </div>
+        <div class="medium-1 large-1 columns">
+            <label>Cubicación</label>
+            <span class="postfix">{{viajecode.cubicacionCamion}}</span>
+        </div>
+        <div class="medium-2 large-2 columns">
+            <label>Volumen total</label>
+            <span class="postfix">{{viajecode.volumentotal}}</span>
+        </div>
+        <div class="medium-2 large-2 columns">
+            <label>Dist.</label>
+            <span class="postfix">{{viajecode.DIST}}</span>
+        </div>
+    </div>
+    <div class="row ">
+
+        <div class="medium-3 large-3 columns">
+            <label>Material</label>
+            <span class="postfix">{{viajecode.material}}</span>
+        </div>
+        <div class="medium-3 large-3 columns">
+            <label>Origen</label>
+            <span class="postfix">{{viajecode.origen}}</span>
+        </div>
+        <div class="medium-3 large-3 columns">
+            <label>Destino</label>
+            <span class="postfix">{{viajecode.tiro}}</span>
+        </div>
+        <div class="medium-2 large-2 columns">
+            <label>Importe total</label>
+            <span class="postfix">{{viajecode.importetotal}}</span>
+        </div>
+        <div class="medium-1 large-1 columns">
+            <input type="checkbox" id="{{viajecode.code}}"  ng-model="viajecode.seleccionado" />
+            <label for="{{viajecode.code}}"> &nbsp;</label>
+
+              
+        </div>
+
+    </div>
+    <div class="row ">
+        <a class="medium-4 large-4 columns "> &nbsp;</a>
+        <a class="code medium-3 large-3 columns ">Código: {{viajecode.code}}</a>
+        <a class="medium-3 large-3 columns "> &nbsp;</a>
+       <a  class="button  medium-2 large-2 columns " ng-click="addConciliacion(viajecode.code, 0)">Eliminar</a>  
+    </div>
+
+</div>
+
+

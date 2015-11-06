@@ -1,0 +1,33 @@
+/* 
+
+	HOJA DE ESTILOS PARA LA CARGA DE ARCHIVOS AL SCA
+
+*/
+
+.LFEncabezado
+{
+	font-size:9px;
+	font-family:"Trebuchet MS";
+	font-weight:bold;
+	color:#006699;
+	background:#cbd8EC;
+	text-align:center;	 
+}
+.LFItem1
+{
+	font-size:9px;
+	font-family:"Trebuchet MS";
+	font-weight:bold;
+	color:#006699;
+	background:#F0F8FF;
+	text-align:center;	 
+}
+.LFItem2
+{
+	font-size:9px;
+	font-family:"Trebuchet MS";
+	font-weight:bold;
+	color:#006699;
+	text-align:center;	 
+}
+

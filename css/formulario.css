@@ -1,0 +1,11 @@
+@charset "utf-8";
+label { cursor:pointer; font-weight:bold; font-size:1.3em}
+	input.monetario, input.text, select{ width:230px; border:#06C 1px solid; color:#666; }
+	input.monetario{ text-align:right}
+	.boton{ cursor:pointer}
+	img.boton{ vertical-align:middle;  }
+fieldset{padding:10px 15px 10px 15px;}
+fieldset legend{  border:none; color: #090; display:block; max-width:600px; font-weight:bold;  clear:left}
+fieldset legend img{ vertical-align:middle; margin: 0 5px;}
+/* CSS Document */
+

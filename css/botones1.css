@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+
+div#botones,div#botones20,div#botones24{ display:inline; width:auto;}
+
+div#botones div.sboton { width:16px; height: 16px; background: transparent url(imagenes/sprite.gif) no-repeat; float: left; margin:0; cursor:pointer
+}
+div#botones24 div.sboton { width:24px; height: 24px; background: transparent url(imagenes/sprite_24.gif) no-repeat; float: left; margin:0; cursor:pointer
+}
+div#botones20 div.sboton { width:20px; height: 20px; background: transparent url(imagenes/sprite.gif) no-repeat; float: left; margin:0; cursor:pointer
+}
+	div#botones div.guardar { background-position:0px 0px}
+	div#botones div.guardar:hover { background-position:0px -16px}
+	div#botones20 div.guardar { background-position:-65px 0px}
+	div#botones20 div.guardar:hover { background-position:-65px -22px}
+	div#botones20 div.refresh { background-position:-66px -42px}
+	div#botones20 div.refresh:hover { background-position:-66px -64px}
+	div#botones div.eliminar { background-position:0px -32px}
+	div#botones div.eliminar:hover { background-position:0px -48px}
+	div#botones div.editar { background-position:-48px 0px}
+	div#botones div.editar:hover { background-position:-48px -16px}
+	div#botones div.up { background-position:-16px -32px}
+	div#botones div.up:hover { background-position:-16px -48px}
+	div#botones div.down { background-position:-16px -0px}
+	div#botones div.down:hover { background-position:-16px -16px}
+	div#botones div.calendar { background-position:0px -64px}
+	div#botones div.calendar:hover { background-position:0px -80px}
+	div#botones div.consultar { background-position:-32px -32px}
+	div#botones div.consultar:hover { background-position:-32px -48px}
+	
+	div#botones24 div.bajar{ background-position:-24px -1352px; }
+	div#botones24 div.bajar:hover{background-position:-0px -1352px;}

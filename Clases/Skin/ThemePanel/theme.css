@@ -1,0 +1,419 @@
+/* ThemePanelMenu Style Sheet */
+
+.ThemePanelMenu,.ThemePanelSubMenuTable
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	background-color:#F7F3F7;
+	cursor:pointer;
+	white-space:nowrap;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#006699,Direction=135,Strength=5);	
+}
+
+.ThemePanelSubMenu
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	position:absolute;
+	visibility:hidden;
+
+	/*
+	   Netscape/Mozilla renders borders by increasing
+	   their z-index.  The following line is necessary
+	   to cover any borders underneath
+	*/
+	z-index:100;
+	border:0;
+	padding:0;
+
+	/* the following property is only useful in IE */
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#006699,Direction=135,Strength=5);
+}
+
+.ThemePanelSubMenuTable
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	border:	1px solid #9C9A9C;
+	
+}
+
+.ThemePanelMenuItem,.ThemePanelMenuItemHover,.ThemePanelMenuItemActive
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	cursor:	Hand;
+	white-space:nowrap;
+}
+
+.ThemePanelMainItem,
+.ThemePanelMenuItem
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	background-color:#FFFFFF;
+	color:#006699;
+}
+
+.ThemePanelMainItemHover,
+.ThemePanelMainItemActive,
+.ThemePanelMenuItemHover,
+.ThemePanelMenuItemActive
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	background-color:#006699;
+	color:#FFFFFF;
+}
+
+
+/* horizontal main menu sub components */
+/* panel doesn't really support horizontal menus */
+
+.ThemePanelMainFolderLeft,.ThemePanelMainItemLeft,
+.ThemePanelMainFolderText,.ThemePanelMainItemText,
+.ThemePanelMainFolderRight,.ThemePanelMainItemRight
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	border:0;
+	background-color:inherit;
+	white-space:nowrap;
+}
+
+/* vertical main menu sub components */
+TD.ThemePanelMainFolderLeft,TD.ThemePanelMainItemLeft
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-left:0px;
+	padding-right:0px;
+
+	border-left:1px solid #9C9A9C;
+
+	white-space:nowrap;
+	background-color:inherit;
+}
+
+TD.ThemePanelMainFolderLeft,TD.ThemePanelMainItemLeft,
+TD.ThemePanelMainFolderText,TD.ThemePanelMainItemText,
+TD.ThemePanelMainFolderRight,TD.ThemePanelMainItemRight
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-top:2px;
+	padding-bottom:2px;
+	border-top:1px solid #9C9A9C;
+	border-bottom:1px solid #9C9A9C;
+
+	background-color:inherit;
+}
+
+TD.ThemePanelMainFolderLeft,TD.ThemePanelMainItemLeft
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-right:0px;
+	padding-left:0px;
+	border-left:1px solid #9C9A9C;
+
+	background-color:inherit;
+	white-space:nowrap;
+}
+
+TD.ThemePanelMainFolderText,TD.ThemePanelMainItemText
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-right:10px;
+	padding-left:10px;
+
+	background-color:inherit;
+	white-space:nowrap;
+}
+
+TD.ThemePanelMainFolderRight,TD.ThemePanelMainItemRight
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-right:0px;
+	padding-left:0px;
+	border-right:1px solid #9C9A9C;
+
+	background-color:inherit;
+	white-space:nowrap;
+}
+
+TR.ThemePanelMainItem TD.ThemePanelMainFolderLeft
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:1px;
+	padding-right:0px;
+
+	border:0;
+	white-space:nowrap;
+	background-color:inherit;
+}
+
+TR.ThemePanelMainItem TD.ThemePanelMainItemLeft
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:1px;
+	padding-right:0px;
+
+	border:0;
+	white-space:nowrap;
+	background-color:inherit;
+}
+
+TR.ThemePanelMainItem TD.ThemePanelMainFolderText
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:5px;
+	padding-right:5px;
+
+	border:	0;
+	white-space:	nowrap;
+	background-color:	inherit;
+}
+
+TR.ThemePanelMainItem TD.ThemePanelMainItemText
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:5px;
+	padding-right:5px;
+
+	border:	0;
+	white-space:	nowrap;
+	background-color:	inherit;
+}
+
+TR.ThemePanelMainItem TD.ThemePanelMainItemRight
+{
+	font-family:	"Trebuchet MS";
+	font-size:	10px;
+	padding-top:	3px;
+	padding-bottom:	3px;
+	padding-left:	0px;
+	padding-right:	1px;
+
+	border:	0;
+	white-space:	nowrap;
+	background-color:	inherit;
+}
+
+TR.ThemePanelMainItem TD.ThemePanelMainFolderRight
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:0px;
+	padding-right:1px;
+
+	border:0;
+	white-space:nowrap;
+	background-color:inherit;
+}
+
+/* sub menus sub components */
+
+.ThemePanelMenuFolderLeft,.ThemePanelMenuItemLeft
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-left:0px;
+	padding-right:0px;
+
+	border-left:1px solid #9C9A9C;
+
+	white-space:nowrap;
+	background-color:inherit;
+}
+
+.ThemePanelMenuFolderLeft,.ThemePanelMenuItemLeft,
+.ThemePanelMenuFolderText,.ThemePanelMenuItemText,
+.ThemePanelMenuFolderRight,.ThemePanelMenuItemRight
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-top:2px;
+	padding-bottom:2px;
+	border-top:1px solid #9C9A9C;
+	border-bottom:1px solid #9C9A9C;
+
+	background-color:inherit;
+	white-space:nowrap;
+}
+
+.ThemePanelMenuFolderLeft,.ThemePanelMenuItemLeft
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-right:0px;
+	padding-left:2px;
+	border-left:1px solid #9C9A9C;
+
+	background-color:inherit;
+	white-space:nowrap;
+}
+
+.ThemePanelMenuFolderText,.ThemePanelMenuItemText
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-right:3px;
+	padding-left:5px;
+
+	background-color:inherit;
+	white-space:nowrap;
+}
+
+.ThemePanelMenuFolderRight,.ThemePanelMenuItemRight
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-right:0px;
+	padding-left:0px;
+	border-right:1px solid #9C9A9C;
+
+	background-color:inherit;
+	white-space:nowrap;
+}
+
+TR.ThemePanelMenuItem TD.ThemePanelMenuFolderLeft
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:3px;
+	padding-right:0px;
+
+	border:0;
+	white-space:nowrap;
+	background-color:inherit;
+}
+
+TR.ThemePanelMenuItem TD.ThemePanelMenuItemLeft
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:3px;
+	padding-right:0px;
+
+	border:0;
+	white-space:nowrap;
+	background-color:inherit;
+}
+
+TR.ThemePanelMenuItem TD.ThemePanelMenuFolderText
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-right:3px;
+	padding-left:5px;
+
+	border:0;
+	white-space:nowrap;
+	background-color:inherit;
+}
+
+TR.ThemePanelMenuItem TD.ThemePanelMenuItemText
+{
+	font-family:"Trebuchet MS";
+	font-size:10px;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-right:3px;
+	padding-left:5px;
+
+	border:0;
+	white-space:nowrap;
+	background-color:inherit;
+}
+
+TR.ThemePanelMenuItem TD.ThemePanelMenuItemRight
+{
+	font-family:	"Trebuchet MS";
+	font-size:	10px;
+	padding-top:	3px;
+	padding-bottom:	3px;
+	padding-left:	0px;
+	padding-right:	1px;
+
+	border:		0;
+	white-space:	nowrap;
+	background-color:	inherit;
+}
+
+TR.ThemePanelMenuItem TD.ThemePanelMenuFolderRight
+{
+	font-family:	"Trebuchet MS";
+	font-size:	10px;
+	padding-top:	3px;
+	padding-bottom:	3px;
+	padding-left:	0px;
+	padding-right:	1px;
+
+	border:		0;
+	white-space:	nowrap;
+	background-color:	inherit;
+}
+
+.ThemePanelMenuSplit
+{
+	color:#006699;
+	margin:	2px;
+	height:	1px;
+	overflow:hidden;
+	background-color:inherit;
+	border-top:	1px solid #9C9A9C;
+}
+
+/* image shadow animation */
+
+/*
+	seq1:	image for normal
+	seq2:	image for hover and active
+
+	To use, in the icon field, input the following:
+	<img class="seq1" src="normal.gif" /><img class="seq2" src="hover.gif" />
+*/
+
+.ThemePanelMenuItem img.seq1
+{
+	font-family:	"Trebuchet MS";
+	display:	inline;
+}
+
+.ThemePanelMenuItemHover seq2,
+.ThemePanelMenuItemActive seq2
+{
+	font-family:	"Trebuchet MS";
+	display:	inline;
+}
+
+.ThemePanelMenuItem .seq2,
+.ThemePanelMenuItemHover .seq1,
+.ThemePanelMenuItemActive .seq1
+{
+	font-family:	"Trebuchet MS";
+	display:	none;
+}

@@ -1,0 +1,195 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-3fyncx');
+	src:url('fonts/icomoon.eot?#iefix-3fyncx') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-3fyncx') format('woff'),
+		url('fonts/icomoon.ttf?-3fyncx') format('truetype'),
+		url('fonts/icomoon.svg?-3fyncx#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+#mostrarMapa{
+  width: 676px;
+  height: 500px;
+  display: inline-block;
+}
+#opciones{
+	width: 300px;
+  	height: 500px;	
+  	background-color: #F5F5F5;
+  	display: inline-block;
+  	vertical-align: top;
+  	border: 1px solid #ebebeb;
+  	box-shadow: 0 4px 4px -2px #cccccc;	
+
+}
+#opciones input[type='text']{
+	width: 100px;
+}
+#opciones table{
+	width: 100%;
+	font-size: 13px
+}
+#opciones table .title{
+	background-image:url(../png/bg_black.png);
+	background-color:#CCC;
+	color: #FFF;
+	margin: 0;
+	padding: 0;
+
+}
+#opciones .listevento, #opciones .listIMEI, #opciones .periodo {
+	padding-bottom: 16px;
+	font-weight: bold;
+}
+#opciones .listevento div input{
+	margin-left: 20px;
+
+}
+p.test {
+	margin: 0;
+ white-space:nowrap; width:22em; overflow:hidden; text-overflow: ellipsis; /*otras hornamentales*/ } 
+p.test:hover { text-overflow:inherit; overflow:visible; width: auto; cursor: pointer; }
+#opciones .listIMEI div input{
+	margin-left: 20px;
+
+
+}
+
+
+#opciones table .center{
+	text-align: center;
+}
+#opciones table .buttonsubmit{
+	text-align: right;
+}
+
+
+#opciones input:button{
+	width: 100px;
+}
+#opciones h4{
+	margin: 0;
+	padding: 12px 18px;
+	color: #f5f5f5;
+	text-align: center;
+	background-image:url(../png/bg_black.png);
+	background-color: rgb(95,95,95);
+	text-transform: uppercase;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+
+	background-color: white;
+	font-size: 13px;
+	font-weight: bold;
+	border:1px solid #A3A1A1;
+	width: 40px
+	white-space:nowrap;
+}
+
+.icon-configuracion:before {
+	content: "\e935";
+}
+
+.icon-sincronizacion:before {
+	content: "\e97f";
+}
+
+.icon-autentificacion:before {
+	content: "\e98d";
+}
+
+.icon-configuracion4:before {
+	content: "\e991";
+}
+
+.icon-configuracion2:before {
+	content: "\e993";
+}
+
+.icon-configuracion3:before {
+	content: "\e994";
+}
+
+.icon-tiro:before {
+	content: "\e9c5";
+}
+
+.icon-origen:before {
+	content: "\e9c6";
+}
+
+.icon-sincronizacion2:before {
+	content: "\eab0";
+}
+
+.color1{
+	color: #7DBB48;
+}
+
+.color2{
+	color: #000000;
+}
+
+.color3{
+	color: #0000FF;
+}
+
+.color4{
+	color: #FF0000;
+}
+
+.color5{
+	color: #800000;
+}
+
+.color6{
+	color: #00FF00;
+}
+
+.color7{
+	color: #FFFF00;
+}
+
+.color8{
+	color: #000080;
+}
+.color9{
+	color: #808080;
+	
+}
+
+.color10{
+	color: #FFFFFF;
+}
+
+.color11{
+	color: #808000;
+}
+
+.color12{
+	color: #008080;
+}
+
+.color13{
+	color: #008000;
+	
+}
+
+.color14{
+	color: #C0C0C0;
+}

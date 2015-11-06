@@ -1,0 +1,1036 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+<link href="../../Clases/Styles/PaginaGeneral.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../../Clases/Js/Genericas.js"></script>
+<script language="javascript" src="../../Clases/Js/Operacion/ValidarSeleccionViajes.js"></script>
+<script src="../../Clases/Js/Cajas.js"></script>
+<script src="../../Clases/Js/Operacion/ValidaViajeRechazado.js"></script>
+<script>
+function selecciona_cargador(val,hijos)
+{
+	for(c=0;c<hijos;c++)
+		{
+			hijoid="h_maquinaria"+c;
+			hijo=document.getElementById(hijoid);
+			//hijo.disabled=0;
+			hijo.value=val;
+			
+		}
+}
+</script>
+</head>
+
+<body onkeydown="backspace();">
+ 
+<table width="845" border="0" cellpadding="0" cellspacing="0" align="center" bordercolor="#FFFFFF">
+  <tr>
+    <td class="Concepto">Usted Tiene Viajes Pendientes de Validar en las Siguientes Fechas:</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr> </tr>
+</table>
+
+
+<table width="845" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+    <td width="26">&nbsp;</td>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+    <img style=";cursor:hand"  id="menosfechas0" src="../../Imgs/16-square-red-remove.gif" width="16" height="16" onclick="cambiarDisplay('fechas0');cambiarDisplay('masfechas0');cambiarDisplay('menosfechas0')" onmouseover="this.src='../../Imgs/16-square-blue-remove.gif'" onmouseout="this.src='../../Imgs/16-square-red-remove.gif'" />
+    
+    <img style="cursor:hand" src="../../Imgs/16-square-red-add.gif" id="masfechas0" onclick="cambiarDisplay('fechas0');cambiarDisplay('menosfechas0');cambiarDisplay('masfechas0')" width="16" height="16" onmouseover="this.src='../../Imgs/16-square-blue-add.gif'" onmouseout="this.src='../../Imgs/16-square-red-add.gif'"/>    
+ </td>
+    <td width="25"><img src="../../Imgs/calendarp.gif" width="15" height="16" /></td>
+    <td colspan="3">&nbsp;2009-05-25 ==> 17 Viajes</td>
+  </tr>
+  <tr>
+    <td colspan="5"><table id="fechas0" style="" >
+            <tr>
+        <td width="12">&nbsp;</td>
+        <td width="26">
+        <img onmouseover="this.src='../../Imgs/16-square-blue-remove.gif'" onmouseout="this.src='../../Imgs/16-square-red-remove.gif'" style=";cursor:hand" id="-f0t0" src="../../Imgs/16-square-red-remove.gif" width="16" height="16" onclick="cambiarDisplay('f0t0');cambiarDisplay('-f0t0');cambiarDisplay('+f0t0')" />
+        
+        <img onmouseover="this.src='../../Imgs/16-square-blue-add.gif'" onmouseout="this.src='../../Imgs/16-square-red-add.gif'" style="cursor:hand" id="+f0t0" src="../../Imgs/16-square-red-add.gif" width="16" height="16" onclick="cambiarDisplay('f0t0');cambiarDisplay('-f0t0');cambiarDisplay('+f0t0')" />
+        </td>
+        <td width="24"><img src="../../Imgs/16-Destinos.gif" width="16" height="16" /></td>
+        <td width="763" colspan="2">&nbsp;KM 171+480 INT. 400 MTS ==> 5 Viajes</td>
+      </tr>
+      
+      <tr>
+        <td colspan="5">
+        <table id="f0t0" style="">
+              <form name="frm0" method="post" action="3VerificaVM.php">
+                <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>
+          <img onmouseover="this.src='../../Imgs/16-square-blue-add.gif'" onmouseout="this.src='../../Imgs/16-square-red-add.gif'" style="cursor:hand" id="+f0t0c0" src="../../Imgs/16-square-red-add.gif" onclick="cambiarDisplay('f0t0c0');cambiarDisplay('+f0t0c0');cambiarDisplay('-f0t0c0')" width="16" height="16" />
+          
+          <img onmouseover="this.src='../../Imgs/16-square-blue-remove.gif'" onmouseout="this.src='../../Imgs/16-square-red-remove.gif'" id="-f0t0c0" src="../../Imgs/16-square-red-remove.gif" style=";cursor:hand"  onclick="cambiarDisplay('f0t0c0');cambiarDisplay('+f0t0c0');cambiarDisplay('-f0t0c0')" width="16" height="16" />
+          
+          
+          
+          </td>
+          <td width="26"><img  src="../../Imgs/16-Bus.gif" width="16" height="16" /></td>
+          <td width="741">&nbsp;P-104 ==> 5 Viajes</td>
+        </tr>
+       
+        <tr id="f0t0c0" style="">
+          <td colspan="5"><table>
+          
+              <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td ><table  width="731" border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF">
+                            <tr>
+                             
+                              <td colspan="10" >&nbsp;</td>
+                          
+                               <td colspan="2" class="EncabezadoTabla"><div align="right">Cargador:</div></td>
+                               <td class="Item1">&nbsp;
+                              
+	 	<select name="maquinaria5" id="p_maquinaria5"  onchange="selecciona_cargador(this.value,'5')">
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td align="center"><img src="../../Imgs/16-Cubicacion.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Origenes.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Materiales.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Clock.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Ruta.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Distancia.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-CostoViaje.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Signo-Peso.gif" width="16" height="16" /></td>
+               <td align="center">&nbsp;</td>
+               <td align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="EncabezadoTabla">#</td>
+              <td class="EncabezadoTabla">?</td>
+              <td class="EncabezadoTabla"><img src="../../Imgs/Check.gif" width="16" height="16" /></td>
+              <td class="EncabezadoTabla"><img src="../../Imgs/Cross.gif" width="16" height="16" /></td>
+              <td class="EncabezadoTabla">Cubic.</td>
+              <td class="EncabezadoTabla">Or&iacute;gen</td>
+              <td class="EncabezadoTabla">Material</td>
+              <td class="EncabezadoTabla">Tiempo</td>
+              <td class="EncabezadoTabla">Ruta</td>
+              <td class="EncabezadoTabla">Distancia</td>
+              <td class="EncabezadoTabla">Costo</td>
+              <td class="EncabezadoTabla">Importe</td>
+               <td class="EncabezadoTabla">Cargador</td>
+               <td class="EncabezadoTabla">H. Ef.</td>
+
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;1&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje0" id="Frm0Viaje0" type="checkbox" value="38836" onclick="cambia1('Frm0Viaje0','Frm0ViajeRechazado0')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado0" onclick="cambia2('Frm0Viaje0','Frm0ViajeRechazado0')" id="Frm0ViajeRechazado0" type="checkbox" value="38836" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;KM 172+260 PORTAL DE ENTRADA CORTE ALTO&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-3&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;1&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;8.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;117.6&nbsp;
+                      <input type="hidden" name="Tiempo0" value="0.00" />
+                      <input type="hidden" name="Ruta0" value="3" />
+                      <input type="hidden" name="Distancia0" value="1" />
+                      <input type="hidden" name="Importe0" value="117.6" />
+                      <input type="hidden" name="Cubicacion0" value="14" />
+                      <input type="hidden" name="ImportePrimerKM0" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub0" value="0" />
+                      <input type="hidden" name="ImporteKMAdc0" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM0" value="14" />
+                      <input type="hidden" name="VolumenKMSub0" value="0" />
+                      <input type="hidden" name="VolumenKMAdc0" value="0" />
+                      <input type="hidden" name="Volumen0" value="14" />
+                      <input type="hidden" name="Origen0" value="1" />
+                      <input type="hidden" name="Tiro0" value="3" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria0" id="h_maquinaria0" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef0" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;2&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje1" id="Frm0Viaje1" type="checkbox" value="38837" onclick="cambia1('Frm0Viaje1','Frm0ViajeRechazado1')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado1" onclick="cambia2('Frm0Viaje1','Frm0ViajeRechazado1')" id="Frm0ViajeRechazado1" type="checkbox" value="38837" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;KM 172+260 PORTAL DE ENTRADA CORTE ALTO&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-3&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;1&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;8.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;117.6&nbsp;
+                      <input type="hidden" name="Tiempo1" value="0.00" />
+                      <input type="hidden" name="Ruta1" value="3" />
+                      <input type="hidden" name="Distancia1" value="1" />
+                      <input type="hidden" name="Importe1" value="117.6" />
+                      <input type="hidden" name="Cubicacion1" value="14" />
+                      <input type="hidden" name="ImportePrimerKM1" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub1" value="0" />
+                      <input type="hidden" name="ImporteKMAdc1" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM1" value="14" />
+                      <input type="hidden" name="VolumenKMSub1" value="0" />
+                      <input type="hidden" name="VolumenKMAdc1" value="0" />
+                      <input type="hidden" name="Volumen1" value="14" />
+                      <input type="hidden" name="Origen1" value="1" />
+                      <input type="hidden" name="Tiro1" value="3" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria1" id="h_maquinaria1" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef1" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;3&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje2" id="Frm0Viaje2" type="checkbox" value="38838" onclick="cambia1('Frm0Viaje2','Frm0ViajeRechazado2')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado2" onclick="cambia2('Frm0Viaje2','Frm0ViajeRechazado2')" id="Frm0ViajeRechazado2" type="checkbox" value="38838" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;KM 172+260 PORTAL DE ENTRADA CORTE ALTO&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-3&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;1&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;8.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;117.6&nbsp;
+                      <input type="hidden" name="Tiempo2" value="0.00" />
+                      <input type="hidden" name="Ruta2" value="3" />
+                      <input type="hidden" name="Distancia2" value="1" />
+                      <input type="hidden" name="Importe2" value="117.6" />
+                      <input type="hidden" name="Cubicacion2" value="14" />
+                      <input type="hidden" name="ImportePrimerKM2" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub2" value="0" />
+                      <input type="hidden" name="ImporteKMAdc2" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM2" value="14" />
+                      <input type="hidden" name="VolumenKMSub2" value="0" />
+                      <input type="hidden" name="VolumenKMAdc2" value="0" />
+                      <input type="hidden" name="Volumen2" value="14" />
+                      <input type="hidden" name="Origen2" value="1" />
+                      <input type="hidden" name="Tiro2" value="3" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria2" id="h_maquinaria2" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef2" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;4&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje3" id="Frm0Viaje3" type="checkbox" value="38839" onclick="cambia1('Frm0Viaje3','Frm0ViajeRechazado3')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado3" onclick="cambia2('Frm0Viaje3','Frm0ViajeRechazado3')" id="Frm0ViajeRechazado3" type="checkbox" value="38839" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;KM 172+260 PORTAL DE ENTRADA CORTE ALTO&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-3&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;1&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;8.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;117.6&nbsp;
+                      <input type="hidden" name="Tiempo3" value="0.00" />
+                      <input type="hidden" name="Ruta3" value="3" />
+                      <input type="hidden" name="Distancia3" value="1" />
+                      <input type="hidden" name="Importe3" value="117.6" />
+                      <input type="hidden" name="Cubicacion3" value="14" />
+                      <input type="hidden" name="ImportePrimerKM3" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub3" value="0" />
+                      <input type="hidden" name="ImporteKMAdc3" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM3" value="14" />
+                      <input type="hidden" name="VolumenKMSub3" value="0" />
+                      <input type="hidden" name="VolumenKMAdc3" value="0" />
+                      <input type="hidden" name="Volumen3" value="14" />
+                      <input type="hidden" name="Origen3" value="1" />
+                      <input type="hidden" name="Tiro3" value="3" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria3" id="h_maquinaria3" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef3" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;5&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje4" id="Frm0Viaje4" type="checkbox" value="38840" onclick="cambia1('Frm0Viaje4','Frm0ViajeRechazado4')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado4" onclick="cambia2('Frm0Viaje4','Frm0ViajeRechazado4')" id="Frm0ViajeRechazado4" type="checkbox" value="38840" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;KM 172+260 PORTAL DE ENTRADA CORTE ALTO&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-3&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;1&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;8.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;117.6&nbsp;
+                      <input type="hidden" name="Tiempo4" value="0.00" />
+                      <input type="hidden" name="Ruta4" value="3" />
+                      <input type="hidden" name="Distancia4" value="1" />
+                      <input type="hidden" name="Importe4" value="117.6" />
+                      <input type="hidden" name="Cubicacion4" value="14" />
+                      <input type="hidden" name="ImportePrimerKM4" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub4" value="0" />
+                      <input type="hidden" name="ImporteKMAdc4" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM4" value="14" />
+                      <input type="hidden" name="VolumenKMSub4" value="0" />
+                      <input type="hidden" name="VolumenKMAdc4" value="0" />
+                      <input type="hidden" name="Volumen4" value="14" />
+                      <input type="hidden" name="Origen4" value="1" />
+                      <input type="hidden" name="Tiro4" value="3" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria4" id="h_maquinaria4" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef4" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                       
+          </table></td>
+        </tr>
+          
+          </table></td>
+          </tr>
+    
+                <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td align="right">&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td align="right">
+          <input name="TotalV" type="hidden" value="5" />
+          <input name="button" type="submit" class="boton" id="button" value="Registrar Viajes" />
+            &nbsp;</td>
+        </tr>
+      </form>
+        </table>
+        
+        </td>
+        </tr>
+
+            <tr>
+        <td width="12">&nbsp;</td>
+        <td width="26">
+        <img onmouseover="this.src='../../Imgs/16-square-blue-remove.gif'" onmouseout="this.src='../../Imgs/16-square-red-remove.gif'" style=";cursor:hand" id="-f0t1" src="../../Imgs/16-square-red-remove.gif" width="16" height="16" onclick="cambiarDisplay('f0t1');cambiarDisplay('-f0t1');cambiarDisplay('+f0t1')" />
+        
+        <img onmouseover="this.src='../../Imgs/16-square-blue-add.gif'" onmouseout="this.src='../../Imgs/16-square-red-add.gif'" style="cursor:hand" id="+f0t1" src="../../Imgs/16-square-red-add.gif" width="16" height="16" onclick="cambiarDisplay('f0t1');cambiarDisplay('-f0t1');cambiarDisplay('+f0t1')" />
+        </td>
+        <td width="24"><img src="../../Imgs/16-Destinos.gif" width="16" height="16" /></td>
+        <td width="763" colspan="2">&nbsp;KM 171+570 INT. 300 MTS ==> 9 Viajes</td>
+      </tr>
+      
+      <tr>
+        <td colspan="5">
+        <table id="f0t1" style="">
+              <form name="frm1" method="post" action="3VerificaVM.php">
+                <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>
+          <img onmouseover="this.src='../../Imgs/16-square-blue-add.gif'" onmouseout="this.src='../../Imgs/16-square-red-add.gif'" style="cursor:hand" id="+f0t1c1" src="../../Imgs/16-square-red-add.gif" onclick="cambiarDisplay('f0t1c1');cambiarDisplay('+f0t1c1');cambiarDisplay('-f0t1c1')" width="16" height="16" />
+          
+          <img onmouseover="this.src='../../Imgs/16-square-blue-remove.gif'" onmouseout="this.src='../../Imgs/16-square-red-remove.gif'" id="-f0t1c1" src="../../Imgs/16-square-red-remove.gif" style=";cursor:hand"  onclick="cambiarDisplay('f0t1c1');cambiarDisplay('+f0t1c1');cambiarDisplay('-f0t1c1')" width="16" height="16" />
+          
+          
+          
+          </td>
+          <td width="26"><img  src="../../Imgs/16-Bus.gif" width="16" height="16" /></td>
+          <td width="741">&nbsp;C-67 ==> 9 Viajes</td>
+        </tr>
+       
+        <tr id="f0t1c1" style="">
+          <td colspan="5"><table>
+          
+              <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td ><table  width="731" border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF">
+                            <tr>
+                             
+                              <td colspan="10" >&nbsp;</td>
+                          
+                               <td colspan="2" class="EncabezadoTabla"><div align="right">Cargador:</div></td>
+                               <td class="Item1">&nbsp;
+                              
+	 	<select name="maquinaria9" id="p_maquinaria9"  onchange="selecciona_cargador(this.value,'9')">
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td align="center"><img src="../../Imgs/16-Cubicacion.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Origenes.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Materiales.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Clock.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Ruta.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Distancia.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-CostoViaje.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Signo-Peso.gif" width="16" height="16" /></td>
+               <td align="center">&nbsp;</td>
+               <td align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="EncabezadoTabla">#</td>
+              <td class="EncabezadoTabla">?</td>
+              <td class="EncabezadoTabla"><img src="../../Imgs/Check.gif" width="16" height="16" /></td>
+              <td class="EncabezadoTabla"><img src="../../Imgs/Cross.gif" width="16" height="16" /></td>
+              <td class="EncabezadoTabla">Cubic.</td>
+              <td class="EncabezadoTabla">Or&iacute;gen</td>
+              <td class="EncabezadoTabla">Material</td>
+              <td class="EncabezadoTabla">Tiempo</td>
+              <td class="EncabezadoTabla">Ruta</td>
+              <td class="EncabezadoTabla">Distancia</td>
+              <td class="EncabezadoTabla">Costo</td>
+              <td class="EncabezadoTabla">Importe</td>
+               <td class="EncabezadoTabla">Cargador</td>
+               <td class="EncabezadoTabla">H. Ef.</td>
+
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;1&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje0" id="Frm1Viaje0" type="checkbox" value="38827" onclick="cambia1('Frm1Viaje0','Frm1ViajeRechazado0')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado0" onclick="cambia2('Frm1Viaje0','Frm1ViajeRechazado0')" id="Frm1ViajeRechazado0" type="checkbox" value="38827" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;CRIBA VILLA UNION EL COYOTE &nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-2&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;76&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;323.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;4527.6&nbsp;
+                      <input type="hidden" name="Tiempo0" value="0.00" />
+                      <input type="hidden" name="Ruta0" value="2" />
+                      <input type="hidden" name="Distancia0" value="76" />
+                      <input type="hidden" name="Importe0" value="4527.6" />
+                      <input type="hidden" name="Cubicacion0" value="14" />
+                      <input type="hidden" name="ImportePrimerKM0" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub0" value="4410" />
+                      <input type="hidden" name="ImporteKMAdc0" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM0" value="14" />
+                      <input type="hidden" name="VolumenKMSub0" value="1050" />
+                      <input type="hidden" name="VolumenKMAdc0" value="0" />
+                      <input type="hidden" name="Volumen0" value="1064" />
+                      <input type="hidden" name="Origen0" value="2" />
+                      <input type="hidden" name="Tiro0" value="2" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria0" id="h_maquinaria0" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef0" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;2&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje1" id="Frm1Viaje1" type="checkbox" value="38828" onclick="cambia1('Frm1Viaje1','Frm1ViajeRechazado1')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado1" onclick="cambia2('Frm1Viaje1','Frm1ViajeRechazado1')" id="Frm1ViajeRechazado1" type="checkbox" value="38828" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;CRIBA VILLA UNION EL COYOTE &nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-2&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;76&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;323.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;4527.6&nbsp;
+                      <input type="hidden" name="Tiempo1" value="0.00" />
+                      <input type="hidden" name="Ruta1" value="2" />
+                      <input type="hidden" name="Distancia1" value="76" />
+                      <input type="hidden" name="Importe1" value="4527.6" />
+                      <input type="hidden" name="Cubicacion1" value="14" />
+                      <input type="hidden" name="ImportePrimerKM1" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub1" value="4410" />
+                      <input type="hidden" name="ImporteKMAdc1" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM1" value="14" />
+                      <input type="hidden" name="VolumenKMSub1" value="1050" />
+                      <input type="hidden" name="VolumenKMAdc1" value="0" />
+                      <input type="hidden" name="Volumen1" value="1064" />
+                      <input type="hidden" name="Origen1" value="2" />
+                      <input type="hidden" name="Tiro1" value="2" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria1" id="h_maquinaria1" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef1" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;3&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje2" id="Frm1Viaje2" type="checkbox" value="38829" onclick="cambia1('Frm1Viaje2','Frm1ViajeRechazado2')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado2" onclick="cambia2('Frm1Viaje2','Frm1ViajeRechazado2')" id="Frm1ViajeRechazado2" type="checkbox" value="38829" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;CRIBA VILLA UNION EL COYOTE &nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-2&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;76&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;323.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;4527.6&nbsp;
+                      <input type="hidden" name="Tiempo2" value="0.00" />
+                      <input type="hidden" name="Ruta2" value="2" />
+                      <input type="hidden" name="Distancia2" value="76" />
+                      <input type="hidden" name="Importe2" value="4527.6" />
+                      <input type="hidden" name="Cubicacion2" value="14" />
+                      <input type="hidden" name="ImportePrimerKM2" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub2" value="4410" />
+                      <input type="hidden" name="ImporteKMAdc2" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM2" value="14" />
+                      <input type="hidden" name="VolumenKMSub2" value="1050" />
+                      <input type="hidden" name="VolumenKMAdc2" value="0" />
+                      <input type="hidden" name="Volumen2" value="1064" />
+                      <input type="hidden" name="Origen2" value="2" />
+                      <input type="hidden" name="Tiro2" value="2" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria2" id="h_maquinaria2" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef2" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;4&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje3" id="Frm1Viaje3" type="checkbox" value="38830" onclick="cambia1('Frm1Viaje3','Frm1ViajeRechazado3')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado3" onclick="cambia2('Frm1Viaje3','Frm1ViajeRechazado3')" id="Frm1ViajeRechazado3" type="checkbox" value="38830" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;CRIBA VILLA UNION EL COYOTE &nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-2&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;76&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;323.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;4527.6&nbsp;
+                      <input type="hidden" name="Tiempo3" value="0.00" />
+                      <input type="hidden" name="Ruta3" value="2" />
+                      <input type="hidden" name="Distancia3" value="76" />
+                      <input type="hidden" name="Importe3" value="4527.6" />
+                      <input type="hidden" name="Cubicacion3" value="14" />
+                      <input type="hidden" name="ImportePrimerKM3" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub3" value="4410" />
+                      <input type="hidden" name="ImporteKMAdc3" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM3" value="14" />
+                      <input type="hidden" name="VolumenKMSub3" value="1050" />
+                      <input type="hidden" name="VolumenKMAdc3" value="0" />
+                      <input type="hidden" name="Volumen3" value="1064" />
+                      <input type="hidden" name="Origen3" value="2" />
+                      <input type="hidden" name="Tiro3" value="2" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria3" id="h_maquinaria3" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef3" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;5&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje4" id="Frm1Viaje4" type="checkbox" value="38831" onclick="cambia1('Frm1Viaje4','Frm1ViajeRechazado4')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado4" onclick="cambia2('Frm1Viaje4','Frm1ViajeRechazado4')" id="Frm1ViajeRechazado4" type="checkbox" value="38831" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;CRIBA VILLA UNION EL COYOTE &nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-2&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;76&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;323.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;4527.6&nbsp;
+                      <input type="hidden" name="Tiempo4" value="0.00" />
+                      <input type="hidden" name="Ruta4" value="2" />
+                      <input type="hidden" name="Distancia4" value="76" />
+                      <input type="hidden" name="Importe4" value="4527.6" />
+                      <input type="hidden" name="Cubicacion4" value="14" />
+                      <input type="hidden" name="ImportePrimerKM4" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub4" value="4410" />
+                      <input type="hidden" name="ImporteKMAdc4" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM4" value="14" />
+                      <input type="hidden" name="VolumenKMSub4" value="1050" />
+                      <input type="hidden" name="VolumenKMAdc4" value="0" />
+                      <input type="hidden" name="Volumen4" value="1064" />
+                      <input type="hidden" name="Origen4" value="2" />
+                      <input type="hidden" name="Tiro4" value="2" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria4" id="h_maquinaria4" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef4" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;6&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje5" id="Frm1Viaje5" type="checkbox" value="38832" onclick="cambia1('Frm1Viaje5','Frm1ViajeRechazado5')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado5" onclick="cambia2('Frm1Viaje5','Frm1ViajeRechazado5')" id="Frm1ViajeRechazado5" type="checkbox" value="38832" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;CRIBA VILLA UNION EL COYOTE &nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-2&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;76&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;323.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;4527.6&nbsp;
+                      <input type="hidden" name="Tiempo5" value="0.00" />
+                      <input type="hidden" name="Ruta5" value="2" />
+                      <input type="hidden" name="Distancia5" value="76" />
+                      <input type="hidden" name="Importe5" value="4527.6" />
+                      <input type="hidden" name="Cubicacion5" value="14" />
+                      <input type="hidden" name="ImportePrimerKM5" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub5" value="4410" />
+                      <input type="hidden" name="ImporteKMAdc5" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM5" value="14" />
+                      <input type="hidden" name="VolumenKMSub5" value="1050" />
+                      <input type="hidden" name="VolumenKMAdc5" value="0" />
+                      <input type="hidden" name="Volumen5" value="1064" />
+                      <input type="hidden" name="Origen5" value="2" />
+                      <input type="hidden" name="Tiro5" value="2" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria5" id="h_maquinaria5" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef5" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;7&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje6" id="Frm1Viaje6" type="checkbox" value="38833" onclick="cambia1('Frm1Viaje6','Frm1ViajeRechazado6')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado6" onclick="cambia2('Frm1Viaje6','Frm1ViajeRechazado6')" id="Frm1ViajeRechazado6" type="checkbox" value="38833" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;CRIBA VILLA UNION EL COYOTE &nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-2&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;76&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;323.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;4527.6&nbsp;
+                      <input type="hidden" name="Tiempo6" value="0.00" />
+                      <input type="hidden" name="Ruta6" value="2" />
+                      <input type="hidden" name="Distancia6" value="76" />
+                      <input type="hidden" name="Importe6" value="4527.6" />
+                      <input type="hidden" name="Cubicacion6" value="14" />
+                      <input type="hidden" name="ImportePrimerKM6" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub6" value="4410" />
+                      <input type="hidden" name="ImporteKMAdc6" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM6" value="14" />
+                      <input type="hidden" name="VolumenKMSub6" value="1050" />
+                      <input type="hidden" name="VolumenKMAdc6" value="0" />
+                      <input type="hidden" name="Volumen6" value="1064" />
+                      <input type="hidden" name="Origen6" value="2" />
+                      <input type="hidden" name="Tiro6" value="2" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria6" id="h_maquinaria6" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef6" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;8&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje7" id="Frm1Viaje7" type="checkbox" value="38834" onclick="cambia1('Frm1Viaje7','Frm1ViajeRechazado7')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado7" onclick="cambia2('Frm1Viaje7','Frm1ViajeRechazado7')" id="Frm1ViajeRechazado7" type="checkbox" value="38834" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;CRIBA VILLA UNION EL COYOTE &nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-2&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;76&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;323.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;4527.6&nbsp;
+
+                      <input type="hidden" name="Tiempo7" value="0.00" />
+                      <input type="hidden" name="Ruta7" value="2" />
+                      <input type="hidden" name="Distancia7" value="76" />
+                      <input type="hidden" name="Importe7" value="4527.6" />
+                      <input type="hidden" name="Cubicacion7" value="14" />
+                      <input type="hidden" name="ImportePrimerKM7" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub7" value="4410" />
+                      <input type="hidden" name="ImporteKMAdc7" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM7" value="14" />
+                      <input type="hidden" name="VolumenKMSub7" value="1050" />
+                      <input type="hidden" name="VolumenKMAdc7" value="0" />
+                      <input type="hidden" name="Volumen7" value="1064" />
+                      <input type="hidden" name="Origen7" value="2" />
+                      <input type="hidden" name="Tiro7" value="2" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria7" id="h_maquinaria7" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef7" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;9&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje8" id="Frm1Viaje8" type="checkbox" value="38835" onclick="cambia1('Frm1Viaje8','Frm1ViajeRechazado8')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado8" onclick="cambia2('Frm1Viaje8','Frm1ViajeRechazado8')" id="Frm1ViajeRechazado8" type="checkbox" value="38835" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;CRIBA VILLA UNION EL COYOTE &nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-2&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;76&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;323.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;4527.6&nbsp;
+                      <input type="hidden" name="Tiempo8" value="0.00" />
+                      <input type="hidden" name="Ruta8" value="2" />
+                      <input type="hidden" name="Distancia8" value="76" />
+                      <input type="hidden" name="Importe8" value="4527.6" />
+                      <input type="hidden" name="Cubicacion8" value="14" />
+                      <input type="hidden" name="ImportePrimerKM8" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub8" value="4410" />
+                      <input type="hidden" name="ImporteKMAdc8" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM8" value="14" />
+                      <input type="hidden" name="VolumenKMSub8" value="1050" />
+                      <input type="hidden" name="VolumenKMAdc8" value="0" />
+                      <input type="hidden" name="Volumen8" value="1064" />
+                      <input type="hidden" name="Origen8" value="2" />
+                      <input type="hidden" name="Tiro8" value="2" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria8" id="h_maquinaria8" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef8" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                       
+          </table></td>
+        </tr>
+          
+          </table></td>
+          </tr>
+    
+                <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td align="right">&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td align="right">
+          <input name="TotalV" type="hidden" value="9" />
+          <input name="button" type="submit" class="boton" id="button" value="Registrar Viajes" />
+            &nbsp;</td>
+        </tr>
+      </form>
+        </table>
+        
+        </td>
+        </tr>
+
+            <tr>
+        <td width="12">&nbsp;</td>
+        <td width="26">
+        <img onmouseover="this.src='../../Imgs/16-square-blue-remove.gif'" onmouseout="this.src='../../Imgs/16-square-red-remove.gif'" style=";cursor:hand" id="-f0t2" src="../../Imgs/16-square-red-remove.gif" width="16" height="16" onclick="cambiarDisplay('f0t2');cambiarDisplay('-f0t2');cambiarDisplay('+f0t2')" />
+        
+        <img onmouseover="this.src='../../Imgs/16-square-blue-add.gif'" onmouseout="this.src='../../Imgs/16-square-red-add.gif'" style="cursor:hand" id="+f0t2" src="../../Imgs/16-square-red-add.gif" width="16" height="16" onclick="cambiarDisplay('f0t2');cambiarDisplay('-f0t2');cambiarDisplay('+f0t2')" />
+        </td>
+        <td width="24"><img src="../../Imgs/16-Destinos.gif" width="16" height="16" /></td>
+        <td width="763" colspan="2">&nbsp;KM 171+980 ==> 3 Viajes</td>
+      </tr>
+      
+      <tr>
+        <td colspan="5">
+        <table id="f0t2" style="">
+              <form name="frm2" method="post" action="3VerificaVM.php">
+                <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>
+          <img onmouseover="this.src='../../Imgs/16-square-blue-add.gif'" onmouseout="this.src='../../Imgs/16-square-red-add.gif'" style="cursor:hand" id="+f0t2c2" src="../../Imgs/16-square-red-add.gif" onclick="cambiarDisplay('f0t2c2');cambiarDisplay('+f0t2c2');cambiarDisplay('-f0t2c2')" width="16" height="16" />
+          
+          <img onmouseover="this.src='../../Imgs/16-square-blue-remove.gif'" onmouseout="this.src='../../Imgs/16-square-red-remove.gif'" id="-f0t2c2" src="../../Imgs/16-square-red-remove.gif" style=";cursor:hand"  onclick="cambiarDisplay('f0t2c2');cambiarDisplay('+f0t2c2');cambiarDisplay('-f0t2c2')" width="16" height="16" />
+          
+          
+          
+          </td>
+          <td width="26"><img  src="../../Imgs/16-Bus.gif" width="16" height="16" /></td>
+          <td width="741">&nbsp;C-94 ==> 3 Viajes</td>
+        </tr>
+       
+        <tr id="f0t2c2" style="">
+          <td colspan="5"><table>
+          
+              <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td ><table  width="731" border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF">
+                            <tr>
+                             
+                              <td colspan="10" >&nbsp;</td>
+                          
+                               <td colspan="2" class="EncabezadoTabla"><div align="right">Cargador:</div></td>
+                               <td class="Item1">&nbsp;
+                              
+	 	<select name="maquinaria3" id="p_maquinaria3"  onchange="selecciona_cargador(this.value,'3')">
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td align="center"><img src="../../Imgs/16-Cubicacion.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Origenes.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Materiales.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Clock.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Ruta.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Distancia.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-CostoViaje.gif" width="16" height="16" /></td>
+              <td align="center"><img src="../../Imgs/16-Signo-Peso.gif" width="16" height="16" /></td>
+               <td align="center">&nbsp;</td>
+               <td align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="EncabezadoTabla">#</td>
+              <td class="EncabezadoTabla">?</td>
+              <td class="EncabezadoTabla"><img src="../../Imgs/Check.gif" width="16" height="16" /></td>
+              <td class="EncabezadoTabla"><img src="../../Imgs/Cross.gif" width="16" height="16" /></td>
+              <td class="EncabezadoTabla">Cubic.</td>
+              <td class="EncabezadoTabla">Or&iacute;gen</td>
+              <td class="EncabezadoTabla">Material</td>
+              <td class="EncabezadoTabla">Tiempo</td>
+              <td class="EncabezadoTabla">Ruta</td>
+              <td class="EncabezadoTabla">Distancia</td>
+              <td class="EncabezadoTabla">Costo</td>
+              <td class="EncabezadoTabla">Importe</td>
+               <td class="EncabezadoTabla">Cargador</td>
+               <td class="EncabezadoTabla">H. Ef.</td>
+
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;1&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje0" id="Frm2Viaje0" type="checkbox" value="38824" onclick="cambia1('Frm2Viaje0','Frm2ViajeRechazado0')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado0" onclick="cambia2('Frm2Viaje0','Frm2ViajeRechazado0')" id="Frm2ViajeRechazado0" type="checkbox" value="38824" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;KM 172+260 PORTAL DE ENTRADA CORTE ALTO&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-1&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;1&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;8.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;117.6&nbsp;
+                      <input type="hidden" name="Tiempo0" value="0.00" />
+                      <input type="hidden" name="Ruta0" value="1" />
+                      <input type="hidden" name="Distancia0" value="1" />
+                      <input type="hidden" name="Importe0" value="117.6" />
+                      <input type="hidden" name="Cubicacion0" value="14" />
+                      <input type="hidden" name="ImportePrimerKM0" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub0" value="0" />
+                      <input type="hidden" name="ImporteKMAdc0" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM0" value="14" />
+                      <input type="hidden" name="VolumenKMSub0" value="0" />
+                      <input type="hidden" name="VolumenKMAdc0" value="0" />
+                      <input type="hidden" name="Volumen0" value="14" />
+                      <input type="hidden" name="Origen0" value="1" />
+                      <input type="hidden" name="Tiro0" value="1" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria0" id="h_maquinaria0" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef0" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;2&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje1" id="Frm2Viaje1" type="checkbox" value="38825" onclick="cambia1('Frm2Viaje1','Frm2ViajeRechazado1')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado1" onclick="cambia2('Frm2Viaje1','Frm2ViajeRechazado1')" id="Frm2ViajeRechazado1" type="checkbox" value="38825" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;KM 172+260 PORTAL DE ENTRADA CORTE ALTO&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-1&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;1&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;8.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;117.6&nbsp;
+                      <input type="hidden" name="Tiempo1" value="0.00" />
+                      <input type="hidden" name="Ruta1" value="1" />
+                      <input type="hidden" name="Distancia1" value="1" />
+                      <input type="hidden" name="Importe1" value="117.6" />
+                      <input type="hidden" name="Cubicacion1" value="14" />
+                      <input type="hidden" name="ImportePrimerKM1" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub1" value="0" />
+                      <input type="hidden" name="ImporteKMAdc1" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM1" value="14" />
+                      <input type="hidden" name="VolumenKMSub1" value="0" />
+                      <input type="hidden" name="VolumenKMAdc1" value="0" />
+                      <input type="hidden" name="Volumen1" value="14" />
+                      <input type="hidden" name="Origen1" value="1" />
+                      <input type="hidden" name="Tiro1" value="1" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria1" id="h_maquinaria1" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef1" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                        <tr>
+              <td valign="top" class="Item1">&nbsp;3&nbsp;</td>
+              <td class="Item1"><img src="../../Imgs/16-Message-Warn.gif" width="16" height="16"></td><td class="Item1"><input name="Viaje2" id="Frm2Viaje2" type="checkbox" value="38826" onclick="cambia1('Frm2Viaje2','Frm2ViajeRechazado2')" checked="checked"/></td><td class="Item1"><input name="ViajeRechazado2" onclick="cambia2('Frm2Viaje2','Frm2ViajeRechazado2')" id="Frm2ViajeRechazado2" type="checkbox" value="38826" /></td>              <td class="Item1" valign="top" align="right">&nbsp;14&nbsp;m&sup3;&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;KM 172+260 PORTAL DE ENTRADA CORTE ALTO&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;APROCHE&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;0.00&nbsp;</td>
+              <td class="Item1" valign="top" align="left">&nbsp;R-1&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;1&nbsp;Km&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;8.40&nbsp;</td>
+              <td class="Item1" valign="top" align="right">&nbsp;117.6&nbsp;
+                      <input type="hidden" name="Tiempo2" value="0.00" />
+                      <input type="hidden" name="Ruta2" value="1" />
+                      <input type="hidden" name="Distancia2" value="1" />
+                      <input type="hidden" name="Importe2" value="117.6" />
+                      <input type="hidden" name="Cubicacion2" value="14" />
+                      <input type="hidden" name="ImportePrimerKM2" value="117.6" />
+                      <input type="hidden" name="ImporteKMSub2" value="0" />
+                      <input type="hidden" name="ImporteKMAdc2" value="0" />
+                      <input type="hidden" name="VolumenPrimerKM2" value="14" />
+                      <input type="hidden" name="VolumenKMSub2" value="0" />
+                      <input type="hidden" name="VolumenKMAdc2" value="0" />
+                      <input type="hidden" name="Volumen2" value="14" />
+                      <input type="hidden" name="Origen2" value="1" />
+                      <input type="hidden" name="Tiro2" value="1" /> 
+                                    </td>
+                                     <td class="Item1">
+	 	<select name="maquinaria2" id="h_maquinaria2" >
+		 <option value="A99">- SELECCIONE -</option>
+			  			   <option   value="2">LPA212001</option>
+			   			   <option   value="3">LPA212002</option>
+			   			   <option   value="1">LPA212003</option>
+			   		  </select>
+
+	</td>
+                                     <td class="Item1"><input name="hef2" type="text" class="Casillas_small" size="5" maxlength="7" onkeypress="onlyDigits(event,'decOK')"  /></td> 
+            </tr>
+                       
+          </table></td>
+        </tr>
+          
+          </table></td>
+          </tr>
+    
+                <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td align="right">&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td align="right">
+          <input name="TotalV" type="hidden" value="3" />
+          <input name="button" type="submit" class="boton" id="button" value="Registrar Viajes" />
+            &nbsp;</td>
+        </tr>
+      </form>
+        </table>
+        
+        </td>
+        </tr>
+
+          </table></td>
+  </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td width="582">&nbsp;</td>
+    <td width="111">&nbsp;</td>
+    <td width="110">&nbsp;</td>
+  </tr>
+</table>
+
+
+
+</body>
+</html>

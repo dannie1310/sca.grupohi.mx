@@ -1,0 +1,3015 @@
+<?xml version="1.0"  encoding="UTF-8" ?>
+<Empleados>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>198</IdEmpleado>
+    <Nombre>Abraham De Jesús</Nombre>
+    <ApellidoP>García</ApellidoP>
+    <ApellidoM>Prieto</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>12088524504</NSS>
+    <NumEmpleado>0198</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>129</IdEmpleado>
+    <Nombre>Adán</Nombre>
+    <ApellidoP>González</ApellidoP>
+    <ApellidoM>Bravo</ApellidoM>
+    <Categoria>N047 Topografo b</Categoria>
+    <IdCategoria>48</IdCategoria>
+    <NSS>16008431187</NSS>
+    <NumEmpleado>0129</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>25</IdEmpleado>
+    <Nombre>Adrián</Nombre>
+    <ApellidoP>Hernández</ApellidoP>
+    <ApellidoM>López</ApellidoM>
+    <Categoria>N247 Operador de Excavadora a</Categoria>
+    <IdCategoria>248</IdCategoria>
+    <NSS>16907011999</NSS>
+    <NumEmpleado>0025</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>76</IdEmpleado>
+    <Nombre>Alberto</Nombre>
+    <ApellidoP>Davila</ApellidoP>
+    <ApellidoM>Montaño</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS> </NSS>
+    <NumEmpleado>0076</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>47</IdEmpleado>
+    <Nombre>Alberto</Nombre>
+    <ApellidoP>Nengua</ApellidoP>
+    <ApellidoM>Hernández</ApellidoM>
+    <Categoria>N148 Operador de Motoconformadora</Categoria>
+    <IdCategoria>149</IdCategoria>
+    <NSS>16897045031</NSS>
+    <NumEmpleado>0047</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>156</IdEmpleado>
+    <Nombre>Alfonso</Nombre>
+    <ApellidoP>Garduño</ApellidoP>
+    <ApellidoM>Martinez</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>01685542183</NSS>
+    <NumEmpleado>0156</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>80</IdEmpleado>
+    <Nombre>Alfonso De Jesus</Nombre>
+    <ApellidoP>Rodea</ApellidoP>
+    <ApellidoM>Mancilla</ApellidoM>
+    <Categoria>N321 Jefe de Estructuras</Categoria>
+    <IdCategoria>315</IdCategoria>
+    <NSS>16876120425</NSS>
+    <NumEmpleado>0080</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>183</IdEmpleado>
+    <Nombre>Alfredo</Nombre>
+    <ApellidoP>Garcia</ApellidoP>
+    <ApellidoM>Calderon</ApellidoM>
+    <Categoria>N148 Operador de Motoconformadora</Categoria>
+    <IdCategoria>149</IdCategoria>
+    <NSS>53997324348</NSS>
+    <NumEmpleado>0183</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>146</IdEmpleado>
+    <Nombre>Alvaro  Martin</Nombre>
+    <ApellidoP>Davila</ApellidoP>
+    <ApellidoM>Gutierrez</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16108629128</NSS>
+    <NumEmpleado>0146</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>165</IdEmpleado>
+    <Nombre>Andres</Nombre>
+    <ApellidoP>Benito</ApellidoP>
+    <ApellidoM>Piña</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>16967005220</NSS>
+    <NumEmpleado>0165</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>219</IdEmpleado>
+    <Nombre>Andres</Nombre>
+    <ApellidoP>Mariano</ApellidoP>
+    <ApellidoM>Lopez</ApellidoM>
+    <Categoria>N390 Mecanico Diesel B</Categoria>
+    <IdCategoria>324</IdCategoria>
+    <NSS>78058630357</NSS>
+    <NumEmpleado>0219</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>157</IdEmpleado>
+    <Nombre>Angel</Nombre>
+    <ApellidoP>Ortega</ApellidoP>
+    <ApellidoM>Escamilla</ApellidoM>
+    <Categoria>N148 Operador de Motoconformadora</Categoria>
+    <IdCategoria>149</IdCategoria>
+    <NSS>13998000825</NSS>
+    <NumEmpleado>0157</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>215</IdEmpleado>
+    <Nombre>Antonio</Nombre>
+    <ApellidoP>Flores</ApellidoP>
+    <ApellidoM>Virelas</ApellidoM>
+    <Categoria>N057 Cabo</Categoria>
+    <IdCategoria>58</IdCategoria>
+    <NSS>25917132210</NSS>
+    <NumEmpleado>0215</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>41</IdEmpleado>
+    <Nombre>Antonio</Nombre>
+    <ApellidoP>Pérez</ApellidoP>
+    <ApellidoM>Juárez</ApellidoM>
+    <Categoria>N247 Operador de Excavadora a</Categoria>
+    <IdCategoria>248</IdCategoria>
+    <NSS>16866824671</NSS>
+    <NumEmpleado>0041</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>220</IdEmpleado>
+    <Nombre>Antonio</Nombre>
+    <ApellidoP>Solis</ApellidoP>
+    <ApellidoM>Esparza</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>16038621153</NSS>
+    <NumEmpleado>0220</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>61</IdEmpleado>
+    <Nombre>Antonio</Nombre>
+    <ApellidoP>Velazquez</ApellidoP>
+    <ApellidoM>Velazquez</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>30078203160</NSS>
+    <NumEmpleado>0061</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>92</IdEmpleado>
+    <Nombre>Apolinar</Nombre>
+    <ApellidoP>Lopez</ApellidoP>
+    <ApellidoM>Lopez</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>01644434704</NSS>
+    <NumEmpleado>0092</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>46</IdEmpleado>
+    <Nombre>Apolinar</Nombre>
+    <ApellidoP>Sosa</ApellidoP>
+    <ApellidoM>Victoria</ApellidoM>
+    <Categoria>N388 Jefe de Servicios Generales</Categoria>
+    <IdCategoria>321</IdCategoria>
+    <NSS>16947809758</NSS>
+    <NumEmpleado>0046</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>97</IdEmpleado>
+    <Nombre>Armando</Nombre>
+    <ApellidoP>Flores</ApellidoP>
+    <ApellidoM>Reyes</ApellidoM>
+    <Categoria>N047 Topografo b</Categoria>
+    <IdCategoria>48</IdCategoria>
+    <NSS>30017603470</NSS>
+    <NumEmpleado>0097</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>31</IdEmpleado>
+    <Nombre>Arturo</Nombre>
+    <ApellidoP>Acevedo</ApellidoP>
+    <ApellidoM>Montes</ApellidoM>
+    <Categoria>N084 Operador de Motoconformadora b</Categoria>
+    <IdCategoria>85</IdCategoria>
+    <NSS>16977713011</NSS>
+    <NumEmpleado>0031</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>217</IdEmpleado>
+    <Nombre>Arturo</Nombre>
+    <ApellidoP>Chantes</ApellidoP>
+    <ApellidoM>Villa</ApellidoM>
+    <Categoria>N029 Operador E</Categoria>
+    <IdCategoria>30</IdCategoria>
+    <NSS>16028350169</NSS>
+    <NumEmpleado>0217</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>250</IdEmpleado>
+    <Nombre>Bibiano</Nombre>
+    <ApellidoP>Guadarrama</ApellidoP>
+    <ApellidoM>Moreno</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>01644493684</NSS>
+    <NumEmpleado>0250</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>241</IdEmpleado>
+    <Nombre>Carlos</Nombre>
+    <ApellidoP>Guerrero</ApellidoP>
+    <ApellidoM>Torres</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16028425409</NSS>
+    <NumEmpleado>0241</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>66</IdEmpleado>
+    <Nombre>Carlos</Nombre>
+    <ApellidoP>Santana</ApellidoP>
+    <ApellidoM>Buendia</ApellidoM>
+    <Categoria>N247 Operador de Excavadora a</Categoria>
+    <IdCategoria>248</IdCategoria>
+    <NSS>16987724115</NSS>
+    <NumEmpleado>0066</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>251</IdEmpleado>
+    <Nombre>Carlos</Nombre>
+    <ApellidoP>Villegas</ApellidoP>
+    <ApellidoM>Ortega</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>01699814235</NSS>
+    <NumEmpleado>0251</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>23</IdEmpleado>
+    <Nombre>Carlos Alberto</Nombre>
+    <ApellidoP>González</ApellidoP>
+    <ApellidoM>Ramos</ApellidoM>
+    <Categoria>N007 Auxiliar de Maquinaria</Categoria>
+    <IdCategoria>8</IdCategoria>
+    <NSS>16108500204</NSS>
+    <NumEmpleado>0023</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>56</IdEmpleado>
+    <Nombre>Carmen Janeth</Nombre>
+    <ApellidoP>Flores</ApellidoP>
+    <ApellidoM>Islas</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16109029260</NSS>
+    <NumEmpleado>0056</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>213</IdEmpleado>
+    <Nombre>César</Nombre>
+    <ApellidoP>López</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N154 Operador de Vibrocompactador doble</Categoria>
+    <IdCategoria>155</IdCategoria>
+    <NSS>42806250074</NSS>
+    <NumEmpleado>0213</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>205</IdEmpleado>
+    <Nombre>César Augusto</Nombre>
+    <ApellidoP>Mejía</ApellidoP>
+    <ApellidoM>Garcés</ApellidoM>
+    <Categoria>N317 Chofer de compras c</Categoria>
+    <IdCategoria>311</IdCategoria>
+    <NSS>16108501079</NSS>
+    <NumEmpleado>0205</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>160</IdEmpleado>
+    <Nombre>Cesar Gustavo</Nombre>
+    <ApellidoP>Rendon</ApellidoP>
+    <ApellidoM>Gomez</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16078749021</NSS>
+    <NumEmpleado>0160</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>69</IdEmpleado>
+    <Nombre>Cirilo</Nombre>
+    <ApellidoP>Marquez</ApellidoP>
+    <ApellidoM>Ruiz</ApellidoM>
+    <Categoria>N094 Operador de Tractor</Categoria>
+    <IdCategoria>95</IdCategoria>
+    <NSS>65785512818</NSS>
+    <NumEmpleado>0069</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>88</IdEmpleado>
+    <Nombre>Cornelio</Nombre>
+    <ApellidoP>Aldama</ApellidoP>
+    <ApellidoM>Olguin</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16855913684</NSS>
+    <NumEmpleado>0088</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>50</IdEmpleado>
+    <Nombre>Crisoforo</Nombre>
+    <ApellidoP>Villanueva</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>72846712866</NSS>
+    <NumEmpleado>0050</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>140</IdEmpleado>
+    <Nombre>Charli Reyes</Nombre>
+    <ApellidoP>Alcantara</ApellidoP>
+    <ApellidoM>Diaz</ApellidoM>
+    <Categoria>N014 Checador</Categoria>
+    <IdCategoria>15</IdCategoria>
+    <NSS>01600835511</NSS>
+    <NumEmpleado>0140</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>178</IdEmpleado>
+    <Nombre>Damian</Nombre>
+    <ApellidoP>Santiago</ApellidoP>
+    <ApellidoM>Rodriguez</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>71876317240</NSS>
+    <NumEmpleado>0178</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>187</IdEmpleado>
+    <Nombre>Daniel</Nombre>
+    <ApellidoP>Amador</ApellidoP>
+    <ApellidoM>Munive</ApellidoM>
+    <Categoria>Jefe de Frente Maquinaria</Categoria>
+    <IdCategoria>322</IdCategoria>
+    <NSS>67786216829</NSS>
+    <NumEmpleado>0187</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>151</IdEmpleado>
+    <Nombre>Daniel</Nombre>
+    <ApellidoP>Hernandez</ApellidoP>
+    <ApellidoM>Lopez</ApellidoM>
+    <Categoria>N015 Chofer de Camioneta</Categoria>
+    <IdCategoria>16</IdCategoria>
+    <NSS>45018507827</NSS>
+    <NumEmpleado>0151</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>49</IdEmpleado>
+    <Nombre>Davey</Nombre>
+    <ApellidoP>Gonzalez</ApellidoP>
+    <ApellidoM>Perez</ApellidoM>
+    <Categoria>N300 Jefe de Gabinete</Categoria>
+    <IdCategoria>294</IdCategoria>
+    <NSS>15987814496</NSS>
+    <NumEmpleado>0049</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>63</IdEmpleado>
+    <Nombre>David</Nombre>
+    <ApellidoP>Martinez</ApellidoP>
+    <ApellidoM>Lopez</ApellidoM>
+    <Categoria>N177 Sobrestante c</Categoria>
+    <IdCategoria>178</IdCategoria>
+    <NSS>16104500018</NSS>
+    <NumEmpleado>0063</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>235</IdEmpleado>
+    <Nombre>Diego Alan</Nombre>
+    <ApellidoP>Garcia</ApellidoP>
+    <ApellidoM>Sanchez</ApellidoM>
+    <Categoria>N100 Tomador de Tiempo</Categoria>
+    <IdCategoria>101</IdCategoria>
+    <NSS>16068762356</NSS>
+    <NumEmpleado>0235</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>226</IdEmpleado>
+    <Nombre>Domingo</Nombre>
+    <ApellidoP>Dado</ApellidoP>
+    <ApellidoM>Ballina</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>16937509939</NSS>
+    <NumEmpleado>0226</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>72</IdEmpleado>
+    <Nombre>Edgar Alfonso</Nombre>
+    <ApellidoP>Neñez</ApellidoP>
+    <ApellidoM>Serna</ApellidoM>
+    <Categoria>N105 Auxiliar Administrativoc</Categoria>
+    <IdCategoria>106</IdCategoria>
+    <NSS>88826502069</NSS>
+    <NumEmpleado>0072</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>93</IdEmpleado>
+    <Nombre>Edilberto</Nombre>
+    <ApellidoP>Gonzalez</ApellidoP>
+    <ApellidoM>Diaz</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16078526338</NSS>
+    <NumEmpleado>0093</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>36</IdEmpleado>
+    <Nombre>Edilberto</Nombre>
+    <ApellidoP>Rivera</ApellidoP>
+    <ApellidoM>Martínez</ApellidoM>
+    <Categoria>N009 Ayudante Calificado</Categoria>
+    <IdCategoria>10</IdCategoria>
+    <NSS>18917400667</NSS>
+    <NumEmpleado>0036</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>216</IdEmpleado>
+    <Nombre>Edson Edivaldo</Nombre>
+    <ApellidoP>Valdes</ApellidoP>
+    <ApellidoM>Olvera</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16079000473</NSS>
+    <NumEmpleado>0216</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>62</IdEmpleado>
+    <Nombre>Eduardo</Nombre>
+    <ApellidoP>Leyte</ApellidoP>
+    <ApellidoM>Arontes</ApellidoM>
+    <Categoria>N212 Jefe de Compras</Categoria>
+    <IdCategoria>213</IdCategoria>
+    <NSS>68896900120</NSS>
+    <NumEmpleado>0062</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>3</IdEmpleado>
+    <Nombre>Elier Omar</Nombre>
+    <ApellidoP>Siles</ApellidoP>
+    <ApellidoM>Ramirez</ApellidoM>
+    <Categoria>N123 Operador de Vibrocompactador</Categoria>
+    <IdCategoria>124</IdCategoria>
+    <NSS>16988213878</NSS>
+    <NumEmpleado>0003</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>42</IdEmpleado>
+    <Nombre>Elizandro</Nombre>
+    <ApellidoP>Buitimea</ApellidoP>
+    <ApellidoM>Armenta</ApellidoM>
+    <Categoria>N180 Bodeguero</Categoria>
+    <IdCategoria>181</IdCategoria>
+    <NSS>24068612324</NSS>
+    <NumEmpleado>0042</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>6</IdEmpleado>
+    <Nombre>Elueuterio</Nombre>
+    <ApellidoP>Valencia</ApellidoP>
+    <ApellidoM>Osorio</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16785915048</NSS>
+    <NumEmpleado>0006</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>196</IdEmpleado>
+    <Nombre>Emilio</Nombre>
+    <ApellidoP>Barajas</ApellidoP>
+    <ApellidoM>García</ApellidoM>
+    <Categoria>N080 Operador de Cargador</Categoria>
+    <IdCategoria>81</IdCategoria>
+    <NSS>17553837737</NSS>
+    <NumEmpleado>0196</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>40</IdEmpleado>
+    <Nombre>Emilio</Nombre>
+    <ApellidoP>Cedillo</ApellidoP>
+    <ApellidoM>Cruz</ApellidoM>
+    <Categoria>N148 Operador de Motoconformadora</Categoria>
+    <IdCategoria>149</IdCategoria>
+    <NSS>16978008502</NSS>
+    <NumEmpleado>0040</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>189</IdEmpleado>
+    <Nombre>Emmanuel</Nombre>
+    <ApellidoP>Álvarez</ApellidoP>
+    <ApellidoM>Velázquez</ApellidoM>
+    <Categoria>N148 Operador de Motoconformadora</Categoria>
+    <IdCategoria>149</IdCategoria>
+    <NSS>11988115371</NSS>
+    <NumEmpleado>0189</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>202</IdEmpleado>
+    <Nombre>Emmanuel</Nombre>
+    <ApellidoP>Cruz</ApellidoP>
+    <ApellidoM>Morales</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>12058559357</NSS>
+    <NumEmpleado>0202</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>177</IdEmpleado>
+    <Nombre>Encarnacion</Nombre>
+    <ApellidoP>Ovando</ApellidoP>
+    <ApellidoM>Espinosa</ApellidoM>
+    <Categoria>N387 Cabo de Oficios</Categoria>
+    <IdCategoria>320</IdCategoria>
+    <NSS>71835601148</NSS>
+    <NumEmpleado>0177</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>191</IdEmpleado>
+    <Nombre>Enrique</Nombre>
+    <ApellidoP>Aragón</ApellidoP>
+    <ApellidoM>Terán</ApellidoM>
+    <Categoria>(Ninguno)</Categoria>
+    <IdCategoria>1</IdCategoria>
+    <NSS>16998218669</NSS>
+    <NumEmpleado>0191</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>53</IdEmpleado>
+    <Nombre>Enrique</Nombre>
+    <ApellidoP>Martinez</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>(Ninguno)</Categoria>
+    <IdCategoria>1</IdCategoria>
+    <NSS>16755612831</NSS>
+    <NumEmpleado>0053</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>101</IdEmpleado>
+    <Nombre>Enrique</Nombre>
+    <ApellidoP>Ortega</ApellidoP>
+    <ApellidoM>Valdez</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>16079008906</NSS>
+    <NumEmpleado>0101</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>138</IdEmpleado>
+    <Nombre>Enrique</Nombre>
+    <ApellidoP>Piña</ApellidoP>
+    <ApellidoM>Benito</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>16008027399</NSS>
+    <NumEmpleado>0138</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>5</IdEmpleado>
+    <Nombre>Eulogio</Nombre>
+    <ApellidoP>Siles</ApellidoP>
+    <ApellidoM>Sanchez</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>06634204769</NSS>
+    <NumEmpleado>0005</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>238</IdEmpleado>
+    <Nombre>Faustino</Nombre>
+    <ApellidoP>Davila</ApellidoP>
+    <ApellidoM>Elias</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16837334189</NSS>
+    <NumEmpleado>0238</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>108</IdEmpleado>
+    <Nombre>Felipe</Nombre>
+    <ApellidoP>Flores</ApellidoP>
+    <ApellidoM>Becerril</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16937473565</NSS>
+    <NumEmpleado>0108</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>22</IdEmpleado>
+    <Nombre>Felipe</Nombre>
+    <ApellidoP>Vara</ApellidoP>
+    <ApellidoM>Lara</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>16806005852</NSS>
+    <NumEmpleado>0022</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>240</IdEmpleado>
+    <Nombre>Felipe De Jesus</Nombre>
+    <ApellidoP>Lucas</ApellidoP>
+    <ApellidoM>Sanchez</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>16028539811</NSS>
+    <NumEmpleado>0240</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>9</IdEmpleado>
+    <Nombre>Fernando</Nombre>
+    <ApellidoP>Luis</ApellidoP>
+    <ApellidoM>Flores</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>16028073456</NSS>
+    <NumEmpleado>0009</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>152</IdEmpleado>
+    <Nombre>Fernando</Nombre>
+    <ApellidoP>Ordoñez</ApellidoP>
+    <ApellidoM>Blancas</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>16890641639</NSS>
+    <NumEmpleado>0152</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>147</IdEmpleado>
+    <Nombre>Fidel</Nombre>
+    <ApellidoP>Betancourt</ApellidoP>
+    <ApellidoM>Campos</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16725300244</NSS>
+    <NumEmpleado>0147</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>45</IdEmpleado>
+    <Nombre>Fidel</Nombre>
+    <ApellidoP>Gonzalez</ApellidoP>
+    <ApellidoM>Cienega</ApellidoM>
+    <Categoria>N084 Operador de Motoconformadora b</Categoria>
+    <IdCategoria>85</IdCategoria>
+    <NSS>16109012266</NSS>
+    <NumEmpleado>0045</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>2</IdProyecto>
+    <Proyecto>Presa El Zapotillo</Proyecto>
+    <IdEmpleado>71</IdEmpleado>
+    <Nombre>Florencio</Nombre>
+    <ApellidoP>Najera</ApellidoP>
+    <ApellidoM>Dominguez</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>16917353043</NSS>
+    <NumEmpleado>0071</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>171</IdEmpleado>
+    <Nombre>Florilan</Nombre>
+    <ApellidoP>Siles</ApellidoP>
+    <ApellidoM>Ramirez</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16897187031</NSS>
+    <NumEmpleado>0171</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>109</IdEmpleado>
+    <Nombre>Francisco</Nombre>
+    <ApellidoP>Linares</ApellidoP>
+    <ApellidoM>Chagolla</ApellidoM>
+    <Categoria>N047 Topografo b</Categoria>
+    <IdCategoria>48</IdCategoria>
+    <NSS>01785855534</NSS>
+    <NumEmpleado>0109</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>110</IdEmpleado>
+    <Nombre>Francisco</Nombre>
+    <ApellidoP>Martinez</ApellidoP>
+    <ApellidoM>Jimenez</ApellidoM>
+    <Categoria>N071 Electromecanico</Categoria>
+    <IdCategoria>72</IdCategoria>
+    <NSS>01785855534</NSS>
+    <NumEmpleado>0110</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>16</IdEmpleado>
+    <Nombre>Francisco</Nombre>
+    <ApellidoP>Mendoza</ApellidoP>
+    <ApellidoM>Castillo</ApellidoM>
+    <Categoria>N156 Auxiliar Técnico</Categoria>
+    <IdCategoria>312</IdCategoria>
+    <NSS>18958020150</NSS>
+    <NumEmpleado>0016</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>123</IdEmpleado>
+    <Nombre>Francisco</Nombre>
+    <ApellidoP>Rosales</ApellidoP>
+    <ApellidoM>Osorio</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS> </NSS>
+    <NumEmpleado>0123</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>166</IdEmpleado>
+    <Nombre>Gabriela</Nombre>
+    <ApellidoP>Arellano</ApellidoP>
+    <ApellidoM>Hernandez</ApellidoM>
+    <Categoria>N053 Auxiliar de Contabilidad</Categoria>
+    <IdCategoria>54</IdCategoria>
+    <NSS>72068616324</NSS>
+    <NumEmpleado>0166</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>214</IdEmpleado>
+    <Nombre>Gelasio</Nombre>
+    <ApellidoP>Flores</ApellidoP>
+    <ApellidoM>Escobar</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16987600406</NSS>
+    <NumEmpleado>0214</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>103</IdEmpleado>
+    <Nombre>Genaro</Nombre>
+    <ApellidoP>Sosa</ApellidoP>
+    <ApellidoM>Carsoso</ApellidoM>
+    <Categoria>N100 Tomador de Tiempo</Categoria>
+    <IdCategoria>101</IdCategoria>
+    <NSS>16008021582</NSS>
+    <NumEmpleado>0103</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>201</IdEmpleado>
+    <Nombre>Geovane</Nombre>
+    <ApellidoP>Arcilla</ApellidoP>
+    <ApellidoM>Contreras</ApellidoM>
+    <Categoria>N148 Operador de Motoconformadora</Categoria>
+    <IdCategoria>149</IdCategoria>
+    <NSS>13826613492</NSS>
+    <NumEmpleado>0201</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>59</IdEmpleado>
+    <Nombre>Gerardo</Nombre>
+    <ApellidoP>Martinez</ApellidoP>
+    <ApellidoM>Waldo</ApellidoM>
+    <Categoria>N264 Jefe de Subcontratos</Categoria>
+    <IdCategoria>265</IdCategoria>
+    <NSS>34957472219</NSS>
+    <NumEmpleado>0059</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>74</IdEmpleado>
+    <Nombre>Germain</Nombre>
+    <ApellidoP>Juarez</ApellidoP>
+    <ApellidoM>Ramirez</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16088602939</NSS>
+    <NumEmpleado>0074</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>79</IdEmpleado>
+    <Nombre>Gilberto</Nombre>
+    <ApellidoP>Bernal</ApellidoP>
+    <ApellidoM>Hernandez</ApellidoM>
+    <Categoria>N094 Operador de Tractor</Categoria>
+    <IdCategoria>95</IdCategoria>
+    <NSS>16725600395</NSS>
+    <NumEmpleado>0079</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>18</IdEmpleado>
+    <Nombre>Gilberto</Nombre>
+    <ApellidoP>Carballo</ApellidoP>
+    <ApellidoM>Hernández</ApellidoM>
+    <Categoria>N137 Jefe de Laboratorio</Categoria>
+    <IdCategoria>313</IdCategoria>
+    <NSS>21906911264</NSS>
+    <NumEmpleado>0018</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>105</IdEmpleado>
+    <Nombre>Gilberto</Nombre>
+    <ApellidoP>Najera</ApellidoP>
+    <ApellidoM>Ruiz</ApellidoM>
+    <Categoria>N102 Autocadista b</Categoria>
+    <IdCategoria>103</IdCategoria>
+    <NSS>16008130805</NSS>
+    <NumEmpleado>0105</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>2</IdProyecto>
+    <Proyecto>Presa El Zapotillo</Proyecto>
+    <IdEmpleado>2</IdEmpleado>
+    <Nombre>Giovanni</Nombre>
+    <ApellidoP>Ramirez</ApellidoP>
+    <ApellidoM>Reyes</ApellidoM>
+    <Categoria>N014 Checador</Categoria>
+    <IdCategoria>15</IdCategoria>
+    <NSS>16068721964</NSS>
+    <NumEmpleado>0002</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>208</IdEmpleado>
+    <Nombre>Gonzalo</Nombre>
+    <ApellidoP>Mardesiche</ApellidoP>
+    <ApellidoM>Islas</ApellidoM>
+    <Categoria>N389 Jefe de Fernte B</Categoria>
+    <IdCategoria>323</IdCategoria>
+    <NSS>39977013356</NSS>
+    <NumEmpleado>0208</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>161</IdEmpleado>
+    <Nombre>Gorgoniotiburcio</Nombre>
+    <ApellidoP>Jardon</ApellidoP>
+    <ApellidoM>Alonso</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16805038250</NSS>
+    <NumEmpleado>0161</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>85</IdEmpleado>
+    <Nombre>Gregorio</Nombre>
+    <ApellidoP>Lara</ApellidoP>
+    <ApellidoM>Bañon</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16917356681</NSS>
+    <NumEmpleado>0085</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>90</IdEmpleado>
+    <Nombre>Guadalupe</Nombre>
+    <ApellidoP>Longuinos</ApellidoP>
+    <ApellidoM>Medina</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16927286209</NSS>
+    <NumEmpleado>0090</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>102</IdEmpleado>
+    <Nombre>Guillermo</Nombre>
+    <ApellidoP>Anzures</ApellidoP>
+    <ApellidoM>Avila</ApellidoM>
+    <Categoria>N172 Auxiliar de Residente</Categoria>
+    <IdCategoria>173</IdCategoria>
+    <NSS>15978213054</NSS>
+    <NumEmpleado>0102</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>228</IdEmpleado>
+    <Nombre>Guillermo</Nombre>
+    <ApellidoP>Solis</ApellidoP>
+    <ApellidoM>Esparza</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>53068818458</NSS>
+    <NumEmpleado>0228</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>167</IdEmpleado>
+    <Nombre>Gustavo</Nombre>
+    <ApellidoP>Garcia</ApellidoP>
+    <ApellidoM>Rodriguez</ApellidoM>
+    <Categoria>N003 Auxiliar Administrativo</Categoria>
+    <IdCategoria>4</IdCategoria>
+    <NSS>16077702922</NSS>
+    <NumEmpleado>0167</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>29</IdEmpleado>
+    <Nombre>Héctor</Nombre>
+    <ApellidoP>López</ApellidoP>
+    <ApellidoM>Orozco</ApellidoM>
+    <Categoria>N009 Ayudante Calificado</Categoria>
+    <IdCategoria>10</IdCategoria>
+    <NSS>16906405259</NSS>
+    <NumEmpleado>0029</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>17</IdEmpleado>
+    <Nombre>Heriberto</Nombre>
+    <ApellidoP>Santos</ApellidoP>
+    <ApellidoM>Suárez</ApellidoM>
+    <Categoria>N094 Operador de Tractor</Categoria>
+    <IdCategoria>95</IdCategoria>
+    <NSS>16967726155</NSS>
+    <NumEmpleado>0017</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>173</IdEmpleado>
+    <Nombre>Heriberto Vicente</Nombre>
+    <ApellidoP>Diaz</ApellidoP>
+    <ApellidoM>Villada</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16028529994</NSS>
+    <NumEmpleado>0173</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>87</IdEmpleado>
+    <Nombre>Herminio</Nombre>
+    <ApellidoP>Marin</ApellidoP>
+    <ApellidoM>Sanchez</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16946407752</NSS>
+    <NumEmpleado>0087</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>20</IdEmpleado>
+    <Nombre>Hugo</Nombre>
+    <ApellidoP>Campos</ApellidoP>
+    <ApellidoM>Medizabal</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS> </NSS>
+    <NumEmpleado>0020</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>199</IdEmpleado>
+    <Nombre>Humberto Guadalupe</Nombre>
+    <ApellidoP>Contreras</ApellidoP>
+    <ApellidoM>Bastida</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>94048800414</NSS>
+    <NumEmpleado>0199</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>190</IdEmpleado>
+    <Nombre>Idelfonso</Nombre>
+    <ApellidoP>Beristain</ApellidoP>
+    <ApellidoM>Ramos</ApellidoM>
+    <Categoria>N094 Operador de Tractor</Categoria>
+    <IdCategoria>95</IdCategoria>
+    <NSS>78775810100</NSS>
+    <NumEmpleado>0190</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>133</IdEmpleado>
+    <Nombre>Ignacio</Nombre>
+    <ApellidoP>De Paz</ApellidoP>
+    <ApellidoM>Hernández</ApellidoM>
+    <Categoria>N094 Operador de Tractor</Categoria>
+    <IdCategoria>95</IdCategoria>
+    <NSS>00168164351</NSS>
+    <NumEmpleado>0133</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>223</IdEmpleado>
+    <Nombre>Isaac</Nombre>
+    <ApellidoP>Lopez</ApellidoP>
+    <ApellidoM>Martinez</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>16099131605</NSS>
+    <NumEmpleado>0223</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>247</IdEmpleado>
+    <Nombre>Isidro</Nombre>
+    <ApellidoP>Cerino</ApellidoP>
+    <ApellidoM>Nava</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16108308103</NSS>
+    <NumEmpleado>0247</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>34</IdEmpleado>
+    <Nombre>Ismael</Nombre>
+    <ApellidoP>Carballo</ApellidoP>
+    <ApellidoM>Rodríguez</ApellidoM>
+    <Categoria>N009 Ayudante Calificado</Categoria>
+    <IdCategoria>10</IdCategoria>
+    <NSS>16078912462</NSS>
+    <NumEmpleado>0034</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>246</IdEmpleado>
+    <Nombre>Ismael</Nombre>
+    <ApellidoP>Lopez</ApellidoP>
+    <ApellidoM>Lopez</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16109131603</NSS>
+    <NumEmpleado>0246</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>111</IdEmpleado>
+    <Nombre>Ivan</Nombre>
+    <ApellidoP>Hernandez</ApellidoP>
+    <ApellidoM>Orozco</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>16998229500</NSS>
+    <NumEmpleado>0111</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>204</IdEmpleado>
+    <Nombre>J David</Nombre>
+    <ApellidoP>Ángeles</ApellidoP>
+    <ApellidoM>Ramírez</ApellidoM>
+    <Categoria>N094 Operador de Tractor</Categoria>
+    <IdCategoria>95</IdCategoria>
+    <NSS>01278551260</NSS>
+    <NumEmpleado>0204</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>239</IdEmpleado>
+    <Nombre>J Jesus</Nombre>
+    <ApellidoP>Sanchez</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>12897349234</NSS>
+    <NumEmpleado>0239</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>142</IdEmpleado>
+    <Nombre>Jacinto</Nombre>
+    <ApellidoP>Flores</ApellidoP>
+    <ApellidoM>Garduño</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>16964000265</NSS>
+    <NumEmpleado>0142</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>89</IdEmpleado>
+    <Nombre>Jaime</Nombre>
+    <ApellidoP>Reyes</ApellidoP>
+    <ApellidoM>Samaniego</ApellidoM>
+    <Categoria>N014 Checador</Categoria>
+    <IdCategoria>15</IdCategoria>
+    <NSS>16048431429</NSS>
+    <NumEmpleado>0089</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>242</IdEmpleado>
+    <Nombre>Javier</Nombre>
+    <ApellidoP>Hernandez</ApellidoP>
+    <ApellidoM>Platas</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16887069223</NSS>
+    <NumEmpleado>0242</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>135</IdEmpleado>
+    <Nombre>Javier</Nombre>
+    <ApellidoP>Hernández</ApellidoP>
+    <ApellidoM>Platas</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16058740065</NSS>
+    <NumEmpleado>0135</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>26</IdEmpleado>
+    <Nombre>Javier</Nombre>
+    <ApellidoP>Villada</ApellidoP>
+    <ApellidoM>Reynoso</ApellidoM>
+    <Categoria>N247 Operador de Excavadora a</Categoria>
+    <IdCategoria>248</IdCategoria>
+    <NSS>16068213624</NSS>
+    <NumEmpleado>0026</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>52</IdEmpleado>
+    <Nombre>Javier Arturo</Nombre>
+    <ApellidoP>Ruiz</ApellidoP>
+    <ApellidoM>Fernandez</ApellidoM>
+    <Categoria>N007 Auxiliar de Maquinaria</Categoria>
+    <IdCategoria>8</IdCategoria>
+    <NSS>53957740755</NSS>
+    <NumEmpleado>0052</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>126</IdEmpleado>
+    <Nombre>Jéssica</Nombre>
+    <ApellidoP>Negrete</ApellidoP>
+    <ApellidoM>Nava</ApellidoM>
+    <Categoria>N053 Auxiliar de Contabilidad</Categoria>
+    <IdCategoria>54</IdCategoria>
+    <NSS>16018217741</NSS>
+    <NumEmpleado>0126</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>73</IdEmpleado>
+    <Nombre>Jesus</Nombre>
+    <ApellidoP>Romero</ApellidoP>
+    <ApellidoM>Rivera</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>16997900333</NSS>
+    <NumEmpleado>0073</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>12</IdEmpleado>
+    <Nombre>Jesus</Nombre>
+    <ApellidoP>Sanchez</ApellidoP>
+    <ApellidoM>Esquivel</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>16906807132</NSS>
+    <NumEmpleado>0012</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>175</IdEmpleado>
+    <Nombre>Jesus Eddie</Nombre>
+    <ApellidoP>Valdes</ApellidoP>
+    <ApellidoM>Inheza</ApellidoM>
+    <Categoria>N385 Auxiliar de Compras</Categoria>
+    <IdCategoria>318</IdCategoria>
+    <NSS>16068532338</NSS>
+    <NumEmpleado>0175</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>136</IdEmpleado>
+    <Nombre>Jesús Enríquez</Nombre>
+    <ApellidoP>Cruz</ApellidoP>
+    <ApellidoM>Juárez</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>11745573888</NSS>
+    <NumEmpleado>0136</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>15</IdEmpleado>
+    <Nombre>Jesús Manuel</Nombre>
+    <ApellidoP>Buitimea</ApellidoP>
+    <ApellidoM>Martínez</ApellidoM>
+    <Categoria>N074 Jefe de Control de Equipos y Acarre</Categoria>
+    <IdCategoria>75</IdCategoria>
+    <NSS>21886752423</NSS>
+    <NumEmpleado>0015</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>78</IdEmpleado>
+    <Nombre>Jesus Natividad</Nombre>
+    <ApellidoP>Huertas</ApellidoP>
+    <ApellidoM>Gomez</ApellidoM>
+    <Categoria>N014 Checador</Categoria>
+    <IdCategoria>15</IdCategoria>
+    <NSS>16917272086</NSS>
+    <NumEmpleado>0078</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>233</IdEmpleado>
+    <Nombre>Jhonyc Leonardo</Nombre>
+    <ApellidoP>Lopez</ApellidoP>
+    <ApellidoM>Najera</ApellidoM>
+    <Categoria>N154 Operador de Vibrocompactador doble</Categoria>
+    <IdCategoria>155</IdCategoria>
+    <NSS>16048818062</NSS>
+    <NumEmpleado>0233</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>106</IdEmpleado>
+    <Nombre>Jorde De La Cruz</Nombre>
+    <ApellidoP>Salinas</ApellidoP>
+    <ApellidoM>Pedraza</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>16078965106</NSS>
+    <NumEmpleado>0106</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>145</IdEmpleado>
+    <Nombre>Jorge</Nombre>
+    <ApellidoP>Davila</ApellidoP>
+    <ApellidoM>Gutierrez</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>30917269406</NSS>
+    <NumEmpleado>0145</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>209</IdEmpleado>
+    <Nombre>Jorge</Nombre>
+    <ApellidoP>Gomez</ApellidoP>
+    <ApellidoM>Patiño</ApellidoM>
+    <Categoria>N102 Autocadista b</Categoria>
+    <IdCategoria>103</IdCategoria>
+    <NSS>16108401478</NSS>
+    <NumEmpleado>0209</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>225</IdEmpleado>
+    <Nombre>Jorge</Nombre>
+    <ApellidoP>Prieto</ApellidoP>
+    <ApellidoM>Balderas</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>12907450477</NSS>
+    <NumEmpleado>0225</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>222</IdEmpleado>
+    <Nombre>Jorge</Nombre>
+    <ApellidoP>Reyes</ApellidoP>
+    <ApellidoM>Cano</ApellidoM>
+    <Categoria>N101 Topografo c</Categoria>
+    <IdCategoria>102</IdCategoria>
+    <NSS>16977809835</NSS>
+    <NumEmpleado>0222</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>11</IdEmpleado>
+    <Nombre>Jorge Alberto</Nombre>
+    <ApellidoP>Pineda</ApellidoP>
+    <ApellidoM>Gonzalez</ApellidoM>
+    <Categoria>N014 Checador</Categoria>
+    <IdCategoria>15</IdCategoria>
+    <NSS>71946835643</NSS>
+    <NumEmpleado>0011</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>68</IdEmpleado>
+    <Nombre>Jorge Emigdio</Nombre>
+    <ApellidoP>Bobadilla</ApellidoP>
+    <ApellidoM>Cesar</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>16027503743</NSS>
+    <NumEmpleado>0068</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>132</IdEmpleado>
+    <Nombre>Jorge Luis</Nombre>
+    <ApellidoP>Ortiz</ApellidoP>
+    <ApellidoM>Navarrete</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>16088805078</NSS>
+    <NumEmpleado>0132</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>94</IdEmpleado>
+    <Nombre>Jorge Luis</Nombre>
+    <ApellidoP>Velazquez</ApellidoP>
+    <ApellidoM>Diaz</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16068940408</NSS>
+    <NumEmpleado>0094</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>121</IdEmpleado>
+    <Nombre>Jose</Nombre>
+    <ApellidoP>Garcia</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>73937802279</NSS>
+    <NumEmpleado>0121</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>159</IdEmpleado>
+    <Nombre>Jose</Nombre>
+    <ApellidoP>Garcia</ApellidoP>
+    <ApellidoM>Perez</ApellidoM>
+    <Categoria>N047 Topografo b</Categoria>
+    <IdCategoria>48</IdCategoria>
+    <NSS>12865905561</NSS>
+    <NumEmpleado>0159</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>115</IdEmpleado>
+    <Nombre>Jose</Nombre>
+    <ApellidoP>Garduño</ApellidoP>
+    <ApellidoM>Fuentes</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>16947202665</NSS>
+    <NumEmpleado>0116</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>113</IdEmpleado>
+    <Nombre>Jose</Nombre>
+    <ApellidoP>Medina</ApellidoP>
+    <ApellidoM>Carrillo</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>16755505258</NSS>
+    <NumEmpleado>0113</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>58</IdEmpleado>
+    <Nombre>Jose</Nombre>
+    <ApellidoP>Sosa</ApellidoP>
+    <ApellidoM>Mendez</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>16965201755</NSS>
+    <NumEmpleado>0058</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>127</IdEmpleado>
+    <Nombre>José Alejandro</Nombre>
+    <ApellidoP>Orantes</ApellidoP>
+    <ApellidoM>Medina</ApellidoM>
+    <Categoria>N148 Operador de Motoconformadora</Categoria>
+    <IdCategoria>149</IdCategoria>
+    <NSS>53947631288</NSS>
+    <NumEmpleado>0127</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>218</IdEmpleado>
+    <Nombre>José Antonio</Nombre>
+    <ApellidoP>Rivera</ApellidoP>
+    <ApellidoM>Pérez</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>16058214749</NSS>
+    <NumEmpleado>0218</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>32</IdEmpleado>
+    <Nombre>José Arturo</Nombre>
+    <ApellidoP>Julio</ApellidoP>
+    <ApellidoM>Santos</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>16058612728</NSS>
+    <NumEmpleado>0032</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>143</IdEmpleado>
+    <Nombre>Jose Ascencion</Nombre>
+    <ApellidoP>Sanchez</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>01680580063</NSS>
+    <NumEmpleado>0143</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>120</IdEmpleado>
+    <Nombre>Jose Guadalupe</Nombre>
+    <ApellidoP>Leon</ApellidoP>
+    <ApellidoM>Aguilar</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>01725265670</NSS>
+    <NumEmpleado>0120</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>21</IdEmpleado>
+    <Nombre>José Guadalupe</Nombre>
+    <ApellidoP>Fuentes</ApellidoP>
+    <ApellidoM>Torruco</ApellidoM>
+    <Categoria>N109 Jefe de Almacen</Categoria>
+    <IdCategoria>110</IdCategoria>
+    <NSS>83856518739</NSS>
+    <NumEmpleado>0021</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>77</IdEmpleado>
+    <Nombre>Jose Javier</Nombre>
+    <ApellidoP>Soto</ApellidoP>
+    <ApellidoM>Flores</ApellidoM>
+    <Categoria>N047 Topografo b</Categoria>
+    <IdCategoria>48</IdCategoria>
+    <NSS>16038604506</NSS>
+    <NumEmpleado>0077</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>118</IdEmpleado>
+    <Nombre>Jose Luis</Nombre>
+    <ApellidoP>Campos</ApellidoP>
+    <ApellidoM>Avila</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16097904250</NSS>
+    <NumEmpleado>0118</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>232</IdEmpleado>
+    <Nombre>Jose Luis</Nombre>
+    <ApellidoP>Garcia</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>16058837416</NSS>
+    <NumEmpleado>0232</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>236</IdEmpleado>
+    <Nombre>Jose Luis</Nombre>
+    <ApellidoP>Jacuindez</ApellidoP>
+    <ApellidoM>Santos</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>53074900324</NSS>
+    <NumEmpleado>0236</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>124</IdEmpleado>
+    <Nombre>Jose Luis</Nombre>
+    <ApellidoP>Zambrano</ApellidoP>
+    <ApellidoM>Cervantes</ApellidoM>
+    <Categoria>N177 Sobrestante c</Categoria>
+    <IdCategoria>178</IdCategoria>
+    <NSS>62896806486</NSS>
+    <NumEmpleado>0124</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>134</IdEmpleado>
+    <Nombre>José Raúl</Nombre>
+    <ApellidoP>López</ApellidoP>
+    <ApellidoM>Súñiga</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>42816382628</NSS>
+    <NumEmpleado>0134</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>125</IdEmpleado>
+    <Nombre>Jose Tomas</Nombre>
+    <ApellidoP>Zambrano</ApellidoP>
+    <ApellidoM>Cervantes</ApellidoM>
+    <Categoria>N177 Sobrestante c</Categoria>
+    <IdCategoria>178</IdCategoria>
+    <NSS> </NSS>
+    <NumEmpleado>0125</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>35</IdEmpleado>
+    <Nombre>José Tomás</Nombre>
+    <ApellidoP>Rodríguez</ApellidoP>
+    <ApellidoM>Ramírez</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>67826455890</NSS>
+    <NumEmpleado>0035</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>210</IdEmpleado>
+    <Nombre>Jose Trinidad</Nombre>
+    <ApellidoP>Rosas</ApellidoP>
+    <ApellidoM>Pelayo</ApellidoM>
+    <Categoria>N024 Mecanico Diesel b</Categoria>
+    <IdCategoria>25</IdCategoria>
+    <NSS>11755571442</NSS>
+    <NumEmpleado>0210</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>224</IdEmpleado>
+    <Nombre>Josue</Nombre>
+    <ApellidoP>Becerril</ApellidoP>
+    <ApellidoM>Nieto</ApellidoM>
+    <Categoria>N391 Auxiliar de Subcontratos</Categoria>
+    <IdCategoria>325</IdCategoria>
+    <NSS>16108416062</NSS>
+    <NumEmpleado>0224</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>64</IdEmpleado>
+    <Nombre>Juan</Nombre>
+    <ApellidoP>Cruz</ApellidoP>
+    <ApellidoM>Gonzalez</ApellidoM>
+    <Categoria>N014 Checador</Categoria>
+    <IdCategoria>15</IdCategoria>
+    <NSS>67917490079</NSS>
+    <NumEmpleado>0064</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>207</IdEmpleado>
+    <Nombre>Juan</Nombre>
+    <ApellidoP>Pérez</ApellidoP>
+    <ApellidoM>Zamora</ApellidoM>
+    <Categoria>N387 Cabo de Oficios</Categoria>
+    <IdCategoria>320</IdCategoria>
+    <NSS>16943011619</NSS>
+    <NumEmpleado>0207</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>24</IdEmpleado>
+    <Nombre>Juan</Nombre>
+    <ApellidoP>Zúñiga</ApellidoP>
+    <ApellidoM>Gutiérrez</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>16104500018</NSS>
+    <NumEmpleado>0024</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>184</IdEmpleado>
+    <Nombre>Juan Antonio</Nombre>
+    <ApellidoP>Medina</ApellidoP>
+    <ApellidoM>Solis</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>55998248065</NSS>
+    <NumEmpleado>0184</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>206</IdEmpleado>
+    <Nombre>Juan Carlos</Nombre>
+    <ApellidoP>Álvarez</ApellidoP>
+    <ApellidoM>Velázquez</ApellidoM>
+    <Categoria>N148 Operador de Motoconformadora</Categoria>
+    <IdCategoria>149</IdCategoria>
+    <NSS>04998329411</NSS>
+    <NumEmpleado>0206</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>104</IdEmpleado>
+    <Nombre>Juan Carlos</Nombre>
+    <ApellidoP>Hernandez</ApellidoP>
+    <ApellidoM>Flores</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>16109202818</NSS>
+    <NumEmpleado>0104</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>27</IdEmpleado>
+    <Nombre>Juan Carlos</Nombre>
+    <ApellidoP>López</ApellidoP>
+    <ApellidoM>Lara</ApellidoM>
+    <Categoria>N066 Residente</Categoria>
+    <IdCategoria>314</IdCategoria>
+    <NSS>67997202006</NSS>
+    <NumEmpleado>0027</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>227</IdEmpleado>
+    <Nombre>Juan Carlos</Nombre>
+    <ApellidoP>Muñoz</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N047 Topografo b</Categoria>
+    <IdCategoria>48</IdCategoria>
+    <NSS>16896602741</NSS>
+    <NumEmpleado>0227</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>162</IdEmpleado>
+    <Nombre>Juan Carlos</Nombre>
+    <ApellidoP>Nolasco</ApellidoP>
+    <ApellidoM>Valencia</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16088911306</NSS>
+    <NumEmpleado>0162</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>185</IdEmpleado>
+    <Nombre>Juan De Dios</Nombre>
+    <ApellidoP>Santiago</ApellidoP>
+    <ApellidoM>Castañeda</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16017500170</NSS>
+    <NumEmpleado>0185</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>174</IdEmpleado>
+    <Nombre>Juan Gabriel</Nombre>
+    <ApellidoP>Garduño</ApellidoP>
+    <ApellidoM>Pichardo</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16068526009</NSS>
+    <NumEmpleado>0174</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>172</IdEmpleado>
+    <Nombre>Juan Miguek</Nombre>
+    <ApellidoP>Altamirano</ApellidoP>
+    <ApellidoM>Aguilar</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>96896103387</NSS>
+    <NumEmpleado>0172</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>112</IdEmpleado>
+    <Nombre>Juan Vicente</Nombre>
+    <ApellidoP>Callahan</ApellidoP>
+    <ApellidoM>Diaz</ApellidoM>
+    <Categoria>N311 Auxiliar de residente b</Categoria>
+    <IdCategoria>305</IdCategoria>
+    <NSS>34957996258</NSS>
+    <NumEmpleado>0112</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>119</IdEmpleado>
+    <Nombre>Julio</Nombre>
+    <ApellidoP>Reyes</ApellidoP>
+    <ApellidoM>Prado</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>01685610324</NSS>
+    <NumEmpleado>0119</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>154</IdEmpleado>
+    <Nombre>Julio Cesar</Nombre>
+    <ApellidoP>Sanchez</ApellidoP>
+    <ApellidoM>Bobadilla</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>16997811274</NSS>
+    <NumEmpleado>0154</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>194</IdEmpleado>
+    <Nombre>Leobardo</Nombre>
+    <ApellidoP>López</ApellidoP>
+    <ApellidoM>Díaz</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16785200920</NSS>
+    <NumEmpleado>0194</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>200</IdEmpleado>
+    <Nombre>Leonardo</Nombre>
+    <ApellidoP>Capulín</ApellidoP>
+    <ApellidoM>Camino</ApellidoM>
+    <Categoria>N148 Operador de Motoconformadora</Categoria>
+    <IdCategoria>149</IdCategoria>
+    <NSS>16917400224</NSS>
+    <NumEmpleado>0200</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>234</IdEmpleado>
+    <Nombre>Leonardo</Nombre>
+    <ApellidoP>Garcia</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16099102747</NSS>
+    <NumEmpleado>0234</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>237</IdEmpleado>
+    <Nombre>Leonardo</Nombre>
+    <ApellidoP>Hernandez</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N073 Jefe de Frente b</Categoria>
+    <IdCategoria>74</IdCategoria>
+    <NSS>12917162252</NSS>
+    <NumEmpleado>0237</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>243</IdEmpleado>
+    <Nombre>Lilia Imelda</Nombre>
+    <ApellidoP>Rueda</ApellidoP>
+    <ApellidoM>Gonzalez</ApellidoM>
+    <Categoria>N393 Jefe de Constrol de Documentos</Categoria>
+    <IdCategoria>327</IdCategoria>
+    <NSS>16108207809</NSS>
+    <NumEmpleado>0243</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>60</IdEmpleado>
+    <Nombre>Liliana</Nombre>
+    <ApellidoP>Martinez</ApellidoP>
+    <ApellidoM>Crespo</ApellidoM>
+    <Categoria>N287 Jefe de Area Medio Ambiente</Categoria>
+    <IdCategoria>288</IdCategoria>
+    <NSS>94078401844</NSS>
+    <NumEmpleado>0060</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>163</IdEmpleado>
+    <Nombre>Luis</Nombre>
+    <ApellidoP>Cesar</ApellidoP>
+    <ApellidoM>Nava</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16977980974</NSS>
+    <NumEmpleado>0163</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>192</IdEmpleado>
+    <Nombre>Luis</Nombre>
+    <ApellidoP>Hernández</ApellidoP>
+    <ApellidoM>Medina</ApellidoM>
+    <Categoria>N014 Checador</Categoria>
+    <IdCategoria>15</IdCategoria>
+    <NSS>16987207194</NSS>
+    <NumEmpleado>0192</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>67</IdEmpleado>
+    <Nombre>Luis</Nombre>
+    <ApellidoP>Mondragon</ApellidoP>
+    <ApellidoM>Aguilar</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>30925604495</NSS>
+    <NumEmpleado>0067</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>75</IdEmpleado>
+    <Nombre>Luis Miguel</Nombre>
+    <ApellidoP>Valencia</ApellidoP>
+    <ApellidoM>Hernandez</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16098505684</NSS>
+    <NumEmpleado>0075</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>245</IdEmpleado>
+    <Nombre>Lluis Enrique</Nombre>
+    <ApellidoP>Flores</ApellidoP>
+    <ApellidoM>Muciño</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>16058636644</NSS>
+    <NumEmpleado>0245</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>231</IdEmpleado>
+    <Nombre>Ma. Del Carmen</Nombre>
+    <ApellidoP>Farfan</ApellidoP>
+    <ApellidoM>Pedroza</ApellidoM>
+    <Categoria>N392 Contador General</Categoria>
+    <IdCategoria>326</IdCategoria>
+    <NSS>12845907398</NSS>
+    <NumEmpleado>0231</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>176</IdEmpleado>
+    <Nombre>Manuel</Nombre>
+    <ApellidoP>Valencia</ApellidoP>
+    <ApellidoM>Macias</ApellidoM>
+    <Categoria>N386 Jefe Area Pavimentos</Categoria>
+    <IdCategoria>319</IdCategoria>
+    <NSS>12078307233</NSS>
+    <NumEmpleado>0176</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>10</IdEmpleado>
+    <Nombre>Manuel Emmanuel</Nombre>
+    <ApellidoP>Buitimea</ApellidoP>
+    <ApellidoM>Armenta</ApellidoM>
+    <Categoria>N154 Operador de Vibrocompactador doble</Categoria>
+    <IdCategoria>155</IdCategoria>
+    <NSS>55068810005</NSS>
+    <NumEmpleado>0010</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>91</IdEmpleado>
+    <Nombre>Marcelo</Nombre>
+    <ApellidoP>Bautista</ApellidoP>
+    <ApellidoM>Flores</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16017911260</NSS>
+    <NumEmpleado>0091</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>82</IdEmpleado>
+    <Nombre>Marcelo Julio</Nombre>
+    <ApellidoP>Gonzalez</ApellidoP>
+    <ApellidoM>San Juan</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>16925906436</NSS>
+    <NumEmpleado>0082</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>55</IdEmpleado>
+    <Nombre>Maria Guadalupe</Nombre>
+    <ApellidoP>Moreno</ApellidoP>
+    <ApellidoM>Flores</ApellidoM>
+    <Categoria>N274 Jefe de Area c</Categoria>
+    <IdCategoria>275</IdCategoria>
+    <NSS>96958101352</NSS>
+    <NumEmpleado>0055</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>70</IdEmpleado>
+    <Nombre>Mariano</Nombre>
+    <ApellidoP>Maximino</ApellidoP>
+    <ApellidoM>Ortega</ApellidoM>
+    <Categoria>N023 Mecanico Diesel</Categoria>
+    <IdCategoria>24</IdCategoria>
+    <NSS>78945903207</NSS>
+    <NumEmpleado>0070</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>14</IdEmpleado>
+    <Nombre>Mario</Nombre>
+    <ApellidoP>Flores</ApellidoP>
+    <ApellidoM>Solís</ApellidoM>
+    <Categoria>N100 Tomador de Tiempo</Categoria>
+    <IdCategoria>101</IdCategoria>
+    <NSS>37927336398</NSS>
+    <NumEmpleado>0014</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>131</IdEmpleado>
+    <Nombre>Martín Ramón</Nombre>
+    <ApellidoP>García</ApellidoP>
+    <ApellidoM>Colón</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>16078922685</NSS>
+    <NumEmpleado>0131</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>149</IdEmpleado>
+    <Nombre>Mauricio</Nombre>
+    <ApellidoP>Maldonado</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N094 Operador de Tractor</Categoria>
+    <IdCategoria>95</IdCategoria>
+    <NSS>01695791033</NSS>
+    <NumEmpleado>0149</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>122</IdEmpleado>
+    <Nombre>Miguel</Nombre>
+    <ApellidoP>Ortiz</ApellidoP>
+    <ApellidoM>Pichardo</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16806315137</NSS>
+    <NumEmpleado>0122</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>141</IdEmpleado>
+    <Nombre>Miguel</Nombre>
+    <ApellidoP>Saldaña</ApellidoP>
+    <ApellidoM>Garibay</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>16785605896</NSS>
+    <NumEmpleado>0141</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>54</IdEmpleado>
+    <Nombre>Miguel Angel</Nombre>
+    <ApellidoP>Aguilar</ApellidoP>
+    <ApellidoM>Gonzalez</ApellidoM>
+    <Categoria>N020 Jefe Frente</Categoria>
+    <IdCategoria>21</IdCategoria>
+    <NSS>16068218136</NSS>
+    <NumEmpleado>0054</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>114</IdEmpleado>
+    <Nombre>Miguel Angel</Nombre>
+    <ApellidoP>Diaz</ApellidoP>
+    <ApellidoM>Martinez</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16987608318</NSS>
+    <NumEmpleado>0114</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>195</IdEmpleado>
+    <Nombre>Miguel Ángel</Nombre>
+    <ApellidoP>López</ApellidoP>
+    <ApellidoM>Becerril</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16058713674</NSS>
+    <NumEmpleado>0195</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>186</IdEmpleado>
+    <Nombre>Miguel Wenceslao</Nombre>
+    <ApellidoP>Montes</ApellidoP>
+    <ApellidoM>Arzate</ApellidoM>
+    <Categoria>N102 Autocadista b</Categoria>
+    <IdCategoria>103</IdCategoria>
+    <NSS>18947823920</NSS>
+    <NumEmpleado>0186</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>38</IdEmpleado>
+    <Nombre>Minely</Nombre>
+    <ApellidoP>Rodríguez</ApellidoP>
+    <ApellidoM>González</ApellidoM>
+    <Categoria>N280 Jefe de Contabilidad b</Categoria>
+    <IdCategoria>281</IdCategoria>
+    <NSS>16978002372</NSS>
+    <NumEmpleado>0038</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>116</IdEmpleado>
+    <Nombre>Misael</Nombre>
+    <ApellidoP>Pulido</ApellidoP>
+    <ApellidoM>Lopez</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16109141396</NSS>
+    <NumEmpleado>0117</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>249</IdEmpleado>
+    <Nombre>Nestor Federico</Nombre>
+    <ApellidoP>Cerino</ApellidoP>
+    <ApellidoM>Nava</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16109030292</NSS>
+    <NumEmpleado>0249</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>8</IdEmpleado>
+    <Nombre>Octavio</Nombre>
+    <ApellidoP>Macal</ApellidoP>
+    <ApellidoM>Ramirez</ApellidoM>
+    <Categoria>N066 Chofer Engrasador</Categoria>
+    <IdCategoria>67</IdCategoria>
+    <NSS>71906436507</NSS>
+    <NumEmpleado>0008</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>4</IdEmpleado>
+    <Nombre>Odilon</Nombre>
+    <ApellidoP>Ramirez</ApellidoP>
+    <ApellidoM>Becerril</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16966704823</NSS>
+    <NumEmpleado>0004</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>2</IdProyecto>
+    <Proyecto>Presa El Zapotillo</Proyecto>
+    <IdEmpleado>96</IdEmpleado>
+    <Nombre>Omar</Nombre>
+    <ApellidoP>Hernandez</ApellidoP>
+    <ApellidoM>Fernandez</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>16028544506</NSS>
+    <NumEmpleado>0096</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>84</IdEmpleado>
+    <Nombre>Oscar</Nombre>
+    <ApellidoP>Hernandez</ApellidoP>
+    <ApellidoM>Sanchez</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16099055036</NSS>
+    <NumEmpleado>0084</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>182</IdEmpleado>
+    <Nombre>Oscar</Nombre>
+    <ApellidoP>Lara</ApellidoP>
+    <ApellidoM>Blancas</ApellidoM>
+    <Categoria>N014 Checador</Categoria>
+    <IdCategoria>15</IdCategoria>
+    <NSS>18968015356</NSS>
+    <NumEmpleado>0182</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>181</IdEmpleado>
+    <Nombre>Oscar</Nombre>
+    <ApellidoP>Zambrano</ApellidoP>
+    <ApellidoM>Alducin</ApellidoM>
+    <Categoria>N154 Operador de Vibrocompactador doble</Categoria>
+    <IdCategoria>155</IdCategoria>
+    <NSS>48007951758</NSS>
+    <NumEmpleado>0181</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>19</IdEmpleado>
+    <Nombre>Oscar José</Nombre>
+    <ApellidoP>Fonseca</ApellidoP>
+    <ApellidoM>Cantero</ApellidoM>
+    <Categoria>N212 Jefe de Compras</Categoria>
+    <IdCategoria>213</IdCategoria>
+    <NSS>92038402738</NSS>
+    <NumEmpleado>0019</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>83</IdEmpleado>
+    <Nombre>Pablo</Nombre>
+    <ApellidoP>Lopez</ApellidoP>
+    <ApellidoM>Ruiz</ApellidoM>
+    <Categoria>N094 Operador de Tractor</Categoria>
+    <IdCategoria>95</IdCategoria>
+    <NSS>16927704565</NSS>
+    <NumEmpleado>0083</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>139</IdEmpleado>
+    <Nombre>Pedro</Nombre>
+    <ApellidoP>Apolonio</ApellidoP>
+    <ApellidoM>Oro</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>67554111285</NSS>
+    <NumEmpleado>0139</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>48</IdEmpleado>
+    <Nombre>Pedro</Nombre>
+    <ApellidoP>Lopez</ApellidoP>
+    <ApellidoM>Suarez</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>16816505842</NSS>
+    <NumEmpleado>0048</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>43</IdEmpleado>
+    <Nombre>Pedro</Nombre>
+    <ApellidoP>Martínez</ApellidoP>
+    <ApellidoM>Ortiz</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>16816018127</NSS>
+    <NumEmpleado>0043</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>153</IdEmpleado>
+    <Nombre>Pedro</Nombre>
+    <ApellidoP>Ordoñez</ApellidoP>
+    <ApellidoM>Gonzalez</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>16078920172</NSS>
+    <NumEmpleado>0153</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>179</IdEmpleado>
+    <Nombre>Ponciano</Nombre>
+    <ApellidoP>Moreno</ApellidoP>
+    <ApellidoM>Salazar</ApellidoM>
+    <Categoria>N321 Jefe de Estructuras</Categoria>
+    <IdCategoria>315</IdCategoria>
+    <NSS>18887106252</NSS>
+    <NumEmpleado>0179</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>98</IdEmpleado>
+    <Nombre>Porfirio</Nombre>
+    <ApellidoP>Diaz</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N013 Cadenero</Categoria>
+    <IdCategoria>14</IdCategoria>
+    <NSS>62925200545</NSS>
+    <NumEmpleado>0098</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>137</IdEmpleado>
+    <Nombre>Porfirio</Nombre>
+    <ApellidoP>López</ApellidoP>
+    <ApellidoM>García</ApellidoM>
+    <Categoria>N042 Soldador</Categoria>
+    <IdCategoria>43</IdCategoria>
+    <NSS>16725601070</NSS>
+    <NumEmpleado>0137</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>164</IdEmpleado>
+    <Nombre>Rafel</Nombre>
+    <ApellidoP>Cruz</ApellidoP>
+    <ApellidoM>Millan</ApellidoM>
+    <Categoria>N301 Jefe de Planeación</Categoria>
+    <IdCategoria>295</IdCategoria>
+    <NSS>72977627255</NSS>
+    <NumEmpleado>0164</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>95</IdEmpleado>
+    <Nombre>Raul</Nombre>
+    <ApellidoP>Linares</ApellidoP>
+    <ApellidoM>Saucedo</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16977979802</NSS>
+    <NumEmpleado>0095</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>170</IdEmpleado>
+    <Nombre>Refugio Lauriano</Nombre>
+    <ApellidoP>Garduño</ApellidoP>
+    <ApellidoM>Hernandez</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16108909975</NSS>
+    <NumEmpleado>0170</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>148</IdEmpleado>
+    <Nombre>Regino</Nombre>
+    <ApellidoP>Diaz</ApellidoP>
+    <ApellidoM>Zimbron</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>16745606257</NSS>
+    <NumEmpleado>0148</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>150</IdEmpleado>
+    <Nombre>Renato Santos</Nombre>
+    <ApellidoP>Gonzalez</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N024 Mecanico Diesel b</Categoria>
+    <IdCategoria>25</IdCategoria>
+    <NSS>01705145603</NSS>
+    <NumEmpleado>0150</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>65</IdEmpleado>
+    <Nombre>Rey</Nombre>
+    <ApellidoP>Hernandez</ApellidoP>
+    <ApellidoM>Sosa</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>16998321521</NSS>
+    <NumEmpleado>0065</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>51</IdEmpleado>
+    <Nombre>Reynaldo</Nombre>
+    <ApellidoP>Nengua</ApellidoP>
+    <ApellidoM>Hernandez</ApellidoM>
+    <Categoria>N084 Operador de Motoconformadora b</Categoria>
+    <IdCategoria>85</IdCategoria>
+    <NSS>16079100968</NSS>
+    <NumEmpleado>0051</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>13</IdEmpleado>
+    <Nombre>Ricardo</Nombre>
+    <ApellidoP>Campos</ApellidoP>
+    <ApellidoM>Mendizabal</ApellidoM>
+    <Categoria>N247 Operador de Excavadora a</Categoria>
+    <IdCategoria>248</IdCategoria>
+    <NSS>37897500130</NSS>
+    <NumEmpleado>0013</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>33</IdEmpleado>
+    <Nombre>Ricardo</Nombre>
+    <ApellidoP>Cedillo</ApellidoP>
+    <ApellidoM>Cruz</ApellidoM>
+    <Categoria>N084 Operador de Motoconformadora b</Categoria>
+    <IdCategoria>85</IdCategoria>
+    <NSS>16998232694</NSS>
+    <NumEmpleado>0033</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>244</IdEmpleado>
+    <Nombre>Ricardo</Nombre>
+    <ApellidoP>Corona</ApellidoP>
+    <ApellidoM>Flores</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16806210940</NSS>
+    <NumEmpleado>0244</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>144</IdEmpleado>
+    <Nombre>Rigoberto</Nombre>
+    <ApellidoP>Baldomero</ApellidoP>
+    <ApellidoM>Camacho</ApellidoM>
+    <Categoria>N014 Checador</Categoria>
+    <IdCategoria>15</IdCategoria>
+    <NSS>16099110278</NSS>
+    <NumEmpleado>0144</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>168</IdEmpleado>
+    <Nombre>Roberto</Nombre>
+    <ApellidoP>Arcadio</ApellidoP>
+    <ApellidoM>Alvaro</ApellidoM>
+    <Categoria>N014 Checador</Categoria>
+    <IdCategoria>15</IdCategoria>
+    <NSS>16907388280</NSS>
+    <NumEmpleado>0168</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>221</IdEmpleado>
+    <Nombre>Rodolfo</Nombre>
+    <ApellidoP>Avila</ApellidoP>
+    <ApellidoM>Diaz</ApellidoM>
+    <Categoria>N016 Chofer Pipa Agua</Categoria>
+    <IdCategoria>17</IdCategoria>
+    <NSS>16048803718</NSS>
+    <NumEmpleado>0221</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>81</IdEmpleado>
+    <Nombre>Rodolfo</Nombre>
+    <ApellidoP>Rodriguez</ApellidoP>
+    <ApellidoM>Pacheco</ApellidoM>
+    <Categoria>N287 Jefe de Area Medio Ambiente</Categoria>
+    <IdCategoria>288</IdCategoria>
+    <NSS>11755822258</NSS>
+    <NumEmpleado>0081</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>39</IdEmpleado>
+    <Nombre>Rogaciano</Nombre>
+    <ApellidoP>Solorzano</ApellidoP>
+    <ApellidoM>Reyes</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16796213805</NSS>
+    <NumEmpleado>0039</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>44</IdEmpleado>
+    <Nombre>Rosa María Edith</Nombre>
+    <ApellidoP>Castro</ApellidoP>
+    <ApellidoM>Calva</ApellidoM>
+    <Categoria>N001 Afanadora</Categoria>
+    <IdCategoria>2</IdCategoria>
+    <NSS>16065801140</NSS>
+    <NumEmpleado>0044</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>28</IdEmpleado>
+    <Nombre>Rubén</Nombre>
+    <ApellidoP>Ríos</ApellidoP>
+    <ApellidoM>Nolasco</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16089074393</NSS>
+    <NumEmpleado>0028</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>193</IdEmpleado>
+    <Nombre>Rufino</Nombre>
+    <ApellidoP>Ferreira</ApellidoP>
+    <ApellidoM>Maya</ApellidoM>
+    <Categoria>N133 Chofer de Compras</Categoria>
+    <IdCategoria>134</IdCategoria>
+    <NSS>16108629888</NSS>
+    <NumEmpleado>0193</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>211</IdEmpleado>
+    <Nombre>Sabino</Nombre>
+    <ApellidoP>Rocha</ApellidoP>
+    <ApellidoM>Acosta</ApellidoM>
+    <Categoria>N113 Mecanico Gasolina b</Categoria>
+    <IdCategoria>114</IdCategoria>
+    <NSS>13816007390</NSS>
+    <NumEmpleado>0211</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>128</IdEmpleado>
+    <Nombre>Sadiel</Nombre>
+    <ApellidoP>Castillo</ApellidoP>
+    <ApellidoM>Robledo</ApellidoM>
+    <Categoria>N148 Operador de Motoconformadora</Categoria>
+    <IdCategoria>149</IdCategoria>
+    <NSS>16068309661</NSS>
+    <NumEmpleado>0128</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>212</IdEmpleado>
+    <Nombre>Salvador</Nombre>
+    <ApellidoP>Alvarado</ApellidoP>
+    <ApellidoM>Gonzalez</ApellidoM>
+    <Categoria>N160 Residente</Categoria>
+    <IdCategoria>161</IdCategoria>
+    <NSS>53078314100</NSS>
+    <NumEmpleado>0212</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>248</IdEmpleado>
+    <Nombre>Santiago</Nombre>
+    <ApellidoP>Benito</ApellidoP>
+    <ApellidoM>Piña</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>10836448653</NSS>
+    <NumEmpleado>0248</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>86</IdEmpleado>
+    <Nombre>Saturnino</Nombre>
+    <ApellidoP>Mejia</ApellidoP>
+    <ApellidoM>Vidal</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>11775825471</NSS>
+    <NumEmpleado>0086</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>180</IdEmpleado>
+    <Nombre>Saul</Nombre>
+    <ApellidoP>Martinez</ApellidoP>
+    <ApellidoM>Ortiz</ApellidoM>
+    <Categoria>N154 Operador de Vibrocompactador doble</Categoria>
+    <IdCategoria>155</IdCategoria>
+    <NSS>78806205155</NSS>
+    <NumEmpleado>0180</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>188</IdEmpleado>
+    <Nombre>Sergio</Nombre>
+    <ApellidoP>Frías</ApellidoP>
+    <ApellidoM>Castro</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>11685206432</NSS>
+    <NumEmpleado>0188</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>37</IdEmpleado>
+    <Nombre>Severino</Nombre>
+    <ApellidoP>Sosa</ApellidoP>
+    <ApellidoM>Méndez</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16745978425</NSS>
+    <NumEmpleado>0037</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>169</IdEmpleado>
+    <Nombre>Silverio</Nombre>
+    <ApellidoP>Ortega</ApellidoP>
+    <ApellidoM>Santiago</ApellidoM>
+    <Categoria>N274 Jefe de Area c</Categoria>
+    <IdCategoria>275</IdCategoria>
+    <NSS>78775403823</NSS>
+    <NumEmpleado>0169</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>99</IdEmpleado>
+    <Nombre>Silvino</Nombre>
+    <ApellidoP>Maruelo</ApellidoP>
+    <ApellidoM>Vasquez</ApellidoM>
+    <Categoria>N047 Topografo b</Categoria>
+    <IdCategoria>48</IdCategoria>
+    <NSS>65806121672</NSS>
+    <NumEmpleado>0099</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>7</IdEmpleado>
+    <Nombre>Teofilo</Nombre>
+    <ApellidoP>Juarez</ApellidoP>
+    <ApellidoM>Gonzalez</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16874502541</NSS>
+    <NumEmpleado>0007</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>1</IdEmpleado>
+    <Nombre>Tomas</Nombre>
+    <ApellidoP>Bobadilla</ApellidoP>
+    <ApellidoM>Reyes</ApellidoM>
+    <Categoria>N225 Velador c</Categoria>
+    <IdCategoria>226</IdCategoria>
+    <NSS>16694311578</NSS>
+    <NumEmpleado>0002</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>197</IdEmpleado>
+    <Nombre>Tomás</Nombre>
+    <ApellidoP>Sánchez</ApellidoP>
+    <ApellidoM>Zaragoza</ApellidoM>
+    <Categoria>N247 Operador de Excavadora a</Categoria>
+    <IdCategoria>248</IdCategoria>
+    <NSS>11650494336</NSS>
+    <NumEmpleado>0197</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>229</IdEmpleado>
+    <Nombre>Valentin</Nombre>
+    <ApellidoP>Garcia</ApellidoP>
+    <ApellidoM>Melgarejo</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16887107213</NSS>
+    <NumEmpleado>0229</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>158</IdEmpleado>
+    <Nombre>Valentin</Nombre>
+    <ApellidoP>Pina</ApellidoP>
+    <ApellidoM>Garcia</ApellidoM>
+    <Categoria>N011 Banderero</Categoria>
+    <IdCategoria>12</IdCategoria>
+    <NSS>16998219832</NSS>
+    <NumEmpleado>0158</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>100</IdEmpleado>
+    <Nombre>Vianey</Nombre>
+    <ApellidoP>Vazquez</ApellidoP>
+    <ApellidoM>Aldana</ApellidoM>
+    <Categoria>N169 Jefe de Personal</Categoria>
+    <IdCategoria>170</IdCategoria>
+    <NSS>16008004737</NSS>
+    <NumEmpleado>0100</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>230</IdEmpleado>
+    <Nombre>Vicente</Nombre>
+    <ApellidoP>Rodea</ApellidoP>
+    <ApellidoM>Zamora</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>61866809629</NSS>
+    <NumEmpleado>0230</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>57</IdEmpleado>
+    <Nombre>Victor</Nombre>
+    <ApellidoP>Lopez</ApellidoP>
+    <ApellidoM>Lara</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16102900020</NSS>
+    <NumEmpleado>0057</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>117</IdEmpleado>
+    <Nombre>Victor</Nombre>
+    <ApellidoP>Melchor</ApellidoP>
+    <ApellidoM>Alejandre</ApellidoM>
+    <Categoria>N180 Bodeguero</Categoria>
+    <IdCategoria>181</IdCategoria>
+    <NSS>16664712318</NSS>
+    <NumEmpleado>0115</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>203</IdEmpleado>
+    <Nombre>Víctor Hugo</Nombre>
+    <ApellidoP>Padilla</ApellidoP>
+    <ApellidoM>González</ApellidoM>
+    <Categoria>N154 Operador de Vibrocompactador doble</Categoria>
+    <IdCategoria>155</IdCategoria>
+    <NSS>16058737400</NSS>
+    <NumEmpleado>0203</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>155</IdEmpleado>
+    <Nombre>Xavier</Nombre>
+    <ApellidoP>Guzman</ApellidoP>
+    <ApellidoM>Hernandez</ApellidoM>
+    <Categoria>N034 Operador de Retroexcavadora</Categoria>
+    <IdCategoria>35</IdCategoria>
+    <NSS>04501821679</NSS>
+    <NumEmpleado>0155</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>30</IdEmpleado>
+    <Nombre>Yesenia</Nombre>
+    <ApellidoP>González</ApellidoP>
+    <ApellidoM>Peñaloza</ApellidoM>
+    <Categoria>N001 Afanadora</Categoria>
+    <IdCategoria>2</IdCategoria>
+    <NSS>16108602471</NSS>
+    <NumEmpleado>0030</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>107</IdEmpleado>
+    <Nombre>Yetzi</Nombre>
+    <ApellidoP>Ovando</ApellidoP>
+    <ApellidoM>Acuña</ApellidoM>
+    <Categoria>N383 Auxiliar de Medio Ambiente</Categoria>
+    <IdCategoria>316</IdCategoria>
+    <NSS>16048733972</NSS>
+    <NumEmpleado>0107</NumEmpleado>
+  </Empleado>
+  <Empleado>
+    <IdProyecto>1</IdProyecto>
+    <Proyecto>Lerma Tres Marias</Proyecto>
+    <IdEmpleado>130</IdEmpleado>
+    <Nombre>Yosimar</Nombre>
+    <ApellidoP>Siles</ApellidoP>
+    <ApellidoM>Lara</ApellidoM>
+    <Categoria>N010 Ayudante General</Categoria>
+    <IdCategoria>11</IdCategoria>
+    <NSS>16109106035</NSS>
+    <NumEmpleado>0130</NumEmpleado>
+  </Empleado>
+</Empleados>
