@@ -21,27 +21,27 @@ $IdUsuario = $_REQUEST["IdUsuario"];
         <tbody>
         	<?php
 			$SQL = "SELECT origenes.Descripcion as Origen,
-       GROUP_CONCAT(rutas.IdRuta) AS grupo_rutas,
-       origenes.IdOrigen,
-       origen_x_usuario.idusuario_intranet,
-       concat(vw_usuarios_por_proyecto.nombre,
-              ' ',
-              vw_usuarios_por_proyecto.apaterno,
-              ' ',
-              vw_usuarios_por_proyecto.amaterno)
-          AS usuario_intranet
-  FROM ((prod_sca_trenmt_movil.origenes origenes
-         LEFT OUTER JOIN
-         prod_sca_trenmt_movil.origen_x_usuario origen_x_usuario
-            ON (origenes.IdOrigen = origen_x_usuario.idorigen))
-        LEFT OUTER JOIN prod_sca_trenmt_movil.rutas rutas
-           ON (rutas.IdOrigen = origenes.IdOrigen))
-       LEFT OUTER JOIN
-       prod_sca_trenmt_movil.vw_usuarios_por_proyecto vw_usuarios_por_proyecto
-          ON (vw_usuarios_por_proyecto.id_usuario_intranet =
-                 origen_x_usuario.idusuario_intranet)
-GROUP BY origenes.IdOrigen
-ORDER BY origenes.Descripcion ASC";
+						   GROUP_CONCAT(rutas.IdRuta) AS grupo_rutas,
+						   origenes.IdOrigen,
+						   origen_x_usuario.idusuario_intranet,
+						   concat(vw_usuarios_por_proyecto.nombre,
+								  ' ',
+								  vw_usuarios_por_proyecto.apaterno,
+								  ' ',
+								  vw_usuarios_por_proyecto.amaterno)
+							  AS usuario_intranet
+					FROM ((origenes origenes
+							 LEFT OUTER JOIN
+							 origen_x_usuario origen_x_usuario
+								ON (origenes.IdOrigen = origen_x_usuario.idorigen))
+							LEFT OUTER JOIN rutas rutas
+							   ON (rutas.IdOrigen = origenes.IdOrigen))
+						   LEFT OUTER JOIN
+						   vw_usuarios_por_proyecto vw_usuarios_por_proyecto
+							  ON (vw_usuarios_por_proyecto.id_usuario_intranet =
+									 origen_x_usuario.idusuario_intranet)
+					GROUP BY origenes.IdOrigen
+					ORDER BY origenes.Descripcion ASC";
                         $RSQL = $sca->consultar($SQL);
 			while($VSQL = $sca->fetch($RSQL)){
                             if($VSQL["grupo_rutas"] == ""){

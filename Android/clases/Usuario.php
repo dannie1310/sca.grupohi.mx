@@ -12,18 +12,21 @@ class Usuario {
     }
 
     function getData($usr, $pass) {       
-        $arraydata=array();
+        
+		$arraydata=array();
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         $result = $this->_db ->consultar($sql);
-        if ($row = $this->_db ->fetch($result)) {
+        
+		if ($row = $this->_db ->fetch($result)) {
             $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
             $result_s = $this->_db ->consultar($sql_s);
-            if ($row_s = $this->_db ->fetch($result_s)) {
+            
+			if ($row_s = $this->_db ->fetch($result_s)) {
                 $_SESSION["databasesca"]=$row_s[base_datos];
-                //echo 'Base de datos:(('.$_SESSION["databasesca"].'))';
-                
+            
+
                 //CAMIONES
                 $this->_database_sca = SCA::getConexion();
                 /*$sql_camiones="SELECT idcamion, idboton, concat(Economico, '-', Placas, '-', Propietario) as descripcion  FROM scatest.camiones where Estatus=1";
@@ -49,6 +52,9 @@ class Usuario {
                             "economico"=>utf8_encode($row_camiones[Economico]),
                             "capacidad"=>utf8_encode($row_camiones[CubicacionParaPago])
                         );
+                
+
+
                 //TIROS
                 $sql_tiros="Select idtiro, descripcion from tiros where estatus=1;";
                 $result_tiros=$this->_database_sca->consultar($sql_tiros);
@@ -57,25 +63,52 @@ class Usuario {
                             "idtiro"=>$row_tiros[idtiro],
                             "descripcion"=>utf8_encode($row_tiros[descripcion])
                             );
-                 //ORIGENES
-                $sql_origenes="SELECT idorigen, descripcion FROM origenes where Estatus=1;";
-				/*$sql_origenes="SELECT 
-									rutas.IdOrigen as idorigen,
-									CONCAT('DE: ', origenes.Descripcion, ' (HACIA: ', tiros.Descripcion, ')') as descripcion
-								FROM (rutas rutas
-									LEFT OUTER JOIN tiros tiros
-									   ON (rutas.IdTiro = tiros.IdTiro))
-								   LEFT OUTER JOIN origenes origenes
-									  ON (rutas.IdOrigen = origenes.IdOrigen)
-								WHERE (rutas.Estatus = '1')
-								ORDER BY
-								origenes.Descripcion ASC, tiros.descripcion ASC;";*/
+                
+
+
+				 //ORIGENES
+                //$sql_origenes="SELECT idorigen, descripcion FROM origenes where Estatus=1;";
+				
+				$sql_origenes="
+											(SELECT 
+												origen_x_usuario.idorigen as idorigen, 
+							    					origenes.Descripcion as descripcion,
+													1 as estado		
+							  				FROM origen_x_usuario origen_x_usuario
+							      			INNER JOIN origenes origenes
+							          		ON (origen_x_usuario.idorigen = origenes.IdOrigen)
+							 				WHERE (origen_x_usuario.idusuario_intranet = ".$row[IdUsuario]."))
+											UNION(
+											SELECT DISTINCT
+											idOrigen as idorigen, 
+											Descripcion as descripcion,
+                                                    2 as estado
+							  				FROM origenes
+											)
+			                                  ";
+
+
                 $result_origenes=$this->_database_sca->consultar($sql_origenes);
-                while($row_origenes=$this->_database_sca->fetch($result_origenes)) 
+				
+
+				if(mysql_num_rows($result_origenes)>0){
+					while($row_origenes=$this->_database_sca->fetch($result_origenes)) 
                         $array_origenes[]=array(
                             "idorigen"=>$row_origenes[idorigen],
-                            "descripcion"=>utf8_encode($row_origenes[descripcion])
+                            "descripcion"=>utf8_encode($row_origenes[descripcion]),
+							"estado"=>$row_origenes[estado]
                             );
+				}else{
+					 $array_origenes[]=array(
+                            "idorigen"=>0,
+                            "descripcion"=>utf8_encode("- Seleccione -"),
+							"estado"=>1
+                            );
+				}	
+                
+
+
+
 
                 //RUTAS
                 $sql_rutas="SELECT clave, idruta, idorigen, idtiro, totalkm  FROM rutas";
@@ -93,11 +126,39 @@ class Usuario {
                  //MATERIALES
                 $sql_materiales="SELECT idmaterial, descripcion FROM materiales where Estatus=1;";
                 $result_materiales=$this->_database_sca->consultar($sql_materiales);
+
+
                 while($row_materiales=$this->_database_sca->fetch($result_materiales)) 
                         $array_materiales[]=array(
                             "idmaterial"=>$row_materiales[idmaterial],
                             "descripcion"=>utf8_encode($row_materiales[descripcion])
                             );
+
+
+
+
+
+
+
+
+
+
+
+
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
                 $arraydata=array(
                      "IdUsuario"=>$row[IdUsuario],
                      "Nombre"=>utf8_encode($row[nombre]),
@@ -109,14 +170,24 @@ class Usuario {
                      "Origenes"=>$array_origenes,
                      "Rutas"=>$array_rutas,
                      "Materiales"=>$array_materiales
+
+
                  );
+				 
+				 
+
+
                  //print_r($arraydata);                 
                  echo json_encode($arraydata);                                                                                                                                                           
             } else {
-                echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningún proyecto. \"}";
+                echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningun proyecto. \"}";
+
+
             }
         } else {
-           echo "{\"error\":\"Error en iniciar sesión. No se encontró los datos que especifica.\"}";
+           echo "{\"error\":\"Error en iniciar sesion. No se encontraron los datos que especifica.\"}";
+
+
         }
 
     }
@@ -124,16 +195,39 @@ class Usuario {
     function  ConfDATA($usr, $pass){
         $arraydata=array();
         $pass = md5($pass);
-         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        $result = $this->_db ->consultar($sql);
+        $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass';";
+		
+		$result = $this->_db ->consultar($sql);
+		
         if ($row = $this->_db ->fetch($result)) {
+
+
+
               $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
-            $result_s = $this->_db ->consultar($sql_s);
+			
+			$result_s = $this->_db ->consultar($sql_s);
+			
             if ($row_s = $this->_db ->fetch($result_s)) {
+
+
+
+
+
+
                $_SESSION["databasesca"]=$row_s[base_datos];
                 $this->_database_sca = SCA::getConexion();
                 //echo $_SESSION["databasesca"];
+
+
+
+
+
+
+
+
+
+
                  $sql_camiones="SELECT idcamion, Placas, M.descripcion as marca, Modelo, Ancho, largo, Alto, economico FROM camiones C
                                 INNER JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
                 $result_camiones=$this->_database_sca->consultar($sql_camiones);
@@ -149,6 +243,30 @@ class Usuario {
                             "alto"=>utf8_encode($row_camiones[Alto]),
                             "economico"=>utf8_encode($row_camiones[economico])
                         );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 $arraydata=array(
                      "IdUsuario"=>$row[IdUsuario],
                      "Nombre"=>utf8_encode($row[nombre]),
@@ -156,16 +274,26 @@ class Usuario {
                      "base_datos"=>$row_s[base_datos], 
                      "descripcion_database"=>utf8_encode($row_s[descripcion_database]),
                      "Camiones"=>$array_camiones,
+
+
                  );
                  //print_r($arraydata);                 
+
+
+
+
                  echo json_encode($arraydata);  
             }else {
-                echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningún proyecto. \"}";
+                echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningon proyecto. \"}";
+
+
             } 
         }else {
-           echo "{\"error\":\"Error en iniciar sesión. No se encontró los datos que especifica.\"}";
+           echo "{\"error\":\"Error en iniciar sesion. No se encontro los datos que especifica.\"}";
         }
     }
+
+
     function  ConfDATAv2($usr, $pass){
         $arraydata=array();
         $pass = md5($pass);
@@ -182,6 +310,10 @@ class Usuario {
                  /*$sql_camiones="SELECT idcamion, Placas, M.descripcion as marca, Modelo, Ancho, largo, Alto, economico FROM camiones C
                                 INNER JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
                  $result_camiones=$this->_database_sca->consultar($sql_camiones);
+
+
+
+
                 
                 while($row_camiones=$this->_database_sca->fetch($result_camiones)) 
                         $array_camiones[]=array(
@@ -194,6 +326,17 @@ class Usuario {
                             "alto"=>utf8_encode($row_camiones[Alto]),
                             "economico"=>utf8_encode($row_camiones[economico])
                         );*/
+
+
+
+
+
+
+
+
+
+
+
                 //SINDICATOS
                 $sql_sindicatos="Select IdSindicato, Descripcion, NombreCorto from sindicatos where estatus=1";
                 $result_sindicatos=$this->_database_sca->consultar($sql_sindicatos);
@@ -291,10 +434,10 @@ class Usuario {
                  //print_r($arraydata);                 
                  echo json_encode($arraydata);  
             }else {
-                echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningún proyecto. \"}";
+                echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ning?n proyecto. \"}";
             } 
         }else {
-           echo "{\"error\":\"Error en iniciar sesión. No se encontró los datos que especifica.\"}";
+           echo "{\"error\":\"Error en iniciar sesi?n. No se encontr? los datos que especifica.\"}";
         }
     }
 
@@ -369,13 +512,16 @@ class Usuario {
         if ($registros > 0)
             echo "{\"msj\":\"Datos sincronizados correctamente--\"}";
         else
-            echo "{\"error\":\"Se ha producido un error en el Servidor, favor de repórtalo con los administradores\"}";
+            echo "{\"error\":\"Se ha producido un error en el Servidor, favor de rep?rtalo con los administradores\"}";
     }
     */
 
     function captura() {
         //print_r($_REQUEST);
     //echo "INSERT INTO $_REQUEST[bd].json (json) values(\'$_REQUEST[carddata]\')";
+
+
+
         $cadenajsonx=json_encode($_REQUEST);
         $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
 
@@ -385,8 +531,28 @@ class Usuario {
           $data_viajes = json_decode(utf8_encode($json_viajes), TRUE);
           $registros = 0;
           foreach ($data_viajes as $key => $value) {
-            $x="INSERT INTO $_REQUEST[bd].viajesnetos values(null,0,'$value[FechaCarga]', '$value[HoraCarga]', 1, $value[IdCamion], $value[IdOrigen], '$value[FechaSalida]','$value[HoraSalida]',
-                $value[IdTiro], '$value[FechaLlegada]', '$value[HoraLlegada]', $value[IdMaterial], '$value[Observaciones]','$value[Creo]',0, '$value[Code]')";
+           $x="INSERT INTO 
+                    $_REQUEST[bd].viajesnetos 
+                VALUES(null,
+                       0,
+                       '$value[FechaCarga]', 
+                       '$value[HoraCarga]', 
+                       1, 
+                       $value[IdCamion], 
+                       $value[IdOrigen], 
+                       '$value[FechaSalida]',
+                       '$value[HoraSalida]',
+                       $value[IdTiro], 
+                       '$value[FechaLlegada]', 
+                       '$value[HoraLlegada]', 
+                       $value[IdMaterial], 
+                       '$value[Observaciones]',
+                       '$value[Creo]',
+                       0, 
+                       '$value[Code]', 
+                       '$value[uidTAG]');";
+
+
             $this->_db->consultar($x);
             $registros++;
           }
@@ -411,10 +577,16 @@ class Usuario {
               $registros++;
           }
         }
+
+
+
+
+
+
         if ($registros > 0)
             echo "{\"msj\":\"Datos sincronizados correctamente--\"}";
         else
-            echo "{\"error\":\"Se ha producido un error en el Servidor, favor de repórtalo con los administradores\"}";
+            echo "{\"error\":\"Se ha producido un error en el Servidor, favor de rep?rtalo con los administradores\"}";
     }
     /*
      *  $sql_s = "SELECT id_proyecto FROM usuarios_proyectos where id_usuario_intranet=$this->IdUsuario and id_proyecto!=5555 order by id_Proyecto desc limit 1;";
@@ -446,6 +618,8 @@ class Usuario {
       function setIdNombre(){
 
       } */
+
+
 }
 
 ?>

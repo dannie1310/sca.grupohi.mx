@@ -4,7 +4,7 @@
 */
 
 /* 
-Primera Versión de Estilos
+Primera Versiï¿½n de Estilos
 Actualizada Elizabeth Martinez 31 Marzo 2011
   */
   
@@ -18,7 +18,11 @@ margin:0;
 
 }
 div#bienvenida{ float:left;}
-div#version{ float:right; font-weight:bold; font-family:Verdana, Geneva, sans-serif}
+div#version{ 
+    float:right;  
+    font-family:Verdana, Geneva, sans-serif;
+    color: #444;
+}
 div#bandera{ float:right;}
 body,td,th {
 	font-size: 11px;
@@ -235,13 +239,12 @@ a:active {
 
 /*Estilos del Login*/
 
-	.Casillas
-	{
-		font-size:14px;
-		background:#F0F8FF;
-		color:#006699;
-		border: 1px solid;
-	}
+.Casillas{
+    background: #f7f7f5 none repeat scroll 0 0;
+    border: 1px solid;
+    color: #444;
+    font-size: 14px;
+}
 	.Casillas_small
 	{
 		font-size:10px;
@@ -294,3 +297,7 @@ a:active {
 		font-size:12px;
 		font-weight:bold;
 	}
+.style4 {
+    color: #444;
+    font-size: 14px;
+}

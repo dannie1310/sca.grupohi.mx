@@ -2,14 +2,14 @@
 	session_start();
 	if(isset($_REQUEST["v"]) && ($_REQUEST["v"]==1)){
 	header("Content-type: application/vnd.ms-excel");
-    header('Content-Disposition:  filename=Acareos Ejecutados por Camión '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs');
+    header('Content-Disposition:  filename=AcarreosEjecutadosPorCamionDetallado_'.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs');
 	}
 
 ?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>..::GLN.-Sistema de Control de Acarreos::..</title>
+<title>Modulo de Acarreos</title>
 <style type="text/css">
 <!--
 .Estilo1 {color: #FF0000}
@@ -60,28 +60,22 @@ if($tipo_consulta=="sindicato")
 	}
 }
 
-if($tipo_consulta=="camion")
-{
-	if($camion=="T")
-	{
+if($tipo_consulta=="camion"){
+	if($camion=="T"){
 		$estatus=$_REQUEST["estatus"];
-		if($estatus!=3)
-		{
+		if($estatus!=3){
 			
-			if($estatus==1)
-			{
+			if($estatus==1){
 				$texto="TODOS LOS CAMIONES ACTIVOS";
 			}
 			else
-			if($estatus==0)
-			{
+			if($estatus==0){
 				$texto="TODOS LOS CAMIONES INACTIVOS";
 			}
 			
 			$consulta="c.Estatus=".$estatus." and";
 		}
-		else
-		{
+		else{
 			$texto="TODOS LOS CAMIONES";
 			$consulta="";
 		}
@@ -143,7 +137,7 @@ if($tipo_consulta=='camion'){
       <tr>
       <td colspan="2" ><table width="1500" border="0" align="center" >
         <tr>
-          <td colspan="5">&nbsp;</td>
+          <td colspan="6">&nbsp;</td>
           <td width="32">&nbsp;</td>
           <td width="60">&nbsp;</td>
           <td width="54">&nbsp;</td>
@@ -157,7 +151,7 @@ if($tipo_consulta=='camion'){
           <td width="54">&nbsp;</td>
         </tr>
         <tr>
-          <td colspan="5">&nbsp;</td>
+          <td colspan="6">&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
@@ -171,6 +165,7 @@ if($tipo_consulta=='camion'){
         </tr>
         <tr bgcolor="#0A8FC7">
           <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">CAMI&Oacute;N</font></div></td>
+          <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">SINDICATO</font></div></td>
           <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">FECHA</font></div></td>
           <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">HORA SALIDA</font></div></td>
           <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">HORA LLEGADA</font></div></td>
@@ -236,15 +231,24 @@ if($tipo_consulta=='camion'){
                v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial 
                
                Order by Fecha";
+               //echo $rows."<br />";
 
               $ro=$link->consultar($rows);
               $x=1;
               while($fil=mysql_fetch_array($ro)){ ?>
                       <tr>
-                        <td width="48"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;">
-                          <?php if($x==1)echo $fil[Economico]; ?>
-                        </font></div></td>
+                        <td width="48">
+                            <div align="center">
+                                <font color="#000000" face="Trebuchet MS" style="font-size:10px;">
+                                <?php 
+                                    //if($x==1)echo $fil[Economico];
+                                    echo $fil[Economico];
+                                ?>
+                                </font>
+                            </div>
+                        </td>
                         <td width="69"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo fecha($fil[Fecha]); ?></font></div></td>
+                        <td width="69"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Propietario]; ?></font></div></td>
                         <td width="69"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[hsalida]; ?></font></div></td>
                         <td width="69"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[hllegada]; ?></font></div></td>
                         <td width="39"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo "1"; ?></font></div></td>

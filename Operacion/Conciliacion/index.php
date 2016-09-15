@@ -391,16 +391,17 @@ tr.ingresos:hover, tr.egresos:hover{ cursor:pointer;}
 <?php } ?>
 <br />
 <div id="administracion">
-
-	<div id="tabla">
-    <ul>
-    <?php
-	 $query_sindicato = "SELECT DISTINCT idsindicato FROM conciliacion";
-	 $result_sindicato = $SCA->consultar($query_sindicato);
-	 while($vsindicato = mysql_fetch_array($result_sindicato)){
-		 ?>
-         <li class="top-list">
-		 <div><?php echo regresa("Sindicatos","Descripcion","IdSindicato",$vsindicato["idsindicato"])?>
+    <div id="tabla">
+        <ul>
+        <?php
+            $query_sindicato = "SELECT DISTINCT idsindicato FROM conciliacion";
+            $result_sindicato = $SCA->consultar($query_sindicato);
+            
+            while($vsindicato = mysql_fetch_array($result_sindicato)){
+	?>
+        <li class="top-list">
+        <div>
+        <?php echo regresa("Sindicatos","Descripcion","IdSindicato",$vsindicato["idsindicato"])?>
 		 <?php
 								$query_importes_sindicato = "select count(d.idviaje) as viajes,sum(v.importe) as importe, sum(volumen) as volumen from
 								conciliacion_detalle d
@@ -408,7 +409,8 @@ tr.ingresos:hover, tr.egresos:hover{ cursor:pointer;}
 								left join conciliacion c using (idconciliacion)
 								where c.idsindicato=".$vsindicato["idsindicato"]."";
 								$result_importes_sindicato = $SCA->consultar($query_importes_sindicato);
-	 							while($v_importes_sindicato = mysql_fetch_array($result_importes_sindicato)){
+	 							
+                                                                while($v_importes_sindicato = mysql_fetch_array($result_importes_sindicato)){
 									$importe_sindicato = $v_importes_sindicato["importe"];
 									$viajes_sindicato = $v_importes_sindicato["viajes"];
 									$volumen_sindicato = $v_importes_sindicato["volumen"];
@@ -432,6 +434,7 @@ tr.ingresos:hover, tr.egresos:hover{ cursor:pointer;}
 					$rconciliacion_rutas = $SCA->consultar($conciliacion_rutas);
 					$array_rutas='';
 					$array_rutas_descripcion='';
+                                        
 					while($vconciliacion_rutas = mysql_fetch_assoc($rconciliacion_rutas)){
 						$array_rutas[]=$vconciliacion_rutas['IdRuta'];
 						$array_rutas_descripcion[$vconciliacion_rutas['IdRuta']]=$vconciliacion_rutas['Descripcion'];
@@ -553,10 +556,12 @@ tr.ingresos:hover, tr.egresos:hover{ cursor:pointer;}
         <?php
 		$conciliaciones = "SELECT *,DATE_FORMAT(fecha_inicial, '%d-%m-%Y') as fecha_inicial,DATE_FORMAT(fecha_final, '%d-%m-%Y') as fecha_final FROM conciliacion ORDER BY fecha_conciliacion";
 		$rconciliaciones = $SCA->consultar($conciliaciones);
+                
 		while($vconciliaciones = mysql_fetch_assoc($rconciliaciones)){
 			$conciliacion_rutas="Select * from conciliacion_rutas where idconciliacion=$vconciliaciones[idconciliacion]";
 			$rconciliacion_rutas = $SCA->consultar($conciliacion_rutas);
 			$array_rutas='';
+                        
 			while($vconciliacion_rutas = mysql_fetch_assoc($rconciliacion_rutas)){
 				$array_rutas[]=$vconciliacion_rutas['IdRuta'];
 			}
@@ -564,7 +569,7 @@ tr.ingresos:hover, tr.egresos:hover{ cursor:pointer;}
 		?>
         <tr>
         	<td><?php echo $vconciliaciones["idconciliacion"];?></td>
-        	<td><?php echo regresa("Sindicatos","Descripcion","IdSindicato",$vconciliaciones["idsindicato"])?></td>
+        	<td><?php echo regresa("Sindicatos", "Descripcion", "IdSindicato", $vconciliaciones["idsindicato"])?></td>
             <td><?php echo $vconciliaciones["fecha_inicial"];?> al <?php echo $vconciliaciones["fecha_final"];?></td>
             <td><?php if($vconciliaciones["estado"]==1){ 
 					?>

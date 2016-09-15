@@ -9,7 +9,7 @@
 		{
 			try
 			{
-				$this->enlace=mysql_connect($srv,$usr,$ctr);
+				$this->enlace = mysql_connect($srv,$usr,$ctr);
 				if (!$this->enlace) {
 					echo '{"error":"Error al conectarse a la base de datos '.$bd.' "}';
 					exit();	
@@ -29,59 +29,51 @@
 			}
 		}
 		
-		function regresa_Enlace()
-		{
+		function regresa_Enlace(){
 			return $this->enlace;	
 		}
-		function affected()
-		{
+		
+		function affected(){
 			return mysql_affected_rows($this->enlace);	
 		}
-		function setBase($bd)
-		{
-			try
-			{
-				mysql_select_db($bd,$this->enlace);
-			}
-			catch(Exception $e)
-			{
-				echo "Excepción: ".$e->getMessage();
-			}	
+		
+		function setBase($bd){
+                    try{
+                        mysql_select_db($bd,$this->enlace);
+                    }
+                    catch(Exception $e){
+                        echo "Excepción: ".$e->getMessage();
+                    }	
 		}
 		
-		function consultar($sql)
-		{
-			$r=mysql_query($sql,$this->enlace);
-			return $r;	
-		}
-		function fetch($r)
-		{
-			return mysql_fetch_array($r);
+		function consultar($sql){
+                    $r=mysql_query($sql,$this->enlace);
+                    return $r;	
 		}
 		
-		function cacheQuery($sql)
-		{
-			if( !$result = $this->consultar( $sql ) )
-			{
-				trigger_error('Error executing and caching query: '.$queryStr.$this->connections[$this->activeConnection]->error, E_USER_ERROR);
-				return -1;
-			}
-			else
-			{
-				$this->queryCache[] = $result;
-				return count($this->queryCache)-1;
-			}
+		function fetch($r){
+                    return mysql_fetch_array($r);
 		}
 		
-		function exFnc($sql,$ret)
-		{
+		function cacheQuery($sql){
+                    if( !$result = $this->consultar( $sql ) ){
+                        trigger_error('Error executing and caching query: '.$queryStr.$this->connections[$this->activeConnection]->error, E_USER_ERROR);
+			return -1;
+                    }
+                    else{
+                        $this->queryCache[] = $result;
+			return count($this->queryCache)-1;
+                    }
+		}
+		
+		function exFnc($sql,$ret){
 			$sql="select ".$sql." as ".$ret;
 			$r=mysql_query($sql,$this->enlace);
 			$v=mysql_fetch_array($r);
 			return $v[$ret];	
 		}
-		function exSP($sql)
-		{
+                
+		function exSP($sql){
 			$sql="call ".$sql;
 			
 			if(!$r=mysql_query($sql,$this->enlace))
@@ -89,23 +81,20 @@
 			return $r;
 		}
 		
-		function regresaDatos2($tbl,$campo,$campoid, $valorid)
-		{
+		function regresaDatos2($tbl,$campo,$campoid, $valorid){
 			$sql="select ".$campo." from ".$tbl." where ".$campoid."='".$valorid."'";
 			$r=mysql_query($sql,$this->enlace);
 			$v=mysql_fetch_array($r);
 			return $v[$campo];	
 		}
-		function regresaDatos($tbl,$campo,$where)
-		{
+		function regresaDatos($tbl,$campo,$where){
 			$sql="select ".$campo." from ".$tbl." ".$where."";
 			$r=mysql_query($sql,$this->enlace);
 			$v=mysql_fetch_array($r);
 			return $v[$campo];	
 		}
 		
-		function regresaSelectBasico($tbl,$campoid,$campo,$condicion,$orden,$sel,$seleccionado=0)
-		{
+		function regresaSelectBasico($tbl,$campoid,$campo,$condicion,$orden,$sel,$seleccionado=0){
 			$sql="select * from ".$tbl." where ".$condicion." order by ".$campo." ".$orden."";
 			$r=mysql_query($sql,$this->enlace);
 			$select="<select name='".$tbl."' id='".$tbl."'>";
@@ -172,16 +161,15 @@
 		
 		}
 		
-		function regresaSelect($nombre,$cmp,$tbl,$condicion,$campoid,$campo,$orden,$width,$sel,$mul,$size)
-		{
+		function regresaSelect($nombre,$cmp,$tbl,$condicion,$campoid,$campo,$orden,$width,$sel,$mul,$size){
 			if($mul)
 			$mlt="multiple";
 			$sql="select ".$cmp." from ".$tbl." where ".$condicion." order by ".$campo." ".$orden."";
 			$r=mysql_query($sql,$this->enlace);
 			$siz=mysql_affected_rows($this->enlace);
 			$id=$nombre;
-			if($mul)
-			{
+			
+			if($mul){
 				$name=$nombre."[]";
 				if($siz>$size)
 				$size=$size;
@@ -191,12 +179,11 @@
 			else
 			$name=$nombre;
 			$select="<select ".$mlt." size='".$size."' name='".$name."' id='".$id."' style='width:".$width."'>";
+			
 			if($sel&&!$mul){
 				$select.="<option value='A99'>- SELECCIONE -</option>";
 			}
-			while ($v=mysql_fetch_array($r))
-			{
-				
+			while ($v=mysql_fetch_array($r)){
 				$select.="<option value='".$v[$campoid]."' title='".$v[$campo]."'>".$v[$campo]."</option>";
 			}
 			
@@ -206,8 +193,7 @@
 		}
 
 		
-		function regresaSelect_mult_order($nombre,$cmp,$tbl,$condicion,$campoid,$campo,$orden,$sel,$mul,$size,$evt,$width)
-		{
+		function regresaSelect_mult_order($nombre,$cmp,$tbl,$condicion,$campoid,$campo,$orden,$sel,$mul,$size,$evt,$width){
 			
 			$mlt=0;
 			$sql="select ".$cmp." from ".$tbl." where ".$condicion." order by ".$orden."";
@@ -251,8 +237,7 @@
 		
 		}
 
-		function regresaSelect_mult_order_ret($nombre,$cmp,$tbl,$condicion,$campoid,$campo,$orden,$sel,$mul,$size,$evt,$width,$selected=0)
-		{
+		function regresaSelect_mult_order_ret($nombre,$cmp,$tbl,$condicion,$campoid,$campo,$orden,$sel,$mul,$size,$evt,$width,$selected=0){
 			
 			$mlt=0;
 			$sql="select ".$cmp." from ".$tbl." where ".$condicion." order by ".$orden."";
@@ -391,8 +376,7 @@
 		
 		}
 		
-		function regresaSelect_mult_order_especial($nombre,$id,$cmp,$tbl,$condicion,$campoid,$campo,$orden,$sel,$mul,$size,$evt,$campo_title,$width,$seleccion)
-		{
+		function regresaSelect_mult_order_especial($nombre,$id,$cmp,$tbl,$condicion,$campoid,$campo,$orden,$sel,$mul,$size,$evt,$campo_title,$width,$seleccion){
 			$mlt=0;
 			$sql="select ".$cmp." from ".$tbl." where ".$condicion." order by ".$orden."";
 			$r=mysql_query($sql,$this->enlace) ;
@@ -409,19 +393,20 @@
 					else
 					$size=$siz;
 				}
-				else
-				{
+				else{
 					$name=$nombre;
 					$mlt="";
 				}
+                                
 				if($width>0)
 				$style="style='width:".$width."'";
 				$select="<select ".$mlt." size='".$size."' name='".$name."' id='".$id."' ".$evt." ".$style." >";
-				if($sel&&!$mul){
+				
+                                if($sel&&!$mul){
 					$select.="<option value='A99'>- SELECCIONE -</option>";
 				}
-				while ($v=mysql_fetch_array($r))
-				{
+				
+                                while ($v=mysql_fetch_array($r)){
 					$select.="<option value='".$v[$campoid]."' title='".utf8_encode($v[$campo_title])."'";
 					if($seleccion==$v[$campoid])
 					$select.="selected";

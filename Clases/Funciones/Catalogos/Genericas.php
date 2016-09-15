@@ -28,30 +28,27 @@ function comboConsecutivo($tabla,$campo,$id,$no,$idelemento,$tipo)
 
 
 
-	function fecha($cambio)
-	{ //echo $cambio;
+	function fecha($cambio){ //echo $cambio;
 		$partes=explode("-", $cambio);
 		$dia=$partes[2];
 		$mes=$partes[1];
-		$año=$partes[0];
-		$Fecha=$dia."-".$mes."-".$año;
+		$aï¿½o=$partes[0];
+		$Fecha=$dia."-".$mes."-".$aï¿½o;
 		return ($Fecha);
 	}
 
 
-	function fechasql($cambio)
-	{ //echo $cambio;
+	function fechasql($cambio){ //echo $cambio;
 		$partes=explode("-", $cambio);
 		$dia=$partes[0];
 		$mes=$partes[1];
-		$año=$partes[2];
-		$Fechasql=$año."-".$mes."-".$dia;
+		$aï¿½o=$partes[2];
+		$Fechasql=$aï¿½o."-".$mes."-".$dia;
 		return ($Fechasql);
 	}
 
 
-	function regresa($tabla,$campo,$id,$valorid)
-	{
+	function regresa($tabla,$campo,$id,$valorid){
 		$ls=SCA::getConexion();
 		$sql="select ".$campo." from ".$tabla." where ".$id."=".$valorid.";";
 		//echo $sql;

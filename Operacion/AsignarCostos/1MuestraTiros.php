@@ -10,7 +10,7 @@
 <head>
 <META HTTP-EQUIV="Expires" CONTENT="0">
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-<title>..::GLN.-Sistema de Control de Acarreos::..</title>
+<title>Módulo de Acarreos</title>
 <script language="javascript" type="text/javascript" src="../../Clases/Js/Genericas.js"></script>
 <!--<script type="text/javascript" src="../../Clases/Js/NoClick.js"></script>-->
 <link href="../../inc/js/jquery-ui-1.8.16.custom/css/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
@@ -114,7 +114,7 @@ tr.ingresos:hover, tr.egresos:hover{ cursor:pointer;}
 <body>
 <table width="840" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td class="EncabezadoPagina"><img src="../../Imgs/16-Signo-Peso.gif" width="16" height="16" />Control de Acarreos.- Asignaci&oacute;n de Costos</td>
+    <td class="EncabezadoPagina"><img src="../../Imgs/16-Signo-Peso.gif" width="16" height="16" />Asignaci&oacute;n de Costos</td>
   </tr>
    <tr>
     <td  /> &nbsp;</td>
@@ -169,9 +169,12 @@ tr.ingresos:hover, tr.egresos:hover{ cursor:pointer;}
                             	
                             	<td colspan="7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $vo2["Origen"]?></td>
                             </tr>
-							<?php
+                            <?php
 						#MATERIALES
-						$material="select distinct(IdMaterial) as IdMaterial, Material  from (select tor.IdTipoOrigen as IdTipoOrigen, v.IdOrigen as IdOrigen, tor.Descripcion as TipoOrigen,  v.idmaterial as idmaterial, mat.Descripcion as Material
+						$material = "SELECT 
+                                                                distinct(IdMaterial) as IdMaterial, 
+                                                                Material  
+                                                            FROM (select tor.IdTipoOrigen as IdTipoOrigen, v.IdOrigen as IdOrigen, tor.Descripcion as TipoOrigen,  v.idmaterial as idmaterial, mat.Descripcion as Material
 from materiales as mat, viajes as v, tiposorigenes as tor, origenes as o, tiros as t where mat.IdMaterial=v.IdMaterial and 
 tor.IdTipoOrigen=o.IdTipoOrigen and v.IdOrigen=o.IdOrigen and v.FechaLlegada='".$v[FechaLlegada]."' and v.IdTiro=t.IdTiro and 
 v.Estatus in(0,10,20) and tor.IdTipoOrigen=".$vo[IdTipoOrigen]." and v.IdOrigen='".$vo2["IdOrigen"]."') as Tabla 
@@ -185,7 +188,9 @@ v.Estatus in(0,10,20) and tor.IdTipoOrigen=".$vo[IdTipoOrigen]." and v.IdOrigen=
                         
                         <tr>
                           
-                          <td colspan="7" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $vmat[Material]; ?></td>
+                          <td colspan="7" align="left" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <?php echo $vmat[Material]." | ".$vmat[IdMaterial]; ?>
+                          </td>
                         </tr>
                         
                         <tr>
@@ -214,24 +219,26 @@ v.Estatus in(0,10,20) and tor.IdTipoOrigen=".$vo[IdTipoOrigen]." and v.IdOrigen=
                         <form name="frm" action="3SolicitaCentros.php" method="post" id="frm<?php echo $j.$pr.$i.$k; ?>">
 							<tr>
 					          	<td width="22">&nbsp;</td>
-                                <td width="22">&nbsp;</td>
+                                                        <td width="22">&nbsp;</td>
 						        <td width="241"><?php echo $vt[Tiro]; ?></td>
 						        <td width="94" align="right"> <?php echo $vt[Viajes]; ?></td>
-								<td width="89" align="right"><?php echo $vt[Volumen]; ?> m<sup>3</sup></td>
+							<td width="89" align="right"><?php echo $vt[Volumen]; ?> m<sup>3</sup></td>
 						        <td width="91" align="right">$ <?php echo $vt[Importe]; ?></td>
-                                <input type="hidden" value="<?php echo $v[FechaLlegada];?>" name="fecha">
-                                   <input type="hidden" value="1" name="tipoa">
-                                   <input type="hidden" value="<?php echo $vt[IdTiro];?>" name="tiro">
-                                   <input type="hidden" value="<?php echo $vt[IdOrigenh];?>" name="origen">
-								   <input type="hidden" value="<?php echo $vmat[IdMaterial];?>" name="material">
-                                   <input name="numero" type="hidden" value="1">
-                                   <input type="hidden" value="<?php echo $vt[Viajes]; ?>" name="totalviajes">
-                                   <input type="hidden" value="<?php echo $vt[Importesc]; ?>" name="importe">
-                                   <input type="hidden" value="<?php echo $vt[Volumen]; ?>" name="volumen">
-                                   <input name="torigen" type="hidden" value="<?php echo $vo[IdTipoOrigen]; ?>">
-						        <td width="93" align="center"><img class="asignar" numero="<?php echo $j.$pr.$i.$k; ?>" src="../../Imgs/16-Consultar.gif" style="cursor:pointer;"></td>
+                                                            <input type="hidden" value="<?php echo $v[FechaLlegada];?>" name="fecha">
+                                                            <input type="hidden" value="1" name="tipoa">
+                                                            <input type="hidden" value="<?php echo $vt[IdTiro];?>" name="tiro">
+                                                            <input type="hidden" value="<?php echo $vt[IdOrigenh];?>" name="origen">
+                                                            <input type="hidden" value="<?php echo $vmat[IdMaterial];?>" name="material">
+                                                            <input name="numero" type="hidden" value="1">
+                                                            <input type="hidden" value="<?php echo $vt[Viajes]; ?>" name="totalviajes">
+                                                            <input type="hidden" value="<?php echo $vt[Importesc]; ?>" name="importe">
+                                                            <input type="hidden" value="<?php echo $vt[Volumen]; ?>" name="volumen">
+                                                            <input name="torigen" type="hidden" value="<?php echo $vo[IdTipoOrigen]; ?>">
+						        <td width="93" align="center">
+                                                            <img class="asignar" numero="<?php echo $j.$pr.$i.$k; ?>" src="../../Imgs/16-Consultar.gif" style="cursor:pointer;">
+                                                        </td>
 							</tr>
-							</form>
+                                                    </form>
                             
                             
                             
