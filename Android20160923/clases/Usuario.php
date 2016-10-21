@@ -14,7 +14,7 @@ class Usuario {
     function getData($usr, $pass) {       
         
         $arraydata=array();
-        $pass = ($pass);
+        $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         $result = $this->_db ->consultar($sql);
         
@@ -118,7 +118,7 @@ class Usuario {
                 
                 
                 //TAGS
-                $sql_tags="SELECT uid, idcamion, idproyecto FROM tags WHERE estado=1;";
+                $sql_tags="SELECT uid, idcamion, idproyecto_global as idproyecto FROM tags WHERE estado=1;";
                 $result_tags=$this->_database_sca->consultar($sql_tags);
                 
                 while($row_tags=$this->_database_sca->fetch($result_tags))
@@ -158,14 +158,16 @@ class Usuario {
 
     function  ConfDATA($usr, $pass){
         $arraydata=array();
-        $pass = ($pass);
+        $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
+        //echo $sql;
 
         $result = $this->_db ->consultar($sql);
-
-
+        $row = $this->_db ->fetch($result);
         
-        if ($row = $this->_db ->fetch($result)) {
+//echo 'roesssss'.count($row)."ssssss";
+        
+        if (count($row) == 4) {
             $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
 
@@ -179,7 +181,8 @@ class Usuario {
                //echo $_SESSION["databasesca"];
                 
                 //CAMIONES
-                $sql_camiones="SELECT idcamion, Placas, M.descripcion as marca, Modelo, Ancho, largo, Alto, economico FROM camiones C
+                $sql_camiones="SELECT idcamion, Placas, M.descripcion as marca, Modelo, Ancho, largo, Alto, economico, (select count(*)
+from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                                 INNER JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
                 $result_camiones=$this->_database_sca->consultar($sql_camiones);
                 
@@ -192,7 +195,8 @@ class Usuario {
                             "ancho"=>utf8_encode($row_camiones[Ancho]),
                             "largo"=>utf8_encode($row_camiones[largo]),
                             "alto"=>utf8_encode($row_camiones[Alto]),
-                            "economico"=>utf8_encode($row_camiones[economico])
+                            "economico"=>utf8_encode($row_camiones[economico]),
+                            "numero_viajes"=>$row_camiones["numero_viajes"],
                         );
                         
                 //TAGS
@@ -236,7 +240,7 @@ class Usuario {
                 echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningun proyecto. \"}";
             } 
         }else {
-           echo "{\"error\":\"Error en iniciar sesion. No se encontro los datos que especifica.\"}";
+           echo "{\"error\":\"Error en iniciar sesion. No se encontraron los datos que especifica.\"}";
         }
     }
     
@@ -368,10 +372,50 @@ class Usuario {
                 echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningï¿½n proyecto. \"}";
             } 
         }else {
-           echo "{\"error\":\"Error en iniciar sesiï¿½n. No se encontrï¿½ los datos que especifica.\"}";
+           echo "{\"error\":\"Error en iniciar sesión. No se encontraron los datos que especifica.\"}";
         }
     }
-
+    function capturaConfiguracion($usr,$pass){
+        $pass = md5($pass);
+        $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
+        $result = $this->_db ->consultar($sql);
+        if ($row = $this->_db ->fetch($result)) {
+            $cadenajsonx=json_encode($_REQUEST);
+            $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
+            if(isset($_REQUEST['tag_camion'])){
+                $json_datos_confuguracion = $_REQUEST['tag_camion'];
+                $datos_confuguracion = json_decode(utf8_encode($json_datos_confuguracion), TRUE);
+                $a_registrar = count($datos_confuguracion);
+                if($a_registrar > 0){
+                $registros = 0;
+                foreach ($datos_confuguracion as $key => $value) {
+                    $y="UPDATE  ".$_REQUEST['bd'].".tags SET estado = 0 where idcamion = ".$value['idcamion'].";";
+                    //echo $x;
+                    $this->_db->consultar($y);
+                    $x="INSERT INTO 
+                            ".$_REQUEST['bd'].".tags (uid, idcamion, idproyecto, idproyecto_global, fecha_asignacion, asigno) 
+                        VALUES('".$value['uid']."',".$value['idcamion'].",1, ".$value['idproyecto_global'].",NOW(),'".$usr."');";
+                    
+                    $this->_db->consultar($x);
+                    $registros++;
+                }
+                if ($registros == $a_registrar)
+                    echo "{\"msj\":\"Datos sincronizados correctamente. ".$registros." - ".$a_registrar."\"}";
+                else
+                    echo "{\"error\":\"No se sincronizaron los todos los registros.\"}";
+                }
+                }else{
+                    echo "{\"error\":\"No ha mandado ningún registro para sincronizar.\"}";
+                }
+            }
+            
+        ELSE{
+            
+            echo "{\"error\":\"Datos de inicio de sesión no validos.\"}";
+        }
+        
+        //RETURN $registros;
+    }
 
     function captura() {
 
@@ -384,7 +428,7 @@ class Usuario {
           $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$_REQUEST[carddata]')"); //coordenadas
           $json_viajes = $_REQUEST[carddata];
           $data_viajes = json_decode(utf8_encode($json_viajes), TRUE);
-          $registros = 0;
+          $registros_viajes = 0;
           foreach ($data_viajes as $key => $value) {
 
 
@@ -411,7 +455,7 @@ class Usuario {
 					   '$value[Imagen]');";
 					   
             $this->_db->consultar($x);
-            $registros++;
+            $registros_viajes++;
           }
         }
 
@@ -419,7 +463,7 @@ class Usuario {
           $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$_REQUEST[coordenadas]')"); //coordenadas
           $json_coordenada = $_REQUEST[coordenadas];
           $data_coordenada = json_decode(utf8_encode($json_coordenada), TRUE);
-          $registros = 0;
+          $registros_coordenadas = 0;
 
           if (isset($_REQUEST['idusuario']))
             $usuario_creo=$_REQUEST['idusuario'];
@@ -429,15 +473,15 @@ class Usuario {
           foreach ($data_coordenada as $key => $value) {
               $x="INSERT INTO $_REQUEST[bd].eventos_gps 
                   (idevento, IMEI, longitude,latitude,fechahora, code, idusuario) values
-                  ($value[idevento],'$value[IMRI]', '$value[longitude]', '$value[latitude]','$value[fechahora]', '$value[code]',$usuario_creo)";
+                  ($value[idevento],'$value[IMEI]', '$value[longitud]', '$value[latitud]','$value[fecha_hora]', '$value[code]',$usuario_creo)";
               $this->_db->consultar($x); 
-              $registros++;
+              $registros_coordenadas++;
           }
         }
         
         
         
-        if ($registros > 0)
+        if ($registros_viajes > 0)
             echo "{\"msj\":\"Datos sincronizados correctamente--\"}";
         else
             echo "{\"error\":\"Se ha producido un error en el Servidor, favor de reportalo con los administradores\"}";
