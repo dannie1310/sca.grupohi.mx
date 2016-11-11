@@ -19,8 +19,9 @@ class Usuario {
         $result = $this->_db ->consultar($sql);
         
         if ($row = $this->_db ->fetch($result)) {
-            $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
-                    inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
+            $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database, p.empresa, p.tiene_logo  from proyectos p
+                    inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 "
+                    . "And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
             $result_s = $this->_db ->consultar($sql_s);
             
             if ($row_s = $this->_db ->fetch($result_s)) {
@@ -65,13 +66,24 @@ class Usuario {
                                             FROM origen_x_usuario origen_x_usuario
                                             INNER JOIN origenes origenes
                                             ON (origen_x_usuario.idorigen = origenes.IdOrigen)
+                                             join 
+                                            rutas on(rutas.IdOrigen = origenes.IdOrigen)
                                             WHERE (origen_x_usuario.idusuario_intranet = ".$row[IdUsuario]."))
                                             UNION(
                                             SELECT DISTINCT
-                                            idOrigen as idorigen, 
+                                            origenes.idOrigen as idorigen, 
                                             Descripcion as descripcion,
                                                     2 as estado
-                                            FROM origenes
+                                            FROM origenes join 
+                                            rutas on(rutas.IdOrigen = origenes.IdOrigen) where origenes.idOrigen not in(
+
+SELECT 
+                                                origen_x_usuario.idorigen 
+                                            FROM origen_x_usuario origen_x_usuario
+                                            INNER JOIN origenes origenes
+                                            ON (origen_x_usuario.idorigen = origenes.IdOrigen)
+                                            WHERE (origen_x_usuario.idusuario_intranet = ".$row[IdUsuario].")
+)
                                             )
                                               ";
                 $result_origenes=$this->_database_sca->consultar($sql_origenes);
@@ -133,6 +145,8 @@ class Usuario {
                      "Nombre"=>utf8_encode($row[nombre]),
                      "IdProyecto"=>$row_s[id_proyecto],
                      "base_datos"=>$row_s[base_datos], 
+                     "empresa"=>$row_s[empresa], 
+                     "tiene_logo"=>$row_s[tiene_logo], 
                      "descripcion_database"=>utf8_encode($row_s[descripcion_database]),
                      "Camiones"=>$array_camiones,
                      "Tiros"=>$array_tiros,
@@ -176,9 +190,9 @@ class Usuario {
 
             
             if ($row_s = $this->_db ->fetch($result_s)) {
+               
                $_SESSION["databasesca"]=$row_s[base_datos];
                $this->_database_sca = SCA::getConexion();
-               //echo $_SESSION["databasesca"];
                 
                 //CAMIONES
                 $sql_camiones="SELECT idcamion, Placas, M.descripcion as marca, Modelo, Ancho, largo, Alto, economico, (select count(*)
@@ -239,6 +253,70 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
 
                 echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningun proyecto. \"}";
             } 
+        }else {
+           echo "{\"error\":\"Error en iniciar sesion. No se encontraron los datos que especifica.\"}";
+        }
+    }
+    
+    function  paraRegistro($usr, $pass){
+        $arraydata=array();
+        $pass = md5($pass);
+        $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
+        //echo $sql;
+
+        $result = $this->_db ->consultar($sql);
+        $row = $this->_db ->fetch($result);
+
+        
+        if ($this->_db->affected()>0) {
+            
+            $sql_valido = "select if( vigencia > NOW() OR vigencia is null, 1,0) AS valido from sca_configuracion.permisos_alta_tag where idusuario = ".$row["IdUsuario"].";";
+            $result_valido = $this->_db ->consultar($sql_valido);
+            $row_valido = $this->_db ->fetch($result_valido);
+            if($row_valido["valido"] == 1){
+                
+            $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
+                    inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
+
+            $result_s = $this->_db ->consultar($sql_s);
+
+
+            
+            if ($row_s = $this->_db ->fetch($result_s)) {
+               
+               $_SESSION["databasesca"]=$row_s[base_datos];
+               $this->_database_sca = SCA::getConexion();
+                
+                
+                
+                //PROYECTOS
+                
+                $sql_tags="SELECT  id_proyecto, descripcion FROM sca_configuracion.proyectos where status = 1";
+                $result_tags=$this->_database_sca->consultar($sql_tags);
+                
+                while($row_tags=$this->_database_sca->fetch($result_tags))
+                    $array_proyectos[]=array(
+                        "id_proyecto"=>$row_tags[id_proyecto],
+                        "descripcion"=>utf8_encode($row_tags[descripcion]),
+                        );
+                                    
+                        
+                $arraydata=array(
+                     "IdUsuario"=>$row[IdUsuario],
+                     "Nombre"=>utf8_encode($row[nombre]),
+                     "proyectos"=>$array_proyectos
+                 );
+
+                 
+                                
+                 echo json_encode($arraydata);  
+            }else {
+
+                echo "{\"error\":\"Error al obtener los datos de configuración. \"}";
+            } 
+            }else{
+                echo "{\"error\":\"No tiene los privilegios para dar de alta tags en los proyectos.\"}";
+            }
         }else {
            echo "{\"error\":\"Error en iniciar sesion. No se encontraron los datos que especifica.\"}";
         }
@@ -416,28 +494,88 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         
         //RETURN $registros;
     }
+    
+    function capturaAltas($usr,$pass){
+        $pass = md5($pass);
+        $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
+        $result = $this->_db ->consultar($sql);
+        if ($row = $this->_db ->fetch($result)) {
+            
+            $sql_valido = "select if( vigencia > NOW() OR vigencia is null, 1,0) AS valido from sca_configuracion.permisos_alta_tag where idusuario = ".$row["IdUsuario"].";";
+            $result_valido = $this->_db ->consultar($sql_valido);
+            $row_valido = $this->_db ->fetch($result_valido);
+            if($row_valido["valido"] == 1){
+            
+            $cadenajsonx=json_encode($_REQUEST);
+            $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
+            if(isset($_REQUEST['tags_nuevos'])){
+                $json_datos_altas = $_REQUEST['tags_nuevos'];
+                $datos_altas = json_decode(utf8_encode($json_datos_altas), TRUE);
+                $a_registrar = count($datos_altas);
+                if($a_registrar > 0){
+                $registros = 0;
+                foreach ($datos_altas as $key => $value) {
+                    
+                    $x="INSERT INTO 
+                            sca_configuracion.tags (uid, id_proyecto, estado, registro, fecha_registro) 
+                        VALUES('".$value['uid']."',".$value['id_proyecto'].",1, '".$usr."',NOW());";
+                    
+                    $this->_db->consultar($x);
+                    if($this->_db->affected()>=0)
+                    $registros = $registros+$this->_db->affected();
+                    $error = $error + $this->_db->mensaje;
+                }
+                if ($registros == $a_registrar)
+                    echo "{\"msj\":\"UIDs registrados correctamente. Registrados: ".$registros." A registrar: ".$a_registrar."\"}";
+                else
+                    echo "{\"error\":\"No se registraron todos los uids. Registrados:".$registros." A registrar:".$a_registrar."  .\"}";
+                }
+                }else{
+                    echo "{\"error\":\"No ha mandado ningún registro para sincronizar.\"}";
+                }
+                }else{
+                    echo "{\"error\":\"No tiene privilegios vigentes para dar de alta tags.\"}";
+                }
+                
+                
+                
+                
+                
+            }
+            
+        ELSE{
+            
+            echo "{\"error\":\"Datos de inicio de sesión no validos.\"}";
+        }
+        
+        //RETURN $registros;
+    }
 
     function captura() {
 
 
-        
-        $cadenajsonx=json_encode($_REQUEST);
+        $version = $_REQUEST[Version];
+
+        $cadenajsonx = json_encode($_REQUEST);
         $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
 
-        if (isset($_REQUEST[carddata])){
-          $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$_REQUEST[carddata]')"); //coordenadas
-          $json_viajes = $_REQUEST[carddata];
-          $data_viajes = json_decode(utf8_encode($json_viajes), TRUE);
-          $registros_viajes = 0;
-          foreach ($data_viajes as $key => $value) {
+        if (isset($_REQUEST[carddata])) {
+            $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$_REQUEST[carddata]')"); //coordenadas
+            $json_viajes = $_REQUEST[carddata];
+            $data_viajes = json_decode(utf8_encode($json_viajes), TRUE);
+            $registros_viajes = 0;
+            $afv = 0;
+            $error = "";
+            $viajes_a_registrar = count($data_viajes);
+            if ($viajes_a_registrar > 0) {
+                foreach ($data_viajes as $key => $value) {
 
-
-            $x="INSERT INTO 
+                    $x = "INSERT INTO 
                     $_REQUEST[bd].viajesnetos 
                 VALUES(null,
                        0,
-                       '$value[FechaCarga]', 
-                       '$value[HoraCarga]', 
+                       NOW(), 
+                       NOW(), 
                        1, 
                        $value[IdCamion], 
                        $value[IdOrigen], 
@@ -452,41 +590,52 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                        0, 
                        '$value[Code]', 
                        '$value[uidTAG]',
-					   '$value[Imagen]');";
-					   
-            $this->_db->consultar($x);
-            $registros_viajes++;
-          }
-        }
+					   '$value[Imagen]', '$value[IMEI]', '$version');";
 
-        if (isset($_REQUEST[coordenadas])){
-          $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$_REQUEST[coordenadas]')"); //coordenadas
-          $json_coordenada = $_REQUEST[coordenadas];
-          $data_coordenada = json_decode(utf8_encode($json_coordenada), TRUE);
-          $registros_coordenadas = 0;
+                    $this->_db->consultar($x);
+                    if ($this->_db->affected() > 0) {
+                        $afv = $afv + $this->_db->affected();
+                    }
+                    $error = $error + $this->_db->mensaje;
+                    $registros_viajes++;
+                }
+            }
 
-          if (isset($_REQUEST['idusuario']))
-            $usuario_creo=$_REQUEST['idusuario'];
-            else
-            $usuario_creo=0; 
-          
-          foreach ($data_coordenada as $key => $value) {
-              $x="INSERT INTO $_REQUEST[bd].eventos_gps 
+            if (isset($_REQUEST[coordenadas])) {
+                $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$_REQUEST[coordenadas]')"); //coordenadas
+                $json_coordenada = $_REQUEST[coordenadas];
+                $data_coordenada = json_decode(utf8_encode($json_coordenada), TRUE);
+                $registros_coordenadas = 0;
+
+                if (isset($_REQUEST['idusuario']))
+                    $usuario_creo = $_REQUEST['idusuario'];
+                else
+                    $usuario_creo = 0;
+
+                foreach ($data_coordenada as $key => $value) {
+                    $x = "INSERT INTO $_REQUEST[bd].eventos_gps 
                   (idevento, IMEI, longitude,latitude,fechahora, code, idusuario) values
                   ($value[idevento],'$value[IMEI]', '$value[longitud]', '$value[latitud]','$value[fecha_hora]', '$value[code]',$usuario_creo)";
-              $this->_db->consultar($x); 
-              $registros_coordenadas++;
-          }
+                    $this->_db->consultar($x);
+                    $registros_coordenadas++;
+                }
+            }
+
+
+            //preg_replace("[\n|\r|\n\r]", ' ', $x_v)
+
+            if ($afv == $viajes_a_registrar){
+                echo "{\"msj\":\"Viajes sincronizados correctamente. Registrados: " . $afv . " A registrar: " . $viajes_a_registrar . "\"}";
+            }
+            else{
+                echo "{\"error\":\"No se registraron todos los viajes. Registrados: " . $afv . " A registrar: " . $viajes_a_registrar . "  .\"}";
+            }
+        }else {
+            echo "{\"error\":\"No hay ninún viaje a registrar: " . $viajes_a_registrar . "  .\"}";
         }
-        
-        
-        
-        if ($registros_viajes > 0)
-            echo "{\"msj\":\"Datos sincronizados correctamente--\"}";
-        else
-            echo "{\"error\":\"Se ha producido un error en el Servidor, favor de reportalo con los administradores\"}";
+
     }
-    
+
 }
 
 ?>
