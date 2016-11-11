@@ -19,7 +19,7 @@ class Usuario {
         $result = $this->_db ->consultar($sql);
         
         if ($row = $this->_db ->fetch($result)) {
-            $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database, p.empresa, p.tiene_logo  from proyectos p
+            $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database, p.empresa, p.tiene_logo, p.logo  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 "
                     . "And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
             $result_s = $this->_db ->consultar($sql_s);
@@ -147,6 +147,7 @@ SELECT
                      "base_datos"=>$row_s[base_datos], 
                      "empresa"=>$row_s[empresa], 
                      "tiene_logo"=>$row_s[tiene_logo], 
+                     "logo"=>$row_s[logo], 
                      "descripcion_database"=>utf8_encode($row_s[descripcion_database]),
                      "Camiones"=>$array_camiones,
                      "Tiros"=>$array_tiros,
@@ -566,38 +567,61 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
             $registros_viajes = 0;
             $afv = 0;
             $error = "";
+            $previos = 0;
             $viajes_a_registrar = count($data_viajes);
             if ($viajes_a_registrar > 0) {
                 foreach ($data_viajes as $key => $value) {
+                    
+                    #validar que viaje no exista
+                    
+                    $x_v = "select count(*) as existe from $_REQUEST[bd].viajesnetos  
+                        where IdCamion = $value[IdCamion] and FechaSalida = '$value[FechaSalida]' "
+                            . "and HoraSalida='$value[HoraSalida]' and FechaLlegada='$value[FechaLlegada]' "
+                            . "and HoraLlegada='$value[HoraLlegada]' and Code = '$value[Code]';";
 
-                    $x = "INSERT INTO 
-                    $_REQUEST[bd].viajesnetos 
-                VALUES(null,
-                       0,
-                       NOW(), 
-                       NOW(), 
-                       1, 
-                       $value[IdCamion], 
-                       $value[IdOrigen], 
-                       '$value[FechaSalida]',
-                       '$value[HoraSalida]',
-                       $value[IdTiro], 
-                       '$value[FechaLlegada]', 
-                       '$value[HoraLlegada]', 
-                       $value[IdMaterial], 
-                       '$value[Observaciones]',
-                       '$value[Creo]',
-                       0, 
-                       '$value[Code]', 
-                       '$value[uidTAG]',
-					   '$value[Imagen]', '$value[IMEI]', '$version');";
-
-                    $this->_db->consultar($x);
-                    if ($this->_db->affected() > 0) {
-                        $afv = $afv + $this->_db->affected();
+                    $result_valida = $this->_db ->consultar($x_v);
+                    $row_valida = $this->_db ->fetch($result_valida);
+                    if($row_valida["existe"] == 1){
+                        $previos = $previos + 1;
                     }
-                    $error = $error + $this->_db->mensaje;
-                    $registros_viajes++;
+                    else{                    
+                        #insertar viaje
+                        $x = "INSERT INTO 
+                        $_REQUEST[bd].viajesnetos 
+                    VALUES(null,
+                           0,
+                           NOW(), 
+                           NOW(), 
+                           1, 
+                           $value[IdCamion], 
+                           $value[IdOrigen], 
+                           '$value[FechaSalida]',
+                           '$value[HoraSalida]',
+                           $value[IdTiro], 
+                           '$value[FechaLlegada]', 
+                           '$value[HoraLlegada]', 
+                           $value[IdMaterial], 
+                           '$value[Observaciones]',
+                           '$value[Creo]',
+                           0, 
+                           '$value[Code]', 
+                           '$value[uidTAG]',
+                                               '$value[Imagen]', '$value[IMEI]', '$version');";
+
+                        $this->_db->consultar($x);
+                        $x_error="";
+                        if ($this->_db->affected() > 0) {
+                            $afv = $afv + $this->_db->affected();
+                        }else{
+                            $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $x)."','$value[Creo]' )";
+                            $this->_db->consultar($x_error);
+                            if ($this->_db->affected() > 0) {
+                                $afv = $afv + $this->_db->affected();
+                            }
+                        }
+                        $error = $error + $this->_db->mensaje;
+                        $registros_viajes++;
+                    }
                 }
             }
 
@@ -624,11 +648,11 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
 
             //preg_replace("[\n|\r|\n\r]", ' ', $x_v)
 
-            if ($afv == $viajes_a_registrar){
-                echo "{\"msj\":\"Viajes sincronizados correctamente. Registrados: " . $afv . " A registrar: " . $viajes_a_registrar . "\"}";
+            if (($afv + $previos) == $viajes_a_registrar){
+                echo "{\"msj\":\"Viajes sincronizados correctamente. Registrados: " . $afv . " Registrados Previamente: ".$previos." A registrar: " . $viajes_a_registrar . "\"}";
             }
             else{
-                echo "{\"error\":\"No se registraron todos los viajes. Registrados: " . $afv . " A registrar: " . $viajes_a_registrar . "  .\"}";
+                echo "{\"error\":\"No se registraron todos los viajes. Registrados: " . $afv . " Registrados Previamente: ".$previos." A registrar: " . $viajes_a_registrar . "  .\"}";
             }
         }else {
             echo "{\"error\":\"No hay ninún viaje a registrar: " . $viajes_a_registrar . "  .\"}";
