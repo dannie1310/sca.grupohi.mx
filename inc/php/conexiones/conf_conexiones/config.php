@@ -178,4 +178,8 @@ $user["dev_sca_pruebas"] = 'sca';
 $password["dev_sca_pruebas"] = 'w6FCR56sLT';
 $db["dev_sca_pruebas"] = 'dev_sca_pruebas';
 
+$host["prod_sca_pista_aeropuerto_2"] = 'localhost';
+$user["prod_sca_pista_aeropuerto_2"] = 'sca';
+$password["prod_sca_pista_aeropuerto_2"] = 'w6FCR56sLT';
+$db["prod_sca_pista_aeropuerto_2"] = 'prod_sca_pista_aeropuerto_2';
 ?>
