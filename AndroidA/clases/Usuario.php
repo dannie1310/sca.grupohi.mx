@@ -199,8 +199,8 @@ class Usuario {
       $this->_database_sca = SCA::getConexion();
       $sql_coordenadas="SELECT 
                           Descripcion
-                          , longitude as uno
-                          , latitude as dos
+                          , longitude 
+                          , latitude 
                           , idevento
                           , ideventos_gps
                           , IMEI
