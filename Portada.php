@@ -12,7 +12,7 @@
 
 <body>
 <div align="center">
-<img src="Imgs/sca_one_page.jpg" style="margin-top:100px;"/>
+    <img src="Imagenes/menu/LogoModuloAcarreos.jpg" style="margin-top:50px;"/>
 </div>
 
 </body>

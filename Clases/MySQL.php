@@ -25,6 +25,9 @@
 		{
 			return $this->enlace;	
 		}
+                function errores(){
+                    return mysql_error($this->enlace);
+                }
 		function affected()
 		{
 			return mysql_affected_rows($this->enlace);	
@@ -45,6 +48,7 @@
 			//echo $sql;
 			
 			$r=mysql_query($sql,$this->enlace);
+                        $this->mensaje = mysql_error($this->enlace);
 			//echo $r;
 			//$v=mysql_fetch_array($r);
 			return $r;	
