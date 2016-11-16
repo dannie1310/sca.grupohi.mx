@@ -13,7 +13,7 @@
     var date=new Date();
         date.setDate(date.getDate()-1);
     var fecha=date.toISOString().slice(0,10);
-        $('#fechainicial, #fechafinal').val(fecha);
+        $('#fechainicial, #fechafinal').val('2016-11-07');
 
 
     
@@ -62,7 +62,7 @@
         var fechaF= $('#fechafinal').val();
     
         $.post("../../androidA.php", 
-            {'db':'prod_sca_trenmt_movil','metodo':'getCoordenadas', 'fechainicial':fechaI, 'fechafinal':fechaF}, 
+            {'db':'prod_sca_pista_aeropuerto_2','metodo':'getCoordenadas', 'fechainicial':fechaI, 'fechafinal':fechaF}, 
             function(data){                
                 locations = data.coordenadas;
                 console.log(locations);

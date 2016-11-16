@@ -16,8 +16,11 @@ if(!empty($_SESSION['IdUsuario'])) {
 	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>maps</title>
-	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
-	<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_Nz3NicjL3h2q5ytAwoZ4_Wvju6i7H_o&callback=initMap"  type="text/javascript"></script>
+	<script type="text/javascript" src="js/markerwithlabel.js"></script>
+
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+	
 	<!--<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>-->
     
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
