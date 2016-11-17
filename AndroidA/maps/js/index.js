@@ -11,9 +11,13 @@
     					{'descripcion':'Sincronizaci&oacute;n', 'id':4},
      				];
     var date=new Date();
-        date.setDate(date.getDate()-1);
+        date.setDate(date.getDate());
     var fecha=date.toISOString().slice(0,10);
-        $('#fechainicial, #fechafinal').val('2016-11-07');
+        $('#fechafinal').val(fecha);
+    var date=new Date();
+        date.setDate(date.getDate()-5);
+    var fecha=date.toISOString().slice(0,10);
+        $('#fechainicial').val(fecha); 
 
 
     
@@ -62,7 +66,7 @@
         var fechaF= $('#fechafinal').val();
     
         $.post("../../androidA.php", 
-            {'db':'prod_sca_pista_aeropuerto_2','metodo':'getCoordenadas', 'fechainicial':fechaI, 'fechafinal':fechaF}, 
+            {'db':base,'metodo':'getCoordenadas', 'fechainicial':fechaI, 'fechafinal':fechaF}, 
             function(data){                
                 locations = data.coordenadas;
                 console.log(locations);

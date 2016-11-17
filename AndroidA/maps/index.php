@@ -80,5 +80,11 @@ if(!empty($_SESSION['IdUsuario'])) {
 	</div>
     
  </body>
+ <?
+ echo '<script languaje="JavaScript">            
+      var base="'.$_SESSION["databasesca"].'";            
+	</script>';
+ ?>
 <script src="js/index.js"></script>
+
 </html>

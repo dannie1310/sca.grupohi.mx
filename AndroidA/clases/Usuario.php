@@ -199,8 +199,14 @@ class Usuario {
       $this->_database_sca = SCA::getConexion();
       $sql_coordenadas="SELECT 
                           Descripcion
-                          , longitude 
-                          , latitude 
+                          , CASE 
+                            WHEN longitude > 0 THEN longitude
+                            ELSE latitude
+                            END AS longitude
+                          , CASE 
+                            WHEN longitude <= 0 THEN longitude
+                            ELSE latitude
+                            END AS latitude
                           , idevento
                           , ideventos_gps
                           , IMEI
@@ -216,8 +222,8 @@ class Usuario {
       while($row_coordenadas=$this->_database_sca->fetch($result_coordenadas)) 
         $array_coordenadas[]=array(
                                utf8_encode($row_coordenadas['Descripcion']." [".$row_coordenadas['hora'])."]",
-                               $row_coordenadas['dos'],
-                               $row_coordenadas['uno'],                               
+                               $row_coordenadas['longitude'],
+                               $row_coordenadas['latitude'],                               
                                $row_coordenadas['idevento'],
                                $row_coordenadas['ideventos_gps'],
                                $row_coordenadas['IMEI'],
