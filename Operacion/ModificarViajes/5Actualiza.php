@@ -60,17 +60,21 @@
   $co=1;
   for($i=0;$i<$total;$i++)
 	{ 
-		if($tipo==0||$tipo==10)
+		if($tipo==0)
 		{
-			$campos=array(0=>"IdTiro",1=>"IdCamion",2=>"IdMaterial");
-			$datos=array(0=>regresah(tiros,$i,r),1=>regresah(camiones,$i,r),2=>regresah(materiales,$i,r));
+			$campos=array(0=>"IdTiro",1=>"IdCamion",2=>"IdMaterial",3=>"IdOrigen");
+			$datos=array(0=>regresah(tiros,$i,r),1=>regresah(camiones,$i,r),2=>regresah(materiales,$i,r),3=>regresah(origenes,$i,r));
 		}
-		else
+    if($tipo==10)
+    {
+      $campos=array(0=>"IdTiro",1=>"IdCamion",2=>"IdMaterial");
+      $datos=array(0=>regresah(tiros,$i,r),1=>regresah(camiones,$i,r),2=>regresah(materiales,$i,r));
+    }
+		if($tipo==20)
 		{
 			$campos=array(0=>"FechaLlegada",1=>"IdCamion",2=>"IdOrigen",3=>"IdTiro",4=>"IdMaterial");
 			$datos=array(0=>fecha(regresah(fecha,$i,r)),1=>regresah(camiones,$i,r),2=>regresah(origenes,$i,r),3=>regresah(tiros,$i,r),4=>regresah(materiales,$i,r));
 		}
-		
 	actualizavarios(viajesnetos,IdViajeNeto,$_REQUEST[viaje."$i"],$campos,$datos)
  ?>
   <tr >

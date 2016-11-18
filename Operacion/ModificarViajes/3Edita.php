@@ -67,16 +67,30 @@
   <tr >
     <td align="center" class="<?php  $p=$co%2; if($p==0) echo "Item1"; else echo "Item2";?>"><?php  echo $co;?></td>
     <td align="center" class="<?php  $p=$co%2; if($p==0) echo "Item1"; else echo "Item2";?>"><?php regresaf(viajesnetos,FechaLlegada,IdViajeNeto,$_REQUEST[viaje."$i"]); ?></td>
-    <td align="center" class="<?php  $p=$co%2; if($p==0) echo "Item1"; else echo "Item2";?>"><?php   regresa(origenes,Descripcion,IdOrigen,regresav(viajesnetos,IdOrigen,IdViajeNeto,$_REQUEST[viaje."$i"]));?></td>
-    <td align="center" class="<?php  $p=$co%2; if($p==0) echo "Item1"; else echo "Item2";?>"><?php   
-	
-	if($flag!=1)
-	$parametro=regresav(viajesnetos,IdTiro,IdViajeNeto,$_REQUEST[viaje."$i"]);
-	else
-	$parametro=$_REQUEST[tiros."$i"];
-	comboSelectedN(tiros,Descripcion,IdTiro,$parametro,$totalselect);
-	?></td>
-    <td align="center" class="<?php  $p=$co%2; if($p==0) echo "Item1"; else echo "Item2";?>"><?php   
+
+    <td align="center" class="<?php  $p=$co%2; if($p==0) echo "Item1"; else echo "Item2";?>">
+    <?php
+      if($flag!=1)
+        //regresa(origenes,Descripcion,IdOrigen,regresav(viajesnetos,IdOrigen,IdViajeNeto,$_REQUEST[viaje."$i"]));
+        $parametro=regresav(viajesnetos,IdOrigen,IdViajeNeto,$_REQUEST[viaje."$i"]);
+      else
+        $parametro=$_REQUEST[origenes."$i"];
+        comboSelectedN(origenes,Descripcion,IdOrigen,$parametro,$totalselect);
+      ?>
+    </td>
+
+    <td align="center" class="<?php  $p=$co%2; if($p==0) echo "Item1"; else echo "Item2";?>">
+    <?php   	
+	     if($flag!=1)
+        $parametro=regresav(viajesnetos,IdTiro,IdViajeNeto,$_REQUEST[viaje."$i"]);
+	     else
+	         $parametro=$_REQUEST[tiros."$i"];
+	       comboSelectedN(tiros,Descripcion,IdTiro,$parametro,$totalselect);
+      ?>  
+    </td>
+
+    <td align="center" class="<?php  $p=$co%2; if($p==0) echo "Item1"; else echo "Item2";?>">
+    <?php   
 	if($flag!=1)
 	$parametro=regresav(viajesnetos,IdCamion,IdViajeNeto,$_REQUEST[viaje."$i"]);
 	else
