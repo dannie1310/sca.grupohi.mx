@@ -10,7 +10,7 @@ class Usuario {
     function __construct() {
         $this->_db = SCA_config::getConexion();
     }
-
+    #FUNCIÓN PARA DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE VIAJES
     function getData($usr, $pass) {       
         
         $arraydata=array();
@@ -138,6 +138,16 @@ SELECT
                         "uid"=>$row_tags[uid],
                         "idcamion"=>$row_tags[idcamion],
                         "idproyecto"=>$row_tags[idproyecto]);   
+                
+                //TIPOS IMAGENES
+                $sql_tipos_imagenes="SELECT id, descripcion  FROM cat_tipos_imagenes where estado = 1";
+                $result_tipos_imagenes=$this->_database_sca->consultar($sql_tipos_imagenes);
+                while($row_tipos_imagenes=$this->_database_sca->fetch($result_tipos_imagenes)) 
+                        $array_tipos_imagenes[]=array(
+                            "id"=>$row_tipos_imagenes[id],
+                            "descripcion"=>utf8_encode($row_tipos_imagenes[descripcion]),
+                            );
+
                             
                             
                 $arraydata=array(
@@ -154,6 +164,7 @@ SELECT
                      "Origenes"=>$array_origenes,
                      "Rutas"=>$array_rutas,
                      "Materiales"=>$array_materiales,
+                     "TiposImagenes"=>$array_tipos_imagenes,
                      "Tags"=>$array_tags
                  );
 
@@ -170,7 +181,7 @@ SELECT
         }
 
     }
-
+    #FUNCIÓN PARA DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE CONFIGURACIÓN DE TAGS
     function  ConfDATA($usr, $pass){
         $arraydata=array();
         $pass = md5($pass);
@@ -258,7 +269,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
            echo "{\"error\":\"Error en iniciar sesion. No se encontraron los datos que especifica.\"}";
         }
     }
-    
+    #FUNCIÓN PARA DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE REGISTRO DE TAGS
     function  paraRegistro($usr, $pass){
         $arraydata=array();
         $pass = md5($pass);
@@ -322,138 +333,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
            echo "{\"error\":\"Error en iniciar sesion. No se encontraron los datos que especifica.\"}";
         }
     }
-    
-    function  ConfDATAv2($usr, $pass){
-        $arraydata=array();
-        $pass = md5($pass);
-         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        $result = $this->_db ->consultar($sql);
-        if ($row = $this->_db ->fetch($result)) {
-              $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
-                    inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
-            $result_s = $this->_db ->consultar($sql_s);
-            if ($row_s = $this->_db ->fetch($result_s)) {
-               $_SESSION["databasesca"]=$row_s[base_datos];
-                $this->_database_sca = SCA::getConexion();
-
-
-
-
-                
-
-
-
-
-
-
-
-
-
-
-
-                //SINDICATOS
-                $sql_sindicatos="Select IdSindicato, Descripcion, NombreCorto from sindicatos where estatus=1";
-                $result_sindicatos=$this->_database_sca->consultar($sql_sindicatos);
-                while($row_sindicatos=$this->_database_sca->fetch($result_sindicatos)) 
-                        $array_sindicatos[]=array(
-                            "IdSindicato"=>$row_sindicatos[IdSindicato],
-                            "Descripcion"=>$row_sindicatos[Descripcion],
-                            "NombreCorto"=>utf8_encode($row_sindicatos[NombreCorto])
-                        );
-                //OPERADORES
-                $sql_operadores="Select IdOperador, Nombre, Direccion, NoLicencia, VigenciaLicencia from operadores where estatus=1";
-                $result_operadores=$this->_database_sca->consultar($sql_operadores);
-                while($row_operadores=$this->_database_sca->fetch($result_operadores)) 
-                        $array_operadores[]=array(
-                            "IdOperador"=>$row_operadores[IdOperador],
-                            "Nombre"=>$row_operadores[Descripcion],
-                            "Direccion"=>utf8_encode($row_operadores[NombreCorto]),
-                            "NoLicencia"=>utf8_encode($row_operadores[NoLicencia]),
-                            "VigenciaLicencia"=>utf8_encode($row_operadores[VigenciaLicencia])
-                        );
-                 //MARCAS
-                $sql_marcas="Select IdMarca, Descripcion from marcas where Estatus=1";
-                $result_marcas=$this->_database_sca->consultar($sql_marcas);
-                while($row_marcas=$this->_database_sca->fetch($result_marcas)) 
-                        $array_marcas[]=array(
-                            "IdMarca"=>$row_marcas[IdMarca],
-                            "Descripcion"=>$row_marcas[Descripcion],
-                        );
-                 //CAMIONES
-                $sql_camiones="select IdCamion,
-                                    IdProyecto,
-                                    IdSindicato,
-                                    Propietario,
-                                    IdOperador,
-                                    IdBoton,
-                                    Placas,
-                                    Economico,
-                                    IdMarca,
-                                    Modelo,
-                                    PolizaSeguro,
-                                    VigenciaPolizaSeguro,
-                                    Aseguradora,
-                                    Ancho,
-                                    Largo,
-                                    Alto,
-                                    AlturaExtension,
-                                    EspacioDeGato,
-                                    CubicacionReal,
-                                    CubicacionParaPago,
-                                    FechaAlta,
-                                    HoraAlta,
-                                    Estatus FROM camiones where estatus=1";
-                $result_camiones=$this->_database_sca->consultar($sql_camiones);
-                while($row_camiones=$this->_database_sca->fetch($result_camiones)) 
-                        $array_camiones[]=array(
-                            "IdCamion"=> $row_camiones[IdCamion],
-                            "IdProyecto"=> $row_camiones[IdProyecto]   ,
-                            "IdSindicato"=> $row_camiones[IdSindicato]   ,
-                            "Propietario"=> $row_camiones[Propietario]   ,
-                            "IdOperador"=> $row_camiones[IdOperador]   ,
-                            "IdBoton"=> $row_camiones[IdBoton]   ,
-                            "Placas"=> $row_camiones[Placas]   ,
-                            "Economico"=> $row_camiones[Economico]   ,
-                            "IdMarca"=> $row_camiones[IdMarca]   ,
-                            "Modelo"=> $row_camiones[Modelo]   ,
-                            "PolizaSeguro"=> $row_camiones[PolizaSeguro],
-                            "VigenciaPolizaSeguro"=> $row_camiones[VigenciaPolizaSeguro],
-                            "Aseguradora"=> $row_camiones[Aseguradora]   ,
-                            "Ancho"=> $row_camiones[Ancho]   ,
-                            "Largo"=> $row_camiones[Largo]   ,
-                            "Alto"=> $row_camiones[Alto],
-                            "AlturaExtension"=> $row_camiones[AlturaExtension]   ,
-                            "EspacioDeGato"=> $row_camiones[EspacioDeGato ]   ,
-                            "CubicacionReal"=> $row_camiones[CubicacionReal]   ,
-                            "CubicacionParaPago  "=> $row_camiones[CubicacionParaPago]   ,
-                            "FechaAlta"=> $row_camiones[FechaAlta]   ,
-                            "HoraAlta"=> $row_camiones[HoraAlta],
-                            "Estatus"=> $row_camiones[Estatus]   
-
-                        );
-
-
-
-                $arraydata=array(
-                     "idUsuario"=>$row[IdUsuario],
-                     "nombreUsuario"=>utf8_encode($row[nombre]),
-                     "idProyecto"=>$row_s[id_proyecto],
-                     "baseDatos"=>$row_s[base_datos], 
-                     "baseDatosDescripcion"=>utf8_encode($row_s[descripcion_database]),
-                     "camiones"=>$array_camiones,
-                     "sindicatos"=>$array_sindicatos,
-                     "operadores"=>$array_operadores,
-                     "marcas"=>$array_marcas,
-                 );
-                 //print_r($arraydata);                 
-                 echo json_encode($arraydata);  
-            }else {
-                echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningï¿½n proyecto. \"}";
-            } 
-        }else {
-           echo "{\"error\":\"Error en iniciar sesión. No se encontraron los datos que especifica.\"}";
-        }
-    }
+    #FUNCIÓN PARA REGISTRAR LA CONFIGURACIÓN DE TAGS REALIZADA DESDE LA APLICACIÓN DE CONFIGURACIÓN DE TAGS
     function capturaConfiguracion($usr,$pass){
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
@@ -495,7 +375,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         
         //RETURN $registros;
     }
-    
+    #Función utilizada para registrar los datos enviados por la aplicación de registro de tags (App Registro)
     function capturaAltas($usr,$pass){
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
@@ -551,7 +431,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         
         //RETURN $registros;
     }
-
+#Función utilizada para registrar los datos enviados por la aplicación (App Viajes)
     function captura() {
 
 
