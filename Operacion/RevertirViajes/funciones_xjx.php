@@ -8,7 +8,7 @@ function registra_viaje($i,$idviaje)
 		
 		$l->consultar($SQLs);
 
-		$regresa_imagen='<img src="../../Imagenes/aprobado.gif" width="16px" heigth="16x" title="'.$SQLs.'"/>';
+		$regresa_imagen='<img src="../../Imagenes/aprobado.gif" width="16px" heigth="16x" title="El viaje ha sido eliminado"/>';
 		$l->cerrar();
 		$respuesta->assign('imagen'.$i,'innerHTML',$regresa_imagen);
 		return $respuesta;
