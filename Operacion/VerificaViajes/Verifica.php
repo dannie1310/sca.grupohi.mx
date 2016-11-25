@@ -41,6 +41,8 @@ function horas($dec) {
 	
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
+
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -67,8 +69,12 @@ function horas($dec) {
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        
+        <script src="../../Estilos/js/jquery.bxslider.min.js"></script>
+<link href="../../Estilos/js/jquery.bxslider.css" rel="stylesheet" />
         <script language="javascript" type="text/javascript">
+
+
+
             $(function() {
                 $('.tipo_tarifa').on("change",function(){
                     i = $(this).attr("contador");
@@ -343,10 +349,10 @@ function horas($dec) {
                                         list(, $Base64Img) = explode(',', $Base64Img);
                                         $Base64Img = base64_decode($Base64Img);
                                         file_put_contents('foto' . $v_viajes["IdViaje"] . $count . '.png', $Base64Img);
-                                        $imagen = "<img src='foto" . $v_viajes["IdViaje"] . $count .".png' alt='foto' title='" . $v_Foto['descripcion'] . "' width=50% height=50% />";
+                                        $imagen = "<li><img src='foto" . $v_viajes["IdViaje"] . $count .".png' alt='foto' title='" . $v_Foto['descripcion'] . "' width=50% height=50% /></li>";
                                       
                                         echo 'Fotos_' . $v_viajes["IdViaje"] . '.push(["' . $v_Foto['estado'] . '","' . $imagen . '"]);';
-                                        echo 'console.log(Fotos_' . $v_viajes["IdViaje"] . '.length);';
+                                       // echo 'console.log(Fotos_' . $v_viajes["IdViaje"] . '.length);';
                                         $count++;
                                     }
                                     echo '</script> <br>';
@@ -499,7 +505,7 @@ function horas($dec) {
                     ?>
                 </td>
                 <td align="center">
-                    <img src=<? if( $count<> 1){echo"'../../Imagenes/validaviajes/fotos.jpg'  onclick='Mostrar_Fotos(Fotos_" . $v_viajes["IdViaje"] . "); verFotos(" . $v_viajes["IdViaje"] . ");  '";}else{echo"'../../Imagenes/bred1.gif' title='Sin Fotografias'";}?>   width="16" height="16" id="fotos<?php echo $i_general; ?>" name="fotos<?php echo $i_general; ?>" class="fotos" id_viaje="<?php echo $v_viajes["IdViaje"]; ?>"   />
+                    <img src=<? if( $count<> 1){echo"'../../Imagenes/validaviajes/fotos.jpg'  onclick='Mostrar_Fotos(Fotos_" . $v_viajes["IdViaje"] . "); //verFotos(" . $v_viajes["IdViaje"] . ");  '";}else{echo"'../../Imagenes/bred1.gif' title='Sin Fotografias'";}?>   width="16" height="16" id="fotos<?php echo $i_general; ?>" name="fotos<?php echo $i_general; ?>" class="fotos" id_viaje="<?php echo $v_viajes["IdViaje"]; ?>"   />
 
                 <td/>
             </tr>
@@ -604,33 +610,14 @@ function horas($dec) {
 </script>
 <p id="demo"></p>
 <script type="text/javascript">
-/*
-    $("img.fotos").off().on("click", function(){
-        id_viaje = $(this).attr("id_viaje");
-        Fotos = 'Fotos_' + id_viaje;
-        alert(Fotos);
-        for (i=0; i< Fotos.length; i++){
-            for (j=0; j< Fotos[i].length; j++){
-                console.log(Fotos[i][j]  + i + '- '+ j);
-            }
-        }
-
-    });*/
 
     function Mostrar_Fotos(array){
        //alert(array.length);
-       agrupar = '';
+       agrupar= "";
        for (i=0; i< array.length; i++){
-        /*
-            for (j=0; j< array[i].length; j++){
-                console.log(array[i][j]  + i + '- '+ j);
-
-            }
-            */
-           // console.log(array[i][1] +' - ' + i);
-            agrupar =  agrupar + array[i][1];
+            agrupar = agrupar + array[i][1];
         }
-            
+        agrupar = "<ul class='bxslider'>" + agrupar + "</ul>";
             $("#dialog").html('<div style="margin:0; overflow:hidden">' + agrupar + '</div>');
                 $( "#dialog" ).dialog({
                 modal: true,
@@ -642,12 +629,17 @@ function horas($dec) {
                  width:800 
             });
                 var height = $( "#dialog" ).dialog( "option", "height" );
-                $( "#dialog" ).dialog( "option", "height", 700 );
+                $( "#dialog" ).dialog( "option", "height", 350 );
             $( "#dialog" ).dialog("open")
 
-        
-
+            $('.bxslider').bxSlider({
+        mode: 'fade',
+        captions: true
+    });
     }
+
+
+
 
 </script>
 

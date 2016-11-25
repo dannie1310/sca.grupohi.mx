@@ -5,11 +5,9 @@
 <!-- jQuery library (served from Google) -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <!-- bxSlider Javascript file -->
-<script src="js/jquery.bxslider.min.js"></script>
+<script src="../../Estilos/js/jquery.bxslider.min.js"></script>
 <!-- bxSlider CSS file -->
-<link href="js/jquery.bxslider.css" rel="stylesheet" />
-
-
+<link href="../../Estilos/js/jquery.bxslider.css" rel="stylesheet" />
 <?php 
 session_start();
 
@@ -27,37 +25,26 @@ $SQLs = "SELECT vn.imagen as imagen, vn.estado as estado, cat.descripcion as des
 
 $fotos=$conexion->consultar($SQLs);
 	echo "<ul class='bxslider'>";
+	$count =1;
 while($row=$conexion->fetch($fotos)){ 
 	$Base64Img =$row['imagen'];
 	//echo $row['imagen'];
 	list(, $Base64Img) = explode(';', $Base64Img);
 	list(, $Base64Img) = explode(',', $Base64Img);
 	$Base64Img = base64_decode($Base64Img);
-	file_put_contents('foto.png', $Base64Img);
-	echo "<li><img src='foto.png' alt='foto' width=50% height=50% title='" . $row['descripcion']."'' /></li>";
+	file_put_contents('foto'.$count.'.png', $Base64Img);
+	echo "<li><img src='foto".$count.".png' alt='foto' width=50% height=50% title='" . $row['descripcion']."'' /></li>";
+	$count++;
 
 }
 echo "</ul>";
 
 ?>
-
-
-   
-
-
-
-
-
 <script type="text/javascript">
 	$('.bxslider').bxSlider({
 	 	mode: 'fade',
   		captions: true
 	});
-
-
 </script>
-
-
-
 </html>
 
