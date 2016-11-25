@@ -349,7 +349,7 @@ function horas($dec) {
                                         list(, $Base64Img) = explode(',', $Base64Img);
                                         $Base64Img = base64_decode($Base64Img);
                                         file_put_contents('foto' . $v_viajes["IdViaje"] . $count . '.png', $Base64Img);
-                                        $imagen = "<li><img src='foto" . $v_viajes["IdViaje"] . $count .".png' alt='foto' title='" . $v_Foto['descripcion'] . "' width=50% height=50% /></li>";
+                                        $imagen = "<li><img src='foto" . $v_viajes["IdViaje"] . $count .".png' alt='foto' title='" . $v_Foto['descripcion'] . "'  /></li>";
                                       
                                         echo 'Fotos_' . $v_viajes["IdViaje"] . '.push(["' . $v_Foto['estado'] . '","' . $imagen . '"]);';
                                        // echo 'console.log(Fotos_' . $v_viajes["IdViaje"] . '.length);';
@@ -629,7 +629,7 @@ function horas($dec) {
                  width:800 
             });
                 var height = $( "#dialog" ).dialog( "option", "height" );
-                $( "#dialog" ).dialog( "option", "height", 350 );
+                $( "#dialog" ).dialog( "option", "height", 600 );
             $( "#dialog" ).dialog("open")
 
             $('.bxslider').bxSlider({
