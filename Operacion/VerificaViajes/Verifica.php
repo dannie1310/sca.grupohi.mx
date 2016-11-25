@@ -344,12 +344,8 @@ function horas($dec) {
                                     $count =  1;
                                     while($v_Foto=$l->fetch($r_Fotos)) { 
 
-                                        $Base64Img =$v_Foto['imagen'];
-                                        list(, $Base64Img) = explode(';', $Base64Img);
-                                        list(, $Base64Img) = explode(',', $Base64Img);
-                                        $Base64Img = base64_decode($Base64Img);
-                                        file_put_contents('foto' . $v_viajes["IdViaje"] . $count . '.png', $Base64Img);
-                                        $imagen = "<li><img src='foto" . $v_viajes["IdViaje"] . $count .".png' alt='foto' title='" . $v_Foto['descripcion'] . "'  /></li>";
+                                        
+                                        $imagen = "<li><img ali='1' src='data:image/png;base64,".$v_Foto['imagen']."' alt='foto' title='" . $v_Foto['descripcion'] . "'  /></li>";
                                       
                                         echo 'Fotos_' . $v_viajes["IdViaje"] . '.push(["' . $v_Foto['estado'] . '","' . $imagen . '"]);';
                                        // echo 'console.log(Fotos_' . $v_viajes["IdViaje"] . '.length);';
