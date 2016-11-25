@@ -243,6 +243,9 @@ function horas($dec) {
                                     <td rowspan="2" align="center" style="display:none">
                                         Cargador
                                     </td>
+                                    <td rowspan="2" align="center">
+                                        Imagenes
+                                    </td>
                                 </tr>
                                 <tr class="Item">
                                     <td align="center">
@@ -321,6 +324,32 @@ function horas($dec) {
                                     $i=1;
 
                                     while($v_viajes=$l->fetch($r_viajes)) { 
+
+                                    $SQLs = "
+                                        SELECT vn.imagen as imagen, vn.estado as estado, cat.descripcion as descripcion 
+                                        FROM viajes_netos_imagenes vn
+                                        INNER JOIN cat_tipos_imagenes cat on cat.id = vn.idtipo_imagen
+                                        where idviaje_neto = ".$v_viajes["IdViaje"]."";
+
+                                    $r_Fotos=$l->consultar($SQLs);
+
+                                    echo "<script>";
+                                    echo "var Fotos_". $v_viajes["IdViaje"] . "= new Array();";
+                                    $count =  1;
+                                    while($v_Foto=$l->fetch($r_Fotos)) { 
+
+                                        $Base64Img =$v_Foto['imagen'];
+                                        list(, $Base64Img) = explode(';', $Base64Img);
+                                        list(, $Base64Img) = explode(',', $Base64Img);
+                                        $Base64Img = base64_decode($Base64Img);
+                                        file_put_contents('foto' . $v_viajes["IdViaje"] . $count . '.png', $Base64Img);
+                                        $imagen = "<img src='foto" . $v_viajes["IdViaje"] . $count .".png' alt='foto' title='" . $v_Foto['descripcion'] . "' width=50% height=50% />";
+                                      
+                                        echo 'Fotos_' . $v_viajes["IdViaje"] . '.push(["' . $v_Foto['estado'] . '","' . $imagen . '"]);';
+                                        echo 'console.log(Fotos_' . $v_viajes["IdViaje"] . '.length);';
+                                        $count++;
+                                    }
+                                    echo '</script> <br>';
 
                                 ?>
                                 <script>
@@ -419,7 +448,7 @@ function horas($dec) {
                         <input name="bruto<?php echo $i_general; ?>" type="text" class="monetario tipo_tarifa_p" id="bruto<?php echo $i_general; ?>" style="width:45px" value="0.00" contador="<?php echo $i_general; ?>" />
                     </div>
                 </td>
- 		<td align="center" class="detalle">
+ 		         <td align="center" class="detalle">
                     <div id="dpk<?php echo $i_general; ?>">
                         <?php echo number_format($v_viajes["tarifa_material_pk"],2) ?>
                     </div>
@@ -469,6 +498,10 @@ function horas($dec) {
                         echo $lista_tipo_rutas;
                     ?>
                 </td>
+                <td align="center">
+                    <img src=<? if( $count<> 1){echo"'../../Imagenes/validaviajes/fotos.jpg'  onclick='Mostrar_Fotos(Fotos_" . $v_viajes["IdViaje"] . "); verFotos(" . $v_viajes["IdViaje"] . ");  '";}else{echo"'../../Imagenes/bred1.gif' title='Sin Fotografias'";}?>   width="16" height="16" id="fotos<?php echo $i_general; ?>" name="fotos<?php echo $i_general; ?>" class="fotos" id_viaje="<?php echo $v_viajes["IdViaje"]; ?>"   />
+
+                <td/>
             </tr>
                 <?php 
                     $i_general++; $i++;}
@@ -546,9 +579,7 @@ function horas($dec) {
             }
 
     }
-</script>
-
-<script>
+    /*
     $("img.bandera").off().on("click", function(){
         id_viaje = $(this).attr("id_viaje");
         $("#dialog").html('<div style="margin:0 auto; overflow:hidden"><img width="640" height="480" src="http://sca.grupohi.mx/imagenViaje.php?idviajeneto='+id_viaje+'" /></div>');
@@ -563,6 +594,61 @@ function horas($dec) {
             });
             $( "#dialog" ).dialog("open");
     });
+    */
+    function verFotos(idviaje){
+        url = "Luis.php?idviajeneto='" + idviaje+"'";
+       // aler(url);
+        window.open(url, "nuevo", "directories=no, location=no, menubar=no, scrollbars=yes, statusbar=no, tittlebar=no")
+
+    }
+</script>
+<p id="demo"></p>
+<script type="text/javascript">
+/*
+    $("img.fotos").off().on("click", function(){
+        id_viaje = $(this).attr("id_viaje");
+        Fotos = 'Fotos_' + id_viaje;
+        alert(Fotos);
+        for (i=0; i< Fotos.length; i++){
+            for (j=0; j< Fotos[i].length; j++){
+                console.log(Fotos[i][j]  + i + '- '+ j);
+            }
+        }
+
+    });*/
+
+    function Mostrar_Fotos(array){
+       //alert(array.length);
+       agrupar = '';
+       for (i=0; i< array.length; i++){
+        /*
+            for (j=0; j< array[i].length; j++){
+                console.log(array[i][j]  + i + '- '+ j);
+
+            }
+            */
+           // console.log(array[i][1] +' - ' + i);
+            agrupar =  agrupar + array[i][1];
+        }
+            
+            $("#dialog").html('<div style="margin:0; overflow:hidden">' + agrupar + '</div>');
+                $( "#dialog" ).dialog({
+                modal: true,
+                autoOpen: false,
+                close: function(event, ui)
+                        {
+                            //$(this).remove();
+                        },
+                 width:800 
+            });
+                var height = $( "#dialog" ).dialog( "option", "height" );
+                $( "#dialog" ).dialog( "option", "height", 700 );
+            $( "#dialog" ).dialog("open")
+
+        
+
+    }
+
 </script>
 
 </html>
