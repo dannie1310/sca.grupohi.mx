@@ -505,7 +505,7 @@ function horas($dec) {
                     ?>
                 </td>
                 <td align="center">
-                    <img src=<? if( $count<> 1){echo"'../../Imagenes/validaviajes/foto.png'  onclick='Mostrar_Fotos(Fotos_" . $v_viajes["IdViaje"] . "); //verFotos(" . $v_viajes["IdViaje"] . ");  '";}else{echo"'../../Imagenes/bred1.gif' title='Sin Fotografias'";}?>   width="16" height="16" id="fotos<?php echo $i_general; ?>" name="fotos<?php echo $i_general; ?>" class="fotos" id_viaje="<?php echo $v_viajes["IdViaje"]; ?>"   />
+                    <img src=<? if( $count<> 1){echo"'../../Imagenes/validaviajes/foto.png'  onclick='Mostrar_Fotos(Fotos_" . $v_viajes["IdViaje"] . "); //verFotos(" . $v_viajes["IdViaje"] . ");  '";}else{echo"'../../Imagenes/validaviajes/Foto_nula.png' title='Sin Fotografias'";}?>   width="16" height="16" id="fotos<?php echo $i_general; ?>" name="fotos<?php echo $i_general; ?>" class="fotos" id_viaje="<?php echo $v_viajes["IdViaje"]; ?>"   />
 
                 <td/>
             </tr>
