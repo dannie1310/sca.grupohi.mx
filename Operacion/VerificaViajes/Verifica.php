@@ -596,7 +596,7 @@ function horas($dec) {
     });
     */
     function verFotos(idviaje){
-        url = "Luis.php?idviajeneto='" + idviaje+"'";
+        url = "VerFotos.php?idviajeneto='" + idviaje+"'";
        // aler(url);
         window.open(url, "nuevo", "directories=no, location=no, menubar=no, scrollbars=yes, statusbar=no, tittlebar=no")
 
