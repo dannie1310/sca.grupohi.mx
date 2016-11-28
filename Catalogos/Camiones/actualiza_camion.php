@@ -21,6 +21,7 @@ $tac = SCA::getConexion();
 	$dto->set_economico($_REQUEST["eco"]);
 	
 	$dto->set_placas($_REQUEST["placas"]);
+        $dto->set_placasCaja($_REQUEST["placas_caja"]);
 	$dto->set_marca($_REQUEST["marcas"]);
 	$dto->set_modelo($_REQUEST["modelo"]);
 	$dto->set_aseguradora($_REQUEST["aseguradora"]);

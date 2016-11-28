@@ -41,11 +41,18 @@ function inicializa_formulario()
                             <div id="caja"><input name="eco" id="eco" type="text" class="text" value="" style="width:75px" />
                        	  </div>
                             
-                             <div id="label" style="width:65px;padding:0 0 0 10px">
-                            Placas:</div>
-                            <div id="caja"><input name="placas" id="placas" type="text" class="text" value="" style="width:75px"/>
-                            </div>
+                            
                       </div>
+                      <div id="fila" >    
+                            <div id="label" style="width:115px">
+                            Placas Camión:</div>
+                            <div id="caja"><input name="placas" id="placas" type="text" class="text" value="" style="width:100px"/>
+                            </div>
+                            <div id="label" style="width:100px;padding:0 0 0 145px">
+                              Placas Caja:</div>
+                            <div id="caja"><input name="placas_caja" id="placas_caja" type="text" class="text" value="" style="width:100px"/>
+                            </div>
+                    </div>
                          <div id="fila" >
                             <div id="label" style="width:100px">
                             Marca:</div>
@@ -260,7 +267,7 @@ $(function() {
                         <div id="fila"></div>
                         <div id="fila" >
                         
-                            <div id="label" style="width:100px">
+                            <div id="label" style="width:115px">
                             Sindicato:</div>
                             <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("sindicatos","IdSindicato","Descripcion","Estatus = 1","asc",1)?>
                             </div>
@@ -271,23 +278,28 @@ $(function() {
                             </div>
                         </div>
                   <div id="fila" >
-                            <div id="label" style="width:100px">
+                            <div id="label" style="width:115px">
                           Operador:</div>
                             <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("operadores","IdOperador","Nombre","Estatus = 1","asc",1)?>
                             </div>
                             
-              <div id="label" style="width:100px; padding-left:15px">
-                            Eco:</div>
+                            <div id="label" style="width:100px; padding-left:15px">
+                              Eco:</div>
                             <div id="caja"><input name="eco" id="eco" type="text" class="text" value="" style="width:75px" />
-                       	  </div>
-                            
-                             <div id="label" style="width:65px;padding:0 0 0 10px">
-                            Placas:</div>
-                            <div id="caja"><input name="placas" id="placas" type="text" class="text" value="" style="width:75px"/>
+                       	    </div>
+                    </div>
+                    <div id="fila" >    
+                            <div id="label" style="width:115px">
+                            Placas Camión:</div>
+                            <div id="caja"><input name="placas" id="placas" type="text" class="text" value="" style="width:100px"/>
                             </div>
-                      </div>
+                            <div id="label" style="width:100px;padding:0 0 0 145px">
+                              Placas Caja:</div>
+                            <div id="caja"><input name="placas_caja" id="placas_caja" type="text" class="text" value="" style="width:100px"/>
+                            </div>
+                    </div>
                          <div id="fila" >
-                            <div id="label" style="width:100px">
+                            <div id="label" style="width:115px">
                             Marca:</div>
                             <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("marcas","IdMarca","Descripcion","Estatus = 1","asc",1)?>
                             </div>
@@ -298,7 +310,7 @@ $(function() {
                             </div>
                             
                              <div id="label" style="width:100px;padding-left:15px">
-                        Dispositivo:</div>
+                            Dispositivo:</div>
                             <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("botones","IdBoton","Identificador","Estatus = 1 and TipoBoton=2","asc",1)?>
                             </div>
                         </div>

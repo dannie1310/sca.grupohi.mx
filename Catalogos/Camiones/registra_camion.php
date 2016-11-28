@@ -24,6 +24,7 @@ $tac = SCA::getConexion();
 	$dto->set_economico($_REQUEST["eco"]);
 	
 	$dto->set_placas($_REQUEST["placas"]);
+        $dto->set_placasCaja($_REQUEST["placas_caja"]);
 	$dto->set_marca($_REQUEST["marcas"]);
 	$dto->set_modelo($_REQUEST["modelo"]);
 	$dto->set_aseguradora($_REQUEST["aseguradora"]);
@@ -38,7 +39,6 @@ $tac = SCA::getConexion();
 	$dto->set_cub_real($_REQUEST["real"]);
 	$dto->set_cub_pago($_REQUEST["pago"]);
 	$dto->set_dispositivo($_REQUEST["botones"]);
-
 	$dto_im_f = new DTOImagen();
 	$dao_im_f = new DAOImagen();
 	$dto_im_d = new DTOImagen();

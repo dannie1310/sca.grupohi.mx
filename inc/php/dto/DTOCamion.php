@@ -8,7 +8,8 @@ class DTOCamion
 	private $_operador;
 	private $_economico;
 	private $_placas;
-	private $_marca;
+        private $_placasCaja;
+        private $_marca;
 	private $_modelo;
 	private $_aseguradora;
 	private $_poliza;
@@ -83,6 +84,9 @@ class DTOCamion
 	{
 		$this->_economico = $val;
 	}
+        
+        
+        
 	public function get_placas()
 	{
 		return $this->_placas;
@@ -91,6 +95,19 @@ class DTOCamion
 	{
 		$this->_placas = $val;
 	}
+        
+        
+        
+        public function get_placasCaja()
+	{
+		return $this->_placasCaja;
+	}
+	public function set_placasCaja($val)
+	{
+		$this->_placasCaja = $val;
+	}
+        
+        
 	public function get_marca()
 	{
 		return $this->_marca;

@@ -334,7 +334,7 @@ function actualiza_imagen()
                         <div id="fila"></div>
                         <div id="fila" >
                         
-                            <div id="label" style="width:100px">
+                            <div id="label" style="width:115px">
                             Sindicato:</div>
                             <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("sindicatos","IdSindicato","Descripcion","Estatus = 1","asc",1,$vc["IdSindicato"])?>
                             </div>
@@ -344,24 +344,29 @@ function actualiza_imagen()
                             <div id="caja" ><input name="propietario" id="propietario" type="text" class="text" value="<?php echo $vc["Propietario"] ?>" />
                             </div>
                         </div>
-                  <div id="fila" >
-                            <div id="label" style="width:100px">
+                    <div id="fila" >
+                            <div id="label" style="width:115px">
                           Operador:</div>
                             <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("operadores","IdOperador","Nombre","Estatus = 1","asc",1,$vc["IdOperador"] )?>
                             </div>
                             
-              <div id="label" style="width:100px; padding-left:15px">
+                        <div id="label" style="width:100px; padding-left:15px">
                             Eco:</div>
                             <div id="caja"><input name="eco" id="eco" type="text" class="text"  style="width:75px" value="<?php echo $vc["Economico"] ?>" />
-                       	  </div>
-                            
-                             <div id="label" style="width:65px;padding:0 0 0 10px">
-                            Placas:</div>
-                            <div id="caja"><input name="placas" id="placas" type="text" class="text" value="<?php echo $vc["Placas"] ?>" style="width:75px"/>
-                            </div>
-                      </div>
+                       	 </div>
+                    </div>
+                    <div id="fila" >   
+                        <div id="label" style="width:115px;">
+                        Placas Camión:</div>
+                        <div id="caja"><input name="placas" id="placas" type="text" class="text" value="<?php echo $vc["Placas"] ?>" style="width:75px"/>
+                        </div>
+                        <div id="label" style="width:100px;padding:0 0 0 68px">
+                        Placas Caja:</div>
+                        <div id="caja"><input name="placas_caja" id="placas_caja" type="text" class="text" value="<?php echo $vc["PlacasCaja"] ?>" style="width:75px"/>
+                        </div>
+                    </div>
                          <div id="fila" >
-                            <div id="label" style="width:100px">
+                            <div id="label" style="width:115px">
                             Marca:</div>
                             <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("marcas","IdMarca","Descripcion","Estatus = 1","asc",1,$vc["IdMarca"])?>
                             </div>
@@ -377,7 +382,7 @@ function actualiza_imagen()
                             </div>
                         </div>
                          <div id="fila" >
-                            <div id="label" style="width:100px">Estatus:</div>
+                            <div id="label" style="width:115px">Estatus:</div>
                             <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("ctg_estatus","IdEstatus","Estatus","1=1","asc",1,$vc["Estatus"])?></div>
                         </div>
                       </fieldset>
