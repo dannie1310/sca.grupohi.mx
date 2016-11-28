@@ -84,7 +84,7 @@ var image_set_camiones = [
                         <div id="fila"></div>
                         <div id="fila" >
                         
-                            <div id="label" style="width:100px">
+                            <div id="label" style="width:115px">
                             Sindicato:</div>
                             <div id="caja" style="width:230px"><?php echo $SCA->regresaDatos2("sindicatos","Descripcion","IdSindicato",$vc["IdSindicato"])?>
                             </div>
@@ -94,23 +94,29 @@ var image_set_camiones = [
                             <div id="caja" ><?php echo $vc["Propietario"] ?>      </div>
                         </div>
                   <div id="fila" >
-                            <div id="label" style="width:100px">
+                            <div id="label" style="width:115px">
                           Operador:</div>
                             <div id="caja" style="width:230px"><?php echo $SCA->regresaDatos2("operadores","Nombre","IdOperador",$vc["IdOperador"] )?>
                             </div>
                             
-              <div id="label" style="width:100px; padding-left:15px">
+                        <div id="label" style="width:100px; padding-left:15px">
                             Eco:</div>
                             <div id="caja"><?php echo $vc["Economico"] ?>
                        	  </div>
-                            
-                             <div id="label" style="width:65px;padding:0 0 0 10px">
-                            Placas:</div>
-                            <div id="caja"><?php echo $vc["Placas"] ?>
-                            </div>
-                      </div>
+                  </div>
+                    <div id="fila">
+                        
+                        <div id="label" style="width:115px;">
+                            Placas Camión:</div>
+                        <div id="caja" style="width:230px"><?php echo $vc["Placas"] ?>
+                        </div>
+                        <div id="label" style="width:100px; padding-left:15px">
+                            Placas Caja:</div>
+                        <div id="caja"><?php echo $vc["PlacasCaja"] ?>
+                        </div>
+                    </div>
                          <div id="fila" >
-                            <div id="label" style="width:100px">
+                            <div id="label" style="width:115px">
                             Marca:</div>
                             <div id="caja" style="width:130px"><?php echo $SCA->regresaDatos2("marcas","Descripcion","IdMarca",$vc["IdMarca"])?>
                             </div>
