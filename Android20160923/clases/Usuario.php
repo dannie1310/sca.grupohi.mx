@@ -585,13 +585,13 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
             //preg_replace("[\n|\r|\n\r]", ' ', $x_v)
 
             if (($afv + $previos) == $viajes_a_registrar){
-                echo "{\"msj\":\"Viajes sincronizados correctamente. Registrados: " . $afv . " Registrados Previamente: ".$previos." A registrar: " . $viajes_a_registrar . " Imagenes a Registrar: ".$cantidad_imagenes_a_registrar." Imagenes Registradas: ".$cantidad_imagenes." Imagenes Sin Viaje: ".$cantidad_imagenes_sin_viaje_neto." \"}";
+                echo "{\"msj\":\"Viajes sincronizados correctamente. Registrados: " . $afv . " Registrados Previamente: ".$previos." A registrar: " . $viajes_a_registrar . "  \"}";
             }
             else{
-                echo "{\"error\":\"No se registraron todos los viajes. Registrados: " . $afv . " Registrados Previamente: ".$previos." A registrar: " . $viajes_a_registrar . " Imagenes a Registrar: ".$cantidad_imagenes_a_registrar."  Imagenes: ".$cantidad_imagenes." Imagenes Sin Viaje: ".$cantidad_imagenes_sin_viaje_neto." .\"}";
+                echo "{\"error\":\"No se registraron todos los viajes. Registrados: " . $afv . " Registrados Previamente: ".$previos." A registrar: " . $viajes_a_registrar . " \"}";
             }
         }else {
-            echo "{\"error\":\"No hay ningún viaje a registrar: " . $viajes_a_registrar . " Imagenes a Registrar: ".$cantidad_imagenes_a_registrar." Imagenes: ".$cantidad_imagenes." Imagenes Sin Viaje: ".$cantidad_imagenes_sin_viaje_neto.".\"}";
+            echo "{\"error\":\"No hay ningún viaje a registrar: " . $viajes_a_registrar . " \"}";
         }
 
     }
@@ -609,6 +609,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         $cantidad_imagenes = 0;
         $imagenes_registradas = array();
         $imagenes_no_registradas = array();
+        $imagenes_no_registradas_sv = array();
         if($cantidad_imagenes_a_registrar>0){
             $i = 0;
             $ir = 0;
@@ -629,7 +630,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                     $this->_db->consultar($x_imagen);
                     if ($this->_db->affected() > 0) {
                         $cantidad_imagenes = $cantidad_imagenes + $this->_db->affected();
-                        $imagenes_registradas[$i] = $value_i["idImagen"];
+                        $imagenes_registradas[$ir] = $value_i["idImagen"];
                         $ir++;
                     }else{
                         $imagenes_no_registradas[$inr] = $value_i["idImagen"];
@@ -642,15 +643,24 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                     }
                     //$cantidad_imagenes++;
                 }else{
+                    
+                    $imagenes_no_registradas_sv[$cantidad_imagenes_sin_viaje_neto] = $value_i["idImagen"];
+                    $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $x_imagen)."','$usr' )";
+                    $this->_db->consultar($x_error);
                     $cantidad_imagenes_sin_viaje_neto++;
-                    $imagenes_no_registradas[$inr] = $value_i["idImagen"];
-                    $inr++;
                 }
                 $i++;
             }
             $json_imagenes_registradas = json_encode($imagenes_registradas);
             $json_imagenes_no_registradas = json_encode($imagenes_no_registradas);
-            echo "{\"msj\":\"Imagenes Sincronizadas.  Imagenes a Registrar: ".$cantidad_imagenes_a_registrar." Imagenes Registradas: ".$cantidad_imagenes." Imagenes Sin Viaje: ".$cantidad_imagenes_sin_viaje_neto." \" , \"imagenes_registradas\":".$json_imagenes_registradas.", \"imagenes_no_registradas\":".$json_imagenes_no_registradas."}";
+            $json_imagenes_no_registradas_sv = json_encode($imagenes_no_registradas_sv);
+            echo "{\"msj\":\"Imagenes Sincronizadas.  Imagenes a Registrar: ".
+                    $cantidad_imagenes_a_registrar." Imagenes Registradas: ".
+                    $cantidad_imagenes." Imagenes Sin Viaje: ".
+                    $cantidad_imagenes_sin_viaje_neto." Imagenes con Error: ".($inr)." \" , "
+                    . "\"imagenes_registradas\":".$json_imagenes_registradas.", "
+                    . "\"imagenes_no_registradas_sv\":".$json_imagenes_no_registradas_sv.", "
+                    . "\"imagenes_no_registradas\":".$json_imagenes_no_registradas."}";
         }
     }
 }
