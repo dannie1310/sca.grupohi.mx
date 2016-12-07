@@ -123,15 +123,16 @@ function inicializa_formulario()
                             <div id="label" style="width:60px;">Ancho:</div><div id="caja"><input name="ancho" id="ancho" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m</div>
                             <div id="label" style="width:50px;padding-left:15px">Largo:</div><div id="caja"><input name="largo" id="largo" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m</div>
                             <div id="label" style="width:50px;padding-left:15px">Alto:</div><div id="caja"><input name="alto" id="alto" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m</div>
-                          <div id="label" style="width:50px;padding-left:15px">Gato:</div><div id="caja"><input name="gato" id="gato" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m</div>
+                          <div id="label" style="width:50px;padding-left:15px">Gato:</div><div id="caja"><input name="gato" id="gato" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m<sup>3</sup></div>
                           <div id="label" style="width:80px;padding-left:15px">Extensión:</div><div id="caja"><input name="extension" id="extension" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m</div>
                         </div>
                         
                         
                 <div id="fila" >
-                            <div id="label" style="width:190px;">Cubicaci&oacute;n. Real:</div><div id="caja"><input name="real" id="real" type="text" class="text" style="width:48px" readonly="readonly" />&nbsp;m<sup>3</sup></div>
-                            <div id="label" style="width:180px;padding-left:10px">Cubicaci&oacute;n para Pago:</div><div id="caja"><input name="pago" id="pago" type="text" class="text" style="width:48px" readonly="readonly" />&nbsp;m<sup>3</sup></div>
-                        </div>
+                    <div id="label" style="width:100px">Disminuci&oacute;n:</div><div id="caja"><input name="disminucion" id="disminucion" type="text" class="monetario calcula_cubicacion" style="width:50px" />&nbsp;m<sup>3</sup></div>
+                    <div id="label" style="width:130px;;padding-left:15px">Cubicaci&oacute;n. Real:</div><div id="caja"><input name="real" id="real" type="text" class="text" style="width:48px" readonly="readonly" />&nbsp;m<sup>3</sup></div>
+                    <div id="label" style="width:163px;padding-left:15px">Cubicaci&oacute;n para Pago:</div><div id="caja"><input name="pago" id="pago" type="text" class="text" style="width:48px" readonly="readonly" />&nbsp;m<sup>3</sup></div>
+                </div>
                         
                         
                         
@@ -184,7 +185,8 @@ $(function() {
 														alto=parseFloat(quitacomas(xajax.$("alto").value));
 														extension=parseFloat(quitacomas(xajax.$("extension").value));
 														gato=parseFloat(quitacomas(xajax.$("gato").value));
-														cubicacionr=ancho*largo*(alto+extension)-gato;
+                            disminucion=parseFloat(quitacomas(xajax.$("disminucion").value));
+														cubicacionr=ancho*largo*(alto+extension)-gato-disminucion;
 														//a=redondear(cubicacionr);
 														xajax.$("real").value = formateando(String(redondear(cubicacionr,2)));
 														xajax.$("pago").value = formateando(String(redondear(cubicacionr,0)));
@@ -368,15 +370,20 @@ $(function() {
                             <div id="label" style="width:60px;">Ancho:</div><div id="caja"><input name="ancho" id="ancho" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m</div>
                             <div id="label" style="width:50px;padding-left:15px">Largo:</div><div id="caja"><input name="largo" id="largo" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m</div>
                             <div id="label" style="width:50px;padding-left:15px">Alto:</div><div id="caja"><input name="alto" id="alto" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m</div>
-                          <div id="label" style="width:50px;padding-left:15px">Gato:</div><div id="caja"><input name="gato" id="gato" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m</div>
-                          <div id="label" style="width:80px;padding-left:15px">Extensión:</div><div id="caja"><input name="extension" id="extension" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m</div>
+                          <div id="label" style="width:50px;padding-left:15px">Gato:</div><div id="caja"><input name="gato" id="gato" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m<sup>3</sup></div>
+                          <div id="label" style="width:80px;padding-left:15px">Extensión:</div><div id="caja"><input name="extension" id="extension" type="text" class="monetario calcula_cubicacion" style="width:45px" />&nbsp;m</div>                          
+                        </div>
+                        <div id="fila">
+                            
+                            
                         </div>
                         
                         
                 <div id="fila" >
-                            <div id="label" style="width:190px;">Cubicaci&oacute;n. Real:</div><div id="caja"><input name="real" id="real" type="text" class="text" style="width:48px" readonly="readonly" />&nbsp;m<sup>3</sup></div>
-                            <div id="label" style="width:180px;padding-left:10px">Cubicaci&oacute;n para Pago:</div><div id="caja"><input name="pago" id="pago" type="text" class="text" style="width:48px" readonly="readonly" />&nbsp;m<sup>3</sup></div>
-                        </div>
+                    <div id="label" style="width:100px">Disminuci&oacute;n:</div><div id="caja"><input name="disminucion" id="disminucion" type="text" class="monetario calcula_cubicacion" style="width:50px" />&nbsp;m<sup>3</sup></div>
+                    <div id="label" style="width:130px;;padding-left:15px">Cubicaci&oacute;n. Real:</div><div id="caja"><input name="real" id="real" type="text" class="text" style="width:48px" readonly="readonly" />&nbsp;m<sup>3</sup></div>
+                    <div id="label" style="width:163px;padding-left:15px">Cubicaci&oacute;n para Pago:</div><div id="caja"><input name="pago" id="pago" type="text" class="text" style="width:48px" readonly="readonly" />&nbsp;m<sup>3</sup></div>
+                </div>
              </fieldset>
              
           				              

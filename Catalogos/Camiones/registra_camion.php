@@ -35,6 +35,7 @@ $tac = SCA::getConexion();
 	$dto->set_largo($_REQUEST["largo"]);
 	$dto->set_alto($_REQUEST["alto"]);
 	$dto->set_gato($_REQUEST["gato"]);
+	$dto->set_disminucion($_REQUEST["disminucion"]);
 	$dto->set_extension($_REQUEST["extension"]);
 	$dto->set_cub_real($_REQUEST["real"]);
 	$dto->set_cub_pago($_REQUEST["pago"]);
