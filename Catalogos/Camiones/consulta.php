@@ -189,15 +189,18 @@ var image_set_camiones = [
                             <div id="label" style="width:60px;">Ancho:</div><div id="caja" style="width:55px"><?php echo $vc["Ancho"] ?>&nbsp;m</div>
                             <div id="label" style="width:50px;padding-left:15px">Largo:</div><div id="caja" style="width:55px"><?php echo $vc["Largo"] ?>&nbsp;m</div>
                             <div id="label" style="width:50px;padding-left:15px">Alto:</div><div id="caja" style="width:55px"><?php echo $vc["Alto"] ?>&nbsp;m</div>
-                          <div id="label" style="width:50px;padding-left:15px">Gato:</div><div id="caja" style="width:55px"><?php echo $vc["EspacioDeGato"] ?>&nbsp;m</div>
+                          <div id="label" style="width:50px;padding-left:15px">Gato:</div><div id="caja" style="width:55px"><?php echo $vc["EspacioDeGato"] ?>&nbsp;m<sup>3</sup></div>
                           <div id="label" style="width:80px;padding-left:15px">Extensión:</div><div id="caja" style="width:55px"><?php echo $vc["AlturaExtension"] ?>&nbsp;m</div>
                         </div>
                         
                         
                 <div id="fila" >
-                            <div id="label" style="width:170px;">Cubicaci&oacute;n. Real:</div><div id="caja"><?php echo $vc["CubicacionReal"] ?>&nbsp;m<sup>3</sup></div>
-                            <div id="label" style="width:180px;padding-left:15px">Cubicaci&oacute;n para Pago:</div><div id="caja"><?php echo $vc["CubicacionParaPago"] ?>&nbsp;m<sup>3</sup></div>
-                     </div>
+                  <div id="label" style="width:100px">Disminuci&oacute;n:</div><div id="caja" style="width:55px"><?php echo $vc["disminucion"] ?>&nbsp;m<sup>3</sup></div>
+                  <b>
+                    <div id="label" style="width:130px;padding-left:15px">Cubicaci&oacute;n. Real:</div><div id="caja"><?php echo $vc["CubicacionReal"] ?>&nbsp;m<sup>3</sup></div>
+                    <div id="label" style="width:165px;padding-left:15px">Cubicaci&oacute;n para Pago:</div><div id="caja"><?php echo $vc["CubicacionParaPago"] ?>&nbsp;m<sup>3</sup></div>
+                  </b>
+                </div>
                         
                         
                         

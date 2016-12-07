@@ -21,7 +21,7 @@ $tac = SCA::getConexion();
 	$dto->set_economico($_REQUEST["eco"]);
 	
 	$dto->set_placas($_REQUEST["placas"]);
-        $dto->set_placasCaja($_REQUEST["placas_caja"]);
+    $dto->set_placasCaja($_REQUEST["placas_caja"]);
 	$dto->set_marca($_REQUEST["marcas"]);
 	$dto->set_modelo($_REQUEST["modelo"]);
 	$dto->set_aseguradora($_REQUEST["aseguradora"]);
@@ -32,9 +32,12 @@ $tac = SCA::getConexion();
 	$dto->set_largo($_REQUEST["largo"]);
 	$dto->set_alto($_REQUEST["alto"]);
 	$dto->set_gato($_REQUEST["gato"]);
+	$dto->set_disminucion($_REQUEST["disminucion"]);
+
 	$dto->set_extension($_REQUEST["extension"]);
-	$dto->set_cub_real($_REQUEST["real"]);
-	$dto->set_cub_pago($_REQUEST["pago"]);
+	//$_REQUEST["real"] = str_replace(',','',$_REQUEST["real"]);
+	$dto->set_cub_real(str_replace(',','',$_REQUEST["real"]));
+	$dto->set_cub_pago(str_replace(',','',$_REQUEST["pago"]));
 	$dto->set_dispositivo($_REQUEST["botones"]);
 	$dto->set_estatus($_REQUEST["ctg_estatus"]);
 
@@ -89,43 +92,50 @@ catch(Exception $e3)
 
 try
 	{
-		$dao->actualiza($dto);
-		$dto_im_f->set_id_camion($dto->get_id_camion());
-		$dto_im_d->set_id_camion($dto->get_id_camion());
-		$dto_im_t->set_id_camion($dto->get_id_camion());
-		$dto_im_i->set_id_camion($dto->get_id_camion());
-		$mensajes.=regresa_mensaje($dto->get_aux_kind(),$dto->get_aux_message());
-		$del=inc_delay($del);
-		try
-		{	if($dto_im_f->get_imagen()!="")
-			{
-				$dao_im_f->registra($dto_im_f);
-				$mensajes.=regresa_mensaje($dto_im_f->get_aux_kind(),$dto_im_f->get_aux_message());
-				$del=inc_delay($del);
+		if(str_replace(',','',$_REQUEST["real"])<50 && str_replace(',','',$_REQUEST["pago"]<50))
+		{	
+			$dao->actualiza($dto);
+			$dto_im_f->set_id_camion($dto->get_id_camion());
+			$dto_im_d->set_id_camion($dto->get_id_camion());
+			$dto_im_t->set_id_camion($dto->get_id_camion());
+			$dto_im_i->set_id_camion($dto->get_id_camion());
+			$mensajes.=regresa_mensaje($dto->get_aux_kind(),$dto->get_aux_message());
+			$del=inc_delay($del);
+			try
+			{	if($dto_im_f->get_imagen()!="")
+				{
+					$dao_im_f->registra($dto_im_f);
+					$mensajes.=regresa_mensaje($dto_im_f->get_aux_kind(),$dto_im_f->get_aux_message());
+					$del=inc_delay($del);
+				}
+				if($dto_im_d->get_imagen()!="")
+				{
+					$dao_im_d->registra($dto_im_d);
+					$mensajes.=regresa_mensaje($dto_im_d->get_aux_kind(),$dto_im_d->get_aux_message());
+					$del=inc_delay($del);
+				}
+				if($dto_im_t->get_imagen()!="")
+				{
+					$dao_im_t->registra($dto_im_t);
+					$mensajes.=regresa_mensaje($dto_im_t->get_aux_kind(),$dto_im_t->get_aux_message());
+					$del=inc_delay($del);
+				}
+				if($dto_im_i->get_imagen()!="")
+				{
+					$dao_im_i->registra($dto_im_i);
+					$mensajes.=regresa_mensaje($dto_im_i->get_aux_kind(),$dto_im_i->get_aux_message());
+					$del=inc_delay($del);
+				}
 			}
-			if($dto_im_d->get_imagen()!="")
+			catch(Exception $e1)
 			{
-				$dao_im_d->registra($dto_im_d);
-				$mensajes.=regresa_mensaje($dto_im_d->get_aux_kind(),$dto_im_d->get_aux_message());
-				$del=inc_delay($del);
-			}
-			if($dto_im_t->get_imagen()!="")
-			{
-				$dao_im_t->registra($dto_im_t);
-				$mensajes.=regresa_mensaje($dto_im_t->get_aux_kind(),$dto_im_t->get_aux_message());
-				$del=inc_delay($del);
-			}
-			if($dto_im_i->get_imagen()!="")
-			{
-				$dao_im_i->registra($dto_im_i);
-				$mensajes.=regresa_mensaje($dto_im_i->get_aux_kind(),$dto_im_i->get_aux_message());
+				$mensajes.=regresa_mensaje("red",$e1->getMessage());
 				$del=inc_delay($del);
 			}
 		}
-		catch(Exception $e1)
+		else
 		{
-			$mensajes.=regresa_mensaje("red",$e1->getMessage());
-			$del=inc_delay($del);
+			throw new Exception("No existe una cubicaci&oacute;n mayor a 50m<sup>3</sup>");
 		}
 	}
 	catch(Exception $e)
