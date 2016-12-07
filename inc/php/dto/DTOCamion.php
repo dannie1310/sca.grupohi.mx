@@ -8,8 +8,8 @@ class DTOCamion
 	private $_operador;
 	private $_economico;
 	private $_placas;
-        private $_placasCaja;
-        private $_marca;
+    private $_placasCaja;
+    private $_marca;
 	private $_modelo;
 	private $_aseguradora;
 	private $_poliza;
@@ -19,6 +19,7 @@ class DTOCamion
 	private $_alto;
 	private $_extension;
 	private $_gato;
+	private $_disminucion;
 	private $_cub_real;
 	private $_cub_pago;
 	private $_dispositivo;
@@ -181,6 +182,15 @@ class DTOCamion
 	public function set_gato($val)
 	{
 		$this->_gato = $val;
+	}
+
+	public function get_disminucion()
+	{
+		return $this->_disminucion;
+	}
+	public function set_disminucion($val)
+	{
+		$this->_disminucion = $val;
 	}
 	
 	public function get_extension()

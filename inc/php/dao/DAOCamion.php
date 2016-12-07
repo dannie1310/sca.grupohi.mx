@@ -4,8 +4,8 @@
 	{
 		
 		var $SCA; 
-		var $SQL_REGISTRA = "sp_registra_camion(%d,%d,'%s',%d,%d,'%s','%s','%s',%d,'%s','%s','%s','%s',%f,%f,%f,%f,%f,%f,%f,@kind,@message,@idcamion)";
-	      var $SQL_ACTUALIZA = "sp_actualiza_camion(%d,%d,%d,'%s',%d,%d,'%s','%s','%s',%d,'%s','%s','%s','%s',%f,%f,%f,%f,%f,%f,%f,%d,@kind,@message)";
+		var $SQL_REGISTRA = "sp_registra_camion(%d,%d,'%s',%d,%d,'%s','%s','%s',%d,'%s','%s','%s','%s',%f,%f,%f,%f,%f,%f,%f,%f,@kind,@message,@idcamion)";
+	      var $SQL_ACTUALIZA = "sp_actualiza_camion(%d,%d,%d,'%s',%d,%d,'%s','%s','%s',%d,'%s','%s','%s','%s',%f,%f,%f,%f,%f,%f,%f,%f,%d,@kind,@message)";
 		
 		public function DAOCamion()
 		{
@@ -22,7 +22,7 @@
 							,$camion->get_operador()
 							,$camion->get_dispositivo()
 							,$camion->get_placas()
-                                                        ,$camion->get_placasCaja()
+                            ,$camion->get_placasCaja()
 							,$camion->get_economico()
 							,$camion->get_marca()
 							,$camion->get_modelo()
@@ -34,6 +34,7 @@
 							,$camion->get_alto()
 							,$camion->get_extension()
 							,$camion->get_gato()
+							,$camion->get_disminucion()
 							,$camion->get_cub_real()
 							,$camion->get_cub_pago()
 							);
@@ -76,7 +77,7 @@
 							,$camion->get_operador()
 							,$camion->get_dispositivo()
 							,$camion->get_placas()
-                                                        ,$camion->get_placasCaja()
+                            ,$camion->get_placasCaja()
 							,$camion->get_economico()
 							,$camion->get_marca()
 							,$camion->get_modelo()
@@ -88,6 +89,7 @@
 							,$camion->get_alto()
 							,$camion->get_extension()
 							,$camion->get_gato()
+							,$camion->get_disminucion()
 							,$camion->get_cub_real()
 							,$camion->get_cub_pago()
 							,$camion->get_estatus()
