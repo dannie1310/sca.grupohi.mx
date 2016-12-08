@@ -152,7 +152,7 @@ $vc=mysql_fetch_array($r);
                         
                         
                 <div id="fila" >
-                  <div id="label" style="width:100px">Disminuci&oacute;n:</div><div id="caja"><input name="disminucion" id="disminucion" type="text" class="monetario calcula_cubicacion" style="width:45px" value="'.$vc["disminucion"].'" />&nbsp;m<sup>3</sup></div>
+                  <div id="label" style="width:100px">Disminuci&oacute;n:</div><div id="caja"><input name="disminucion" id="disminucion" type="text" class="monetario calcula_cubicacion" style="width:45px" value="'.$vc["Disminucion"].'" />&nbsp;m<sup>3</sup></div>
                   <b>
                     <div id="label" style="width:130px;padding-left:15px">Cubicaci&oacute;n. Real:</div><div id="caja"><input name="real" id="real" type="text" class="text" style="width:48px" readonly="readonly" value="'.$vc["CubicacionReal"].'" />&nbsp;m<sup>3</sup></div>
                     <div id="label" style="width:165px;padding-left:15px">Cubicaci&oacute;n para Pago:</div><div id="caja"><input name="pago" id="pago" type="text" class="text" style="width:48px" readonly="readonly" value="'.$vc["CubicacionParaPago"].'" />&nbsp;m<sup>3</sup></div>
@@ -456,7 +456,7 @@ function actualiza_imagen()
                         
                         
                     <div id="fila" >
-                        <div id="label" style="width:100px">Disminuci&oacute;n:</div><div id="caja"><input name="disminucion" id="disminucion" type="text" class="monetario calcula_cubicacion" style="width:45px" value="<?php echo $vc["disminucion"] ?>" />&nbsp;m<sup>3</sup></div>
+                        <div id="label" style="width:100px">Disminuci&oacute;n:</div><div id="caja"><input name="disminucion" id="disminucion" type="text" class="monetario calcula_cubicacion" style="width:45px" value="<?php echo $vc["Disminucion"] ?>" />&nbsp;m<sup>3</sup></div>
                         <b>
                           <div id="label" style="width:130px;padding-left:15px">Cubicaci&oacute;n. Real:</div><div id="caja"><input name="real" id="real" type="text" class="text" style="width:48px" readonly="readonly" value="<?php echo $vc["CubicacionReal"] ?>" />&nbsp;m<sup>3</sup></div>
                           <div id="label" style="width:165px;padding-left:20px">Cubicaci&oacute;n para Pago:</div><div id="caja"><input name="pago" id="pago" type="text" class="text" style="width:48px" readonly="readonly" value="<?php echo $vc["CubicacionParaPago"] ?>" />&nbsp;m<sup>3</sup></div>
