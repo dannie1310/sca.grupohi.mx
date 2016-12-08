@@ -114,8 +114,10 @@ body,td,th {
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >ALTO</div></td>
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >EXTENSIÓN</div></td>
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >GATO</div></td>
+        <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >DISMINUCIÓN</div></td>
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >CUBC.  PAGO</div></td>
-        <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >PLACAS</div></td>
+        <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >PLACAS CAMIÓN</div></td>
+        <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >PLACAS CAJA</div></td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5">MARCA</td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5">MODELO</td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >SINDICATO</div></td>
@@ -129,7 +131,8 @@ body,td,th {
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center">(m)</div></td>
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center">(m)</div></td>
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center">(m)</div></td>
-        <td valign="bottom" bgcolor="969696" class="style5"><div align="center">(m)</div></td>
+        <td valign="bottom" bgcolor="969696" class="style5"><div align="center">(m<sup>3</sup>)</div></td>
+        <td valign="bottom" bgcolor="969696" class="style5"><div align="center">(m<sup>3</sup>)</div></td>
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center">(m<sup>3</sup>)</div></td>
       </tr>
       <?php
@@ -149,8 +152,10 @@ body,td,th {
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="right"><span class="style7"><?php echo $v[Alto]; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="right"><span class="style7"><?php echo $v[AlturaExtension]; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="right"><span class="style7"><?php echo $v[EspacioDeGato]; ?></span></div></td>
+        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="right"><span class="style7"><?php echo $v[disminucion]; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="right"><span class="style7"><?php echo $v[CubicacionParaPago]; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[Placas]; ?></span></div></td>
+        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[PlacasCaja]; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Marca"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Modelo"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo regresa(sindicatos,NombreCorto,IdSindicato,$v[IdSindicato]); ?></span></td>
