@@ -70,7 +70,7 @@ function horas($dec) {
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="../../Estilos/js/jquery.bxslider.min.js"></script>
-<link href="../../Estilos/js/jquery.bxslider.css" rel="stylesheet" />
+        <link href="../../Estilos/js/jquery.bxslider.css" rel="stylesheet" />
         <script language="javascript" type="text/javascript">
 
 
@@ -97,6 +97,11 @@ function horas($dec) {
             <div id="encabezado_pagina" style="width:100%;">
                 <img src="../../Imagenes/validaviajes/DocumentEdit.png" />
                 Validaci&oacute;n de Viajes
+            </div>
+            <div align="center"> 
+                <label ><font color="#000000" face="Trebuchet MS" style="font-size:12px;">C&Oacute;DIGO DE TICKET</font></label>
+                <input type="text" id="codevalue" value="" >
+                <input type="button" id="buttoncode" value="Buscar" >
             </div>
             
             <div class="detalle" id="tipos" style="width:100%; margin-top:20px; display:none">
@@ -276,6 +281,7 @@ function horas($dec) {
                                         v.IdViajeNeto as IdViaje,
                                         v.Estatus,
                                         v.HoraLlegada as Hora,
+                                        v.code,
                                         if(fa.FactorAbundamiento is null,0.00,fa.FactorAbundamiento) as FactorAbundamiento,
                                         c.CubicacionParaPago as cubicacion,
                                         o.Descripcion as origen,
@@ -325,7 +331,6 @@ function horas($dec) {
                                         v.IdCamion = ".$v_camiones["IdCamion"]." AND
                                         v.FechaLlegada = '".$v["FechaO"]."' AND
                                         v.IdTiro = ".$v_tiros["IdTiro"]." group by idviaje";
-
                                     $r_viajes=$l->consultar($SQLs);
                                     $i=1;
 
@@ -360,7 +365,8 @@ function horas($dec) {
                                 <input name="tiro<?php echo $i_general; ?>" id="tiro<?php echo $i_general; ?>" type="hidden" value="<?php echo $v_tiros["IdTiro"]; ?>" />
                                 <input name="camion<?php echo $i_general; ?>" id="camion<?php echo $i_general; ?>" type="hidden" value="<?php echo $v_camiones["IdCamion"]; ?>" />
                                 <input name="idviaje<?php echo $i_general; ?>" id="idviaje<?php echo $i_general; ?>" type="hidden" value="<?php echo $v_viajes["IdViaje"]; ?>" />
-                                <tr>
+                                
+                                <tr name="code_<?php echo $v_viajes["code"]; ?>" id="code_<?php echo $v_viajes["code"]; ?>" >
                                     <td class="detalle">
                                         <?php echo $i ?>&nbsp;
                                     </td>
@@ -634,7 +640,49 @@ function horas($dec) {
     });
     }
 
+    $("#buttoncode").click(function(){
 
+        if($("#codevalue").val() != ""){
+            id = '#code_'+$("#codevalue").val();
+            if ( $(id).length > 0) {
+                trs = $(id).parents("tr");
+                $.each(trs, function(i,v){$(this).css("display","block");})
+
+                $(id).css('background-color', '#82E0AA');setTimeout(function(){
+                    $(id).css('background-color', '');
+                }, 2000);
+            }
+            else{
+                alert("El Ticket no existe!!");    
+            }
+        }
+        else{
+            alert("Escribir Ticket!!");
+        }
+
+    });
+
+    $("#codevalue").change(function(){
+        if($("#codevalue").val() != ""){
+            id = '#code_'+$("#codevalue").val();
+            if ( $(id).length > 0) {
+                trs = $(id).parents("tr");
+                $.each(trs, function(i,v){$(this).css("display","block");})
+
+                $(id).css('background-color', '#82E0AA');setTimeout(function(){
+                    $(id).css('background-color', '');
+                    $("#codevalue").val('');
+                }, 2000);
+            }
+            else{
+                alert("El Ticket no existe!!");    
+            }
+        }
+        else{
+            alert("Escribir Ticket!!");
+        }
+
+    });
 
 
 </script>
