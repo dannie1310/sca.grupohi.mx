@@ -618,13 +618,15 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                 
                 
                 $sql_vn = "SELECT IdViajeNeto FROM $_REQUEST[bd].viajesnetos where CodeImagen='".$value_i[CodeImagen]."' ;";
-                $x_errori = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $sql_vn)."','eli' )";
-                            $this->_db->consultar($x_errori);
+                
                 $result_vn = $this->_db ->consultar($sql_vn);
                 if ($row_vn = $this->_db ->fetch($result_vn)){
                     $id_viaje_neto_i = $row_vn["IdViajeNeto"];
+                }else{
+                    $id_viaje_neto_i = 0;
                 }
-                
+                $x_errori = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $sql_vn)."','eli' )";
+                            $this->_db->consultar($x_errori);
                 if($id_viaje_neto_i > 0){
                     $x_imagen = "insert into $_REQUEST[bd].viajes_netos_imagenes(idviaje_neto,idtipo_imagen,imagen) values($id_viaje_neto_i,".$value_i[idtipo_imagen].",'".str_replace('\\','',$value_i[imagen])."')";
                     $this->_db->consultar($x_imagen);
