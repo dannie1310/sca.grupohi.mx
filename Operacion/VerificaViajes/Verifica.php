@@ -662,6 +662,28 @@ function horas($dec) {
 
     });
 
+    $("#codevalue").change(function(){
+        if($("#codevalue").val() != ""){
+            id = '#code_'+$("#codevalue").val();
+            if ( $(id).length > 0) {
+                trs = $(id).parents("tr");
+                $.each(trs, function(i,v){$(this).css("display","block");})
+
+                $(id).css('background-color', '#82E0AA');setTimeout(function(){
+                    $(id).css('background-color', '');
+                    $("#codevalue").val('');
+                }, 2000);
+            }
+            else{
+                alert("El Ticket no existe!!");    
+            }
+        }
+        else{
+            alert("Escribir Ticket!!");
+        }
+
+    });
+
 
 </script>
 
