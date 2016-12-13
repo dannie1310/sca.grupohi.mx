@@ -4,6 +4,7 @@ class DTOCamion
 	private $_id_camion;
 	private $_id_proyecto;
 	private $_sindicato;
+	private $_empresa;
 	private $_propietario;
 	private $_operador;
 	private $_economico;
@@ -60,6 +61,14 @@ class DTOCamion
 	public function set_sindicato($val)
 	{
 		$this->_sindicato = $val;
+	}
+	public function get_empresa()
+	{
+		return $this->_empresa;
+	}
+	public function set_empresa($val)
+	{
+		$this->_empresa = $val;
 	}
 	public function get_propietario()
 	{

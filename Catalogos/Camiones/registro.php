@@ -20,18 +20,29 @@ function inicializa_formulario()
                         <div id="fila"></div>
                         <div id="fila" >
                         
-                            <div id="label" style="width:100px">
+                          <div id="label" style="width:115px">
                             Sindicato:</div>
-                            <div id="caja">'.$SCA->regresaSelectBasicoRet("sindicatos","IdSindicato","Descripcion","Estatus = 1","asc",1).'
-                            </div>
-                            
-                            <div id="label" style="width:100px;padding-left:15px">
-                            Propietario:</div>
-                            <div id="caja" ><input name="propietario" id="propietario" type="text" class="text" value="" />
-                            </div>
+                          <div id="caja">'.$SCA->regresaSelectBasicoRet("sindicatos","IdSindicato","Descripcion","Estatus = 1","asc",1).'
+                          </div>
+
+                          <div id="label" style="width:100px;padding-left:15px">
+                            Empresa:</div>
+                          <div id="caja">'.$SCA->regresaSelectBasicoRet("empresas","idEmpresa","razonSocial","Estatus = 1","asc",1).'
+                          </div>
+
+                        </div>
+                        <div id="fila" >
+
+                          <div id="label" style="width:115px">
+                            Propietario:
+                          </div>
+                          <div id="caja" >
+                            <input name="propietario" id="propietario" type="text" class="text" value="" />
+                          </div>
+
                         </div>
                   <div id="fila" >
-                            <div id="label" style="width:100px">
+                            <div id="label" style="width:115px">
                           Operador:</div>
                             <div id="caja">'.$SCA->regresaSelectBasicoRet("operadores","IdOperador","Nombre","Estatus = 1","asc",1).'
                             </div>
@@ -54,7 +65,7 @@ function inicializa_formulario()
                             </div>
                     </div>
                          <div id="fila" >
-                            <div id="label" style="width:100px">
+                            <div id="label" style="width:115px">
                             Marca:</div>
                             <div id="caja">'.$SCA->regresaSelectBasicoRet("marcas","IdMarca","Descripcion","Estatus = 1","asc",1).'
                             </div>
@@ -74,7 +85,7 @@ function inicializa_formulario()
                         <legend ><img src="../../Imagenes/image.gif" width="16" height="16" />&nbsp;Información Fotográfica</legend>
                         <div id="fila"></div>
                         <div id="fila" >
-                            <div id="label" style="width:100px">
+                            <div id="label" style="width:115px">
                             Frente:</div>
                             <div id="caja">
                             <input name="frente" id="frente" type="file" class="text" />
@@ -85,7 +96,7 @@ function inicializa_formulario()
                                 	 <input name="derecha" id="derecha" type="file" class="text" />  </div>
                             </div>
                             <div id="fila">
-                              <div id="label" style="width:100px;">
+                              <div id="label" style="width:115px;">
                     Atras:</div>
                           <div id="caja">
                              <input name="atras" id="atras" type="file" class="text" /> </div>
@@ -269,18 +280,28 @@ $(function() {
                     <fieldset >
                         <legend ><img src="../../Imagenes/Camiones.gif" width="16" height="16" />&nbsp;Información Básica</legend>
                         <div id="fila"></div>
+                        
                         <div id="fila" >
                         
-                            <div id="label" style="width:115px">
+                          <div id="label" style="width:115px">
                             Sindicato:</div>
-                            <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("sindicatos","IdSindicato","Descripcion","Estatus = 1","asc",1)?>
-                            </div>
-                            
-                            <div id="label" style="width:100px;padding-left:15px">
-                            Propietario:</div>
-                            <div id="caja" ><input name="propietario" id="propietario" type="text" class="text" value="" />
-                            </div>
+                          <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("sindicatos","IdSindicato","Descripcion","Estatus = 1","asc",1)?>
+                          </div>
+
+                          <div id="label" style="width:100px;padding-left:15px">
+                            Empresa:</div>
+                          <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("empresas","idEmpresa","razonSocial","Estatus = 1","asc",1)?>
+                          </div>
+
                         </div>
+
+                        <div id="fila" >
+                          <div id="label" style="width:115px">
+                            Propietario:</div>
+                          <div id="caja" ><input name="propietario" id="propietario" type="text" class="text" value="" />
+                          </div>
+                        </div>
+
                   <div id="fila" >
                             <div id="label" style="width:115px">
                           Operador:</div>

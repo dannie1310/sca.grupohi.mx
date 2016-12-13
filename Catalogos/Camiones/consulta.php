@@ -85,11 +85,18 @@ var image_set_camiones = [
                         <div id="fila" >
                         
                             <div id="label" style="width:115px">
-                            Sindicato:</div>
+                              Sindicato:</div>
                             <div id="caja" style="width:230px"><?php echo $SCA->regresaDatos2("sindicatos","Descripcion","IdSindicato",$vc["IdSindicato"])?>
                             </div>
-                            
+
                             <div id="label" style="width:100px;padding-left:15px">
+                              Empresa:</div>
+                            <div id="caja" style="width:230px"><?php echo $SCA->regresaDatos2("empresas","razonSocial","IdEmpresa",$vc["IdEmpresa"])?>
+                            </div>
+                        </div>
+
+                        <div id="fila" >    
+                            <div id="label" style="width:115px">
                             Propietario:</div>
                             <div id="caja" ><?php echo $vc["Propietario"] ?>      </div>
                         </div>
