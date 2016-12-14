@@ -611,7 +611,6 @@ function horas($dec) {
                             cubiNueva=document.getElementById('cubicacion'+arreglo[o]).value;
                             cubiOriginal=document.getElementById('cubicacion1'+arreglo[o]).value;
 
-
             }catch(e){accion='n'}
 
             if(accion!='n')
