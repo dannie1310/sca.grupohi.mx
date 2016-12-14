@@ -406,9 +406,25 @@ function horas($dec) {
                         <input type="checkbox" name="r<?php echo $i_general; ?>" id="r<?php echo $i_general; ?>"  <?php if($v_viajes["idmaterial"]==''||$v_viajes["tarifa_material"]==''||$v_viajes["Estatus"]==10||($v_viajes["Estatus"]==0&&($v_viajes["tiempo"]==0||($v_viajes["tiempo"]<$v_viajes["cronometria"])))){ echo "checked"; }?> onclick="clic('a<?php echo $i_general; ?>')" style="cursor:pointer"/>
                     </div>
                 </td>
-                <td align="right" class="detalle">
-                    <?php echo $v_viajes["cubicacion"] ?>
+
+
+
+
+
+
+<!--    cubicación         -->
+                <td align="center" class="detalle">
+                    <?php //echo $v_viajes["cubicacion"] ?>
+                     <input name="cubicacion1<?php echo $i_general; ?>" type="hidden"  id="cubicacion1<?php echo $i_general; ?>" style="width:25px" value="<?php echo $v_viajes['cubicacion'] ?>" readonly="readonly"/>
+                    <input name="cubicacion<?php echo $i_general; ?>" type="text" class="cubicacion detalle" id="cubicacion<?php echo $i_general; ?>" style="width:25px" value="<?php echo $v_viajes['cubicacion'] ?>" contador="<?php echo $i_general; ?>" readonly="readonly"/>
                 </td>
+
+
+
+
+
+
+<!--    Origen          -->
                 <td align="center">
                     <?php if($v_viajes["origen"]!='') {?>
                     <span class="detalle" title="<?php echo $v_viajes["origen"];?>"><?php echo substr($v_viajes["origen"], 0, 10) ; ?>
@@ -425,13 +441,16 @@ function horas($dec) {
                         }
                     ?>
                 </td>
+<!--    Material          -->
                 <td align="center">
                     <span class="detalle">
                         <input name="material<?php echo $i_general; ?>" id="material<?php echo $i_general; ?>" type="hidden" value="<?php echo $v_viajes["idmaterial"] ?>" />
                         <?php echo $v_viajes["material"] ?>
                     </span>
                 </td>
+<!--    Tiempo          -->
                 <td align="center"><span class="detalle"><?php echo substr($v_viajes["tiempo_mostrar"],0,5); ?></span></td>
+<!--    Ruta          -->
                 <td align="center">
                     <span class="detalle">
                         <div id="rut<?php echo $i_general; ?>">
@@ -439,6 +458,7 @@ function horas($dec) {
                         </div>
                     </span>
                 </td>
+<!--    Distancia          -->
                 <td align="center">
                     <span class="detalle">
                         <div id="dis<?php echo $i_general; ?>">
@@ -446,31 +466,37 @@ function horas($dec) {
                         </div>
                     </span>
                 </td>
+<!--    Tara          -->
                 <td align="center" class="detalle">
                     <div id="dtara<?php echo $i_general; ?>">
                         <input name="tara<?php echo $i_general; ?>" type="text" class="monetario tipo_tarifa_p" id="tara<?php echo $i_general; ?>" style="width:45px" value="0.00" contador="<?php echo $i_general; ?>" />
                     </div>
                 </td>
+<!--    Bruto          -->
                 <td align="center" class="detalle">
                     <div id="dbruto<?php echo $i_general; ?>">
                         <input name="bruto<?php echo $i_general; ?>" type="text" class="monetario tipo_tarifa_p" id="bruto<?php echo $i_general; ?>" style="width:45px" value="0.00" contador="<?php echo $i_general; ?>" />
                     </div>
                 </td>
+<!--    1er Km          -->
  		         <td align="center" class="detalle">
                     <div id="dpk<?php echo $i_general; ?>">
                         <?php echo number_format($v_viajes["tarifa_material_pk"],2) ?>
                     </div>
                 </td>
+<!--    Km sub.          -->
                 <td align="center" class="detalle">
                     <div id="dks<?php echo $i_general; ?>"> 
                         <?php echo number_format($v_viajes["tarifa_material_ks"],2) ?>
                     </div>
                 </td>
+<!--    Km Adc          -->
                 <td align="center" class="detalle">
                     <div id="dka<?php echo $i_general; ?>"> 
                         <?php echo number_format($v_viajes["tarifa_material_ka"],2) ?>
                     </div>
                 </td>
+<!--    Tipo Tarifa          -->
                 <td align="center">
                     <span class="detalle">
                         <div id="imp<?php echo $i_general; ?>">
@@ -478,6 +504,7 @@ function horas($dec) {
                         </div>
                     </span>
                 </td>
+<!--    Tipo Fda          -->
                 <td align="center">
                     <div id="dtarifa<?php echo $i_general; ?>">
                         <select name="tarifa<?php echo $i_general; ?>" id="tarifa<?php echo $i_general; ?>"  class="tipo_tarifa" contador="<?php echo $i_general; ?>">
@@ -487,6 +514,7 @@ function horas($dec) {
                         </select>
                     </div>
                 </td>
+
                 <td align="center">
                     <div id="dfda<?php echo $i_general; ?>">
                         <select name="fda<?php echo $i_general; ?>" id="fda<?php echo $i_general; ?>" >
@@ -542,6 +570,9 @@ function horas($dec) {
   <p>Grupo Hermes Infraestructura</p>
 </div>
 
+<div id="nuevaCubi" title="Nueva cubicaci&oacute;n">
+</div>
+
 </body>
 <script src="../../Clases/Js/Cajas.js"></script>
 <script language="javascript" src="../../Clases/Js/Genericas.js"></script>
@@ -568,22 +599,23 @@ function horas($dec) {
 
         for(o=0;o<arreglo.length;o++){
             try{
-                            accion=(document.getElementById('a'+arreglo[o]).checked)?1:(document.getElementById('r'+arreglo[o]).checked)?0:'n';
-                                    horas_efectivas=(document.getElementById('hef'+arreglo[o]).value=='')?0.00:document.getElementById('hef'+arreglo[o]).value;
-                                    maquinaria=(document.getElementById('cr'+arreglo[o]).value=='A99')?0:document.getElementById('cr'+arreglo[o]).value;
-                                    origen=(document.getElementById('origen'+arreglo[o]).value=='A99')?0:document.getElementById('origen'+arreglo[o]).value;
-                                    id_viaje_neto=document.getElementById('idviaje'+arreglo[o]).value;
-                                    tarifa=document.getElementById('tarifa'+arreglo[o]).value;
-                                    fda=document.getElementById('fda'+arreglo[o]).value;
-                                    tara=document.getElementById('tara'+arreglo[o]).value;
-                                    bruto=document.getElementById('bruto'+arreglo[o]).value;
+                    accion=(document.getElementById('a'+arreglo[o]).checked)?1:(document.getElementById('r'+arreglo[o]).checked)?0:'n';
+                            horas_efectivas=(document.getElementById('hef'+arreglo[o]).value=='')?0.00:document.getElementById('hef'+arreglo[o]).value;
+                            maquinaria=(document.getElementById('cr'+arreglo[o]).value=='A99')?0:document.getElementById('cr'+arreglo[o]).value;
+                            origen=(document.getElementById('origen'+arreglo[o]).value=='A99')?0:document.getElementById('origen'+arreglo[o]).value;
+                            id_viaje_neto=document.getElementById('idviaje'+arreglo[o]).value;
+                            tarifa=document.getElementById('tarifa'+arreglo[o]).value;
+                            fda=document.getElementById('fda'+arreglo[o]).value;
+                            tara=document.getElementById('tara'+arreglo[o]).value;
+                            bruto=document.getElementById('bruto'+arreglo[o]).value;
+                            cubiNueva=document.getElementById('cubicacion'+arreglo[o]).value;
+                            cubiOriginal=document.getElementById('cubicacion1'+arreglo[o]).value;
 
 
             }catch(e){accion='n'}
 
             if(accion!='n')
-                xajax_registra_viaje(arreglo[o],accion,id_viaje_neto,maquinaria,horas_efectivas,origen,tarifa,fda,tara,bruto);
-
+                xajax_registra_viaje(arreglo[o],accion,id_viaje_neto,maquinaria,horas_efectivas,origen,tarifa,fda,tara,bruto,cubiNueva,cubiOriginal);
             }
 
     }
@@ -684,7 +716,36 @@ function horas($dec) {
 
     });
 
+    $(".cubicacion").click(function(){
+        value  = $(this).val();
+        cubiAnt = $(this).attr("id");
+        input = '<input type="text" value="' + value + '" id="NueCubi" style="width:25px" /><br><br> <input type="button" id="AceptaCubica" value="Aceptar" onclick="Acepta('+ cubiAnt+');">'; 
+        div = '<div style="margin:0 auto; overflow:hidden" align="center"><br>Nueva Cubicaci&oacute;n: ' + input + '</div>';
+        $("#nuevaCubi").html(div);
+          $( "#nuevaCubi" ).dialog({
+                modal: true,
+                autoOpen: false,
+                width: 350
+            });
+        $( "#nuevaCubi" ).dialog("open");
+    });
+
+    function Acepta(id){
+        $("#nuevaCubi" ).dialog("close");
+        $(id).val($('#NueCubi').val());
+    }
 
 </script>
+
+<style type="text/css">
+        .cubicacion {
+            border-top: rgba(0,0,0,0);
+            border-left: rgba(0,0,0,0);
+            border-right: rgba(0,0,0,0);
+            border-color:#0087bd;
+            text-align:center;
+            cursor: pointer;
+        }
+</style>
 
 </html>

@@ -1,5 +1,5 @@
 <?php
-function registra_viaje($i,$Accion,$IdViaje,$IdMaquinaria,$Horas,$IdOrigen,$TipoTarifa,$TipoFda,$Tara=0.00,$Bruto=0.00)
+function registra_viaje($i,$Accion,$IdViaje,$IdMaquinaria,$Horas,$IdOrigen,$TipoTarifa,$TipoFda,$Tara=0.00,$Bruto=0.00,$cubiNueva,$cubiOriginal)
 	{
 		$respuesta=new xajaxResponse();
 		//$l = SCA::getConexion();
