@@ -1,10 +1,10 @@
 <?php
-function registra_viaje($i,$Accion,$IdViaje,$IdMaquinaria,$Horas,$IdOrigen,$TipoTarifa,$TipoFda,$Tara=0.00,$Bruto=0.00,$cubiNueva,$cubiOriginal)
+function registra_viaje($i,$Accion,$IdViaje,$IdMaquinaria,$Horas,$IdOrigen,$TipoTarifa,$TipoFda,$Tara=0.00,$Bruto=0.00,$CubiNueva,$CubiVieja)
 	{
 		$respuesta=new xajaxResponse();
 		//$l = SCA::getConexion();
 		$l = $GLOBALS["l"];
-		$SQLs = "call `sca_sp_registra_viaje_fda` (".$Accion.",".$IdViaje.",".$IdMaquinaria.",".$Horas.",".$IdOrigen.",".$_SESSION["IdUsuarioAc"].",'".$TipoTarifa."','".$TipoFda."','".$Tara."','".$Bruto."','".$cubiNueva."','".$cubiOriginal."',@a);";
+		$SQLs = "call `sca_sp_registra_viaje_fda` (".$Accion.",".$IdViaje.",".$IdMaquinaria.",".$Horas.",".$IdOrigen.",".$_SESSION["IdUsuarioAc"].",'".$TipoTarifa."','".$TipoFda."','".$Tara."','".$Bruto."','".$CubiNueva."','".$CubiVieja."',@a);";
 	//	$respuesta->alert($SQLs);
 		
 		$r=$l->consultar($SQLs);
