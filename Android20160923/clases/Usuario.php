@@ -395,19 +395,32 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                 $a_registrar = count($datos_altas);
                 if($a_registrar > 0){
                 $registros = 0;
+                $previos = 0;
                 foreach ($datos_altas as $key => $value) {
                     
-                    $x="INSERT INTO 
-                            sca_configuracion.tags (uid, id_proyecto, estado, registro, fecha_registro) 
-                        VALUES('".$value['uid']."',".$value['id_proyecto'].",1, '".$usr."',NOW());";
                     
-                    $this->_db->consultar($x);
-                    if($this->_db->affected()>=0)
-                    $registros = $registros+$this->_db->affected();
-                    $error = $error + $this->_db->mensaje;
+                     $x_v = "select count(*) as existe from sca_configuracion.tags 
+                        where uid = '".$value['uid']."';";
+
+                    $result_valida = $this->_db ->consultar($x_v);
+                    $row_valida = $this->_db ->fetch($result_valida);
+                    if($row_valida["existe"] == 1){
+                        $previos = $previos + 1;
+                    }else{
+                    
+                    
+                        $x="INSERT INTO 
+                                sca_configuracion.tags (uid, id_proyecto, estado, registro, fecha_registro) 
+                            VALUES('".$value['uid']."',".$value['id_proyecto'].",1, '".$usr."',NOW());";
+
+                        $this->_db->consultar($x);
+                        if($this->_db->affected()>=0){
+                            $registros = $registros+$this->_db->affected();
+                        }
+                    }
                 }
-                if ($registros == $a_registrar)
-                    echo "{\"msj\":\"UIDs registrados correctamente. Registrados: ".$registros." A registrar: ".$a_registrar."\"}";
+                if (($registros + $previos) == $a_registrar)
+                    echo "{\"msj\":\"UIDs registrados correctamente. Registrados: ".$registros." Registrados Previamente: ".$previos." A registrar: ".$a_registrar."\"}";
                 else
                     echo "{\"error\":\"No se registraron todos los uids. Registrados:".$registros." A registrar:".$a_registrar."  .\"}";
                 }
