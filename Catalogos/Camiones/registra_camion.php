@@ -91,7 +91,7 @@ catch(Exception $e3)
 
 try
 	{
-		if(str_replace(',','',$_REQUEST["real"])<50 && str_replace(',','',$_REQUEST["pago"]<50))
+		if(str_replace(',','',$_REQUEST["real"])<51 && str_replace(',','',$_REQUEST["pago"]<51))
 		{
 			print_r($dto);
 			$dao->registra($dto);

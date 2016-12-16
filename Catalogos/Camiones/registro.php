@@ -27,7 +27,7 @@ function inicializa_formulario()
 
                           <div id="label" style="width:100px;padding-left:15px">
                             Empresa:</div>
-                          <div id="caja">'.$SCA->regresaSelectBasicoRet("empresas","idEmpresa","razonSocial","Estatus = 1","asc",1).'
+                          <div id="caja">'.$SCA->regresaSelectBasicoRet("empresas","IdEmpresa","razonSocial","Estatus = 1","asc",1).'
                           </div>
 
                         </div>
@@ -290,7 +290,7 @@ $(function() {
 
                           <div id="label" style="width:100px;padding-left:15px">
                             Empresa:</div>
-                          <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("empresas","idEmpresa","razonSocial","Estatus = 1","asc",1)?>
+                          <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("empresas","IdEmpresa","razonSocial","Estatus = 1","asc",1)?>
                           </div>
 
                         </div>

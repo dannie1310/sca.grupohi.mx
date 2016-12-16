@@ -47,7 +47,7 @@ $vc=mysql_fetch_array($r);
 
                             <div id="label" style="width:100px;padding-left:15px">
                             Empresa:</div>
-                            <div id="caja">'.$SCA->regresaSelectBasicoRet("empresas","idEmpresa","razonSocial","Estatus = 1","asc",1,$vc["IdEmpresa"]).'
+                            <div id="caja">'.$SCA->regresaSelectBasicoRet("empresas","IdEmpresa","razonSocial","Estatus = 1","asc",1,$vc["IdEmpresa"]).'
                             </div>
                             
                         </div>
@@ -365,7 +365,7 @@ function actualiza_imagen()
                           </div>
                           <div id="label" style="width:100px; padding-left:15px">
                             Empresa:</div>
-                          <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("empresas","idEmpresa","razonSocial","Estatus = 1","asc",1,$vc["IdEmpresa"])?>
+                          <div id="caja"><?php echo $SCA->regresaSelectBasicoRet("empresas","IdEmpresa","razonSocial","Estatus = 1","asc",1,$vc["IdEmpresa"])?>
                           </div>
 
                         </div>

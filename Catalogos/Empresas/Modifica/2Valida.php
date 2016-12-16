@@ -76,7 +76,7 @@ $link=SCA::getConexion();
   
    ?>
   <tr>
-    <td colspan="2"> <div align="center" class="texto"><?php echo $row[idEmpresa];   ?></div></td>
+    <td colspan="2"> <div align="center" class="texto"><?php echo $row[IdEmpresa];   ?></div></td>
     <td width="260"><input name="razonSocial" type="text" class="text" style="text-transform:uppercase" onKeyPress="withoutSpaces(event,'decOK')"  value="<?php echo $row[razonSocial]; ?>" size="50" maxlength="50"></td>
     <td width="135"><input name="RFC" type="text" class="text" style="text-transform:uppercase" onKeyPress="withoutSpaces(event,'decOK')"  value="<?php echo $row[RFC]; ?>" size="25" maxlength="25"></td>
     <td width="82"><div align="center">

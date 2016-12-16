@@ -114,8 +114,8 @@ return (isNum || dotOK);
    ?>
     <tr class=" <?php $a=$pr%2; if($a==0){ ?> Item2 <?php } else {?> Item1 <?php } ?>">
 	<td width="25" align="center">
-      <?php echo $row[idEmpresa];   ?></td>
-    <td width="28"><input name="radiobutton" type="radio" value="radiobutton" onClick="document.frm.empresa.value=<?php echo $row[idEmpresa]; ?>;valida();"></td>
+      <?php echo $row[IdEmpresa];   ?></td>
+    <td width="28"><input name="radiobutton" type="radio" value="radiobutton" onClick="document.frm.empresa.value=<?php echo $row[IdEmpresa]; ?>;valida();"></td>
     <td><?php echo $row[razonSocial]; ?></td>
     <td><?php echo $row[RFC]; ?></td>
     <td align="center">

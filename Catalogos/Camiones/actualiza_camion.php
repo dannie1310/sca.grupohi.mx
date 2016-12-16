@@ -93,7 +93,7 @@ catch(Exception $e3)
 
 try
 	{
-		if(str_replace(',','',$_REQUEST["real"])<50 && str_replace(',','',$_REQUEST["pago"]<50))
+		if(str_replace(',','',$_REQUEST["real"])<51 && str_replace(',','',$_REQUEST["pago"]<51))
 		{	
 			$dao->actualiza($dto);
 			$dto_im_f->set_id_camion($dto->get_id_camion());
