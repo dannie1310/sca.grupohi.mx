@@ -56,21 +56,18 @@ for($i=0;$i<$howc;$i++)
 	
 		if($i<($howc-1))
 			{
-				$like=$like."NombreRFC like '%$partescor[$i]%' or ";
+				$like=$like."RFC like '%$partescor[$i]%' or ";
 			}
 		else
 			{
-				$like=$like."NombreRFC like '%$partescor[$i]%'";
+				$like=$like."RFC like '%$partescor[$i]%'";
 			}
 	}
 }
 
 
- $sql="SELECT *, case Estatus
- when 0 then 'INACTIVO'
- when 1 then 'ACTIVO'
- end Estate
- FROM sindicatos where $like;";
+ $sql="SELECT *
+ FROM empresas where $like;";
  //echo $sql;
  $ro=$link->consultar($sql);
  $exis=$link->affected();
@@ -79,7 +76,7 @@ for($i=0;$i<$howc;$i++)
  ?>
  <table width="600" border="0" align="center">
   <tr>
-    <td class="Subtitulo">VERIFIQUE QUE EL SINDICATO QUE DESEA REGISTRAR, NO HAYA SIDO REGISTRADO PREVIAMENTE </td>
+    <td class="Subtitulo">VERIFIQUE QUE LA EMPRESA QUE DESEA REGISTRAR, NO HAYA SIDO REGISTRADO PREVIAMENTE </td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -88,7 +85,7 @@ for($i=0;$i<$howc;$i++)
 <table width="600" border="0" align="center">
   <tr>
     <th class="EncabezadoTabla" scope="col">DESCRIPCI&Oacute;N</th>
-    <th class="EncabezadoTabla" scope="col">NOMBRE RFC </th>
+    <th class="EncabezadoTabla" scope="col">RFC </th>
     <th class="EncabezadoTabla" scope="col">ESTATUS</th>
   </tr>
   <?php 
@@ -111,7 +108,7 @@ for($i=0;$i<$howc;$i++)
      <td>&nbsp;</td>
    </tr>
    <tr>
-     <td class="Subtitulo">SI EL SINDICATO QUE DESEA REGISTRAR, NO COINCIDE CON ALGUNO DE LOS ANTERIORES, VERIFIQUE QUE LA INFORMACI&Oacute;N A REGISTRAR SEA CORRECTA </td>
+     <td class="Subtitulo">SI LA EMPRESA QUE DESEA REGISTRAR, NO COINCIDE CON ALGUNA DE LAS ANTERIORES, VERIFIQUE QUE LA INFORMACI&Oacute;N A REGISTRAR SEA CORRECTA </td>
    </tr>
    <tr>
      <td>&nbsp;</td>
@@ -179,7 +176,7 @@ for($i=0;$i<$howc;$i++)
  <table width="600" border="0" align="center">
    <tr>
      <th width="312" class="EncabezadoTabla" scope="col">DESCRIPCI&Oacute;N</th>
-     <th width="272" class="EncabezadoTabla" scope="col">NOMBRE RFC </th>
+     <th width="272" class="EncabezadoTabla" scope="col">RFC </th>
    </tr>
   
    <tr class="Item1">

@@ -72,7 +72,7 @@ if($exito==1)
     <td width="138">&nbsp;</td>
     <form action="1Inicio.php" method="post" name="frm" id="frm">
       <td width="238"><div align="right">
-        <input name="Submit2" type="submit" class="boton" value="Registrar Otros Sindicatos" />
+        <input name="Submit2" type="submit" class="boton" value="Registrar Otras Empresas" />
       </div></td>
     </form>
   </tr>
