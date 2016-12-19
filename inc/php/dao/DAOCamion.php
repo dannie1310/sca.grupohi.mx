@@ -4,8 +4,8 @@
 	{
 		
 		var $SCA; 
-		var $SQL_REGISTRA = "sp_registra_camion(%d,%d,'%s',%d,%d,'%s','%s','%s',%d,'%s','%s','%s','%s',%f,%f,%f,%f,%f,%f,%f,%f,@kind,@message,@idcamion)";
-	      var $SQL_ACTUALIZA = "sp_actualiza_camion(%d,%d,%d,'%s',%d,%d,'%s','%s','%s',%d,'%s','%s','%s','%s',%f,%f,%f,%f,%f,%f,%f,%f,%d,@kind,@message)";
+		var $SQL_REGISTRA = "sp_registra_camion(%d,%d,'%s','%s',%d,%d,'%s','%s','%s',%d,'%s','%s','%s','%s',%f,%f,%f,%f,%f,%f,%f,%f,@kind,@message,@idcamion)";
+	      var $SQL_ACTUALIZA = "sp_actualiza_camion(%d,%d,%d,'%s','%s',%d,%d,'%s','%s','%s',%d,'%s','%s','%s','%s',%f,%f,%f,%f,%f,%f,%f,%f,%d,@kind,@message)";
 		
 		public function DAOCamion()
 		{
@@ -18,6 +18,7 @@
 							$this->SQL_REGISTRA
 							,$camion->get_id_proyecto()
 							,$camion->get_sindicato()
+							,$camion->get_empresa()
 							,$camion->get_propietario()
 							,$camion->get_operador()
 							,$camion->get_dispositivo()
@@ -73,6 +74,7 @@
 							,$camion->get_id_camion()
 							,$camion->get_id_proyecto()
 							,$camion->get_sindicato()
+							,$camion->get_empresa()
 							,$camion->get_propietario()
 							,$camion->get_operador()
 							,$camion->get_dispositivo()

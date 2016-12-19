@@ -26,7 +26,12 @@ body,td,th {
     include("../../../../inc/php/conexiones/SCA.php");
 	include("../../../../Clases/Funciones/Catalogos/Genericas.php");
   	$link=SCA::getConexion();
-	$sql="select c.*, o.Nombre as Operador, m.Descripcion as Marca, case c.Estatus when 0 then 'INACTIVO' when 1 then 'ACTIVO' end Estate from camiones as c, operadores as o, marcas as m where c.IdOperador=o.IdOperador and m.IdMarca=c.IdMarca and c.IdProyecto=".$_SESSION["Proyecto"]." order by c.Estatus desc, Economico";
+	$sql="select c.*, o.Nombre as Operador, m.Descripcion as Marca, case c.Estatus when 0 then 'INACTIVO' when 1 then 'ACTIVO' end Estate 
+        from camiones as c, operadores as o, marcas as m 
+        where c.IdOperador=o.IdOperador 
+          and m.IdMarca=c.IdMarca 
+          and c.IdProyecto=".$_SESSION["Proyecto"]."
+        order by c.Estatus desc, Economico";
 	$rs=$link->consultar($sql);
 	$h=$link->affected();
 	
@@ -52,7 +57,7 @@ body,td,th {
   <td ><div align="right">
     <table width="845" align="center" border="0">
       <tr>
-        <td colspan="16"><div align="right"><font color="#000000" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"><?PHP echo 'FECHA DE CONSULTA '.date("d-m-Y")."/".date("H:i:s",time()); ?></font></div></td>
+        <td colspan="19"><div align="right"><font color="#000000" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"><?PHP echo 'FECHA DE CONSULTA '.date("d-m-Y")."/".date("H:i:s",time()); ?></font></div></td>
       </tr>
       <tr>
         <td colspan="16">&nbsp;</td>
@@ -121,6 +126,7 @@ body,td,th {
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5">MARCA</td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5">MODELO</td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >SINDICATO</div></td>
+        <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >EMPRESA</div></td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >BOTÓN</div></td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >ESTATUS</div></td>
       </tr>
@@ -159,6 +165,7 @@ body,td,th {
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Marca"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Modelo"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo regresa(sindicatos,NombreCorto,IdSindicato,$v[IdSindicato]); ?></span></td>
+        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo regresa(empresas,razonSocial,idEmpresa,$v[IdEmpresa]); ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7">&nbsp;<?php echo regresa(botones,Identificador,IdBoton,$v[IdBoton]); ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[Estate]; ?></span></div></td>
       </tr>

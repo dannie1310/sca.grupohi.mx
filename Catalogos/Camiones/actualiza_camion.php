@@ -16,6 +16,7 @@ $tac = SCA::getConexion();
 	$dto->set_id_camion($_REQUEST["idcamion"]);
 	$dto->set_id_proyecto($_SESSION["Proyecto"]);
 	$dto->set_sindicato($_REQUEST["sindicatos"]);
+	$dto->set_empresa($_REQUEST["empresas"]);
 	$dto->set_propietario($_REQUEST["propietario"]);
 	$dto->set_operador($_REQUEST["operadores"]);
 	$dto->set_economico($_REQUEST["eco"]);
@@ -92,7 +93,7 @@ catch(Exception $e3)
 
 try
 	{
-		if(str_replace(',','',$_REQUEST["real"])<50 && str_replace(',','',$_REQUEST["pago"]<50))
+		if(str_replace(',','',$_REQUEST["real"])<51 && str_replace(',','',$_REQUEST["pago"]<51))
 		{	
 			$dao->actualiza($dto);
 			$dto_im_f->set_id_camion($dto->get_id_camion());
