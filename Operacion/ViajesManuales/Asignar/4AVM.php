@@ -46,13 +46,22 @@
 			//$Horav[$a]=($_POST["Turno".$a]=='M')?"08:00:00":"20:00:00";
 			$Horav[$a]="00:00:00";
 			$sql_tiempo = "select r.IdRuta,c.TiempoMinimo from rutas r left join cronometrias c ON r.IdRuta = c.IdRuta
-where r.IdOrigen=".$Origenes[$a]." and IdTiro=".$Destinos[$a]."";
+				where r.IdOrigen=".$Origenes[$a]." and IdTiro=".$Destinos[$a]."";
 			$result_tiempo = mysql_query($sql_tiempo);
 			$row_tiempo = mysql_fetch_array($result_tiempo);
 			$tiempo_minimo = $row_tiempo["TiempoMinimo"];
 			$hora_dif = explode(" ",resta_minutos($Fechas[$a],$Horas[$a],$tiempo_minimo));
 			$FechaV[$a]=$hora_dif[0];
 			$HoraV[$a]=$hora_dif[1];
+
+			$query_camiones = '
+							SELECT IdSindicato, IdEmpresa 
+							FROM camiones
+							WHERE IdCamion=' .$_POST["Economicos".$a];
+			$sql_camiones = mysql_query($query_camiones);
+			$camiones = mysql_fetch_array($sql_camiones);
+			$sindicato[$a] = $camiones['IdSindicato'];
+			$empresa[$a] = $camiones['IdEmpresa'];
 			
 			
 			// Primero Definimos nuestras Variables
@@ -104,7 +113,9 @@ $FechaOrigen = explode(" ", $FechaStr);*/
 													IdMaterial, 
 													Observaciones, 
 													Creo, 
-													Estatus)";
+													Estatus,
+													IdSindicato, 
+													IdEmpresa )";
 					 $values=" VALUES(
 									'".$Hoy."', 
 									'".$Hora."', 
@@ -119,7 +130,10 @@ $FechaOrigen = explode(" ", $FechaStr);*/
 									".$Materiales[$a].", 
 									'".$Observaciones[$a]."', 
 									'".$Creo."', 
-									29);";
+									29,
+									'".$sindicato[$a]."',
+									'".$empresa[$a]."'
+									);";
 					$sql=$insert.$values;
 					//echo "zaasdasdasdasdasdsql=".$sql;
 					$result=$link->consultar($sql);
