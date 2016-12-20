@@ -738,11 +738,9 @@ function horas($dec) {
 
 <style type="text/css">
         .cubicacion {
-            border-top: rgba(0,0,0,0);
-            border-left: rgba(0,0,0,0);
-            border-right: rgba(0,0,0,0);
-            border-color:#0087bd;
-            text-align:center;
+            border: rgba(0,0,0,0);
+            text-decoration: underline;
+            text-align:right;
             cursor: pointer;
         }
 </style>
