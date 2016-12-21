@@ -217,6 +217,10 @@ function horas($dec) {
                                     </td>
                                     <td rowspan="2" align="center">
                                         Or&iacute;gen<br/>
+                                        <?php 
+                                            $lista_origenes_padre=$l->regresaSelect_evt("origen_padre".$i_padre,"distinct(origenes.IdOrigen), concat(origenes.Clave,'-',origenes.IdOrigen) AS Clave, origenes.Descripcion","origenes join rutas on (rutas.IdOrigen=origenes.IdOrigen AND rutas.Estatus=1 AND rutas.IdTiro=".$v_tiros["IdTiro"].") ","origenes.IdProyecto = ".$_SESSION["Proyecto"]." AND origenes.Estatus = 1","IdOrigen","Descripcion","desc","100px;visibility:hidden","1","0","1"," onChange='cambia_origen_child(Arreglo_".$i_padre.",\"".$i_padre."\")' ","","r");  
+                                            echo $lista_origenes_padre;
+                                        ?>
                                     </td>
                                     <td rowspan="2" align="center">
                                         Sindicato<br/>
@@ -424,11 +428,14 @@ function horas($dec) {
                     <input name="cubicacion<?php echo $i_general; ?>" type="text" class="cubicacion detalle" id="cubicacion<?php echo $i_general; ?>" style="width:25px" value="<?php echo $v_viajes['cubicacion'] ?>" contador="<?php echo $i_general; ?>" readonly="readonly"/>
                 </td>
 <!--    Origen          -->
-                <td align="center">
+                <td align="center" >                    
+                    <span class="detalle">
                     <?php 
-                        $lista_origenes=$l->regresaSelect_evt("origen".$i_general,"distinct(origenes.IdOrigen), concat(origenes.Clave,'-',origenes.IdOrigen) AS Clave, origenes.Descripcion","origenes join rutas on (rutas.IdOrigen=origenes.IdOrigen AND rutas.Estatus=1 AND rutas.IdTiro=".$v_tiros["IdTiro"].") ","origenes.IdProyecto = ".$_SESSION["Proyecto"]." AND origenes.Estatus = 1","IdOrigen","Descripcion","desc","100px","1","0","1","",$v_viajes["idmaterial"],"r");  
+                        $lista_origenes=$l->regresaSelect_evt("origen".$i_general,"distinct(origenes.IdOrigen), concat(origenes.Clave,'-',origenes.IdOrigen) AS Clave, origenes.Descripcion","origenes join rutas on (rutas.IdOrigen=origenes.IdOrigen AND rutas.Estatus=1 AND rutas.IdTiro=".$v_tiros["IdTiro"].") ","origenes.IdProyecto = ".$_SESSION["Proyecto"]." AND origenes.Estatus = 1","IdOrigen","Descripcion","desc","100px","1","0","1","hidden",$v_viajes["idmaterial"],"r");  
                         echo $lista_origenes;
-                    ?>
+                    ?> 
+                    <?php echo $v_viajes["origen"]; ?>
+                    </span>
                 </td>
 <!--    Sindicato          -->
                 <td align="center">
