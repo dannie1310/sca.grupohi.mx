@@ -6,7 +6,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <style type="text/css">
 <!--
@@ -26,12 +26,22 @@ body,td,th {
     include("../../../../inc/php/conexiones/SCA.php");
 	include("../../../../Clases/Funciones/Catalogos/Genericas.php");
   	$link=SCA::getConexion();
-	$sql="select c.*, o.Nombre as Operador, m.Descripcion as Marca, case c.Estatus when 0 then 'INACTIVO' when 1 then 'ACTIVO' end Estate 
-        from camiones as c, operadores as o, marcas as m 
-        where c.IdOperador=o.IdOperador 
-          and m.IdMarca=c.IdMarca 
-          and c.IdProyecto=".$_SESSION["Proyecto"]."
-        order by c.Estatus desc, Economico";
+	$sql="SELECT c.*, 
+          o.Nombre as Operador, 
+          m.Descripcion as Marca, 
+          case c.Estatus 
+            when 0 then 'INACTIVO' 
+            when 1 then 'ACTIVO' 
+          end Estate,
+          sin.Descripcion as Sindicato,
+          bo.Identificador as Identificador
+        FROM camiones as c
+        LEFT JOIN operadores  AS o    ON o.IdOperador = c.IdOperador 
+        LEFT JOIN marcas      AS m    ON m.IdMarca = c.IdMarca 
+        LEFT JOIN sindicatos  AS sin  ON sin.IdSindicato = c.IdSindicato 
+        LEFT JOIN botones     AS bo   ON bo.IdBoton = c.IdBoton 
+        where c.IdProyecto = ".$_SESSION["Proyecto"]." 
+        ORDER BY c.Estatus desc, Economico  ";
 	$rs=$link->consultar($sql);
 	$h=$link->affected();
 	
@@ -164,9 +174,8 @@ body,td,th {
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[PlacasCaja]; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Marca"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Modelo"]; ?></span></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo regresa(sindicatos,NombreCorto,IdSindicato,$v[IdSindicato]); ?></span></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo regresa(empresas,razonSocial,idEmpresa,$v[IdEmpresa]); ?></span></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7">&nbsp;<?php if($v[IdBoton]>0){echo regresa(botones,Identificador,IdBoton,$v[IdBoton]);} ?></span></div></td>
+        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Sindicato"]; ?></span></td>
+        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7">&nbsp;<?php echo $v["Identificador"]; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[Estate]; ?></span></div></td>
       </tr>
       <?PHP $i++;} ?>
