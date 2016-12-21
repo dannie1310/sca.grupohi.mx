@@ -143,24 +143,24 @@ body,td,th {
 
    ?>
       <tr>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $i; ?></span></div></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[Economico]; ?></span></div></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo utf8_encode($v["Propietario"]); ?></span></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo utf8_encode($v["Operador"]); ?></span></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="right"><span class="style7"><?php echo $v[Ancho]; ?></span></div></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="right"><span class="style7"><?php echo $v[Largo]; ?></span></div></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="right"><span class="style7"><?php echo $v[Alto]; ?></span></div></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="right"><span class="style7"><?php echo $v[AlturaExtension]; ?></span></div></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="right"><span class="style7"><?php echo $v[EspacioDeGato]; ?></span></div></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="right"><span class="style7"><?php echo $v[disminucion]; ?></span></div></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="right"><span class="style7"><?php echo $v[CubicacionParaPago]; ?></span></div></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[Placas]; ?></span></div></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[PlacasCaja]; ?></span></div></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Marca"]; ?></span></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Modelo"]; ?></span></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo regresa(sindicatos,NombreCorto,IdSindicato,$v[IdSindicato]); ?></span></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7">&nbsp;<?php echo regresa(botones,Identificador,IdBoton,$v[IdBoton]); ?></span></div></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[Estate]; ?></span></div></td>
+        <td><div align="center"><span class="style7"><?php echo $i; ?></span></div></td>
+        <td><div align="center"><span class="style7"><?php echo $v[Economico]; ?></span></div></td>
+        <td><span class="style7"><?php echo utf8_encode($v["Propietario"]); ?></span></td>
+        <td><span class="style7"><?php echo utf8_encode($v["Operador"]); ?></span></td>
+        <td><div align="right"><span class="style7"><?php echo $v[Ancho]; ?></span></div></td>
+        <td><div align="right"><span class="style7"><?php echo $v[Largo]; ?></span></div></td>
+        <td><div align="right"><span class="style7"><?php echo $v[Alto]; ?></span></div></td>
+        <td><div align="right"><span class="style7"><?php echo $v[AlturaExtension]; ?></span></div></td>
+        <td><div align="right"><span class="style7"><?php echo $v[EspacioDeGato]; ?></span></div></td>
+        <td><div align="right"><span class="style7"><?php echo $v[disminucion]; ?></span></div></td>
+        <td><div align="right"><span class="style7"><?php echo $v[CubicacionParaPago]; ?></span></div></td>
+        <td><div align="center"><span class="style7"><?php echo $v[Placas]; ?></span></div></td>
+        <td><div align="center"><span class="style7"><?php echo $v[PlacasCaja]; ?></span></div></td>
+        <td><span class="style7"><?php echo $v["Marca"]; ?></span></td>
+        <td><span class="style7"><?php echo $v["Modelo"]; ?></span></td>
+        <td><span class="style7"><?php echo regresa(sindicatos,NombreCorto,IdSindicato,$v[IdSindicato]); ?></span></td>
+        <td><div align="center"><span class="style7">&nbsp;<?php echo regresa(botones,Identificador,IdBoton,$v[IdBoton]); ?></span></div></td>
+        <td><div align="center"><span class="style7"><?php echo $v[Estate]; ?></span></div></td>
       </tr>
       <?PHP $i++;} ?>
     </table>
