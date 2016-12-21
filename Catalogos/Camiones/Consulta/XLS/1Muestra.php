@@ -1,10 +1,10 @@
 <?php
 	session_start();
-	//header("Content-type: application/vnd.ms-excel");
-	//header('Content-Disposition:  filename=Listado de Camiones '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
+	header("Content-type: application/vnd.ms-excel");
+	header('Content-Disposition:  filename=Listado de Camiones '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
@@ -27,22 +27,21 @@ body,td,th {
 	include("../../../../Clases/Funciones/Catalogos/Genericas.php");
   	$link=SCA::getConexion();
 	$sql="SELECT c.*, 
-              o.Nombre as Operador, 
-              m.Descripcion as Marca, 
-              case c.Estatus 
-                when 0 then 'INACTIVO' 
-                when 1 then 'ACTIVO' 
-                end Estate,
-              sin.Descripcion as Descripcion
-              FROM camiones as c, 
-                  operadores as o, 
-                  marcas as m,
-                  sindicatos as sin
-              where c.IdOperador=o.IdOperador 
-                and m.IdMarca=c.IdMarca 
-                and c.IdProyecto=".$_SESSION["Proyecto"]." 
-                and sin.IdSindicato = c.IdSindicato 
-              ORDER BY c.Estatus desc, Economico";
+          o.Nombre as Operador, 
+          m.Descripcion as Marca, 
+          case c.Estatus 
+            when 0 then 'INACTIVO' 
+            when 1 then 'ACTIVO' 
+          end Estate,
+          sin.Descripcion as Descripcion,
+          bo.Identificador as Identificador
+        FROM camiones as c
+        LEFT JOIN operadores  AS o    ON o.IdOperador = c.IdOperador 
+        LEFT JOIN marcas      AS m    ON m.IdMarca = c.IdMarca 
+        LEFT JOIN sindicatos  AS sin  ON sin.IdSindicato = c.IdSindicato 
+        LEFT JOIN botones     AS bo   ON bo.IdBoton = c.IdBoton 
+        where c.IdProyecto = ".$_SESSION["Proyecto"]." 
+        ORDER BY c.Estatus desc, Economico  ";
 	$rs=$link->consultar($sql);
 	$h=$link->affected();
 	
