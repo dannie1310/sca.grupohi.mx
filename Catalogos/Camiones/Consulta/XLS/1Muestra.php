@@ -174,7 +174,7 @@ body,td,th {
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Marca"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Modelo"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Descripcion"]; ?></span></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7">&nbsp;<?php echo regresa(botones,Identificador,IdBoton,$v[IdBoton]); ?></span></div></td>
+        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7">&nbsp;<?php echo $v["Identificador"]; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[Estate]; ?></span></div></td>
       </tr>
       <?PHP $i++;} ?>
