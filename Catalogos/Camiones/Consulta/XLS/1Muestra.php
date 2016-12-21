@@ -34,11 +34,13 @@ body,td,th {
             when 1 then 'ACTIVO' 
           end Estate,
           sin.Descripcion as Sindicato,
+          emp.razonSocial as Empresa,
           bo.Identificador as Identificador
         FROM camiones as c
         LEFT JOIN operadores  AS o    ON o.IdOperador = c.IdOperador 
         LEFT JOIN marcas      AS m    ON m.IdMarca = c.IdMarca 
         LEFT JOIN sindicatos  AS sin  ON sin.IdSindicato = c.IdSindicato 
+        LEFT JOIN empresas  AS emp  ON emp.IdEmpresa = c.IdEmpresa 
         LEFT JOIN botones     AS bo   ON bo.IdBoton = c.IdBoton 
         where c.IdProyecto = ".$_SESSION["Proyecto"]." 
         ORDER BY c.Estatus desc, Economico  ";
@@ -175,6 +177,7 @@ body,td,th {
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Marca"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Modelo"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Sindicato"]; ?></span></td>
+        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Empresa"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7">&nbsp;<?php echo $v["Identificador"]; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[Estate]; ?></span></div></td>
       </tr>
