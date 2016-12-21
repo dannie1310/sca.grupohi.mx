@@ -3,10 +3,10 @@
 	header("Content-type: application/vnd.ms-excel");
 	header('Content-Disposition:  filename=Listado de Camiones '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>Untitled Document</title>
 <style type="text/css">
 <!--
@@ -63,7 +63,7 @@ body,td,th {
         <td colspan="16">&nbsp;</td>
       </tr>
       <tr>
-        <td colspan="16"><span class="style6"><strong>RELACIÃ“N DE CAMIONES CON DISPOSITIVO ELECTRÃ“NICO ASIGNADO</strong></span></td>
+        <td colspan="16"><span class="style6"><strong>RELACIÓN DE CAMIONES CON DISPOSITIVO ELECTRÓNICO ASIGNADO</strong></span></td>
       </tr>
       <tr>
         <td>&nbsp;</td>
@@ -117,17 +117,17 @@ body,td,th {
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >ANCHO</div></td>
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >LARGO</div></td>
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >ALTO</div></td>
-        <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >EXTENSIÃ“N</div></td>
+        <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >EXTENSIÓN</div></td>
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >GATO</div></td>
-        <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >DISMINUCIÃ“N</div></td>
+        <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >DISMINUCIÓN</div></td>
         <td valign="bottom" bgcolor="969696" class="style5"><div align="center" >CUBC.  PAGO</div></td>
-        <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >PLACAS CAMIÃ“N</div></td>
+        <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >PLACAS CAMIÓN</div></td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >PLACAS CAJA</div></td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5">MARCA</td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5">MODELO</td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >SINDICATO</div></td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >EMPRESA</div></td>
-        <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >BOTÃ“N</div></td>
+        <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >BOTÓN</div></td>
         <td rowspan="2" valign="bottom" bgcolor="969696" class="style5"><div align="center" >ESTATUS</div></td>
       </tr>
       <tr>
@@ -149,7 +149,7 @@ body,td,th {
 
    ?>
       <tr>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $i; ?></span></div></td>
+        <td ><div align="center"><span class="style7"><?php echo $i; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[Economico]; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo utf8_encode($v["Propietario"]); ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo utf8_encode($v["Operador"]); ?></span></td>
@@ -166,7 +166,7 @@ body,td,th {
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Modelo"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo regresa(sindicatos,NombreCorto,IdSindicato,$v[IdSindicato]); ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo regresa(empresas,razonSocial,idEmpresa,$v[IdEmpresa]); ?></span></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7">&nbsp;<?php echo regresa(botones,Identificador,IdBoton,$v[IdBoton]); ?></span></div></td>
+        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7">&nbsp;<?php if($v[IdBoton]>0){echo regresa(botones,Identificador,IdBoton,$v[IdBoton]);} ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[Estate]; ?></span></div></td>
       </tr>
       <?PHP $i++;} ?>
