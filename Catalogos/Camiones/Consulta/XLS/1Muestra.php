@@ -33,7 +33,7 @@ body,td,th {
             when 0 then 'INACTIVO' 
             when 1 then 'ACTIVO' 
           end Estate,
-          sin.Descripcion as Descripcion,
+          sin.Descripcion as Sindicato,
           bo.Identificador as Identificador
         FROM camiones as c
         LEFT JOIN operadores  AS o    ON o.IdOperador = c.IdOperador 
@@ -173,7 +173,7 @@ body,td,th {
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[PlacasCaja]; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Marca"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Modelo"]; ?></span></td>
-        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Descripcion"]; ?></span></td>
+        <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><span class="style7"><?php echo $v["Sindicato"]; ?></span></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7">&nbsp;<?php echo $v["Identificador"]; ?></span></div></td>
         <td <?php $a=$i%2; if($a==0) echo "bgcolor='C0C0C0'";  ?>><div align="center"><span class="style7"><?php echo $v[Estate]; ?></span></div></td>
       </tr>
