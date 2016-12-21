@@ -291,9 +291,9 @@ function horas($dec) {
                                         o.IdOrigen as idorigen,
                                         m.Descripcion as material,
                                         m.IdMaterial as idmaterial,
-                                        v.IdSindicato as IdSindicato,
+                                        c.IdSindicato as IdSindicato,
                                         sin.descripcion as sindicato,
-                                        v.IdEmpresa as IdEmpresa,
+                                        c.IdEmpresa as IdEmpresa,
                                         emp.razonSocial as razonSocial,
                                         TIMEDIFF(
                                                 (CONCAT(FechaLlegada,' ',HoraLlegada)),
@@ -334,8 +334,8 @@ function horas($dec) {
                                         left join rutas as r on(v.IdOrigen=r.IdOrigen AND v.IdTiro=r.IdTiro AND r.Estatus=1) 
                                         left join tarifas_tipo_ruta as  tr on(tr.IdTipoRuta=r.IdTipoRuta AND tr.Estatus=1) 
                                         left join cronometrias as cn on (cn.IdRuta=r.IdRuta AND cn.Estatus=1)
-                                        left join sindicatos as sin on (v.IdSindicato = sin.IdSindicato)
-                                        left join empresas as emp on (v.IdEmpresa = emp.IdEmpresa)
+                                        left join sindicatos as sin on (c.IdSindicato = sin.IdSindicato)
+                                        left join empresas as emp on (c.IdEmpresa = emp.IdEmpresa)
                                     WHERE 
                                         (v.Estatus = 0 OR v.Estatus = 10 OR v.Estatus = 20 ) AND
                                         v.IdProyecto = ".$_SESSION['Proyecto']." AND
@@ -607,7 +607,9 @@ function horas($dec) {
                     accion=(document.getElementById('a'+arreglo[o]).checked)?1:(document.getElementById('r'+arreglo[o]).checked)?0:'n';
                             horas_efectivas=(document.getElementById('hef'+arreglo[o]).value=='')?0.00:document.getElementById('hef'+arreglo[o]).value;
                             maquinaria=(document.getElementById('cr'+arreglo[o]).value=='A99')?0:document.getElementById('cr'+arreglo[o]).value;
-                            origen=(document.getElementById('origen_padre'+arreglo[o]).value=='A99')?document.getElementById('origen'+arreglo[o]).value:document.getElementById('origen_padre'+arreglo[o]).value;
+                            origen=(document.getElementById('origen'+arreglo[o]).value=='A99')?0:document.getElementById('origen'+arreglo[o]).value;
+                            sindicato=(document.getElementById('sindicato'+arreglo[o]).value=='A99')?0:document.getElementById('sindicato'+arreglo[o]).value;
+                            empresa=(document.getElementById('empresa'+arreglo[o]).value=='A99')?0:document.getElementById('empresa'+arreglo[o]).value;
                             id_viaje_neto=document.getElementById('idviaje'+arreglo[o]).value;
                             tarifa=document.getElementById('tarifa'+arreglo[o]).value;
                             fda=document.getElementById('fda'+arreglo[o]).value;
@@ -619,7 +621,7 @@ function horas($dec) {
             }catch(e){accion='n'}
 
             if(accion!='n')
-                xajax_registra_viaje(arreglo[o],accion,id_viaje_neto,maquinaria,horas_efectivas,origen,tarifa,fda,tara,bruto,cubiNueva,cubiOriginal);
+                xajax_registra_viaje(arreglo[o],accion,id_viaje_neto,maquinaria,horas_efectivas,origen,sindicato,empresa,tarifa,fda,tara,bruto,cubiNueva,cubiOriginal);
             }
 
     }
