@@ -1,4 +1,5 @@
 <?php 
+ini_set("display_errors","on");
 session_start();
 require_once("../../inc/php/conexiones/SCA.php");
 require_once("../../inc/php/dto/DTOCamion.php");
