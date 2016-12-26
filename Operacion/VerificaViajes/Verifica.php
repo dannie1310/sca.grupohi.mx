@@ -440,14 +440,14 @@ function horas($dec) {
 <!--    Sindicato          -->
                 <td align="center">
                     <?php 
-                        $lista_sindicatos=$l->regresaSelect_evt("sindicato".$i_general,"IdSindicato, Descripcion, NombreCorto","sindicatos","Estatus = 1","IdSindicato","Descripcion","asc","","1","0","1","",$v_viajes["IdSindicato"],"r");  
+                        $lista_sindicatos=$l->regresaSelect_evt("sindicato".$i_general,"IdSindicato, Descripcion, NombreCorto","sindicatos","Estatus = 1","IdSindicato","Descripcion","asc","150px","1","0","1","",$v_viajes["IdSindicato"],"r");  
                         echo $lista_sindicatos;
                     ?>
                 </td>
 <!--    Empresa          -->
                 <td align="center">
                     <?php 
-                        $lista_empresas=$l->regresaSelect_evt("empresa".$i_general,"IdEmpresa, razonSocial, RFC","empresas","Estatus = 1","IdEmpresa","razonSocial","asc","","1","0","1","",$v_viajes["IdEmpresa"],"r");  
+                        $lista_empresas=$l->regresaSelect_evt("empresa".$i_general,"IdEmpresa, razonSocial, RFC","empresas","Estatus = 1","IdEmpresa","razonSocial","asc","150px","1","0","1","",$v_viajes["IdEmpresa"],"r");  
                         echo $lista_empresas;
                     ?>
                 </td>
