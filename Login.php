@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <div align="right" id="version">2016.2.0.1</div>
+                    <div align="right" id="version">2016.3.0.0</div>
                 </td> 
             </tr>
         </table>

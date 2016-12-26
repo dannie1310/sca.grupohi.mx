@@ -1,4 +1,5 @@
 <?php
+    ini_set("display_errors","on");
 	session_start();
 	if(isset($_REQUEST["v"]) && ($_REQUEST["v"]==1)){
 	header("Content-type: application/vnd.ms-excel");
@@ -132,7 +133,7 @@ if($hay>0)
         <td bgcolor="C0C0C0"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Km Sub. </font></div></td>
         <td bgcolor="C0C0C0"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Km Adc.</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Importe</font> </div></td>
-        
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Estatus</font> </div></td>
       </tr>
       <?php
  
@@ -184,7 +185,8 @@ if($hay>0)
       tm.PrimerKM*1*c.CubicacionParaPago as ImportePK_M,
       tm.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago as ImporteKS_M,
       tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago as ImporteKA_M,
-      ((tm.PrimerKM*1*c.CubicacionParaPago)+(tm.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago)+(tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)) as ImporteTotal_M
+      ((tm.PrimerKM*1*c.CubicacionParaPago)+(tm.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago)+(tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)) as ImporteTotal_M,
+      v.Estatus as estatus
       FROM
         viajesnetos AS v
       JOIN tiros AS t USING (IdTiro)
@@ -199,7 +201,7 @@ if($hay>0)
       left join sindicatos as sin on sin.IdSindicato = v.IdSindicato
       left join empresas as emp on emp.IdEmpresa = v.IdEmpresa
       WHERE
-          v.Estatus in(0,10,20,30)
+          v.Estatus in(0,1,10,11,20,21,30,31)
       AND v.IdProyecto = ".$IdProyecto."
       AND v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."'
       AND v.HoraLlegada BETWEEN '".$horaInicial."' AND '".$horaFinal."'
@@ -232,6 +234,7 @@ if($hay>0)
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[tarifa_material_ks],2,".",",");; ?></font></div></td>
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[tarifa_material_ka],2,".",","); ?></font></div></td>
         <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[ImporteTotal_M],2,".",","); ?></font></div></td>
+        <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php if(in_array($fil["estatus"], array(0,10,20,30))){echo "POR VALIDAR"; }else{ echo "VALIDADO"; } ?></font></div></td>
       </tr>
 
       <?php
