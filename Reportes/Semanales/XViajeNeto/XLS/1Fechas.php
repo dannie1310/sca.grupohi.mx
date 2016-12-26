@@ -32,7 +32,7 @@ $ffin2=$_REQUEST["final"];
   </tr>
 </table>
 <form name="frm" action="2Muestra.php?v=1" method="post">
-<table width="330" border="0" align="center" >
+<table width="530" border="0" align="center" >
   <tr>
     <td width="21" rowspan="6">&nbsp;</td>
     <td colspan="5" class="Subtitulo">Seleccione el Rango de Fechas a Consultar:</td>
@@ -42,18 +42,28 @@ $ffin2=$_REQUEST["final"];
   </tr>
   <tr>
     <td width="51">&nbsp;</td>
-    <td width="115" class="Concepto"> &nbsp;Fecha Inicial:</td>
-    <td width="59"><input name="inicial"   type="text" id="FechaInicial" size="9" maxlength="10" class="text" value="<?php if ($seg!=1)echo date("d-m-Y"); else if($seg=1)echo $fini2; ?>" onChange='this.value=ValidaFechaIni(this.value,"<?php echo date("d-m-Y"); ?>",document.frm.FechaFinal.value);'/></td>
-    <td width="30"><img src="../../../../Imgs/calendarp.gif" width="19" height="21" align="baseline" id="boton" style="cursor:hand" /></td>
+    <td width="160" class="Concepto"> &nbsp;Fecha y Hora Inicial:</td>
+    <td width="160">
+      <span class="FondoSeriesUno">
+        <img src="../../../../Imgs/calendarp.gif" width="19" height="21" align="baseline" id="boton" style="cursor:hand" />
+        <input name="inicial"   type="text" id="FechaInicial" size="9" maxlength="10" class="text" value="<?php if ($seg!=1)echo date("d-m-Y"); else if($seg=1)echo $fini2; ?>" onChange='this.value=ValidaFechaIni(this.value,"<?php echo date("d-m-Y"); ?>",document.frm.FechaFinal.value);'/>
+        <input name="horaInicial"  type="time" id="horaInicial" class="text" value="00:00:00" step="1" />
+      </span>
+    </td>
+  
     <td width="28">&nbsp;</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td class="Concepto">&nbsp;Fecha Final: </td>
-    <td><span class="FondoSeriesUno">
-      <input name="final"  type="text" id="FechaFinal" size="9" maxlength="9" class="text" value="<?php if ($seg!=1)echo date("d-m-Y"); else if($seg=1)echo $ffin2; ?>"  onChange='this.value=ValidaFechaVen(document.frm.FechaInicial.value,"<?php echo date("d-m-Y"); ?>",this.value);'/>
-    </span></td>
-    <td><span class="FondoSeriesUno"><img src="../../../../Imgs/calendarp.gif" width="19" height="21" align="baseline" id="boton2" style="cursor:hand" /></span></td>
+    <td class="Concepto">&nbsp;Fecha y Hora Final: </td>
+    <td>
+      <span class="FondoSeriesUno">
+        <img src="../../../../Imgs/calendarp.gif" width="19" height="21" align="baseline" id="boton2" style="cursor:hand" />
+        <input name="final"  type="text" id="FechaFinal" size="9" maxlength="9" class="text" style="heigth:54" value="<?php if ($seg!=1)echo date("d-m-Y"); else if($seg=1)echo $ffin2; ?>"  onChange='this.value=ValidaFechaVen(document.frm.FechaInicial.value,"<?php echo date("d-m-Y"); ?>",this.value);'/>
+        <input name="horaFinal"  type="time" id="horaFinal" class="text" value="23:59:00" step="1" />
+      </span>
+    </td>
+
     <td>&nbsp;</td>
   </tr>
   <tr>
@@ -75,7 +85,9 @@ $(document).ready(function() {
 		  //$("form").submit();
 		  fechainicial = $("#FechaInicial").val();
 		  fechafinal = $("#FechaFinal").val();
-		  document.location.href='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal;
+      horaInicial = $("#horaInicial").val();
+      horaFinal = $("#horaFinal").val();
+		  document.location.href='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal+'&horaInicial='+horaInicial+'&horaFinal='+horaFinal;
 		  });
 	});
 </script>

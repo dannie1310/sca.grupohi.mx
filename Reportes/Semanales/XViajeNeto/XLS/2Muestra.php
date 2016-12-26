@@ -23,14 +23,25 @@
 
 $IdProyecto=$_SESSION['Proyecto'];
 $inicial=$_REQUEST["inicial"];
+$horaInicial=$_REQUEST["horaInicial"];
 $final=$_REQUEST["final"];
+$horaFinal=$_REQUEST["horaFinal"];
 ?>
 
 <?php 
 
 	include("../../../../inc/php/conexiones/SCA.php");
 	include("../../../../Clases/Funciones/Catalogos/Genericas.php");
-$sql="SELECT DISTINCT p.Descripcion as Obra, Propietario from  viajesNetos v, proyectos p, camiones as c, sindicatos s WHERE v.IdCamion=c.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.IdProyecto = p.IdProyecto and  c.idSindicato=s.IdSindicato";
+$sql="
+  SELECT DISTINCT p.Descripcion AS Obra,
+         Propietario 
+    FROM  viajesNetos v, proyectos p, camiones AS c, sindicatos s 
+    WHERE v.IdCamion=c.IdCamion 
+      AND v.FechaLlegada BETWEEN '".fechasql($inicial)."' AND '".fechasql($final)."' 
+      AND v.HoraLlegada BETWEEN '".$horaInicial."' AND '".$horaFinal."'
+      AND p.IdProyecto=".$IdProyecto." 
+      AND v.IdProyecto = p.IdProyecto AND  c.idSindicato=s.IdSindicato";
+
 $link=SCA::getConexion();
 
 $row=$link->consultar($sql);
@@ -109,6 +120,7 @@ if($hay>0)
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Cubicaci&oacute;n m<sup>3</sup></font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Cami&oacute;n</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Sindicato</font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Empresa</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Fecha Llegada</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Hora Llegada</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Orígen</font></div></td>
@@ -143,6 +155,7 @@ if($hay>0)
       m.Descripcion as material,
       m.IdMaterial as idmaterial,
       sin.Descripcion as Sindicato,
+      emp.razonSocial as Empresa,
       TIMEDIFF(
               (CONCAT(FechaLlegada,' ',HoraLlegada)),
               (CONCAT(FechaSalida,' ',HoraSalida))
@@ -183,13 +196,15 @@ if($hay>0)
       left join rutas as r on(v.IdOrigen=r.IdOrigen AND v.IdTiro=r.IdTiro AND r.Estatus=1) 
       left join tarifas_tipo_ruta as  tr on(tr.IdTipoRuta=r.IdTipoRuta AND tr.Estatus=1) 
       left join cronometrias as cn on (cn.IdRuta=r.IdRuta AND cn.Estatus=1)
-      left join sindicatos as sin on sin.IdSindicato = c.IdSindicato
+      left join sindicatos as sin on sin.IdSindicato = v.IdSindicato
+      left join empresas as emp on emp.IdEmpresa = v.IdEmpresa
       WHERE
           v.Estatus in(0,10,20,30)
       AND v.IdProyecto = ".$IdProyecto."
       AND v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."'
+      AND v.HoraLlegada BETWEEN '".$horaInicial."' AND '".$horaFinal."'
       group by idviaje
-      ORDER BY FechaLlegada
+      ORDER BY FechaLlegada, camion, HoraLlegada
 ";			
 			
 
@@ -204,6 +219,7 @@ if($hay>0)
         <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[cubicacion]; ?></font></div></td>
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Camion]; ?></font></div></td>
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Sindicato]; ?></font></div></td>
+        <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Empresa]; ?></font></div></td>
         <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Fecha]; ?></font></div></td>
         <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Hora]; ?></font></div></td>
         <td width="40"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[origen]; ?></font></div></td>

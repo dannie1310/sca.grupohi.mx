@@ -17,7 +17,7 @@ else $sqlrruta="";
 
 $sql = "Select IdViaje from viajes v
 			left join camiones c using (IdCamion)
-			left join sindicatos s USING (IdSindicato)
+			left join sindicatos s  ON s.IdSindicato = v.IdSindicato
 			left join conciliacion_detalle cd USING (idviaje) 
 			left join conciliacion conc ON cd.idconciliacion=conc.idconciliacion 
 			left join conciliacion_rutas cr ON cr.idconciliacion=conc.idconciliacion 
@@ -136,7 +136,7 @@ if($hay>0){
 		 left join
 		    conciliacion_detalle cd on (cd.idviaje=v.idviaje and idconciliacion=$id)
 		left join camiones c using (IdCamion)
-		left join sindicatos s using (IdSindicato)
+		left join sindicatos s ON s.IdSindicato = v.IdSindicato
 		where FechaLlegada BETWEEN '".fechasql($inicial)."' and '".fechasql($final)."' and v.IdProyecto=".$IdProyecto." 
 		and s.IdSindicato=$sindicato $sqlrruta ORDER BY idconciliacion desc, FechaLlegada, HoraLlegada"; 
 		// "ORDER BY c.Economico,v.FechaLlegada,v.HoraLlegada";
