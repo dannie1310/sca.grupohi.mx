@@ -1,9 +1,9 @@
 <?php
-	session_start();
-	if(isset($_REQUEST["v"]) && ($_REQUEST["v"]==1)){
-	header("Content-type: application/vnd.ms-excel");
-	header('Content-Disposition:  filename=Acarreos Ejecutados por Material '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
-	}
+  session_start();
+  if(isset($_REQUEST["v"]) && ($_REQUEST["v"]==1)){
+  header("Content-type: application/vnd.ms-excel");
+  header('Content-Disposition:  filename=Acarreos Ejecutados por Material '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
+  }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,12 +26,25 @@ $inicial=$_REQUEST["inicial"];
 $horaInicial=$_REQUEST["horaInicial"];
 $final=$_REQUEST["final"];
 $horaFinal=$_REQUEST["horaFinal"];
+
+switch ($_REQUEST["estatus"]) {
+  case 0:
+    $estatus = 'in (0,10,20,30)';
+    break;
+  case 1:
+    $estatus = 'in (1,11,21,31)';
+    break;
+  default:
+    $estatus = '<> 22';
+    break;
+ } 
+
 ?>
 
 <?php 
 
-	include("../../../../inc/php/conexiones/SCA.php");
-	include("../../../../Clases/Funciones/Catalogos/Genericas.php");
+  include("../../../../inc/php/conexiones/SCA.php");
+  include("../../../../Clases/Funciones/Catalogos/Genericas.php");
 $sql="
   SELECT DISTINCT p.Descripcion AS Obra,
          Propietario 
@@ -108,6 +121,7 @@ if($hay>0)
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
+        <td>&nbsp;</td>
         <td colspan="3" bgcolor="969696">
           <div align="center">
             <font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Tarifa</font></font>
@@ -132,23 +146,28 @@ if($hay>0)
         <td bgcolor="C0C0C0"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Km Sub. </font></div></td>
         <td bgcolor="C0C0C0"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Km Adc.</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Importe</font> </div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Estatus</font> </div></td>
         
       </tr>
       <?php
  
    
-		$rows="
-		SELECT
+    $rows="
+    SELECT
       DATE_FORMAT(v.FechaLlegada, '%d-%m-%Y') AS Fecha,
       t.IdTiro,
       t.Descripcion AS Tiro,
       c.IdCamion AS IdCamion,
       c.Economico AS Camion,
       v.IdViajeNeto as IdViaje,
-      v.Estatus,
+      v.estatus as idEstatus,
+      CASE 
+        WHEN v.estatus in (1,11,21,31) THEN 'Validado'
+        WHEN v.estatus in (0,10,20,30) THEN 'Pendiente de Validar'
+        WHEN v.estatus in(22)  THEN 'Cancelado'
+      END AS Estatus,
       v.HoraLlegada as Hora,
       v.code,
-      if(fa.FactorAbundamiento is null,0.00,fa.FactorAbundamiento) as FactorAbundamiento,
       c.CubicacionParaPago as cubicacion,
       o.Descripcion as origen,
       o.IdOrigen as idorigen,
@@ -168,22 +187,6 @@ if($hay>0)
       tm.PrimerKM as tarifa_material_pk,
       tm.KMSubsecuente as tarifa_material_ks,
       tm.KMAdicional as tarifa_material_ka,
-      tr.IdTarifaTipoRuta as tarifa_ruta,
-      if(r.TotalKM>=30,4.40,if(tr.PrimerKM is null,'- - -',tr.PrimerKM))  as tarifa_ruta_pk,
-      if(r.TotalKM>=30,2.10,if(tr.KMSubsecuente is null,'- - -',tr.KMSubsecuente))  as tarifa_ruta_ks,
-      if(r.TotalKM>=30,0.00,if(tr.KMAdicional is null,'- - -',tr.KMAdicional))  as tarifa_ruta_ka,
-      cn.IdCronometria,
-      cn.TiempoMinimo,
-      cn.Tolerancia,
-      if(cn.TiempoMinimo-cn.Tolerancia is null,0.0,cn.TiempoMinimo-cn.Tolerancia) as cronometria,
-      if(r.TotalKM>=30,4.40*c.CubicacionParaPago,tr.PrimerKM*1*c.CubicacionParaPago) as ImportePK_R,
-      if(r.TotalKM>=30,2.10*r.KmSubsecuentes*c.CubicacionParaPago,tr.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago) as ImporteKS_R,
-      if(r.TotalKM>=30,0.00*r.KmAdicionales*c.CubicacionParaPago,tr.KMAdicional*r.KmAdicionales*c.CubicacionParaPago) as ImporteKA_R,
-      if(r.TotalKM>=30,((4.40*c.CubicacionParaPago)+(2.10*r.KmSubsecuentes*c.CubicacionParaPago)+(tr.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)),((tr.PrimerKM*1*c.CubicacionParaPago)+(tr.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago)+(tr.KMAdicional*r.KmAdicionales*c.CubicacionParaPago))) as ImporteTotal_Rs,
-      if(if(r.TotalKM>=30,((4.40*c.CubicacionParaPago)+(2.10*r.KmSubsecuentes*c.CubicacionParaPago)+(tr.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)),((tr.PrimerKM*1*c.CubicacionParaPago)+(tr.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago)+(tr.KMAdicional*r.KmAdicionales*c.CubicacionParaPago))) is null, '- - -',if(r.TotalKM>=30,((4.40*c.CubicacionParaPago)+(2.10*r.KmSubsecuentes*c.CubicacionParaPago)+(tr.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)),((tr.PrimerKM*1*c.CubicacionParaPago)+(tr.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago)+(tr.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)))) as ImporteTotal_R,
-      tm.PrimerKM*1*c.CubicacionParaPago as ImportePK_M,
-      tm.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago as ImporteKS_M,
-      tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago as ImporteKA_M,
       ((tm.PrimerKM*1*c.CubicacionParaPago)+(tm.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago)+(tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)) as ImporteTotal_M
       FROM
         viajesnetos AS v
@@ -192,28 +195,23 @@ if($hay>0)
       left join origenes as o using(IdOrigen) 
       join materiales as m using(IdMaterial) 
       left join tarifas as tm on(tm.IdMaterial=m.IdMaterial AND tm.Estatus=1) 
-      left join factorabundamiento as fa on (m.IdMaterial=fa.IdMaterial and fa.Estatus=1) 
       left join rutas as r on(v.IdOrigen=r.IdOrigen AND v.IdTiro=r.IdTiro AND r.Estatus=1) 
-      left join tarifas_tipo_ruta as  tr on(tr.IdTipoRuta=r.IdTipoRuta AND tr.Estatus=1) 
-      left join cronometrias as cn on (cn.IdRuta=r.IdRuta AND cn.Estatus=1)
       left join sindicatos as sin on sin.IdSindicato = v.IdSindicato
       left join empresas as emp on emp.IdEmpresa = v.IdEmpresa
       WHERE
-          v.Estatus in(0,10,20,30)
+          v.Estatus " . $estatus  . "
       AND v.IdProyecto = ".$IdProyecto."
       AND v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."'
       AND v.HoraLlegada BETWEEN '".$horaInicial."' AND '".$horaFinal."'
       group by idviaje
-      ORDER BY FechaLlegada, camion, HoraLlegada
-";			
-			
-
-		$ro=$link->consultar($rows);
-		$p=0;
-		while($fil=mysql_fetch_array($ro))
-			{
+      ORDER BY FechaLlegada, camion, HoraLlegada, idEstatus
+";      
+    $ro=$link->consultar($rows);
+    $p=0;
+    while($fil=mysql_fetch_array($ro))
+      {
         $p++;
-			?>
+      ?>
       <tr>
         <td width="1"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $p; ?>       </font></div></td>
         <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[cubicacion]; ?></font></div></td>
@@ -232,10 +230,11 @@ if($hay>0)
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[tarifa_material_ks],2,".",",");; ?></font></div></td>
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[tarifa_material_ka],2,".",","); ?></font></div></td>
         <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[ImporteTotal_M],2,".",","); ?></font></div></td>
+        <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Estatus]; ?></font></div></td>
       </tr>
 
       <?php
-			  }
+        }
       ?>
       
   
