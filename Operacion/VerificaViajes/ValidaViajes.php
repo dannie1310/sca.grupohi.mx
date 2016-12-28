@@ -1,45 +1,31 @@
 <?php 
 session_start();
 //include("../../inc/php/conexiones/SCA.php");
-ini_set('display_errors', '1');
-
 include("../../Clases/Funciones/Configuracion.php");
 include("../../inc/php/conexiones/SCA.php");
 require_once("../../Clases/xajax/xajax_core/xajax.inc.php");
-require_once("funciones_xjx.php");
-$xajax = new xajax();   
-$xajax->register(XAJAX_FUNCTION,"calculos_x_tipo_tarifa");
-    $xajax->register(XAJAX_FUNCTION,"registra_viaje");
-    $xajax->processRequest();	
-
-    include("../../Clases/Funciones/Catalogos/Genericas.php");
-	
+require_once("funciones_xjx.php");	
 $inicial = $_REQUEST["inicial"];
 $final = $_REQUEST["final"];
+	
 
-function horas($dec) {
-		$hours = $dec/60;
-		$var = explode(".",$hours);
-		$hours = $var[0];
-		$mins = (($var[1]*60)/10);
-		if(strlen($hours)>1){
-			$hours=$hours;
-			}else{
-				$hours='0'.$hours;
-				}
-		if(strlen($mins)>1){
-			$mins=substr($mins,0,2);
-			}else{
-				$mins='0'.$mins;
-				}
-		$hora =  $hours.":".$mins;
+		$partes=explode("-", $inicial);
+		$dia=$partes[0];
+		$mes=$partes[1];
+		$año=$partes[2];
+		$inicial=$año."-".$mes."-".$dia;
 		
-		return $hora;
 		
-	}
+		$partes=explode("-", $final);
+		$dia=$partes[0];
+		$mes=$partes[1];
+		$año=$partes[2];
+		$final=$año."-".$mes."-".$dia;
+	
+
 	
 	$l = SCA::getConexion(); 
-	
+	$xajax = new xajax(); 	
 	//print_r($_SESSION);
 	  $SQLs = "
         SELECT  DATE_FORMAT(viajesnetos.FechaLlegada,'%d-%m-%Y') as Fecha,
@@ -47,13 +33,16 @@ function horas($dec) {
             COUNT(viajesnetos.IdViajeNeto) AS Total 
         FROM viajesnetos 
         WHERE viajesnetos.Estatus in (0,10,20,30) 
-        AND FechaLlegada BETWEEN '".fechasql($inicial)."' AND '".fechasql($final)."' 
+        AND FechaLlegada BETWEEN '".$inicial."' AND '".$final."' 
         AND viajesnetos.IdProyecto = ".$_SESSION['Proyecto']." 
         GROUP BY viajesnetos.FechaLlegada;";
+	$r=$l->consultar($SQLs);
+	$condicion="";	
 	
-    $r=$l->consultar($SQLs);
-    $condicion="";  
-    
+	$xajax->register(XAJAX_FUNCTION,"calculos_x_tipo_tarifa");
+	$xajax->register(XAJAX_FUNCTION,"registra_viaje");
+	$xajax->processRequest();
+	
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
@@ -96,7 +85,7 @@ function horas($dec) {
                     xajax_calculos_x_tipo_tarifa($(this).attr("value"),xajax.$("material"+i).value,i,xajax.$('origen'+i).value,xajax.$('tiro'+i).value,xajax.$('camion'+i).value,xajax.$("idviaje"+i).value,xajax.$("tara"+i).value,xajax.$("bruto"+i).value);
                 });
 
-                $('.tipo_tarifa_p').on("keyup",function(){                      
+                $('.tipo_tarifa_p').on("keyup",function(){					 	
                     i = $(this).attr("contador");
 
                     if(xajax.$("tarifa"+i).value=="p")
@@ -160,7 +149,7 @@ function horas($dec) {
                     <?php
                         $SQLs = "SELECT  t.IdTiro,t.Descripcion as Tiro,COUNT(v.IdTiro) AS Total FROM viajesnetos as v join tiros as t using (IdTiro) WHERE  v.FechaLlegada='".$v["FechaO"]."' AND (v.Estatus = 0 OR v.Estatus = 10 OR v.Estatus = 20 OR v.Estatus = 30 )AND v.IdProyecto = ".$_SESSION['Proyecto']." GROUP BY  t.IdTiro;";
                         $r_tiros=$l->consultar($SQLs);
-    
+	
                         while($v_tiros=$l->fetch($r_tiros)) { 
                     ?>
             <tr>
@@ -417,8 +406,8 @@ function horas($dec) {
                                                     echo "title='El viaje no puede ser registrado porque no hay una tarifa registrada para su material'";
                                                 else if($v_viajes["Estatus"]==10) 
                                                     echo "title='El viaje no puede ser registrado porque debe seleccionar primero su origen'";
-                
-                ?> width="16" height="16" class="bandera" id_viaje="<?php echo $v_viajes["IdViaje"]; ?>" />
+				
+				?> width="16" height="16" class="bandera" id_viaje="<?php echo $v_viajes["IdViaje"]; ?>" />
                             </div>
                         </td>
                         <td>
@@ -504,7 +493,7 @@ function horas($dec) {
                     </div>
                 </td>
 <!--    1er Km          -->
-                 <td align="center" class="detalle">
+ 		         <td align="center" class="detalle">
                     <div id="dpk<?php echo $i_general; ?>">
                         <?php echo number_format($v_viajes["tarifa_material_pk"],2) ?>
                     </div>
@@ -543,7 +532,7 @@ function horas($dec) {
                 <td align="center">
                     <div id="dfda<?php echo $i_general; ?>">
                         <select name="fda<?php echo $i_general; ?>" id="fda<?php echo $i_general; ?>" >
-                        <option value="m">Material</option>
+	                    <option value="m">Material</option>
                             <option value="bm">Ban-Mat</option>
                         </select>
                     </div>
@@ -614,7 +603,7 @@ function horas($dec) {
             for(o=0;o<arreglo.length;o++)
             {
 
-                    xajax_calculos_x_tipo_tarifa(document.getElementById("tarifa"+arreglo[o]).value,document.getElementById("material"+arreglo[o]).value,arreglo[o],                    document.getElementById("origen_padre"+i_padre).value,document.getElementById("tiro"+arreglo[o]).value,document.getElementById("camion"+arreglo[o]).value,document.getElementById('idviaje'+arreglo[o]).value,document.getElementById('tara'+arreglo[o]).value,document.getElementById('bruto'+arreglo[o]).value);
+                    xajax_calculos_x_tipo_tarifa(document.getElementById("tarifa"+arreglo[o]).value,document.getElementById("material"+arreglo[o]).value,arreglo[o],			     	document.getElementById("origen_padre"+i_padre).value,document.getElementById("tiro"+arreglo[o]).value,document.getElementById("camion"+arreglo[o]).value,document.getElementById('idviaje'+arreglo[o]).value,document.getElementById('tara'+arreglo[o]).value,document.getElementById('bruto'+arreglo[o]).value);
                     document.getElementById("origen"+arreglo[o]).value=document.getElementById("origen_padre"+i_padre).value;
             }
     }
