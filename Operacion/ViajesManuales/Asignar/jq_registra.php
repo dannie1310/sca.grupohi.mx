@@ -28,7 +28,7 @@ $filas = "";
 			
 			for($xx=0;$xx<$frm["noviajes"][$x];$xx++)
 			{
-				$SQLs="call registra_viajes_netos_viajes(".$_SESSION["Proyecto"].",'".fechasql($frm["fecha"][$x])."',".$frm["camion"][$x].",".$frm["cubicacion"][$x].",".$frm["origen"][$x].",".$frm["tiro"][$x].",".$frm["ruta"][$x].",".$frm["material"][$x].",".$frm["primerkm"][$x].",".$frm["kmsubsecuentes"][$x].",".$frm["kmadicionales"][$x].",'".$_REQUEST["turno".$x]."','".$frm["observaciones"][$x]."',".$_SESSION["IdUsuarioAc"].",@OK)";
+				$SQLs="call registra_viajes_netos_viajes(".$_SESSION["Proyecto"].",'".fechasql($frm["fecha"][$x])."',".$frm["camion"][$x].",".$frm["cubicacion"][$x].",".$frm["origen"][$x].",".$frm["tiro"][$x].",".$frm["ruta"][$x].",".$frm["material"][$x].",".$frm["primerkm"][$x].",".$frm["kmsubsecuentes"][$x].",".$frm["kmadicionales"][$x].",'".$_REQUEST["turno".$x]."','".$frm["observaciones"][$x]."',".$_SESSION["IdUsuarioAc"].",@OK);";
 				$c.=$SQLs."<br />";
 				$r=$sca->consultar($SQLs);
 				$r2=$sca->consultar("select @OK");
