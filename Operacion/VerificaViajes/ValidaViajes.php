@@ -620,7 +620,7 @@ $final = $_REQUEST["final"];
                             maquinaria=(document.getElementById('cr'+arreglo[o]).value=='A99')?0:document.getElementById('cr'+arreglo[o]).value;
                             origen=(document.getElementById('origen'+arreglo[o]).value=='A99')?0:document.getElementById('origen'+arreglo[o]).value;
                             sindicato=(document.getElementById('sindicato'+arreglo[o]).value=='A99')?0:document.getElementById('sindicato'+arreglo[o]).value;
-                            empresa=(document.getElementById('empresa'+arreglo[o]).value=='A99')?0:document.getElementById('empresa'+arreglo[o]).value;
+                            empresa=(document.getElementById('empresa'+arreglo[o]).value=='A99')?'NULL':document.getElementById('empresa'+arreglo[o]).value;
                             id_viaje_neto=document.getElementById('idviaje'+arreglo[o]).value;
                             tarifa=document.getElementById('tarifa'+arreglo[o]).value;
                             fda=document.getElementById('fda'+arreglo[o]).value;
