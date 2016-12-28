@@ -269,7 +269,115 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
            echo "{\"error\":\"Error en iniciar sesion. No se encontraron los datos que especifica.\"}";
         }
     }
-    #FUNCIÓN PARA DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE REGISTRO DE TAGS
+    #FUNCIÓN PARA LOGUEO Y DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE REGRISTOR DE CAMIONES
+    function  paraRegistroCamiones($usr, $pass){
+        $arraydata=array();
+        $pass = md5($pass);
+        $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
+        //echo $sql;
+
+        $result = $this->_db ->consultar($sql);
+        $row = $this->_db ->fetch($result);
+
+        
+        if ($this->_db->affected()>0) {
+            
+//            $sql_valido = "select if( vigencia > NOW() OR vigencia is null, 1,0) AS valido from sca_configuracion.permisos_alta_tag where idusuario = ".$row["IdUsuario"].";";
+//            $result_valido = $this->_db ->consultar($sql_valido);
+//            $row_valido = $this->_db ->fetch($result_valido);
+//            if($row_valido["valido"] == 1){
+                
+            $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
+                    inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
+
+            $result_s = $this->_db ->consultar($sql_s);
+
+
+            
+            if ($row_s = $this->_db ->fetch($result_s)) {
+               
+               $_SESSION["databasesca"]=$row_s[base_datos];
+               $this->_database_sca = SCA::getConexion();
+                
+                
+                
+                //CAMIONES
+                
+                $sql_tags="SELECT camiones.IdCamion as id_camion, sindicatos.Descripcion AS sindicato,
+       empresas.razonSocial AS empresa,
+       camiones.Propietario AS propietario,
+       operadores.Nombre AS operador,
+       camiones.Economico AS economico,
+       camiones.Placas AS placas_camion,
+       camiones.PlacasCaja AS placas_caja,
+       marcas.Descripcion AS marca,
+       camiones.Modelo AS modelo,
+       camiones.Ancho AS ancho,
+       camiones.Largo AS largo,
+       camiones.Alto AS alto,
+       camiones.EspacioDeGato AS espacio_gato,
+       camiones.AlturaExtension AS altura_extension,
+       camiones.Disminucion AS disminucion,
+       camiones.CubicacionReal AS cubicacion_real,
+       camiones.CubicacionParaPago AS cubicacion_para_pago
+  FROM (((prod_sca_pista_aeropuerto_2.camiones camiones
+          LEFT OUTER JOIN prod_sca_pista_aeropuerto_2.sindicatos sindicatos
+             ON (camiones.IdSindicato = sindicatos.Descripcion))
+         LEFT OUTER JOIN prod_sca_pista_aeropuerto_2.marcas marcas
+            ON (camiones.IdMarca = marcas.IdMarca))
+        LEFT OUTER JOIN prod_sca_pista_aeropuerto_2.empresas empresas
+           ON (camiones.IdEmpresa = empresas.IdEmpresa))
+       LEFT OUTER JOIN prod_sca_pista_aeropuerto_2.operadores operadores
+          ON (camiones.IdOperador = operadores.IdOperador) where camiones.Estatus = 1";
+                $result_tags=$this->_database_sca->consultar($sql_tags);
+                
+                while($row_tags=$this->_database_sca->fetch($result_tags))
+                    $array_camiones[]=array(
+                        "id_camion"=>utf8_encode($row_tags[id_camion]),
+                        "sindicato"=>utf8_encode($row_tags[sindicato]),
+                        "empresa"=>utf8_encode($row_tags[empresa]),
+                        "propietario"=>utf8_encode($row_tags[propietario]),
+                        "operador"=>utf8_encode($row_tags[operador]),
+                        "economico"=>utf8_encode($row_tags[economico]),
+                        "placas_camion"=>utf8_encode($row_tags[placas_camion]),
+                        "placas_caja"=>utf8_encode($row_tags[placas_caja]),
+                        "marca"=>utf8_encode($row_tags[marca]),
+                        "modelo"=>utf8_encode($row_tags[modelo]),
+                        "ancho"=>utf8_encode($row_tags[ancho]),
+                        "largo"=>utf8_encode($row_tags[largo]),
+                        "alto"=>utf8_encode($row_tags[alto]),
+                        "espacio_gato"=>utf8_encode($row_tags[espacio_gato]),
+                        "altura_extension"=>utf8_encode($row_tags[altura_extension]),
+                        "disminucion"=>utf8_encode($row_tags[disminucion]),
+                        "cubicacion_real"=>utf8_encode($row_tags[cubicacion_real]),
+                        "cubicacion_para_pago"=>utf8_encode($row_tags[cubicacion_para_pago]),
+                        );
+                                    
+                        
+                $arraydata=array(
+                    "IdUsuario"=>$row[IdUsuario],
+                    "Nombre"=>utf8_encode($row[nombre]),
+                    "IdProyecto"=>$row_s[id_proyecto],
+                    "base_datos"=>$row_s[base_datos], 
+                    "descripcion_database"=>utf8_encode($row_s[descripcion_database]),
+                    "camiones"=>$array_camiones
+                 );
+
+                 
+                                
+                 echo json_encode($arraydata);  
+            }else {
+
+                echo "{\"error\":\"Error al obtener los datos. \"}";
+            } 
+//            }else{
+//                echo "{\"error\":\"No tiene los privilegios para dar de alta tags en los proyectos.\"}";
+//            }
+        }else {
+           echo "{\"error\":\"Error en iniciar sesion. No se encontraron los datos que especifica.\"}";
+        }
+    }
+    #FUNCIÓN PARA LOGUEO Y DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE REGISTRO DE TAGS
     function  paraRegistro($usr, $pass){
         $arraydata=array();
         $pass = md5($pass);
@@ -482,8 +590,9 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                     else{                    
                         #insertar viaje
                         $x = "INSERT INTO 
-                        $_REQUEST[bd].viajesnetos 
-                    VALUES(null,
+                        $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
+                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen) 
+                    VALUES(
                            0,
                            NOW(), 
                            NOW(), 
@@ -638,8 +747,8 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                 }else{
                     $id_viaje_neto_i = 0;
                 }
-                $x_errori = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $sql_vn)."','eli' )";
-                            $this->_db->consultar($x_errori);
+//                $x_errori = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $sql_vn)."','eli' )";
+//                            $this->_db->consultar($x_errori);
                 if($id_viaje_neto_i > 0){
                     $x_imagen = "insert into $_REQUEST[bd].viajes_netos_imagenes(idviaje_neto,idtipo_imagen,imagen) values($id_viaje_neto_i,".$value_i[idtipo_imagen].",'".str_replace('\\','',$value_i[imagen])."')";
                     $this->_db->consultar($x_imagen);
