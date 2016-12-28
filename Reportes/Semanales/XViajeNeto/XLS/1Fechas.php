@@ -68,6 +68,21 @@ $ffin2=$_REQUEST["final"];
     <td>&nbsp;</td>
   </tr>
   <tr>
+    <td>&nbsp;</td>
+      <td class="Concepto">
+        Seleccionar estatus
+      </td>
+      <td align="center">
+        <span>
+          <select name="estatus" id="estatus">
+            <option value=2>Todos</option>
+            <option value=0>S&iacute;n Validar</option>
+            <option value=1>Validado</option>
+          </select>
+        </span>
+      </td>
+    </tr>
+  <tr>
     <td colspan="5">&nbsp;</td>
   </tr>
   <tr>
@@ -88,7 +103,8 @@ $(document).ready(function() {
 		  fechafinal = $("#FechaFinal").val();
       horaInicial = $("#horaInicial").val();
       horaFinal = $("#horaFinal").val();
-		  document.location.href='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal+'&horaInicial='+horaInicial+'&horaFinal='+horaFinal;
+      estatus =  $("#estatus").val();
+		  document.location.href='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal+'&horaInicial='+horaInicial+'&horaFinal='+horaFinal+'&estatus='+estatus;
 		  });
 	});
 </script>
