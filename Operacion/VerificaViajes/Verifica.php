@@ -35,7 +35,7 @@ session_start();
   </tr>
   <tr>
     <td width="51">&nbsp;</td>
-    <td width="160" class="Concepto"> &nbsp;Fecha y Hora Inicial:</td>
+    <td width="160" class="Concepto"> &nbsp;Fecha Inicial:</td>
     <td width="160">
       <span class="FondoSeriesUno">
         <img src="../../Imgs/calendarp.gif" width="19" height="21" align="baseline" id="boton" style="cursor:hand" />
@@ -47,7 +47,7 @@ session_start();
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td class="Concepto">&nbsp;Fecha y Hora Final: </td>
+    <td class="Concepto">&nbsp;Fecha Final: </td>
     <td>
       <span class="FondoSeriesUno">
         <img src="../../Imgs/calendarp.gif" width="19" height="21" align="baseline" id="boton2" style="cursor:hand" />
