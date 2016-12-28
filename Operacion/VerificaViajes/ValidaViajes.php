@@ -1,7 +1,7 @@
 <?php 
 session_start();
 //include("../../inc/php/conexiones/SCA.php");
-//ini_set('display_errors', '1');
+ini_set('display_errors', '1');
 
 include("../../Clases/Funciones/Configuracion.php");
 include("../../inc/php/conexiones/SCA.php");
@@ -50,12 +50,10 @@ function horas($dec) {
         AND FechaLlegada BETWEEN '".fechasql($inicial)."' AND '".fechasql($final)."' 
         AND viajesnetos.IdProyecto = ".$_SESSION['Proyecto']." 
         GROUP BY viajesnetos.FechaLlegada;";
-	$r=$l->consultar($SQLs);
-	$condicion="";	
 	
+    $r=$l->consultar($SQLs);
+    $condicion="";  
     
-	
-	
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
@@ -80,7 +78,7 @@ function horas($dec) {
             -->
         </style>
         <?php 
-            nftcb($_SERVER['PHP_SELF']);
+            nftcb(substr($_SERVER['PHP_SELF'],1));
         ?>
         
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -98,7 +96,7 @@ function horas($dec) {
                     xajax_calculos_x_tipo_tarifa($(this).attr("value"),xajax.$("material"+i).value,i,xajax.$('origen'+i).value,xajax.$('tiro'+i).value,xajax.$('camion'+i).value,xajax.$("idviaje"+i).value,xajax.$("tara"+i).value,xajax.$("bruto"+i).value);
                 });
 
-                $('.tipo_tarifa_p').on("keyup",function(){					 	
+                $('.tipo_tarifa_p').on("keyup",function(){                      
                     i = $(this).attr("contador");
 
                     if(xajax.$("tarifa"+i).value=="p")
@@ -162,7 +160,7 @@ function horas($dec) {
                     <?php
                         $SQLs = "SELECT  t.IdTiro,t.Descripcion as Tiro,COUNT(v.IdTiro) AS Total FROM viajesnetos as v join tiros as t using (IdTiro) WHERE  v.FechaLlegada='".$v["FechaO"]."' AND (v.Estatus = 0 OR v.Estatus = 10 OR v.Estatus = 20 OR v.Estatus = 30 )AND v.IdProyecto = ".$_SESSION['Proyecto']." GROUP BY  t.IdTiro;";
                         $r_tiros=$l->consultar($SQLs);
-	
+    
                         while($v_tiros=$l->fetch($r_tiros)) { 
                     ?>
             <tr>
@@ -211,6 +209,7 @@ function horas($dec) {
                     </tr>
                     <tr style="display:none" id="<?php echo $v["FechaO"].$v_tiros["IdTiro"].$v_camiones["Camion"]?>">
                         <td>
+                            <div style="width:75%; overflow : auto;">
                             <table border="0" cellpadding="2" cellspacing="0" class="formulario" style="width:100%">
                                 <tr class="Item">
                                     <td rowspan="2" align="center">
@@ -232,11 +231,17 @@ function horas($dec) {
                                         m<sup>3</sup>
                                     </td>
                                     <td rowspan="2" align="center">
-                                        Or&iacute;gen<br />
+                                        Or&iacute;gen<br/>
                                         <?php 
-                                            $lista_origenes_padre=$l->regresaSelect_evt("origen_padre".$i_padre,"distinct(origenes.IdOrigen), concat(origenes.Clave,'-',origenes.IdOrigen) AS Clave, origenes.Descripcion","origenes join rutas on (rutas.IdOrigen=origenes.IdOrigen AND rutas.Estatus=1 AND rutas.IdTiro=".$v_tiros["IdTiro"].") ","origenes.IdProyecto = ".$_SESSION["Proyecto"]." AND origenes.Estatus = 1","IdOrigen","Descripcion","desc","100px","1","0","1"," onChange='cambia_origen_child(Arreglo_".$i_padre.",\"".$i_padre."\")'","","r");  
+                                            $lista_origenes_padre=$l->regresaSelect_evt("origen_padre".$i_padre,"distinct(origenes.IdOrigen), concat(origenes.Clave,'-',origenes.IdOrigen) AS Clave, origenes.Descripcion","origenes join rutas on (rutas.IdOrigen=origenes.IdOrigen AND rutas.Estatus=1 AND rutas.IdTiro=".$v_tiros["IdTiro"].") ","origenes.IdProyecto = ".$_SESSION["Proyecto"]." AND origenes.Estatus = 1","IdOrigen","Descripcion","desc","100px;visibility:hidden","1","0","1"," onChange='cambia_origen_child(Arreglo_".$i_padre.",\"".$i_padre."\")' ","","r");  
                                             echo $lista_origenes_padre;
                                         ?>
+                                    </td>
+                                    <td rowspan="2" align="center">
+                                        Sindicato<br/>
+                                    </td>
+                                    <td rowspan="2" align="center">
+                                        Empresa<br/>
                                     </td>
                                     <td rowspan="2" align="center">
                                         Material
@@ -305,6 +310,10 @@ function horas($dec) {
                                         o.IdOrigen as idorigen,
                                         m.Descripcion as material,
                                         m.IdMaterial as idmaterial,
+                                        c.IdSindicato as IdSindicato,
+                                        sin.descripcion as sindicato,
+                                        c.IdEmpresa as IdEmpresa,
+                                        emp.razonSocial as razonSocial,
                                         TIMEDIFF(
                                                 (CONCAT(FechaLlegada,' ',HoraLlegada)),
                                                 (CONCAT(FechaSalida,' ',HoraSalida))
@@ -335,13 +344,17 @@ function horas($dec) {
                                         tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago as ImporteKA_M,
                                         ((tm.PrimerKM*1*c.CubicacionParaPago)+(tm.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago)+(tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)) as ImporteTotal_M
                                     FROM
-                                        viajesnetos as v join
-                                        camiones as c using(IdCamion) left join
-                                        origenes as o using(IdOrigen) join
-                                        materiales as m using(IdMaterial) left join tarifas as tm on(tm.IdMaterial=m.IdMaterial AND tm.Estatus=1) left join
-                                        factorabundamiento as fa on (m.IdMaterial=fa.IdMaterial and fa.Estatus=1) left join
-                                         rutas as r on(v.IdOrigen=r.IdOrigen AND v.IdTiro=r.IdTiro AND r.Estatus=1) left join
-                                        tarifas_tipo_ruta as  tr on(tr.IdTipoRuta=r.IdTipoRuta AND tr.Estatus=1) left join cronometrias as cn on (cn.IdRuta=r.IdRuta AND cn.Estatus=1)
+                                        viajesnetos as v 
+                                        join camiones as c using(IdCamion) 
+                                        left join origenes as o using(IdOrigen) 
+                                        join materiales as m using(IdMaterial) 
+                                        left join tarifas as tm on(tm.IdMaterial=m.IdMaterial AND tm.Estatus=1) 
+                                        left join factorabundamiento as fa on (m.IdMaterial=fa.IdMaterial and fa.Estatus=1) 
+                                        left join rutas as r on(v.IdOrigen=r.IdOrigen AND v.IdTiro=r.IdTiro AND r.Estatus=1) 
+                                        left join tarifas_tipo_ruta as  tr on(tr.IdTipoRuta=r.IdTipoRuta AND tr.Estatus=1) 
+                                        left join cronometrias as cn on (cn.IdRuta=r.IdRuta AND cn.Estatus=1)
+                                        left join sindicatos as sin on (c.IdSindicato = sin.IdSindicato)
+                                        left join empresas as emp on (c.IdEmpresa = emp.IdEmpresa)
                                     WHERE 
                                         (v.Estatus = 0 OR v.Estatus = 10 OR v.Estatus = 20 ) AND
                                         v.IdProyecto = ".$_SESSION['Proyecto']." AND
@@ -404,8 +417,8 @@ function horas($dec) {
                                                     echo "title='El viaje no puede ser registrado porque no hay una tarifa registrada para su material'";
                                                 else if($v_viajes["Estatus"]==10) 
                                                     echo "title='El viaje no puede ser registrado porque debe seleccionar primero su origen'";
-				
-				?> width="16" height="16" class="bandera" id_viaje="<?php echo $v_viajes["IdViaje"]; ?>" />
+                
+                ?> width="16" height="16" class="bandera" id_viaje="<?php echo $v_viajes["IdViaje"]; ?>" />
                             </div>
                         </td>
                         <td>
@@ -423,39 +436,34 @@ function horas($dec) {
                         <input type="checkbox" name="r<?php echo $i_general; ?>" id="r<?php echo $i_general; ?>"  <?php if($v_viajes["idmaterial"]==''||$v_viajes["tarifa_material"]==''||$v_viajes["Estatus"]==10||($v_viajes["Estatus"]==0&&($v_viajes["tiempo"]==0||($v_viajes["tiempo"]<$v_viajes["cronometria"])))){ echo "checked"; }?> onclick="clic('a<?php echo $i_general; ?>')" style="cursor:pointer"/>
                     </div>
                 </td>
-
-
-
-
-
-
 <!--    cubicación         -->
                 <td align="center" class="detalle">
                     <?php //echo $v_viajes["cubicacion"] ?>
                      <input name="cubicacion1<?php echo $i_general; ?>" type="hidden"  id="cubicacion1<?php echo $i_general; ?>" style="width:25px" value="<?php echo $v_viajes['cubicacion'] ?>" readonly="readonly"/>
                     <input name="cubicacion<?php echo $i_general; ?>" type="text" class="cubicacion detalle" id="cubicacion<?php echo $i_general; ?>" style="width:25px" value="<?php echo $v_viajes['cubicacion'] ?>" contador="<?php echo $i_general; ?>" readonly="readonly"/>
                 </td>
-
-
-
-
-
-
 <!--    Origen          -->
-                <td align="center">
-                    <?php if($v_viajes["origen"]!='') {?>
-                    <span class="detalle" title="<?php echo $v_viajes["origen"];?>"><?php echo substr($v_viajes["origen"], 0, 10) ; ?>
-                        <input name="<?php echo "origen".$i_general;?>" id="<?php echo "origen".$i_general;?>" type="hidden" value="<?php echo $v_viajes["idorigen"]; ?>" />
-                    </span>
+                <td align="center" >                    
+                    <span class="detalle">
                     <?php 
-                        }else {
-                            $lista_origenes=$l->regresaSelect_evt("origen".$i_general,"distinct(origenes.IdOrigen), concat(origenes.Clave,'-',origenes.IdOrigen) AS Clave, origenes.Descripcion","origenes join rutas on (rutas.IdOrigen=origenes.IdOrigen AND rutas.Estatus=1 AND rutas.IdTiro=".$v_tiros["IdTiro"].") ","origenes.IdProyecto = ".$_SESSION["Proyecto"]." AND origenes.Estatus = 1","IdOrigen","Descripcion","desc","100px","1","0","1"," onChange='xajax_calculos_x_tipo_tarifa(document.getElementById(\"tarifa".$i_general."\").value,\"".$v_viajes["idmaterial"]."\",\"".$i_general."\",document.getElementById(\"origen".$i_general."\").value,document.getElementById(\"tiro".$i_general."\").value,document.getElementById(\"camion".$i_general."\").value,1)'","","r");  echo $lista_origenes;
+                        $lista_origenes=$l->regresaSelect_evt("origen".$i_general,"distinct(origenes.IdOrigen), concat(origenes.Clave,'-',origenes.IdOrigen) AS Clave, origenes.Descripcion","origenes join rutas on (rutas.IdOrigen=origenes.IdOrigen AND rutas.Estatus=1 AND rutas.IdTiro=".$v_tiros["IdTiro"].") ","origenes.IdProyecto = ".$_SESSION["Proyecto"]." AND origenes.Estatus = 1","IdOrigen","Descripcion","desc","100px","1","0","1","hidden",$v_viajes["idmaterial"],"r");  
+                        echo $lista_origenes;
+                    ?> 
+                    <?php echo $v_viajes["origen"]; ?>
+                    </span>
+                </td>
+<!--    Sindicato          -->
+                <td align="center">
+                    <?php 
+                        $lista_sindicatos=$l->regresaSelect_evt("sindicato".$i_general,"IdSindicato, Descripcion, NombreCorto","sindicatos","Estatus = 1","IdSindicato","Descripcion","asc","","1","0","1","",$v_viajes["IdSindicato"],"r");  
+                        echo $lista_sindicatos;
                     ?>
-                    <script>
-                        Arreglo_<?php echo $i_padre ?>.push('<?php echo $i_general; ?>');
-                    </script>
-                    <?php
-                        }
+                </td>
+<!--    Empresa          -->
+                <td align="center">
+                    <?php 
+                        $lista_empresas=$l->regresaSelect_evt("empresa".$i_general,"IdEmpresa, razonSocial, RFC","empresas","Estatus = 1","IdEmpresa","razonSocial","asc","","1","0","1","",$v_viajes["IdEmpresa"],"r");  
+                        echo $lista_empresas;
                     ?>
                 </td>
 <!--    Material          -->
@@ -496,7 +504,7 @@ function horas($dec) {
                     </div>
                 </td>
 <!--    1er Km          -->
- 		         <td align="center" class="detalle">
+                 <td align="center" class="detalle">
                     <div id="dpk<?php echo $i_general; ?>">
                         <?php echo number_format($v_viajes["tarifa_material_pk"],2) ?>
                     </div>
@@ -535,7 +543,7 @@ function horas($dec) {
                 <td align="center">
                     <div id="dfda<?php echo $i_general; ?>">
                         <select name="fda<?php echo $i_general; ?>" id="fda<?php echo $i_general; ?>" >
-	                    <option value="m">Material</option>
+                        <option value="m">Material</option>
                             <option value="bm">Ban-Mat</option>
                         </select>
                     </div>
@@ -576,7 +584,9 @@ function horas($dec) {
         </table></td>
       </tr>
       <?php  } ?>
-    </table></td>
+    </table>
+    </div>
+    </td>
   </tr>
   <?php }  ?>
 </table>
@@ -604,7 +614,7 @@ function horas($dec) {
             for(o=0;o<arreglo.length;o++)
             {
 
-                    xajax_calculos_x_tipo_tarifa(document.getElementById("tarifa"+arreglo[o]).value,document.getElementById("material"+arreglo[o]).value,arreglo[o],			     	document.getElementById("origen_padre"+i_padre).value,document.getElementById("tiro"+arreglo[o]).value,document.getElementById("camion"+arreglo[o]).value,document.getElementById('idviaje'+arreglo[o]).value,document.getElementById('tara'+arreglo[o]).value,document.getElementById('bruto'+arreglo[o]).value);
+                    xajax_calculos_x_tipo_tarifa(document.getElementById("tarifa"+arreglo[o]).value,document.getElementById("material"+arreglo[o]).value,arreglo[o],                    document.getElementById("origen_padre"+i_padre).value,document.getElementById("tiro"+arreglo[o]).value,document.getElementById("camion"+arreglo[o]).value,document.getElementById('idviaje'+arreglo[o]).value,document.getElementById('tara'+arreglo[o]).value,document.getElementById('bruto'+arreglo[o]).value);
                     document.getElementById("origen"+arreglo[o]).value=document.getElementById("origen_padre"+i_padre).value;
             }
     }
@@ -620,6 +630,8 @@ function horas($dec) {
                             horas_efectivas=(document.getElementById('hef'+arreglo[o]).value=='')?0.00:document.getElementById('hef'+arreglo[o]).value;
                             maquinaria=(document.getElementById('cr'+arreglo[o]).value=='A99')?0:document.getElementById('cr'+arreglo[o]).value;
                             origen=(document.getElementById('origen'+arreglo[o]).value=='A99')?0:document.getElementById('origen'+arreglo[o]).value;
+                            sindicato=(document.getElementById('sindicato'+arreglo[o]).value=='A99')?0:document.getElementById('sindicato'+arreglo[o]).value;
+                            empresa=(document.getElementById('empresa'+arreglo[o]).value=='A99')?0:document.getElementById('empresa'+arreglo[o]).value;
                             id_viaje_neto=document.getElementById('idviaje'+arreglo[o]).value;
                             tarifa=document.getElementById('tarifa'+arreglo[o]).value;
                             fda=document.getElementById('fda'+arreglo[o]).value;
@@ -631,7 +643,7 @@ function horas($dec) {
             }catch(e){accion='n'}
 
             if(accion!='n')
-                xajax_registra_viaje(arreglo[o],accion,id_viaje_neto,maquinaria,horas_efectivas,origen,tarifa,fda,tara,bruto,cubiNueva,cubiOriginal);
+                xajax_registra_viaje(arreglo[o],accion,id_viaje_neto,maquinaria,horas_efectivas,origen,sindicato,empresa,tarifa,fda,tara,bruto,cubiNueva,cubiOriginal);
             }
 
     }
