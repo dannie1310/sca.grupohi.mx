@@ -303,10 +303,9 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                 
                 //CAMIONES
                 
-                $sql_tags="SELECT camiones.IdCamion as id_camion, sindicatos.Descripcion AS sindicato,
+                $sql_tags="SELECT sindicatos.Descripcion AS sindicato,
        empresas.razonSocial AS empresa,
        camiones.Propietario AS propietario,
-       operadores.Nombre AS operador,
        camiones.Economico AS economico,
        camiones.Placas AS placas_camion,
        camiones.PlacasCaja AS placas_caja,
@@ -319,15 +318,19 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
        camiones.AlturaExtension AS altura_extension,
        camiones.Disminucion AS disminucion,
        camiones.CubicacionReal AS cubicacion_real,
-       camiones.CubicacionParaPago AS cubicacion_para_pago
-  FROM (((prod_sca_pista_aeropuerto_2.camiones camiones
-          LEFT OUTER JOIN prod_sca_pista_aeropuerto_2.sindicatos sindicatos
+       camiones.CubicacionParaPago AS cubicacion_para_pago,
+       operadores.Nombre AS operador,
+       operadores.NoLicencia AS numero_licencia,
+       operadores.VigenciaLicencia AS vigencia_licencia,
+       camiones.IdCamion AS id_camion
+  FROM (((camiones camiones
+          LEFT OUTER JOIN sindicatos sindicatos
              ON (camiones.IdSindicato = sindicatos.Descripcion))
-         LEFT OUTER JOIN prod_sca_pista_aeropuerto_2.marcas marcas
+         LEFT OUTER JOIN marcas marcas
             ON (camiones.IdMarca = marcas.IdMarca))
-        LEFT OUTER JOIN prod_sca_pista_aeropuerto_2.empresas empresas
+        LEFT OUTER JOIN empresas empresas
            ON (camiones.IdEmpresa = empresas.IdEmpresa))
-       LEFT OUTER JOIN prod_sca_pista_aeropuerto_2.operadores operadores
+       LEFT OUTER JOIN operadores operadores
           ON (camiones.IdOperador = operadores.IdOperador) where camiones.Estatus = 1";
                 $result_tags=$this->_database_sca->consultar($sql_tags);
                 
@@ -338,6 +341,8 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                         "empresa"=>utf8_encode($row_tags[empresa]),
                         "propietario"=>utf8_encode($row_tags[propietario]),
                         "operador"=>utf8_encode($row_tags[operador]),
+                        "numero_licencia"=>utf8_encode($row_tags[numero_licencia]),
+                        "vigencia_licencia"=>utf8_encode($row_tags[vigencia_licencia]),
                         "economico"=>utf8_encode($row_tags[economico]),
                         "placas_camion"=>utf8_encode($row_tags[placas_camion]),
                         "placas_caja"=>utf8_encode($row_tags[placas_caja]),
