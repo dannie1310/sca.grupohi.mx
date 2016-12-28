@@ -1,7 +1,0 @@
-Ajustes para el modulo de reportes de aprobacion de viajes
-
-1)Sustituir archivo 1MuestraDatos.php en Operacion/ViajesManuales/Aprobar/
-
-2)Agregar archivo 4Aprueba.php al directorio Operacion/ViajesManuales/Aprobar/
-
-4)Sustituir archivos 2Valida.php y 3Registra.php
