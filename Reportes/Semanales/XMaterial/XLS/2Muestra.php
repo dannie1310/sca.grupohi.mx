@@ -44,7 +44,16 @@ $final=$_REQUEST["final"];
 
 	include("../../../../inc/php/conexiones/SCA.php");
 	include("../../../../Clases/Funciones/Catalogos/Genericas.php");
-$sql="SELECT DISTINCT p.Descripcion as Obra, Propietario from  viajes v, proyectos p, camiones as c, sindicatos s WHERE v.IdCamion=c.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.IdProyecto = p.IdProyecto and  c.idSindicato=s.IdSindicato";
+$sql="
+    SELECT DISTINCT p.Descripcion as Obra, Propietario 
+    FROM  viajes v, 
+          proyectos p, 
+          camiones as c
+    WHERE v.IdCamion=c.IdCamion 
+      AND v.FechaLlegada between '".fechasql($inicial)."' AND '".fechasql($final)."' 
+      AND p.IdProyecto=".$IdProyecto." 
+      AND v.IdProyecto = p.IdProyecto";
+    echo $sql;
 $link=SCA::getConexion();
 
 $row=$link->consultar($sql);
