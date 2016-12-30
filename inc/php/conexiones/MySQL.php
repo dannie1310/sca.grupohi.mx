@@ -4,7 +4,7 @@
 		var $enlace;
 		var $qryCache=array();
 		static $_instance; 
-
+                var $last_id;
 		public function MySQL($srv,$usr,$ctr,$bd)
 		{
 			try
@@ -47,7 +47,9 @@
 		}
 		
 		function consultar($sql){
+                    $this->last_id = "NULL";
                     $r=mysql_query($sql,$this->enlace);
+                    $this->last_id = mysql_insert_id($this->enlace);
                     return $r;	
 		}
 		

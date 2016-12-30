@@ -792,6 +792,197 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                     . "\"imagenes_no_registradas\":".$json_imagenes_no_registradas."}";
         }
     }
+    #Función utilizada para registrar los datos enviados por la aplicación de actualización de camiones
+    function capturaActualizacionCamiones($usr,$pass){
+        $pass = md5($pass);
+        $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
+        $result = $this->_db ->consultar($sql);
+        if ($row = $this->_db ->fetch($result)) {
+            if($this->accesoValidoActualizacionCamiones($row["IdUsuario"], $_REQUEST[id_proyecto])){
+                $cadenajsonx=json_encode($_REQUEST);
+                $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
+                if(isset($_REQUEST['camiones_editados'])){
+                    $json_datos_actualizacion = $_REQUEST['camiones_editados'];
+                    $datos_actualizacion = json_decode(utf8_encode($json_datos_actualizacion), TRUE);
+                    $a_registrar = count($datos_actualizacion);
+                    if($a_registrar > 0){
+                        $actualizados = 0;
+                        $previos = 0;
+                        $error = 0;
+                        foreach ($datos_actualizacion as $key => $value) {
+                            $datos_preparados = $this->preparaDatos($_REQUEST[bd],$value);
+
+                            $x="UPDATE $_REQUEST[bd].camiones "
+                                . "SET "
+                                . "IdSindicato = ".$datos_preparados["id_sindicato"].", "
+                                . "IdEmpresa = ".$datos_preparados["id_empresa"].", "
+                                . "Propietario ='".$datos_preparados["propietario"]."', "
+                                . "IdOperador = ".$datos_preparados["id_operador"].", "
+                                . "Placas ='".$datos_preparados["placas_camion"]."', "
+                                . "PlacasCaja='".$datos_preparados["placas_caja"]."', "
+                                . "IdMarca=".$datos_preparados["id_marca"].", "
+                                . "Modelo='".$datos_preparados["modelo"]."', "
+                                . "Ancho=".$datos_preparados["ancho"].", "
+                                . "Largo=".$datos_preparados["largo"].", "
+                                . "Alto=".$datos_preparados["alto"].", "
+                                . "AlturaExtension=".$datos_preparados["gato"].", "
+                                . "EspacioDeGato=".$datos_preparados["extension"].", "
+                                . "Disminucion=".$datos_preparados["disminucion"].", "
+                                . "CubicacionReal=".$datos_preparados["cu_real"].", "
+                                . "CubicacionParaPago=".$datos_preparados["cu_pago"]." "
+                                . "WHERE IdCamion=".$datos_preparados["id_camion"]."";
+                            $this->_db->consultar($x);
+                            if($this->_db->affected()>=0){
+                                $actualizados = $actualizados+$this->_db->affected();
+                            }else{
+                                $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $x)."','".$row["IdUsuario"]."' )";
+                                $this->_db->consultar($x_error);
+                                if ($this->_db->affected() > 0) {
+                                    $error = $error + $this->_db->affected();
+                                }
+                            }
+                            
+                        }
+                        if (($actualizados) == $a_registrar && $error == 0)
+                            echo "{\"msj\":\"Camiones actualizados correctamente. Acualizados: ".$actualizados." Acualizados Previamente: ".$previos." A actualizar: ".$a_registrar."\"}";
+                        else if($error > 0 && ($actualizados + $error) == $a_registrar)
+                            echo "{\"msj\":\"No se actualizaron todos los camiones. Acualizados: ".$actualizados." A actualizar: ".$a_registrar." Errores: ".$error." .\"}";
+                        else
+                            echo "{\"error\":\"No se actualizaron todos los camiones. Acualizados: ".$actualizados." A actualizar: ".$a_registrar." Errores: ".$error." .\"}";
+                    }
+                    }else{
+                        echo "{\"error\":\"No ha mandado ningún registro para sincronizar.\"}";
+                    }
+                }else{
+                    echo "{\"error\":\"No tiene privilegios para actualizar el catálogo de camiones.\"}";
+                }
+            }
+        ELSE{
+            echo "{\"error\":\"Datos de inicio de sesión no validos.\"}";
+        }
+    }
+    private function preparaDatos($bd, array $datos){
+        
+        $datos_salida = array();
+        $id_sindicato = $this->regresaIdSindicato($bd,$datos["sindicato"]);
+        $id_empresa = $this->regresaIdEmpresa($bd,$datos["empresa"]);
+        $id_operador = $this->regresaIdOperador($bd,$datos["operador"],$datos["licencia"], $datos["vigencia"]);
+        $id_marca = $this->regresaIdMarca($bd,$datos["marca"]);
+        
+        $datos_salida["id_sindicato"] = $id_sindicato;
+        $datos_salida["id_empresa"] = $id_empresa;
+        $datos_salida["id_operador"] = $id_operador;
+        $datos_salida["id_marca"] = $id_marca;
+        $datos_salida["propietario"] = $this->eliminaCaracteresEspeciales($datos["propietario"]);
+        $datos_salida["placas_camion"] = $this->eliminaCaracteresEspeciales($datos["placas_camion"]);
+        $datos_salida["placas_caja"] = $this->eliminaCaracteresEspeciales($datos["placas_caja"]);
+        $datos_salida["modelo"] = $this->eliminaCaracteresEspeciales($datos["modelo"]);
+        $datos_salida["ancho"] = $this->eliminaCaracteresEspecialesN($datos["ancho"]);
+        $datos_salida["largo"] = $this->eliminaCaracteresEspecialesN($datos["largo"]);
+        $datos_salida["alto"] = $this->eliminaCaracteresEspecialesN($datos["alto"]);
+        $datos_salida["gato"] = $this->eliminaCaracteresEspecialesN($datos["gato"]);
+        $datos_salida["extension"] = $this->eliminaCaracteresEspecialesN($datos["extension"]);
+        $datos_salida["disminucion"] = $this->eliminaCaracteresEspecialesN($datos["disminucion"]);
+        $datos_salida["cu_real"] = $this->eliminaCaracteresEspecialesN($datos["cu_real"]);
+        $datos_salida["cu_pago"] = $this->eliminaCaracteresEspecialesN($datos["cu_pago"]);
+        $datos_salida["id_camion"] = $datos["id_camion"];
+        
+        return $datos_salida;
+    }
+    private function accesoValidoActualizacionCamiones($id_usuario, $id_proyecto){
+        $sql_valido = "SELECT count(*) as valido FROM sca_configuracion.usuarios_proyectos_modulos where id_modulo = 36 and id_usuario = ".$id_usuario." and id_proyecto =  ".$id_proyecto.";";
+        $result_valido = $this->_db->consultar($sql_valido);
+        $row_valido = $this->_db ->fetch($result_valido);
+        if($row_valido["valido"] >0){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+    private function regresaIdSindicato($bd,$sindicato){
+        $id_sindicato = "NULL";
+        $id_sindicato = $this->_db->regresaDatos2("$bd.sindicatos","IdSindicato", "NombreCorto", $sindicato);
+        if($id_sindicato>0){
+            return $id_sindicato;
+        }else{
+            $insert = "INSERT INTO $bd.sindicatos(Descripcion, NombreCorto) values('".$this->eliminaCaracteresEspeciales($sindicato)."', '".$this->eliminaCaracteresEspeciales($sindicato)."');";
+            $result = $this->_db->consultar($insert);
+            $id_sindicato = $this->_db->last_id;
+            return $id_sindicato;
+        }
+    }
+    private function regresaIdEmpresa($bd,$empresa){
+        $id_empresa = "NULL";
+        if($empresa == ""){
+            return "NULL";
+        }
+        $id_empresa = $this->_db->regresaDatos2("$bd.empresas","IdEmpresa", "razonSocial", $empresa);
+        if($id_empresa>0){
+            return $id_empresa;
+        }else{
+            $insert = "INSERT INTO $bd.empresas(razonSocial) values('".$this->eliminaCaracteresEspeciales($empresa)."');";
+            $result = $this->_db->consultar($insert);
+            $id_empresa = $this->_db->last_id;
+            return $id_empresa;
+        }
+    }
+    private function regresaIdOperador($bd,$operador, $licencia, $vigencia_licencia){
+        $id_operador = "NULL";
+        $id_operador = $this->_db->regresaDatos2("$bd.operadores","IdOperador", "Nombre", $operador);
+        if($id_operador>0){
+            return $id_operador;
+        }else{
+            $insert = "INSERT INTO $bd.operadores(Nombre, NoLicencia, VigenciaLicencia, FechaAlta )"
+                    . " values('".$this->eliminaCaracteresEspeciales($operador)."',"
+                    . "'".$this->eliminaCaracteresEspeciales($licencia)."',"
+                    . "'$vigencia_licencia',NOW());";
+            $result = $this->_db->consultar($insert);
+            $id_operador = $this->_db->last_id;
+            return $id_operador;
+        }
+    }
+    private function regresaIdMarca($bd,$marca){
+        $id_marca = "NULL";
+        $id_marca = $this->_db->regresaDatos2("$bd.marcas","IdMarca", "Descripcion", $marca);
+        if($id_marca>0){
+            return $id_marca;
+        }else{
+            $insert = "INSERT INTO $bd.marcas(Descripcion) values('".$this->eliminaCaracteresEspeciales($marca)."');";
+            $result = $this->_db->consultar($insert);
+            $id_marca = $this->_db->last_id;
+            return $id_marca;
+        }
+    }
+    function eliminaCaracteresEspeciales($entrada){
+        $string = str_replace(        
+             array("\\", "¨", "º", "-", "~",
+                 "#", "@", "|", "!", "\"",
+                 "·", "$", "%", "&", "/",
+                 "(", ")", "?", "'", "¡",
+                 "¿", "[", "^", "`", "]",
+                 "+", "}", "{", "¨", "´",
+                 ">", "<", ";", ",", ":",
+                 "."),
+             '',        
+             $entrada    
+             );
+        return $string;
+    }
+    
+    function eliminaCaracteresEspecialesN($entrada){
+        $string = str_replace(        
+             array("\\", "¨", "º", "-", "~",
+                 "#", "@", "|", "!", "\"",
+                  "$", "%", "&", "/",
+                 "(", ")", "?", "'", "¡",
+                 "¿", "[", "^", "`", "]",
+                 "+", "}", "{", "¨", "´",
+                 ">", "<", ";", ",", ":"),
+             '',        
+             $entrada    
+             );
+        return $string;
+    }
 }
 
 ?>
