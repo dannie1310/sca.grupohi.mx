@@ -164,7 +164,7 @@ if($hay>0)
       CASE 
         WHEN v.estatus in (1,11,21,31) THEN 'Validado'
         WHEN v.estatus in (0,10,20,30) THEN 'Pendiente de Validar'
-        WHEN v.estatus in(22)  THEN 'Cancelado'
+        WHEN v.estatus in (0,1,10,11,20,21)  THEN 'Cancelado'
       END AS Estatus,
       v.HoraLlegada as Hora,
       v.code,
@@ -203,9 +203,11 @@ if($hay>0)
       AND v.IdProyecto = ".$IdProyecto."
       AND v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."'
       AND v.HoraLlegada BETWEEN '".$horaInicial."' AND '".$horaFinal."'
+      AND v.IdViajeNeto not in (select IdViajeNeto from viajesrechazados)
       group by idviaje
       ORDER BY FechaLlegada, camion, HoraLlegada, idEstatus
 ";      
+    echo $rows;
     $ro=$link->consultar($rows);
     $p=0;
     while($fil=mysql_fetch_array($ro))
