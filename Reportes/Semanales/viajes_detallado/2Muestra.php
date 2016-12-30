@@ -884,7 +884,7 @@ FROM (SELECT
 		 v.FechaLlegada as Fecha, 
 		 v.CubicacionCamion as Cubicacion, 
 		 p.NombreCorto as Obra, 
-		 s.NombreCorto as Propietario, 
+		 c.Propietario AS Propietario,  /*s.NombreCorto as Propietario,*/ 
 		 o.Descripcion as Banco, 
 		 t.Descripcion as Tiro, 
 		 m.Descripcion as Material, 
@@ -900,19 +900,36 @@ FROM (SELECT
 		sum(v.ImportePrimerKM)/sum(v.VolumenPrimerKM) as 'PU1Km', 
 		 if(sum(v.VolumenKMSubsecuentes)>0,sum(v.ImporteKMSubsecuentes)/sum(v.VolumenKMSubsecuentes),0) as 'PUSub', 
 		 if(sum(v.VolumenKMAdicionales)>0,sum(v.ImporteKMAdicionales)/sum(v.VolumenKMAdicionales),0) as 'PUAdc'
+      FROM  
+          viajes AS v
+          LEFT JOIN proyectos AS p ON  v.IdProyecto = p.IdProyecto
+          LEFT JOIN camiones AS c ON v.idCamion = c.idCamion
+          LEFT JOIN origenes AS o ON v.IdOrigen = o.IdOrigen
+          LEFT JOIN tiros AS t ON v.IdTiro = t.IdTiro
+          LEFT JOIN materiales AS m ON v.IdMaterial = m.IdMaterial
+      WHERE
+        ".$consulta."
+       c.IdCamion=".$d[IdCamion]." and 
+       v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and 
+       p.IdProyecto=".$IdProyecto." 
+       and v.IdSindicato=".$sindicatos['idSindicato']."  
+       group by Material,Banco,Tiro) 
+    AS Registros";
+
+/*
 	FROM  
 	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
 WHERE
 ".$consulta."
  c.IdCamion=".$d[IdCamion]." and 
- v.FechaLlegada between '".fechasql($inicial)."' and 
- '".fechasql($final)."' and 
+ v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and 
  p.IdProyecto=".$IdProyecto." and 
  v.IdProyecto = p.IdProyecto and 
  v.idCamion=c.idCamion and c.idSindicato=s.IdSindicato and 
  v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial 
  group by Material,Banco,Tiro) 
   AS Registros";
+  */
 //echo $sum;
 $suma=$link->consultar($sum);
 $sumv=mysql_fetch_array($suma);
