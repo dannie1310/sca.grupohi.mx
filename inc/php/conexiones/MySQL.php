@@ -84,7 +84,7 @@
 		}
 		
 		function regresaDatos2($tbl,$campo,$campoid, $valorid){
-			$sql="select ".$campo." from ".$tbl." where ".$campoid."='".$valorid."'";
+			$sql="select ".$campo." from ".$tbl." where ".$campoid."='".$valorid."' limit 1";
 			$r=mysql_query($sql,$this->enlace);
 			$v=mysql_fetch_array($r);
 			return $v[$campo];	

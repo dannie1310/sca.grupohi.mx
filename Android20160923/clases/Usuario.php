@@ -873,7 +873,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         $datos_salida["id_empresa"] = $id_empresa;
         $datos_salida["id_operador"] = $id_operador;
         $datos_salida["id_marca"] = $id_marca;
-        $datos_salida["propietario"] = $this->eliminaCaracteresEspeciales($datos["propietario"]);
+        $datos_salida["propietario"] = $this->eliminaCaracteresEspeciales(utf8_decode(utf8_decode($datos["propietario"])));
         $datos_salida["placas_camion"] = $this->eliminaCaracteresEspeciales($datos["placas_camion"]);
         $datos_salida["placas_caja"] = $this->eliminaCaracteresEspeciales($datos["placas_caja"]);
         $datos_salida["modelo"] = $this->eliminaCaracteresEspeciales($datos["modelo"]);
@@ -901,11 +901,14 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
     }
     private function regresaIdSindicato($bd,$sindicato){
         $id_sindicato = "NULL";
+        if($sindicato == ""){
+            return "NULL";
+        }
         $id_sindicato = $this->_db->regresaDatos2("$bd.sindicatos","IdSindicato", "NombreCorto", $sindicato);
         if($id_sindicato>0){
             return $id_sindicato;
         }else{
-            $insert = "INSERT INTO $bd.sindicatos(Descripcion, NombreCorto) values('".$this->eliminaCaracteresEspeciales($sindicato)."', '".$this->eliminaCaracteresEspeciales($sindicato)."');";
+            $insert = "INSERT INTO $bd.sindicatos(Descripcion, NombreCorto) values('".$this->eliminaCaracteresEspeciales(utf8_decode(utf8_decode($sindicato)))."', '".$this->eliminaCaracteresEspeciales(utf8_decode(utf8_decode($sindicato)))."');";
             $result = $this->_db->consultar($insert);
             $id_sindicato = $this->_db->last_id;
             return $id_sindicato;
@@ -920,7 +923,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         if($id_empresa>0){
             return $id_empresa;
         }else{
-            $insert = "INSERT INTO $bd.empresas(razonSocial) values('".$this->eliminaCaracteresEspeciales($empresa)."');";
+            $insert = "INSERT INTO $bd.empresas(razonSocial) values('".$this->eliminaCaracteresEspeciales(utf8_decode(utf8_decode($empresa)))."');";
             $result = $this->_db->consultar($insert);
             $id_empresa = $this->_db->last_id;
             return $id_empresa;
@@ -928,12 +931,15 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
     }
     private function regresaIdOperador($bd,$operador, $licencia, $vigencia_licencia){
         $id_operador = "NULL";
+        if($operador == ""){
+            return "NULL";
+        }
         $id_operador = $this->_db->regresaDatos2("$bd.operadores","IdOperador", "Nombre", $operador);
         if($id_operador>0){
             return $id_operador;
         }else{
             $insert = "INSERT INTO $bd.operadores(Nombre, NoLicencia, VigenciaLicencia, FechaAlta )"
-                    . " values('".$this->eliminaCaracteresEspeciales($operador)."',"
+                    . " values('".$this->eliminaCaracteresEspeciales(utf8_decode(utf8_decode($operador)))."',"
                     . "'".$this->eliminaCaracteresEspeciales($licencia)."',"
                     . "'$vigencia_licencia',NOW());";
             $result = $this->_db->consultar($insert);
@@ -943,11 +949,14 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
     }
     private function regresaIdMarca($bd,$marca){
         $id_marca = "NULL";
+        if($marca == ""){
+            return "NULL";
+        }
         $id_marca = $this->_db->regresaDatos2("$bd.marcas","IdMarca", "Descripcion", $marca);
         if($id_marca>0){
             return $id_marca;
         }else{
-            $insert = "INSERT INTO $bd.marcas(Descripcion) values('".$this->eliminaCaracteresEspeciales($marca)."');";
+            $insert = "INSERT INTO $bd.marcas(Descripcion) values('".$this->eliminaCaracteresEspeciales(utf8_decode(utf8_decode($marca)))."');";
             $result = $this->_db->consultar($insert);
             $id_marca = $this->_db->last_id;
             return $id_marca;
