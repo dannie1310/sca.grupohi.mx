@@ -49,7 +49,9 @@
 		function consultar($sql){
                     $this->last_id = "NULL";
                     $r=mysql_query($sql,$this->enlace);
-                    $this->last_id = mysql_insert_id($this->enlace);
+                    if($this->affected()>0){
+                        $this->last_id = mysql_insert_id($this->enlace);
+                    }
                     return $r;	
 		}
 		
@@ -85,6 +87,12 @@
 		
 		function regresaDatos2($tbl,$campo,$campoid, $valorid){
 			$sql="select ".$campo." from ".$tbl." where ".$campoid."='".$valorid."' limit 1";
+			$r=mysql_query($sql,$this->enlace);
+			$v=mysql_fetch_array($r);
+			return $v[$campo];	
+		}
+                function regresaDatos3($tbl,$campo,$campoid, $valorid){
+			$sql="select ".$campo." from ".$tbl." where ".$campoid."= _utf8 '".$valorid."' COLLATE utf8_general_ci limit 1";
 			$r=mysql_query($sql,$this->enlace);
 			$v=mysql_fetch_array($r);
 			return $v[$campo];	

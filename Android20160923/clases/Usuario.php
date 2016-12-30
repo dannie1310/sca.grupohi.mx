@@ -904,11 +904,11 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         if($sindicato == ""){
             return "NULL";
         }
-        $id_sindicato = $this->_db->regresaDatos2("$bd.sindicatos","IdSindicato", "NombreCorto", $sindicato);
+        $id_sindicato = $this->_db->regresaDatos3("$bd.sindicatos","IdSindicato", "NombreCorto", utf8_decode(substr($sindicato, 0, 20)));
         if($id_sindicato>0){
             return $id_sindicato;
         }else{
-            $insert = "INSERT INTO $bd.sindicatos(Descripcion, NombreCorto) values('".$this->eliminaCaracteresEspeciales(utf8_decode(utf8_decode($sindicato)))."', '".$this->eliminaCaracteresEspeciales(utf8_decode(utf8_decode($sindicato)))."');";
+            $insert = "INSERT INTO $bd.sindicatos(Descripcion, NombreCorto) values('".$this->eliminaCaracteresEspeciales(utf8_decode(utf8_decode(substr($sindicato, 0, 50))))."', '".$this->eliminaCaracteresEspeciales(utf8_decode(utf8_decode(substr($sindicato, 0, 20))))."');";
             $result = $this->_db->consultar($insert);
             $id_sindicato = $this->_db->last_id;
             return $id_sindicato;
@@ -919,7 +919,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         if($empresa == ""){
             return "NULL";
         }
-        $id_empresa = $this->_db->regresaDatos2("$bd.empresas","IdEmpresa", "razonSocial", $empresa);
+        $id_empresa = $this->_db->regresaDatos3("$bd.empresas","IdEmpresa", "razonSocial", utf8_decode($empresa));
         if($id_empresa>0){
             return $id_empresa;
         }else{
@@ -934,7 +934,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         if($operador == ""){
             return "NULL";
         }
-        $id_operador = $this->_db->regresaDatos2("$bd.operadores","IdOperador", "Nombre", $operador);
+        $id_operador = $this->_db->regresaDatos3("$bd.operadores","IdOperador", "Nombre", utf8_decode($operador));
         if($id_operador>0){
             return $id_operador;
         }else{
@@ -952,7 +952,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         if($marca == ""){
             return "NULL";
         }
-        $id_marca = $this->_db->regresaDatos2("$bd.marcas","IdMarca", "Descripcion", $marca);
+        $id_marca = $this->_db->regresaDatos3("$bd.marcas","IdMarca", "Descripcion", utf8_decode($marca));
         if($id_marca>0){
             return $id_marca;
         }else{
@@ -971,7 +971,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                  "¿", "[", "^", "`", "]",
                  "+", "}", "{", "¨", "´",
                  ">", "<", ";", ",", ":",
-                 "."),
+                 ),
              '',        
              $entrada    
              );
