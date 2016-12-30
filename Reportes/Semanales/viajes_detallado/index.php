@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>..::GLN.-Sistema de Control de Acarreos::..</title>
-<link rel="stylesheet" type="text/css" media="all" href="../../../../Clases/Calendario/calendar-blue2.css" title="win2k-cold-1" />
+<link rel="stylesheet" type="text/css" media="all" href="../../../Clases/Calendario/calendar-blue2.css" title="win2k-cold-1" />
 <link href="../../../Clases/Styles/PaginaGeneral.css" rel="stylesheet" type="text/css">
 
 <script language="JavaScript" type="text/JavaScript">
@@ -70,7 +70,7 @@ $camion=$_REQUEST[camion];
     <td width="30">&nbsp;</td>
     <td colspan="2" class="Concepto"> &nbsp;Fecha&nbsp;Inicial:</td>
     <td width="63"><input name="inicial"   type="text" id="FechaInicial" size="9" maxlength="10" class="text" value="<?php if ($seg!=1)echo date("d-m-Y"); else if($seg=1)echo $fini2; ?>" onChange='this.value=ValidaFechaIni(this.value,"<?php echo date("d-m-Y"); ?>",document.frm.FechaFinal.value);'/></td>
-    <td width="34"><img src="../../../../Imgs/calendarp.gif" width="19" height="21" align="baseline" id="boton" style="cursor:hand" /></td>
+    <td width="34"><img src="../../../Imgs/calendarp.gif" width="19" height="21" align="baseline" id="boton" style="cursor:hand" /></td>
     <td width="24">&nbsp;</td>
   </tr>
   <tr>
@@ -79,7 +79,7 @@ $camion=$_REQUEST[camion];
     <td><span class="FondoSeriesUno">
       <input name="final"  type="text" id="FechaFinal" size="9" maxlength="10" class="text" value="<?php if ($seg!=1)echo date("d-m-Y"); else if($seg=1)echo $ffin2; ?>"  onChange='this.value=ValidaFechaVen(document.frm.FechaInicial.value,"<?php echo date("d-m-Y"); ?>",this.value);'/>
     </span></td>
-    <td><span class="FondoSeriesUno"><img src="../../../../Imgs/calendarp.gif" width="19" height="21" align="baseline" id="boton2" style="cursor:hand" /></span></td>
+    <td><span class="FondoSeriesUno"><img src="../../../Imgs/calendarp.gif" width="19" height="21" align="baseline" id="boton2" style="cursor:hand" /></span></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
@@ -124,8 +124,10 @@ viajes using(IdCamion)
 	  $sql="select distinct(IdSindicato),Sindicato from (Select c.Economico, c.IdCamion, c.IdSindicato as IdSindicato, s.NombreCorto as Sindicato from camiones as c, sindicatos as s where c.IdProyecto=".$IdProyecto." and c.IdCamion in (Select IdCamion from viajes) and s.IdSindicato=c.IdSindicato order by Sindicato) as tabla";
 	  //echo $sql;
 	   $sql="select distinct(s.IdSindicato), s.NombreCorto as Sindicato
-from viajes as v join camiones as c using(IdCamion) join
-sindicatos as s using(IdSindicato) where v.IdProyecto=".$IdProyecto."";
+          from viajes as v 
+          inner join camiones as c on c.IdCamion = v.IdCamion
+          inner join sindicatos as s on s.IdSindicato = v.IdSindicato
+          where v.IdProyecto=".$IdProyecto."";
 	$r=$link->consultar($sql);
 	$size=$link->affected();
 	if($size>5)
@@ -176,7 +178,7 @@ sindicatos as s using(IdSindicato) where v.IdProyecto=".$IdProyecto."";
   <tr>
     <td width="19">&nbsp;</td>
     <td><div align="center">
-        <input name="Submit" type="submit" class="Boton" value="Consultar Reporte">
+        <input name="Submit" type="button" class="Boton reporte" value="Consultar Reporte">
 		<input name="vista_previa" type="button" class="Boton vista_previa" value="Vista Previa">
         <input type="hidden" name="usr" value="<?php echo $usr;?>">
     </div></td>
@@ -184,23 +186,29 @@ sindicatos as s using(IdSindicato) where v.IdProyecto=".$IdProyecto."";
   </tr>
 </table>
 </form>
-<script type="text/javascript" src="../../../../inc/js/jquery-1.4.4.js"></script>
+<script type="text/javascript" src="../../../inc/js/jquery-1.4.4.js"></script>
 <script>
 $(document).ready(function() {
 	  $(".vista_previa").click(function(){
-		  //$("form").submit();
 		  fechainicial = $("#FechaInicial").val();
 		  fechafinal = $("#FechaFinal").val();
 		  camion = $("#camion").val();
 		  sindicato = $("#sindicato").val();
 		  tipo_consulta = $('input:radio[name=tipo_consulta]:checked').val();
 		  estatus = $('input:radio[name=estatus]:checked').val();
-		  //alert($("form").serialize());
-		  //alert('inicial='+fechainicial+'&final='+fechafinal+'&tipo_consulta='+tipo_consulta+'&camion='+camion+'&sindicato='+sindicato+'+&estatus='+estatus);
-		  //document.location.href='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal+'&tipo_consulta='+tipo_consulta+'&camion='+camion+'&sindicato='+sindicato+'+&estatus='+estatus;
 		  ruta='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal+'&tipo_consulta='+tipo_consulta+'&camion='+camion+'&sindicato='+sindicato+'+&estatus='+estatus;
 		  window.open(ruta);
 		  });
+    $(".reporte").click(function(){
+      fechainicial = $("#FechaInicial").val();
+      fechafinal = $("#FechaFinal").val();
+      camion = $("#camion").val();
+      sindicato = $("#sindicato").val();
+      tipo_consulta = $('input:radio[name=tipo_consulta]:checked').val();
+      estatus = $('input:radio[name=estatus]:checked').val();
+      ruta='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal+'&tipo_consulta='+tipo_consulta+'&camion='+camion+'&sindicato='+sindicato+'+&estatus='+estatus+'+&v='+1;
+      window.open(ruta);
+      });
 	});
 </script>
 

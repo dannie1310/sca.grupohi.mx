@@ -668,8 +668,7 @@ if($tipo_consulta=='sindicato'){
   
   $sql="
     SELECT DISTINCT p.Descripcion as Obra, 
-        c.Propietario,
-        v.idSindicato
+        c.Propietario
       FROM  viajes AS v
         LEFT JOIN proyectos AS p ON v.IdProyecto = p.IdProyecto
         LEFT JOIN camiones AS c ON v.IdCamion = c.IdCamion
@@ -715,7 +714,7 @@ if($tipo_consulta=='sindicato'){
     </td>
   </tr>
  <?php 
- $sindicatos = explode(",", $sindicato);
+
 
   $query="
     SELECT 

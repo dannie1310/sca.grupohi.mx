@@ -1,9 +1,12 @@
 <?php
 	session_start();
 	if(isset($_REQUEST["v"]) && ($_REQUEST["v"]==1)){
-	header("Content-type: application/vnd.ms-excel");
+    header("Content-type: application/vnd.ms-excel");
     header('Content-Disposition:  filename=AcarreosEjecutadosPorCamionDetallado_'.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs');
 	}
+
+  include("../../../inc/php/conexiones/SCA.php");
+  include("../../../Clases/Funciones/Catalogos/Genericas.php");
 
 ?>
 <html>
@@ -28,65 +31,51 @@ $final=$_REQUEST["final"];
 $camion=$_REQUEST["camion"];
 $tipo_consulta=$_REQUEST["tipo_consulta"];
 $sindicato=$_REQUEST["sindicato"];
+$estatus=$_REQUEST["estatus"];
 //echo $tipo_consulta.'-'.$sindicato;
-$sindicatos='';
-for($i=0;$i<sizeof($sindicato);$i++)
-{
-	$sindicatos=$sindicatos.$sindicato[$i].',';
-}
-$sindicatos=substr($sindicatos,0,strlen($sindicatos)-1);
 if($tipo_consulta=="sindicato")
 {
-	$estatus=$_REQUEST["estatus"];
-	if($estatus!=3)
-	{
-		
-		if($estatus==1)
-		{
-			$texto="TODOS LOS CAMIONES ACTIVOS";
-		}
-		else
-		if($estatus==0)
-		{
-			$texto="TODOS LOS CAMIONES INACTIVOS";
-		}
-		
-		$consulta="c.IdSindicato in (".$sindicatos.") and c.Estatus=".$estatus." and";
-	}
-	else
-	{
-		$texto="TODOS LOS CAMIONES";
-		$consulta="c.IdSindicato in (".$sindicatos.") and ";
-	}
+  switch ($estatus) {
+    case 0:
+      $texto="TODOS LOS CAMIONES INACTIVOS";
+      $consulta="c.IdSindicato in (".$sindicato.") and c.Estatus=".$estatus." and ";
+      break;
+    case 1:
+      $texto="TODOS LOS CAMIONES ACTIVOS";
+      $consulta="c.IdSindicato in (".$sindicato.") and c.Estatus=".$estatus." and ";
+      break;
+
+    case 3:
+      $texto="TODOS LOS CAMIONES";
+      $consulta="c.IdSindicato in (".$sindicato.") and ";
+      break;
+  }
 }
 
-if($tipo_consulta=="camion"){
-	if($camion=="T"){
-		$estatus=$_REQUEST["estatus"];
-		if($estatus!=3){
-			
-			if($estatus==1){
-				$texto="TODOS LOS CAMIONES ACTIVOS";
-			}
-			else
-			if($estatus==0){
-				$texto="TODOS LOS CAMIONES INACTIVOS";
-			}
-			
-			$consulta="c.Estatus=".$estatus." and";
-		}
-		else{
-			$texto="TODOS LOS CAMIONES";
-			$consulta="";
-		}
-	}
-	else
-		$consulta="c.IdCamion=".$camion." and";
+if($tipo_consulta=="camion")
+{
+  switch ($estatus) {
+    case 0:
+      $texto="TODOS LOS CAMIONES INACTIVOS";
+      $consulta="c.Estatus=".$estatus." and ";
+      break;
+    case 1:
+      $texto="TODOS LOS CAMIONES ACTIVOS";
+      $consulta="c.Estatus=".$estatus." and ";
+      break;
+
+    case 3:
+      $texto="TODOS LOS CAMIONES";
+      $consulta="";
+      break;
+  }
+  if($camion!="T"){
+    $consulta="c.IdCamion=".$camion." and ";
+  }
 }
 //echo $consulta;
 
-	include("../../../inc/php/conexiones/SCA.php");
-	include("../../../Clases/Funciones/Catalogos/Genericas.php");
+	
 if($tipo_consulta=='camion'){
     if($camion=="T") {
 
@@ -686,7 +675,14 @@ else
 if($tipo_consulta=='sindicato')
 {
 	
-	$sql="SELECT DISTINCT p.Descripcion as Obra, Propietario from  viajes v, proyectos p, camiones as c, sindicatos s WHERE ".$consulta." v.IdCamion=c.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.IdProyecto = p.IdProyecto and  c.idSindicato=s.IdSindicato";
+	$sql="
+    SELECT DISTINCT p.Descripcion as Obra, c.Propietario 
+    FROM  viajes AS v
+        LEFT JOIN proyectos AS p ON v.IdProyecto = p.IdProyecto
+        LEFT JOIN camiones AS c ON v.IdCamion = c.IdCamion
+    WHERE ".$consulta." 
+        v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."'
+      and p.IdProyecto=".$IdProyecto;
 //echo $sql;
 	$link=SCA::getConexion();
 	
@@ -718,8 +714,21 @@ if($tipo_consulta=='sindicato')
     <td colspan="2"><font color="#000000" face="Trebuchet MS" style="font-size:12px; ">PROYECTO 834:</font>&nbsp;<font color="#666666" face="Trebuchet MS" style="font-size:12px;"><?php echo $v[Obra]; ?></font></td>
   </tr>
  <?php 
- for($jj=0;$jj<sizeof($sindicato);$jj++)
- {
+  $query="
+    SELECT 
+      DISTINCT(v.idSindicato)
+    FROM
+      viajes AS v
+      LEFT JOIN camiones AS c ON v.IdCamion = c.IdCamion
+    WHERE
+      ".$consulta."
+      v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' 
+      and v.IdProyecto=".$IdProyecto;
+
+  //echo '<br>'.$query;
+  $query_sindi=$link->consultar($query);
+  while($sindicatos=mysql_fetch_array($query_sindi))
+  {
 	 $suma_sindicato='';
  ?>
       <tr>
@@ -729,7 +738,7 @@ if($tipo_consulta=='sindicato')
       
       <table width="1500" border="0" align="center" >
         <tr>
-          <td colspan="11"><font color="#000000" face="Trebuchet MS" style="font-size:12px; ">SINDICATO:</font>&nbsp;<font color="#666666" face="Trebuchet MS" style="font-size:12px;"><?php regresa(sindicatos, NombreCorto, IdSindicato, $sindicato[$jj]);  ?></font></td>
+          <td colspan="11"><font color="#000000" face="Trebuchet MS" style="font-size:12px; ">SINDICATO:</font>&nbsp;<font color="#666666" face="Trebuchet MS" style="font-size:12px;"><?php regresa(sindicatos, NombreCorto, IdSindicato, $sindicatos['idSindicato']);  ?></font></td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
@@ -781,40 +790,52 @@ if($tipo_consulta=='sindicato')
         </tr>
         <?php
 		$link=SCA::getConexion();
-  $llena="SELECT DISTINCT v.IdCamion, c.Economico  from viajes as v, camiones as c, proyectos as p WHERE ".$consulta." c.IdCamion=v.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and c.IdSindicato=".$sindicato[$jj]." order by Economico;";
+  $llena="SELECT DISTINCT v.IdCamion, c.Economico  from viajes as v, camiones as c, proyectos as p WHERE ".$consulta." c.IdCamion=v.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and c.IdSindicato=".$sindicatos['idSindicato']." order by Economico;";
 //echo $llena;
   $r=$link->consultar($llena);
   while($d=mysql_fetch_array($r))
    {
-   
-   
-   
-   
-   		  $rows="
-	SELECT 
+          $rows="
+      SELECT 
 
-		 c.Economico as Economico, 
-		 v.FechaLlegada as Fecha, 
-		 v.CubicacionCamion as Cubicacion, 
-		 p.NombreCorto as Obra, 
-		 s.NombreCorto as Propietario, 
-		 o.Descripcion as Banco, 
-		 t.Descripcion as Tiro, 
-		 m.Descripcion as Material, 
-		 count(v.IdViaje) as NumViajes, 
-		 c.CubicacionParaPago,
-		 	v.Distancia as Distancia,
-			sum(v.VolumenPrimerKM) as Vol1KM,
-			sum(v.VolumenKMSubsecuentes) as VolSub,
-			sum(v.VolumenKMAdicionales) as VolAdic,
-			sum(v.ImportePrimerKM) as Imp1Km,
-			sum(v.ImporteKMSubsecuentes) as ImpSub,
-			sum(v.Importe) as Importe,
-		 sum(v.ImportePrimerKM)/sum(v.VolumenPrimerKM) as 'PU1Km', 
-		 if(sum(v.VolumenKMSubsecuentes)>0,sum(v.ImporteKMSubsecuentes)/sum(v.VolumenKMSubsecuentes),0) as 'PUSub', 
-		 if(sum(v.VolumenKMAdicionales)>0,sum(v.ImporteKMAdicionales)/sum(v.VolumenKMAdicionales),0) as 'PUAdc'
-	FROM  
-	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
+         c.Economico as Economico, 
+         v.FechaLlegada as Fecha, 
+         v.CubicacionCamion as Cubicacion, 
+         p.NombreCorto as Obra, 
+         c.Propietario AS Propietario,  /*s.NombreCorto as Propietario,*/ 
+         o.Descripcion as Banco, 
+         t.Descripcion as Tiro, 
+         m.Descripcion as Material, 
+         count(v.IdViaje) as NumViajes, 
+         c.CubicacionParaPago,
+          v.Distancia as Distancia,
+          sum(v.VolumenPrimerKM) as Vol1KM,
+          sum(v.VolumenKMSubsecuentes) as VolSub,
+          sum(v.VolumenKMAdicionales) as VolAdic,
+          sum(v.ImportePrimerKM) as Imp1Km,
+          sum(v.ImporteKMSubsecuentes) as ImpSub,
+          sum(v.Importe) as Importe,
+         sum(v.ImportePrimerKM)/sum(v.VolumenPrimerKM) as 'PU1Km', 
+         if(sum(v.VolumenKMSubsecuentes)>0,sum(v.ImporteKMSubsecuentes)/sum(v.VolumenKMSubsecuentes),0) as 'PUSub', 
+         if(sum(v.VolumenKMAdicionales)>0,sum(v.ImporteKMAdicionales)/sum(v.VolumenKMAdicionales),0) as 'PUAdc'
+      FROM  
+          viajes AS v
+          LEFT JOIN proyectos AS p ON  v.IdProyecto = p.IdProyecto
+          LEFT JOIN camiones AS c ON v.idCamion = c.idCamion
+          LEFT JOIN origenes AS o ON v.IdOrigen = o.IdOrigen
+          LEFT JOIN tiros AS t ON v.IdTiro = t.IdTiro
+          LEFT JOIN materiales AS m ON v.IdMaterial = m.IdMaterial
+      WHERE
+        ".$consulta."
+       c.IdCamion=".$d[IdCamion]." and 
+       v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and 
+       p.IdProyecto=".$IdProyecto." 
+       and v.IdSindicato=".$sindicatos['idSindicato']."  
+       group by Fecha, Cubicacion,Material,Banco,Tiro
+       Order by Fecha";
+/*
+  FROM  
+  viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
 WHERE
 ".$consulta."
  c.IdCamion=".$d[IdCamion]." and 
@@ -826,7 +847,8 @@ WHERE
  v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial 
  group by Fecha, Cubicacion,Material,Banco,Tiro
  Order by Fecha";
-//echo $rows;
+ */
+//echo $rows . '<br>';
 $ro=$link->consultar($rows);
 $x=1;
 	while($fil=mysql_fetch_array($ro))

@@ -1,12 +1,15 @@
 <?php
 	session_start();
+	if(isset($_REQUEST["v"]) && ($_REQUEST["v"]==1)){
 	header("Content-type: application/vnd.ms-excel");
-    header('Content-Disposition:  filename=Acareos Ejecutados por Camión '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
+    header('Content-Disposition:  filename=AcarreosEjecutadosPorCamionDetallado_'.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs');
+	}
+
 ?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>..::GLN.-Sistema de Control de Acarreos::..</title>
+<title>Modulo de Acarreos</title>
 <style type="text/css">
 <!--
 .Estilo1 {color: #FF0000}
@@ -57,28 +60,22 @@ if($tipo_consulta=="sindicato")
 	}
 }
 
-if($tipo_consulta=="camion")
-{
-	if($camion=="T")
-	{
+if($tipo_consulta=="camion"){
+	if($camion=="T"){
 		$estatus=$_REQUEST["estatus"];
-		if($estatus!=3)
-		{
+		if($estatus!=3){
 			
-			if($estatus==1)
-			{
+			if($estatus==1){
 				$texto="TODOS LOS CAMIONES ACTIVOS";
 			}
 			else
-			if($estatus==0)
-			{
+			if($estatus==0){
 				$texto="TODOS LOS CAMIONES INACTIVOS";
 			}
 			
 			$consulta="c.Estatus=".$estatus." and";
 		}
-		else
-		{
+		else{
 			$texto="TODOS LOS CAMIONES";
 			$consulta="";
 		}
@@ -88,58 +85,59 @@ if($tipo_consulta=="camion")
 }
 //echo $consulta;
 
-	include("../../../../inc/php/conexiones/SCA.php");
-	include("../../../../Clases/Funciones/Catalogos/Genericas.php");
-if($tipo_consulta=='camion')
-{
-if($camion=="T") {
+	include("../../../inc/php/conexiones/SCA.php");
+	include("../../../Clases/Funciones/Catalogos/Genericas.php");
+if($tipo_consulta=='camion'){
+    if($camion=="T") {
 
-$sql="SELECT DISTINCT p.Descripcion as Obra, Propietario from  viajes v, proyectos p, camiones as c, sindicatos s WHERE ".$consulta." v.IdCamion=c.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.IdProyecto = p.IdProyecto and  c.idSindicato=s.IdSindicato";
-//echo $sql;
-$link=SCA::getConexion();
+    $sql="SELECT DISTINCT p.Descripcion as Obra, Propietario from  viajes v, proyectos p, camiones as c, sindicatos s 
+    WHERE ".$consulta." v.IdCamion=c.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."'
+     and p.IdProyecto=".$IdProyecto." and v.IdProyecto = p.IdProyecto and  c.idSindicato=s.IdSindicato";
 
-$row=$link->consultar($sql);
-$v=mysql_fetch_array($row);
-$hay=$link->affected();
-if($hay>0)
-{
-?>
-<table width="1500" border="0" align="center" >
-  <tr>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td colspan="2"><div align="right"><font color="#000000" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"><?PHP echo 'FECHA DE CONSULTA '.date("d-m-Y")."/".date("H:i:s",time()); ?></font></div></td>
-  </tr>
-  <tr>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td colspan="2"  align="center"><div align="left"><font color="#000000" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;">ACARREOS EJECUTADOS POR </font><font color="#666666" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"><?PHP echo $texto; ?></font><font color="#000000" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"> EN EL PER&Iacute;ODO DEL</font><font color="#666666" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"> <?PHP echo $inicial; ?></font><font color="#000000" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"> AL </font><font color="#666666" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"><?PHP echo $final; ?></font></div></td>
-  </tr>
-  <tr>
-    <td width="112">&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td colspan="2"><font color="#000000" face="Trebuchet MS" style="font-size:12px; ">PROYECTO:</font>&nbsp;<font color="#666666" face="Trebuchet MS" style="font-size:12px;"><?php echo $v[Obra]; ?></font></td>
-  </tr>
- 
-  <tr>
-    <td colspan="2" ><font color="#000000" face="Trebuchet MS" style="font-size:12px; ">CAMI&Oacute;N:</font>&nbsp;<font color="#666666" face="Trebuchet MS" style="font-size:12px;"><?php if($camion!="T"){ echo $v[Economico];} else {echo $texto;}?>
-    </font></td>
-  </tr>
-    <?php if($camion!="T"){?>
-	<tr>
-    <td colspan="2" ><font color="#000000" face="Trebuchet MS" style="font-size:12px; ">PLACAS:</font>&nbsp;<font color="#666666" face="Trebuchet MS" style="font-size:12px;"><?php echo $v[Placas]; ?></font></td>
-    </tr>
+    $link=SCA::getConexion();
+
+    $row=$link->consultar($sql);
+    $v=mysql_fetch_array($row);
+    $hay=$link->affected();
+    if($hay>0){
+        ?>
+        <table width="1500" border="0" align="center" >
+          <tr>
+            <td colspan="2">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2"><div align="right"><font color="#000000" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"><?PHP echo 'FECHA DE CONSULTA '.date("d-m-Y")."/".date("H:i:s",time()); ?></font></div></td>
+          </tr>
+          <tr>
+            <td colspan="2">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2"  align="center"><div align="left"><font color="#000000" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;">ACARREOS EJECUTADOS POR </font><font color="#666666" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"><?PHP echo $texto; ?></font><font color="#000000" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"> EN EL PER&Iacute;ODO DEL</font><font color="#666666" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"> <?PHP echo $inicial; ?></font><font color="#000000" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"> AL </font><font color="#666666" style="font-family:'Trebuchet MS'; font-weight:bold;font-size:14px;"><?PHP echo $final; ?></font></div></td>
+          </tr>
+          <tr>
+            <td width="112">&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2"><font color="#000000" face="Trebuchet MS" style="font-size:12px; ">PROYECTO:</font>&nbsp;<font color="#666666" face="Trebuchet MS" style="font-size:12px;"><?php echo $v[Obra]; ?></font></td>
+          </tr>
+         
+          <tr>
+            <td colspan="2" ><font color="#000000" face="Trebuchet MS" style="font-size:12px; ">CAMI&Oacute;N:</font>&nbsp;<font color="#666666" face="Trebuchet MS" style="font-size:12px;"><?php if($camion!="T"){ echo $v[Economico];} else {echo $texto;}?>
+            </font></td>
+          </tr>
+            <?php if($camion!="T"){?>
+        	<tr>
+            <td colspan="2" ><font color="#000000" face="Trebuchet MS" style="font-size:12px; ">PLACAS:</font>&nbsp;<font color="#666666" face="Trebuchet MS" style="font-size:12px;"><?php echo $v[Placas]; ?></font></td>
+            </tr>
 
   
-  <?php }?>
+        <?php 
+    }?>
       <tr>
       <td colspan="2" ><table width="1500" border="0" align="center" >
         <tr>
-          <td colspan="5">&nbsp;</td>
+          <td colspan="6">&nbsp;</td>
           <td width="32">&nbsp;</td>
           <td width="60">&nbsp;</td>
           <td width="54">&nbsp;</td>
@@ -153,7 +151,9 @@ if($hay>0)
           <td width="54">&nbsp;</td>
         </tr>
         <tr>
-          <td colspan="5">&nbsp;</td>
+          <td colspan="6">&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
@@ -165,7 +165,10 @@ if($hay>0)
         </tr>
         <tr bgcolor="#0A8FC7">
           <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">CAMI&Oacute;N</font></div></td>
+          <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">SINDICATO</font></div></td>
           <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">FECHA</font></div></td>
+          <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">HORA SALIDA</font></div></td>
+          <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">HORA LLEGADA</font></div></td>
           <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">TURNO</font></div></td>
           <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">CUBIC.</font></div></td>
           <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">VIAJES</font></div></td>
@@ -185,197 +188,208 @@ if($hay>0)
           <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">IMPORTE</font><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold "> ($)</font></div></td>
         </tr>
         <?php
-  $llena="SELECT DISTINCT v.IdCamion, c.Economico  from viajes as v, camiones as c, proyectos as p WHERE ".$consulta." c.IdCamion=v.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." order by Economico;";
-//echo $llena;
-  $r=$link->consultar($llena);
-  while($d=mysql_fetch_array($r))
-   {
-   
-   
-   
-   
-   		 $rows="
-	SELECT 
+        $llena="SELECT DISTINCT v.IdCamion, c.Economico  from viajes as v, camiones as c, proyectos as p WHERE ".$consulta." c.IdCamion=v.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." order by Economico;";
 
-		 c.Economico as Economico, 
-		 v.FechaLlegada as Fecha, 
-		 v.CubicacionCamion as Cubicacion, 
-		 p.NombreCorto as Obra, 
-		 s.NombreCorto as Propietario, 
-		 o.Descripcion as Banco, 
-		 t.Descripcion as Tiro, 
-		 m.Descripcion as Material, 
-		 count(v.IdViaje) as NumViajes, 
-		 c.CubicacionParaPago,
-		 	v.Distancia as Distancia,
-			sum(v.VolumenPrimerKM) as Vol1KM,
-			sum(v.VolumenKMSubsecuentes) as VolSub,
-			sum(v.VolumenKMAdicionales) as VolAdic,
-			sum(v.ImportePrimerKM) as Imp1Km,
-			sum(v.ImporteKMSubsecuentes) as ImpSub,
-			sum(v.ImporteKMAdicionales) as ImpAdc,
-			sum(v.Importe) as Importe,
-		 ta.PrimerKM as 'PU1Km', 
-		 ta.KMSubsecuente as 'PUSub', 
-		 ta.KMAdicional as 'PUAdc'
-	FROM  
-	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m, tarifas ta
-WHERE
-".$consulta."
-ta.Estatus = 1 and
- c.IdCamion=".$d[IdCamion]." and 
- v.FechaLlegada between '".fechasql($inicial)."' and 
- '".fechasql($final)."' and 
- p.IdProyecto=".$IdProyecto." and 
- v.IdProyecto = p.IdProyecto and 
- v.idCamion=c.idCamion and c.idSindicato=s.IdSindicato and 
- v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial and 
- v.IdMaterial=ta.IdMaterial
- group by Fecha, Cubicacion,Material,Banco,Tiro
- Order by Fecha";
-//echo $rows;
-$ro=$link->consultar($rows);
-$x=1;
-	while($fil=mysql_fetch_array($ro))
-	{
-?>
-        <tr>
-          <td width="48"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;">
-            <?php if($x==1)echo $fil[Economico]; ?>
-          </font></div></td>
-          <td width="69"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo fecha($fil[Fecha]); ?></font></div></td>
-          <td width="39"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo "1"; ?></font></div></td>
-          <td width="39"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Cubicacion]; ?> m<sup>3 </sup></font></div></td>
-          <td width="43"><div align="right"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[NumViajes]; ?></font></div></td>
-          <td width="32"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Distancia]; ?></font></div></td>
-          <td width="60"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Material]; ?></font></div></td>
-          <td width="54"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Banco]; ?></font></div></td>
-          <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Tiro]; ?></font></div></td>
-          <td width="44"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Vol1KM]; ?></font></div></td>
-          <td width="24"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[VolSub]; ?></font></div></td>
-          <td width="26"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[VolAdic]; ?></font></div></td>
-          <td width="41"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[PU1Km]; ?></font></div></td>
-          <td width="21"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[PUSub]; ?></font></div></td>
-          <td width="23"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[PUAdc]; ?></font></div></td>
-          <td width="47"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Imp1Km]; ?></font></div></td>
-          <td width="29"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[ImpSub]; ?></font></div></td>
-          <td width="30"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[ImpAdc]; ?></font></div></td>
-          <td width="54"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo  number_format($fil[Imp1Km]+$fil[ImpSub]+$fil[ImpAdc],2,".",",");?></font></div></td>
-        </tr>
-        <?php
-   $x++;
-   }
-    $sum="SELECT SUM(VolAdic) as sumaadicionales, SUM(NumViajes) as sumaviajes, SUM(Vol1KM) as sumavolumen,SUM(VolSub) as sumasubsecuentes, SUM(Imp1Km) as sumaimporte, SUM(ImpSub) as sumasub, SUM(ImpAdc) as sumaadc, SUM(Importe) as sumatotal 
-FROM (SELECT 
+        $r=$link->consultar($llena);
+        while($d=mysql_fetch_array($r)){
+   		   $rows="
+              	SELECT 
+                v.horaSalida as hsalida,
+                v.horaLlegada as hllegada,
+                c.Economico as Economico
+                  , v.FechaLlegada as Fecha
+                  , v.CubicacionCamion as Cubicacion
+                  , p.NombreCorto as Obra
+                  , s.NombreCorto as Propietario
+                  , o.Descripcion as Banco
+                  , t.Descripcion as Tiro
+                  , m.Descripcion as Material
+                  , 1 as NumViajes
+                  , c.CubicacionParaPago
+                  , v.Distancia as Distancia
+                  , v.VolumenPrimerKM as Vol1KM
+                  , v.VolumenKMSubsecuentes as VolSub
+                  , v.VolumenKMAdicionales as VolAdic
+                  , v.ImportePrimerKM as Imp1Km
+                  , v.ImporteKMSubsecuentes as ImpSub
+                  , v.ImporteKMAdicionales as ImpAdc
+                  , v.Importe as Importe
+                  , TipoTarifa,IdTarifa as 'PU1Km'
+                  , TipoTarifa,IdTarifa as 'PUSub'
+                  ,TipoTarifa,IdTarifa as 'PUAdc' 
+              FROM 
+              	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
+              WHERE
+              ".$consulta."
 
-		 c.Economico as Economico, 
-		 v.FechaLlegada as Fecha, 
-		 v.CubicacionCamion as Cubicacion, 
-		 p.NombreCorto as Obra, 
-		 s.NombreCorto as Propietario, 
-		 o.Descripcion as Banco, 
-		 t.Descripcion as Tiro, 
-		 m.Descripcion as Material, 
-		 count(v.IdViaje) as NumViajes, 
-		 c.CubicacionParaPago,
-		 	v.Distancia as Distancia,
-			sum(v.VolumenPrimerKM) as Vol1KM,
-			sum(v.VolumenKMSubsecuentes) as VolSub,
-			sum(v.VolumenKMAdicionales) as VolAdic,
-			sum(v.ImportePrimerKM) as Imp1Km,
-			sum(v.ImporteKMSubsecuentes) as ImpSub,
-			sum(v.ImporteKMAdicionales) as ImpAdc,
-			sum(v.Importe) as Importe,
-		 ta.PrimerKM as 'PU1Km', 
-		 ta.KMSubsecuente as 'PUSub', 
-		 ta.KMAdicional as 'PU Km Adic'
-	FROM  
-	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m, tarifas ta
-WHERE
-".$consulta."
-ta.Estatus = 1 and
- c.IdCamion=".$d[IdCamion]." and 
- v.FechaLlegada between '".fechasql($inicial)."' and 
- '".fechasql($final)."' and 
- p.IdProyecto=".$IdProyecto." and 
- v.IdProyecto = p.IdProyecto and 
- v.idCamion=c.idCamion and c.idSindicato=s.IdSindicato and 
- v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial and 
- v.IdMaterial=ta.IdMaterial
- group by Material,Banco,Tiro) 
-  AS Registros";
-//echo $sum;
-$suma=$link->consultar($sum);
-$sumv=mysql_fetch_array($suma);
-$sumtot=$sumtot+$sumv["sumaviajes"];
-$volp=$volp+$sumv["sumavolumen"];
-$volsub=$volsub+$sumv["sumasubsecuentes"];
-$voladc=$voladc+$sumv["sumaadicionales"];
-$impp=$impp+$sumv["sumaimporte"];
-$impsub=$impsub+$sumv["sumasub"];
-$impadc=$impadc+$sumv["sumaadc"];
+               c.IdCamion=".$d[IdCamion]." and 
+               v.FechaLlegada between '".fechasql($inicial)."' and 
+               '".fechasql($final)."' and 
+               p.IdProyecto=".$IdProyecto." and 
+               v.IdProyecto = p.IdProyecto and 
+               v.idCamion=c.idCamion and c.idSindicato=s.IdSindicato and 
+               v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial 
+               
+               Order by Fecha";
+               //echo $rows."<br />";
 
-$imp=$imp+($sumv["sumaimporte"]+$sumv["sumasub"]+$sumv["sumaadc"]); 
-?>
-        <tr>
-          <td><font color="#0099CC" face="Trebuchet MS" style="font-size:10px; font-weight:bold"></font></td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">SUBTOTAL CAMI&Oacute;N:</font></div></td>
-          <td bgcolor="#969696"><div align="right"> <font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumv[sumaviajes]; ?></font></div></td>
-          <td bgcolor="#969696">&nbsp;</td>
-          <td bgcolor="#969696">&nbsp;</td>
-          <td bgcolor="#969696">&nbsp;</td>
-          <td bgcolor="#969696">&nbsp;</td>
-          <td bgcolor="#969696"><div align="right"> <font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumv[sumavolumen]; ?></font></div></td>
-          <td bgcolor="#969696"><div align="right"> <font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumv[sumasubsecuentes]; ?></font></div></td>
-          <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $sumv[sumaadicionales]; ?></font></div></td>
-          <td bgcolor="#969696">&nbsp;</td>
-          <td bgcolor="#969696">&nbsp;</td>
-          <td bgcolor="#969696">&nbsp;</td>
-          <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumv[sumaimporte]; ?></font></div></td>
-          <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumv[sumasub]; ?></font></div></td>
-          <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumv[sumaadc]; ?></font></div></td>
-          <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php  echo number_format($sumv[sumaimporte]+$sumv[sumasub]+$sumv[sumaadc],2,".",","); ?>
-          </font></div></td>
-        </tr>
-        <tr>
-          <td colspan="5">&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td colspan="2">&nbsp;</td>
-          <td>&nbsp;</td>
-          <td colspan="2">&nbsp;</td>
-          <td>&nbsp;</td>
-          <td colspan="2">&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <?php
+              $ro=$link->consultar($rows);
+              $x=1;
+              while($fil=mysql_fetch_array($ro)){ ?>
+                      <tr>
+                        <td width="48">
+                            <div align="center">
+                                <font color="#000000" face="Trebuchet MS" style="font-size:10px;">
+                                <?php 
+                                    //if($x==1)echo $fil[Economico];
+                                    echo $fil[Economico];
+                                ?>
+                                </font>
+                            </div>
+                        </td>
+                        <td width="69"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo fecha($fil[Fecha]); ?></font></div></td>
+                        <td width="69"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Propietario]; ?></font></div></td>
+                        <td width="69"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[hsalida]; ?></font></div></td>
+                        <td width="69"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[hllegada]; ?></font></div></td>
+                        <td width="39"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo "1"; ?></font></div></td>
+                        <td width="39"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Cubicacion]; ?> m<sup>3 </sup></font></div></td>
+                        <td width="43"><div align="right"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[NumViajes]; ?></font></div></td>
+                        <td width="32"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Distancia]; ?></font></div></td>
+                        <td width="60"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Material]; ?></font></div></td>
+                        <td width="54"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Banco]; ?></font></div></td>
+                        <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Tiro]; ?></font></div></td>
+                        <td width="44"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Vol1KM]; ?></font></div></td>
+                        <td width="24"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[VolSub]; ?></font></div></td>
+                        <td width="26"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[VolAdic]; ?></font></div></td>
+                        <td width="41"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[PU1Km]; ?></font></div></td>
+                        <td width="21"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[PUSub]; ?></font></div></td>
+                        <td width="23"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[PUAdc]; ?></font></div></td>
+                        <td width="47"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Imp1Km]; ?></font></div></td>
+                        <td width="29"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[ImpSub]; ?></font></div></td>
+                        <td width="30"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[ImpAdc]; ?></font></div></td>
+                        <td width="54"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo  number_format($fil[Imp1Km]+$fil[ImpSub]+$fil[ImpAdc],2,".",",");?></font></div></td>
+                      </tr>
+                      <?php
+                 $x++;
 
-    }?>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td bgcolor="#000000"><div align="center"><font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold">TOTAL:</font></div></td>
-          <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumtot; ?></font></div></td>
-          <td bgcolor="#000000">&nbsp;</td>
-          <td bgcolor="#000000">&nbsp;</td>
-          <td bgcolor="#000000">&nbsp;</td>
-          <td bgcolor="#000000">&nbsp;</td>
-          <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($volp,2,".",","); ?></font></div></td>
-          <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($volsub,2,".",","); ?></font></div></td>
-          <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($voladc,2,".",","); ?></font></div></td>
-          <td bgcolor="#000000">&nbsp;</td>
-          <td colspan="2" bgcolor="#000000">&nbsp;</td>
-          <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($impp,2,".",","); ?></font></div></td>
-          <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($impsub,2,".",","); ?></font></div></td>
-          <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($impadc,2,".",","); ?></font></div></td>
-          <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($imp,2,".",","); ?></font></div></td>
-        </tr>
+            }
+
+             
+
+            $sum="SELECT SUM(VolAdic) as sumaadicionales, SUM(NumViajes) as sumaviajes, SUM(Vol1KM) as sumavolumen,SUM(VolSub) as sumasubsecuentes, SUM(Imp1Km) as sumaimporte, SUM(ImpSub) as sumasub, SUM(ImpAdc) as sumaadc, SUM(Importe) as sumatotal 
+                  FROM (SELECT 
+
+                       c.Economico as Economico, 
+                       v.FechaLlegada as Fecha, 
+                       v.CubicacionCamion as Cubicacion, 
+                       p.NombreCorto as Obra, 
+                       s.NombreCorto as Propietario, 
+                       o.Descripcion as Banco, 
+                       t.Descripcion as Tiro, 
+                       m.Descripcion as Material, 
+                       count(v.IdViaje) as NumViajes, 
+                       c.CubicacionParaPago,
+                        v.Distancia as Distancia,
+                        sum(v.VolumenPrimerKM) as Vol1KM,
+                        sum(v.VolumenKMSubsecuentes) as VolSub,
+                        sum(v.VolumenKMAdicionales) as VolAdic,
+                        sum(v.ImportePrimerKM) as Imp1Km,
+                        sum(v.ImporteKMSubsecuentes) as ImpSub,
+                        sum(v.ImporteKMAdicionales) as ImpAdc,
+                        sum(v.Importe) as Importe,
+                       sum(v.ImportePrimerKM)/sum(v.VolumenPrimerKM) as 'PU1Km', 
+                       if(sum(v.VolumenKMSubsecuentes)>0,sum(v.ImporteKMSubsecuentes)/sum(v.VolumenKMSubsecuentes),0) as 'PUSub', 
+                       if(sum(v.VolumenKMAdicionales)>0,sum(v.ImporteKMAdicionales)/sum(v.VolumenKMAdicionales),0) as 'PUAdc'
+                    FROM  
+                    viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
+                  WHERE
+                  ".$consulta."
+
+                   c.IdCamion=".$d[IdCamion]." and 
+                   v.FechaLlegada between '".fechasql($inicial)."' and 
+                   '".fechasql($final)."' and 
+                   p.IdProyecto=".$IdProyecto." and 
+                   v.IdProyecto = p.IdProyecto and 
+                   v.idCamion=c.idCamion and c.idSindicato=s.IdSindicato and 
+                   v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial 
+                   group by Material,Banco,Tiro) 
+                    AS Registros";
+
+                  $suma=$link->consultar($sum);
+                  $sumv=mysql_fetch_array($suma);
+                  $sumtot=$sumtot+$sumv["sumaviajes"];
+                  $volp=$volp+$sumv["sumavolumen"];
+                  $volsub=$volsub+$sumv["sumasubsecuentes"];
+                  $voladc=$voladc+$sumv["sumaadicionales"];
+                  $impp=$impp+$sumv["sumaimporte"];
+                  $impsub=$impsub+$sumv["sumasub"];
+                  $impadc=$impadc+$sumv["sumaadc"];
+
+                  $imp=$imp+($sumv["sumaimporte"]+$sumv["sumasub"]+$sumv["sumaadc"]); 
+                  ?>
+                  <tr>
+                    <td><font color="#0099CC" face="Trebuchet MS" style="font-size:10px; font-weight:bold"></font></td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">SUBTOTAL CAMI&Oacute;N:</font></div></td>
+                    <td bgcolor="#969696"><div align="right"> <font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumv[sumaviajes]; ?></font></div></td>
+                    <td bgcolor="#969696">&nbsp;</td>
+                    <td bgcolor="#969696">&nbsp;</td>
+                    <td bgcolor="#969696">&nbsp;</td>
+                    <td bgcolor="#969696">&nbsp;</td>
+                    <td bgcolor="#969696"><div align="right"> <font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumv[sumavolumen]; ?></font></div></td>
+                    <td bgcolor="#969696"><div align="right"> <font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumv[sumasubsecuentes]; ?></font></div></td>
+                    <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $sumv[sumaadicionales]; ?></font></div></td>
+                    <td bgcolor="#969696">&nbsp;</td>
+                    <td bgcolor="#969696">&nbsp;</td>
+                    <td bgcolor="#969696">&nbsp;</td>
+                    <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumv[sumaimporte]; ?></font></div></td>
+                    <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumv[sumasub]; ?></font></div></td>
+                    <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumv[sumaadc]; ?></font></div></td>
+                    <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php  echo number_format($sumv[sumaimporte]+$sumv[sumasub]+$sumv[sumaadc],2,".",","); ?>
+                    </font></div></td>
+                  </tr>
+                  <tr>
+                    <td colspan="5">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td colspan="2">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td colspan="2">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td colspan="2">&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <?php
+
+                }?>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td bgcolor="#000000"><div align="center"><font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold">TOTAL:</font></div></td>
+                  <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumtot; ?></font></div></td>
+                  <td bgcolor="#000000">&nbsp;</td>
+                  <td bgcolor="#000000">&nbsp;</td>
+                  <td bgcolor="#000000">&nbsp;</td>
+                  <td bgcolor="#000000">&nbsp;</td>
+                  <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($volp,2,".",","); ?></font></div></td>
+                  <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($volsub,2,".",","); ?></font></div></td>
+                  <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($voladc,2,".",","); ?></font></div></td>
+                  <td bgcolor="#000000">&nbsp;</td>
+                  <td colspan="2" bgcolor="#000000">&nbsp;</td>
+                  <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($impp,2,".",","); ?></font></div></td>
+                  <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($impsub,2,".",","); ?></font></div></td>
+                  <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($impadc,2,".",","); ?></font></div></td>
+                  <td bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo number_format($imp,2,".",","); ?></font></div></td>
+                </tr>
       </table></td>
     </tr>
 </table>
@@ -407,7 +421,7 @@ $imp=$imp+($sumv["sumaimporte"]+$sumv["sumasub"]+$sumv["sumaadc"]);
 $sql="SELECT DISTINCT p.Descripcion as Obra, Propietario,Placas,Economico from  viajes v, proyectos p, 
 camiones as c, sindicatos s WHERE ".$consulta." v.IdCamion=c.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.IdProyecto = p.IdProyecto and  c.idSindicato=s.IdSindicato and v.idCamion=c.idCamion";
 
-//echo $sql;
+
 $link=SCA::getConexion();
 
 $row=$link->consultar($sql);
@@ -498,49 +512,46 @@ if($hay>0)
           <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">IMPORTE</font></div></td>
         </tr>
         <?php
-  $llena="
-  	SELECT 
-		 c.Economico as Economico, 
-		 v.FechaLlegada as Fecha, 
-		 v.CubicacionCamion as Cubicacion, 
-		 p.NombreCorto as Obra, 
-		 s.NombreCorto as Propietario, 
-		 o.Descripcion as Banco, 
-		 t.Descripcion as Tiro, 
-		 m.Descripcion as Material, 
-		 count(v.IdViaje) as NumViajes, 
-		 c.CubicacionParaPago,
-		 	v.Distancia as Distancia,
-			sum(v.VolumenPrimerKM) as Vol1KM,
-			sum(v.VolumenKMSubsecuentes) as VolSub,
-			sum(v.VolumenKMAdicionales) as VolAdic,
-			sum(v.ImportePrimerKM) as Imp1Km,
-			sum(v.ImporteKMSubsecuentes) as ImpSub,
-			sum(v.Importe) as Importe,
-		 ta.PrimerKM as 'PU1Km', 
-		 ta.KMSubsecuente as 'PUSub', 
-		 ta.KMAdicional as 'PU Km Adic'
-	FROM  
-	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m, tarifas ta
-WHERE
- c.IdCamion=".$camion." and 
- v.FechaLlegada between '".fechasql($inicial)."' and 
- '".fechasql($final)."' and 
- p.IdProyecto=".$IdProyecto." and 
- v.IdProyecto = p.IdProyecto and 
- v.idCamion=c.idCamion and c.idSindicato=s.IdSindicato and 
- v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial and 
- v.IdMaterial=ta.IdMaterial
- group by Fecha,Cubicacion,v.IdCamion,Material,Banco,Tiro
- Order by Fecha
-  ";
-//echo $llena;
+   $llena="
+  	 SELECT 
+                v.horaSalida as hsalida,
+                v.horaLlegada as hllegada,
+                c.Economico as Economico
+                  , v.FechaLlegada as Fecha
+                  , v.CubicacionCamion as Cubicacion
+                  , p.NombreCorto as Obra
+                  , s.NombreCorto as Propietario
+                  , o.Descripcion as Banco
+                  , t.Descripcion as Tiro
+                  , m.Descripcion as Material
+                  , 1 as NumViajes
+                  , c.CubicacionParaPago
+                  , v.Distancia as Distancia
+                  , v.VolumenPrimerKM as Vol1KM
+                  , v.VolumenKMSubsecuentes as VolSub
+                  , v.VolumenKMAdicionales as VolAdic
+                  , v.ImportePrimerKM as Imp1Km
+                  , v.ImporteKMSubsecuentes as ImpSub
+                  , v.ImporteKMAdicionales as ImpAdc
+                  , v.Importe as Importe
+                  , TipoTarifa,IdTarifa as 'PU1Km'
+                  , TipoTarifa,IdTarifa as 'PUSub'
+                  ,TipoTarifa,IdTarifa as 'PUAdc' 
+        	FROM  
+        	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
+        WHERE
+         c.IdCamion=".$camion." and 
+         v.FechaLlegada between '".fechasql($inicial)."' and 
+         '".fechasql($final)."' and 
+         p.IdProyecto=".$IdProyecto." and 
+         v.IdProyecto = p.IdProyecto and 
+         v.idCamion=c.idCamion and c.idSindicato=s.IdSindicato and 
+         v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial 
+
+         Order by Fecha
+          ";
+
   $r=$link->consultar($llena);
-  
-   
-   
-   
-   
    		
 	while($fil=mysql_fetch_array($r))
 	{
@@ -565,7 +576,9 @@ WHERE
         </tr>
         <?php
 
-    }?>
+    }
+
+    ?>
         <?php
   
  $sum="SELECT SUM(NumViajes) as sumaviajes, SUM(Vol1KM) as sumavolumen,SUM(VolSub) as sumasubsecuentes, SUM(Imp1Km) as sumaimporte, SUM(ImpSub) as sumasub, SUM(Importe) as sumatotal 
@@ -587,11 +600,11 @@ FROM (SELECT
 			sum(v.ImportePrimerKM) as Imp1Km,
 			sum(v.ImporteKMSubsecuentes) as ImpSub,
 			sum(v.Importe) as Importe,
-		 ta.PrimerKM as 'PU1Km', 
-		 ta.KMSubsecuente as 'PUSub', 
-		 ta.KMAdicional as 'PU Km Adic'
+		 sum(v.ImportePrimerKM)/sum(v.VolumenPrimerKM) as 'PU1Km', 
+		 if(sum(v.VolumenKMSubsecuentes)>0,sum(v.ImporteKMSubsecuentes)/sum(v.VolumenKMSubsecuentes),0) as 'PUSub', 
+		 if(sum(v.VolumenKMAdicionales)>0,sum(v.ImporteKMAdicionales)/sum(v.VolumenKMAdicionales),0) as 'PUAdc'
 	FROM  
-	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m, tarifas ta
+	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
 WHERE
  c.IdCamion=".$camion." and 
  v.FechaLlegada between '".fechasql($inicial)."' and 
@@ -599,8 +612,7 @@ WHERE
  p.IdProyecto=".$IdProyecto." and 
  v.IdProyecto = p.IdProyecto and 
  v.idCamion=c.idCamion and c.idSindicato=s.IdSindicato and 
- v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial and 
- v.IdMaterial=ta.IdMaterial
+ v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial 
  group by v.IdCamion,Material,Banco,Tiro) 
   AS Registros";
 $suma=$link->consultar($sum);
@@ -778,7 +790,7 @@ if($tipo_consulta=='sindicato')
    
    
    
-   		 $rows="
+   		  $rows="
 	SELECT 
 
 		 c.Economico as Economico, 
@@ -798,11 +810,11 @@ if($tipo_consulta=='sindicato')
 			sum(v.ImportePrimerKM) as Imp1Km,
 			sum(v.ImporteKMSubsecuentes) as ImpSub,
 			sum(v.Importe) as Importe,
-		 ta.PrimerKM as 'PU1Km', 
-		 ta.KMSubsecuente as 'PUSub', 
-		 ta.KMAdicional as 'PU Km Adic'
+		 sum(v.ImportePrimerKM)/sum(v.VolumenPrimerKM) as 'PU1Km', 
+		 if(sum(v.VolumenKMSubsecuentes)>0,sum(v.ImporteKMSubsecuentes)/sum(v.VolumenKMSubsecuentes),0) as 'PUSub', 
+		 if(sum(v.VolumenKMAdicionales)>0,sum(v.ImporteKMAdicionales)/sum(v.VolumenKMAdicionales),0) as 'PUAdc'
 	FROM  
-	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m, tarifas ta
+	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
 WHERE
 ".$consulta."
  c.IdCamion=".$d[IdCamion]." and 
@@ -811,8 +823,7 @@ WHERE
  p.IdProyecto=".$IdProyecto." and 
  v.IdProyecto = p.IdProyecto and 
  v.idCamion=c.idCamion and c.idSindicato=s.IdSindicato and 
- v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial and 
- v.IdMaterial=ta.IdMaterial
+ v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial 
  group by Fecha, Cubicacion,Material,Banco,Tiro
  Order by Fecha";
 //echo $rows;
@@ -864,11 +875,11 @@ FROM (SELECT
 			sum(v.ImportePrimerKM) as Imp1Km,
 			sum(v.ImporteKMSubsecuentes) as ImpSub,
 			sum(v.Importe) as Importe,
-		 ta.PrimerKM as 'PU1Km', 
-		 ta.KMSubsecuente as 'PUSub', 
-		 ta.KMAdicional as 'PU Km Adic'
+		sum(v.ImportePrimerKM)/sum(v.VolumenPrimerKM) as 'PU1Km', 
+		 if(sum(v.VolumenKMSubsecuentes)>0,sum(v.ImporteKMSubsecuentes)/sum(v.VolumenKMSubsecuentes),0) as 'PUSub', 
+		 if(sum(v.VolumenKMAdicionales)>0,sum(v.ImporteKMAdicionales)/sum(v.VolumenKMAdicionales),0) as 'PUAdc'
 	FROM  
-	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m, tarifas ta
+	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
 WHERE
 ".$consulta."
  c.IdCamion=".$d[IdCamion]." and 
@@ -877,8 +888,7 @@ WHERE
  p.IdProyecto=".$IdProyecto." and 
  v.IdProyecto = p.IdProyecto and 
  v.idCamion=c.idCamion and c.idSindicato=s.IdSindicato and 
- v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial and 
- v.IdMaterial=ta.IdMaterial
+ v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial 
  group by Material,Banco,Tiro) 
   AS Registros";
 //echo $sum;
@@ -919,6 +929,7 @@ $imp=$imp+($sumv["sumaimporte"]+$sumv["sumasub"]);
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
+
           <td bgcolor="#969696"><div align="right"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold">SUBTOTAL SINDICATO:</font></div></td>
           <td align="right" bgcolor="#969696"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $suma_sindicato["viajes"]; ?></font></td>
           <td bgcolor="#969696">&nbsp;</td>
@@ -944,7 +955,8 @@ $imp=$imp+($sumv["sumaimporte"]+$sumv["sumasub"]);
           <td width="4%">&nbsp;</td>
           <td width="4%">&nbsp;</td>
           <td width="10%">&nbsp;</td>
-          <td width="12%" align="right" bgcolor="#000000"><div align="right"><font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold">TOTAL:</font></div></td>
+
+          <td width="12%" align="right" bgcolor="#000000"><div align="right"><font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold">TOTAL1:</font></div></td>
           <td width="6%" bgcolor="#000000"><div align="right"> <font color="#ffffff" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php echo $sumtot; ?></font></div></td>
           <td width="3%" bgcolor="#000000">&nbsp;</td>
           <td width="4%" bgcolor="#000000">&nbsp;</td>
