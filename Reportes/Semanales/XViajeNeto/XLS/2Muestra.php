@@ -35,7 +35,7 @@ switch ($_REQUEST["estatus"]) {
     $estatus = 'in (1,11,21,31)';
     break;
   default:
-    $estatus = '<> 22';
+    $estatus = 'in(1,11,21,31,0,10,20,30)';
     break;
  } 
 
@@ -164,7 +164,6 @@ if($hay>0)
       CASE 
         WHEN v.estatus in (1,11,21,31) THEN 'Validado'
         WHEN v.estatus in (0,10,20,30) THEN 'Pendiente de Validar'
-        WHEN v.estatus in (0,1,10,11,20,21,30,31)  THEN 'Cancelado'
       END AS Estatus,
       v.HoraLlegada as Hora,
       v.code,
