@@ -923,8 +923,7 @@ WHERE ".$consulta."  c.IdCamion=".$d[IdCamion]." and  v.FechaLlegada between '".
                           ".$consulta."
                            c.IdCamion=".$d[IdCamion]." 
                            and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' 
-                           and 
-                           p.IdProyecto=".$IdProyecto." 
+                           and p.IdProyecto=".$IdProyecto." 
                            and v.IdSindicato=".$sindicatos['idSindicato']."  
                         group by Material,Banco,Tiro) 
                       AS Registros";
