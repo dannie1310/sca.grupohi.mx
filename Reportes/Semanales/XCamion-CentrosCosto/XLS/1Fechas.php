@@ -124,8 +124,7 @@ viajes using(IdCamion)
 	  $sql="select distinct(IdSindicato),Sindicato from (Select c.Economico, c.IdCamion, c.IdSindicato as IdSindicato, s.NombreCorto as Sindicato from camiones as c, sindicatos as s where c.IdProyecto=".$IdProyecto." and c.IdCamion in (Select IdCamion from viajes) and s.IdSindicato=c.IdSindicato order by Sindicato) as tabla";
 	  //echo $sql;
 	   $sql="select distinct(s.IdSindicato), s.NombreCorto as Sindicato
-from viajes as v join camiones as c using(IdCamion) join
-sindicatos as s using(IdSindicato) where v.IdProyecto=".$IdProyecto."";
+from viajes as v join sindicatos as s using(IdSindicato) where v.IdProyecto=".$IdProyecto."";
 	$r=$link->consultar($sql);
 	$size=$link->affected();
 	if($size>5)
@@ -176,7 +175,7 @@ sindicatos as s using(IdSindicato) where v.IdProyecto=".$IdProyecto."";
   <tr>
     <td width="19">&nbsp;</td>
     <td><div align="center">
-        <input name="Submit" type="submit" class="Boton" value="Consultar Reporte">
+        <input name="Submit" type="button" class="Boton reporte" value="Consultar Reporte">
 		<input name="vista_previa" type="button" class="Boton vista_previa" value="Vista Previa">
         <input type="hidden" name="usr" value="<?php echo $usr;?>">
     </div></td>
@@ -195,12 +194,20 @@ $(document).ready(function() {
 		  sindicato = $("#sindicato").val();
 		  tipo_consulta = $('input:radio[name=tipo_consulta]:checked').val();
 		  estatus = $('input:radio[name=estatus]:checked').val();
-		  //alert($("form").serialize());
-		  //alert('inicial='+fechainicial+'&final='+fechafinal+'&tipo_consulta='+tipo_consulta+'&camion='+camion+'&sindicato='+sindicato+'+&estatus='+estatus);
-		  //document.location.href='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal+'&tipo_consulta='+tipo_consulta+'&camion='+camion+'&sindicato='+sindicato+'+&estatus='+estatus;
 		  ruta='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal+'&tipo_consulta='+tipo_consulta+'&camion='+camion+'&sindicato='+sindicato+'+&estatus='+estatus;
 		  window.open(ruta);
 		  });
+
+      $(".reporte").click(function(){
+      fechainicial = $("#FechaInicial").val();
+      fechafinal = $("#FechaFinal").val();
+      camion = $("#camion").val();
+      sindicato = $("#sindicato").val();
+      tipo_consulta = $('input:radio[name=tipo_consulta]:checked').val();
+      estatus = $('input:radio[name=estatus]:checked').val();
+      ruta='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal+'&tipo_consulta='+tipo_consulta+'&camion='+camion+'&sindicato='+sindicato+'+&estatus='+estatus+'+&v='+1;
+      window.open(ruta);
+      });
 	});
 </script>
 
