@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	//header("Content-type: application/vnd.ms-excel");
-  //header('Content-Disposition:  filename=Acarreos Ejecutados por Tipo de Origen '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
+	header("Content-type: application/vnd.ms-excel");
+  header('Content-Disposition:  filename=Acarreos Ejecutados por Tipo de Origen '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
 ?>
 <html>
 <head>
