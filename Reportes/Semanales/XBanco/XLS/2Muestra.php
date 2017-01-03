@@ -4,6 +4,8 @@
 	header("Content-type: application/vnd.ms-excel");
 	header('Content-Disposition:  filename=Acarreos Ejecutados por Origen '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
 	}
+  include("../../../../inc/php/conexiones/SCA.php");
+  include("../../../../Clases/Funciones/Catalogos/Genericas.php");
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,25 +28,17 @@
 $IdProyecto=$_SESSION['Proyecto'];
 $inicial=$_REQUEST["inicial"];
 $final=$_REQUEST["final"];
-?>
- <!--<table width="845" border="0" align="center" >
-  <tr>
-    <td width="124">&nbsp;</td>
-    <td width="407">&nbsp;</td>
-    <td width="28"><span class="Estilo2"><img src="../../../../Imgs/calendarp.gif" width="19" height="21"></span></td>
-  <form name="frm" action="1Fechas.php" method="post">
-   <input name="seg" type="hidden" value="1">
-   <input name="inicial" type="hidden" value="<?php //echo $inicial; ?>">
-   <input name="final" type="hidden" value="<?php //echo $final; ?>">
-   <td width="125" style="cursor:hand " onClick="document.frm.submit()">Cambiar Rango de Fechas</td>
-   </form> 
-  </tr>
-</table>-->
-<?php 
-
-	include("../../../../inc/php/conexiones/SCA.php");
-	include("../../../../Clases/Funciones/Catalogos/Genericas.php");
-$sql="SELECT DISTINCT p.Descripcion as Obra, Propietario from  viajes v, proyectos p, camiones as c, sindicatos s WHERE v.IdCamion=c.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.IdProyecto = p.IdProyecto and  c.idSindicato=s.IdSindicato";
+	
+$sql="
+    SELECT DISTINCT p.Descripcion AS Obra, 
+      Propietario 
+    FROM  viajes AS v
+      LEFT JOIN proyectos AS p ON v.IdProyecto = p.IdProyecto
+      LEFT JOIN camiones AS c ON v.IdCamion = c.IdCamion
+    WHERE v.IdCamion=c.IdCamion 
+      AND v.FechaLlegada between '".fechasql($inicial)."' AND '".fechasql($final)."' 
+      AND p.IdProyecto=".$IdProyecto;
+//echo $sql;
 $link=SCA::getConexion();
 
 $row=$link->consultar($sql);
@@ -116,7 +110,12 @@ if($hay>0)
       </tr>
       <?php
 	 
-  $llena="SELECT DISTINCT IdOrigen  from viajes as v, proyectos as p WHERE v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto.";";
+  $llena="
+    SELECT DISTINCT IdOrigen  
+    FROM viajes AS v
+      LEFT JOIN proyectos AS p ON v.IdProyecto = p.IdProyecto
+    WHERE v.FechaLlegada between '".fechasql($inicial)."' AND '".fechasql($final)."' 
+      AND p.IdProyecto=".$IdProyecto.";";
   $r=$link->consultar($llena);
   
    
@@ -132,7 +131,13 @@ $impsub=0;
 $imp=0; 
    
     ##########
-		$mat="SELECT DISTINCT v.IdMaterial from viajes as v,  proyectos as p WHERE v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.IdOrigen=".$d[IdOrigen]." and p.IdProyecto=".$IdProyecto.";";
+		$mat="
+      SELECT DISTINCT v.IdMaterial 
+      FROM viajes AS v
+        LEFT JOIN proyectos AS p ON v.IdProyecto = p.IdProyecto
+      WHERE v.FechaLlegada between '".fechasql($inicial)."' AND '".fechasql($final)."' 
+        AND p.IdProyecto=".$IdProyecto." 
+        AND v.IdOrigen=".$d[IdOrigen].";";
 		$ma=$link->consultar($mat);
 		while($dmat=mysql_fetch_array($ma))
    		{
@@ -141,11 +146,30 @@ $imp=0;
    #########
    
    
-$rows="Select count(v.IdViaje) as Viajes, t.Descripcion as Tiro, o.Descripcion as Banco, m.Descripcion as Material, v.Distancia as Distancia, sum(v.VolumenPrimerKM) as Vol1KM, sum(v.VolumenKMSubsecuentes) as VolSub, sum(v.VolumenKMAdicionales) as VolAdic, sum(v.ImportePrimerKM) as Imp1Km, sum(v.ImporteKMSubsecuentes) as ImpSub, sum(v.Importe) as Importe, 
-		fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') as 'PU1Km', 
-		fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') as 'PUSub', 
-		fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') as 'PUAdic'
-		from viajes as v, tiros as t, origenes as o, materiales as m where t.IdTiro=v.IdTiro and o.IdOrigen=v.IdOrigen and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and v.IdProyecto=".$IdProyecto." and v.IdOrigen=".$d[IdOrigen]." and m.IdMaterial=v.IdMaterial and m.IdMaterial=".$dmat[IdMaterial]." Group By Tiro,TipoTarifa,IdTarifa";
+$rows="
+  SELECT count(v.IdViaje) AS Viajes,
+    t.Descripcion AS Tiro, 
+    o.Descripcion AS Banco, 
+    m.Descripcion AS Material, 
+    v.Distancia AS Distancia, 
+    sum(v.VolumenPrimerKM) AS Vol1KM, 
+    sum(v.VolumenKMSubsecuentes) AS VolSub, 
+    sum(v.VolumenKMAdicionales) AS VolAdic, 
+    sum(v.ImportePrimerKM) AS Imp1Km, 
+    sum(v.ImporteKMSubsecuentes) AS ImpSub, 
+    sum(v.Importe) AS Importe, 
+		fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') AS 'PU1Km', 
+		fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') AS 'PUSub', 
+		fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') AS 'PUAdic'
+	FROM viajes AS v, tiros AS t, origenes AS o, materiales AS m 
+  WHERE t.IdTiro=v.IdTiro 
+    AND o.IdOrigen=v.IdOrigen 
+    AND v.FechaLlegada between '".fechasql($inicial)."' AND '".fechasql($final)."' 
+    AND v.IdProyecto=".$IdProyecto." 
+    AND v.IdOrigen=".$d[IdOrigen]." 
+    AND m.IdMaterial=v.IdMaterial 
+    AND m.IdMaterial=".$dmat[IdMaterial]." 
+  GROUP BY Tiro,TipoTarifa,IdTarifa";
 		//echo $rows;
 $ro=$link->consultar($rows);
 $x=1;
