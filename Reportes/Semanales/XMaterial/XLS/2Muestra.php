@@ -53,7 +53,7 @@ $sql="
       AND v.FechaLlegada between '".fechasql($inicial)."' AND '".fechasql($final)."' 
       AND p.IdProyecto=".$IdProyecto." 
       AND v.IdProyecto = p.IdProyecto";
-    echo $sql;
+    //echo $sql;
 $link=SCA::getConexion();
 
 $row=$link->consultar($sql);
