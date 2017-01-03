@@ -1,7 +1,7 @@
 <?php
-	session_start();
-	header("Content-type: application/vnd.ms-excel");
-	header('Content-Disposition:  filename=Concentrado de Acarreos Ejecutados por Origen '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
+  session_start();
+  header("Content-type: application/vnd.ms-excel");
+  header('Content-Disposition:  filename=Concentrado de Acarreos Ejecutados por Origen '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,8 +25,8 @@ $IdProyecto=$_SESSION['Proyecto'];
 $inicial=$_REQUEST["inicial"];
 $final=$_REQUEST["final"];
 
-	include("../../../../inc/php/conexiones/SCA.php");
-	include("../../../../Clases/Funciones/Catalogos/Genericas.php");
+  include("../../../../inc/php/conexiones/SCA.php");
+  include("../../../../Clases/Funciones/Catalogos/Genericas.php");
 $sql="SELECT DISTINCT p.Descripcion as Obra, Propietario from  viajes v, proyectos p, camiones as c, sindicatos s WHERE v.IdCamion=c.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.IdProyecto = p.IdProyecto and  c.idSindicato=s.IdSindicato";
 $link=SCA::getConexion();
 
@@ -99,7 +99,7 @@ if($hay>0)
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">IMPORTE&nbsp;($)</font></div></td>
       </tr>
       <?php
-	 
+   
   $llena="SELECT DISTINCT FechaLlegada  from viajes as v, proyectos as p WHERE v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto.";";
   //echo $llena;
   $r=$link->consultar($llena);
@@ -119,18 +119,22 @@ $impsub=0;
 $imp=0; 
    
     ##########
-		$mat="SELECT DISTINCT v.IdOrigen from viajes as v,  proyectos as p WHERE v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.FechaLlegada='".$d[FechaLlegada]."' and p.IdProyecto=".$IdProyecto.";";
-//		echo $mat;
+    $mat="SELECT DISTINCT v.IdOrigen from viajes as v,  proyectos as p WHERE v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.FechaLlegada='".$d[FechaLlegada]."' and p.IdProyecto=".$IdProyecto.";";
+//    echo $mat;
 $x=1;
-		$ma=$link->consultar($mat);
-		while($dmat=mysql_fetch_array($ma))
-   		{
+    $ma=$link->consultar($mat);
+    while($dmat=mysql_fetch_array($ma))
+      {
    
    
    #########
    
    
-		$rows="Select count(v.IdViaje) as Viajes, v.FechaLlegada as Fecha, t.Descripcion as Tiro, o.Descripcion as Banco, m.Descripcion as Material, v.Distancia as Distancia, sum(v.VolumenPrimerKM) as Vol1KM, sum(v.VolumenKMSubsecuentes) as VolSub, sum(v.VolumenKMAdicionales) as VolAdic, sum(v.ImportePrimerKM) as Imp1Km, sum(v.ImporteKMSubsecuentes) as ImpSub, sum(v.Importe) as Importe, tr.PrimerKM as PU1Km, tr.KMSubsecuente as PUSub, tr.KMAdicional as PUAdic from viajes as v, tiros as t, origenes as o, materiales as m, tarifas as tr where v.IdOrigen=".$dmat[IdOrigen]." and t.IdTiro=v.IdTiro and o.IdOrigen=v.IdOrigen and tr.IdMaterial=v.IdMaterial and v.IdProyecto=".$IdProyecto." and v.FechaLlegada='".$d[FechaLlegada]."' and m.IdMaterial=v.IdMaterial Group By Fecha,Banco,Tiro,Material";
+    $rows="Select count(v.IdViaje) as Viajes, v.FechaLlegada as Fecha, t.Descripcion as Tiro, o.Descripcion as Banco, m.Descripcion as Material, v.Distancia as Distancia, sum(v.VolumenPrimerKM) as Vol1KM, sum(v.VolumenKMSubsecuentes) as VolSub, sum(v.VolumenKMAdicionales) as VolAdic, sum(v.ImportePrimerKM) as Imp1Km, sum(v.ImporteKMSubsecuentes) as ImpSub, sum(v.Importe) as Importe, 
+    sum(v.ImportePrimerKM)/sum(v.VolumenPrimerKM) as 'PU1Km', 
+    if(sum(v.VolumenKMSubsecuentes)>0,sum(v.ImporteKMSubsecuentes)/sum(v.VolumenKMSubsecuentes),0) as 'PUSub', 
+    if(sum(v.VolumenKMAdicionales)>0,sum(v.ImporteKMAdicionales)/sum(v.VolumenKMAdicionales),0) as 'PUAdc'
+  from viajes as v, tiros as t, origenes as o, materiales as m where v.IdOrigen=".$dmat[IdOrigen]." and t.IdTiro=v.IdTiro and o.IdOrigen=v.IdOrigen  and v.IdProyecto=".$IdProyecto." and v.FechaLlegada='".$d[FechaLlegada]."' and m.IdMaterial=v.IdMaterial Group By Fecha,Banco,Tiro,Material";
 
 $ro=$link->consultar($rows);
 
@@ -138,9 +142,9 @@ $ro=$link->consultar($rows);
  
 
  
-	while($fil=mysql_fetch_array($ro))
-	{
-	 
+  while($fil=mysql_fetch_array($ro))
+  {
+   
 
 ?>
       <tr>
@@ -167,45 +171,43 @@ $ro=$link->consultar($rows);
    }
    
   
-	$sum="SELECT 
-			SUM(Viajes) as sumaviajes, 
-			SUM(Vol1KM) as sumavolumen,
-			SUM(VolSub) as sumasubsecuentes, 
-			SUM(Imp1Km) as sumaimporte, 
-			SUM(ImpSub) as sumasub, 
-			SUM(Importe) as sumatotal 
-		FROM(Select 
-		    count(v.IdViaje) as Viajes,
-			t.Descripcion as Tiro, 
-			o.Descripcion as Banco,
-			m.Descripcion as Material,
-			v.Distancia as Distancia,
-			sum(v.VolumenPrimerKM) as Vol1KM,
-			sum(v.VolumenKMSubsecuentes) as VolSub,
-			sum(v.VolumenKMAdicionales) as VolAdic,
-			sum(v.ImportePrimerKM) as Imp1Km,
-			sum(v.ImporteKMSubsecuentes) as ImpSub,
-			sum(v.Importe) as Importe,
-			tr.PrimerKM as PU1Km,
-			tr.KMSubsecuente as PUSub,
-			tr.KMAdicional as PUAdic 
-			
-		from 
-			viajes as v, 
-			tiros as t, 
-			origenes as o,
-			materiales as m,
-			tarifas as tr
-		where 
-			t.IdTiro=v.IdTiro and
-			o.IdOrigen=v.IdOrigen and
-			v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and 
-			v.IdProyecto=".$IdProyecto." and 
-			v.FechaLlegada='".$d[FechaLlegada]."' and
-			m.IdMaterial=v.IdMaterial and
-			tr.IdMaterial=v.IdMaterial and
-			v.IdOrigen=".$dmat[IdOrigen]."
-			Group By Banco) AS Registros";
+  $sum="SELECT 
+      SUM(Viajes) as sumaviajes, 
+      SUM(Vol1KM) as sumavolumen,
+      SUM(VolSub) as sumasubsecuentes, 
+      SUM(Imp1Km) as sumaimporte, 
+      SUM(ImpSub) as sumasub, 
+      SUM(Importe) as sumatotal 
+    FROM(Select 
+        count(v.IdViaje) as Viajes,
+      t.Descripcion as Tiro, 
+      o.Descripcion as Banco,
+      m.Descripcion as Material,
+      v.Distancia as Distancia,
+      sum(v.VolumenPrimerKM) as Vol1KM,
+      sum(v.VolumenKMSubsecuentes) as VolSub,
+      sum(v.VolumenKMAdicionales) as VolAdic,
+      sum(v.ImportePrimerKM) as Imp1Km,
+      sum(v.ImporteKMSubsecuentes) as ImpSub,
+      sum(v.Importe) as Importe,
+      sum(v.ImportePrimerKM)/sum(v.VolumenPrimerKM) as 'PU1Km', 
+     if(sum(v.VolumenKMSubsecuentes)>0,sum(v.ImporteKMSubsecuentes)/sum(v.VolumenKMSubsecuentes),0) as 'PUSub', 
+     if(sum(v.VolumenKMAdicionales)>0,sum(v.ImporteKMAdicionales)/sum(v.VolumenKMAdicionales),0) as 'PUAdc'
+      
+    from 
+      viajes as v, 
+      tiros as t, 
+      origenes as o,
+      materiales as m
+    where 
+      t.IdTiro=v.IdTiro and
+      o.IdOrigen=v.IdOrigen and
+      v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and 
+      v.IdProyecto=".$IdProyecto." and 
+      v.FechaLlegada='".$d[FechaLlegada]."' and
+      m.IdMaterial=v.IdMaterial and
+      v.IdOrigen=".$dmat[IdOrigen]."
+      Group By Banco) AS Registros";
 
 $suma=$link->consultar($sum);
 $sumv=mysql_fetch_array($suma);
@@ -271,7 +273,7 @@ $imp=$imp+($sumv["sumaimporte"]+$sumv["sumasub"]);
         <td bgcolor="#969696"><div align="right"> <font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php $total[4]=$total[4]+$impsub; echo number_format($impsub,2,".",","); ?></font></div></td>
         <td bgcolor="#969696"><div align="right"> <font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php $total[5]=$total[5]+$imp;  echo number_format($imp,2,".",","); ?></font></div></td>
       </tr>
-	  <tr>
+    <tr>
         <td colspan="2">&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
@@ -287,7 +289,7 @@ $imp=$imp+($sumv["sumaimporte"]+$sumv["sumasub"]);
       </tr>
       <?php
     }?>
-	<tr>
+  <tr>
         <td colspan="2">&nbsp;</td>
         <td>&nbsp;</td>
         <td bgcolor="#000000"><div align="right"><font color="#FFFFFF" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">TOTAL: </font></div></td>
