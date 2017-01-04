@@ -897,8 +897,8 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                 
 //                $x_errori = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $sql_vn)."','eli' )";
 //                            $this->_db->consultar($x_errori);
-                
-                    $x_imagen = "insert into $_REQUEST[bd].viajes_netos_imagenes(idviaje_neto,idtipo_imagen,imagen) values($id_viaje_neto_i,".$value_i[idtipo_imagen].",'".str_replace('\\','',$value_i[imagen])."')";
+                    $id_tipo_imagen = ($value_i[idtipo_imagen]=="a")?"t":$value_i[idtipo_imagen];
+                    $x_imagen = "insert into $_REQUEST[bd].camiones_imagenes(IdCamion,TipoC,Imagen,Tipo) values(".$value_i[idcamion].",'".$id_tipo_imagen."','".str_replace('\\','',$value_i[imagen])."')";
                     $this->_db->consultar($x_imagen);
                     if ($this->_db->affected() > 0) {
                         $cantidad_imagenes = $cantidad_imagenes + $this->_db->affected();
@@ -922,10 +922,8 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
             $json_imagenes_no_registradas_sv = json_encode($imagenes_no_registradas_sv);
             echo "{\"msj\":\"Imagenes Sincronizadas.  Imagenes a Registrar: ".
                     $cantidad_imagenes_a_registrar." Imagenes Registradas: ".
-                    $cantidad_imagenes." Imagenes Sin Viaje: ".
                     $cantidad_imagenes_sin_viaje_neto." Imagenes con Error: ".($inr)." \" , "
                     . "\"imagenes_registradas\":".$json_imagenes_registradas.", "
-                    . "\"imagenes_no_registradas_sv\":".$json_imagenes_no_registradas_sv.", "
                     . "\"imagenes_no_registradas\":".$json_imagenes_no_registradas."}";
         }
     }
