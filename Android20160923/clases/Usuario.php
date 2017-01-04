@@ -357,7 +357,20 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                         "cubicacion_real"=>utf8_encode($row_tags[cubicacion_real]),
                         "cubicacion_para_pago"=>utf8_encode($row_tags[cubicacion_para_pago]),
                         );
-                                    
+                
+                $sql_tipos_imagenes="select 'f' as id, 'Frente' as descripcion
+                union 
+                select 'd','Derecha'
+                union 
+                select 'i','Izquierda'
+                union 
+                select 'a','Atras'";
+                $result_tipos_imagenes=$this->_database_sca->consultar($sql_tipos_imagenes);
+                while($row_tipos_imagenes=$this->_database_sca->fetch($result_tipos_imagenes)) 
+                        $array_tipos_imagenes[]=array(
+                            "id"=>$row_tipos_imagenes[id],
+                            "descripcion"=>utf8_encode($row_tipos_imagenes[descripcion]),
+                            );
                         
                 $arraydata=array(
                     "IdUsuario"=>$row[IdUsuario],
@@ -365,7 +378,8 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                     "IdProyecto"=>$row_s[id_proyecto],
                     "base_datos"=>$row_s[base_datos], 
                     "descripcion_database"=>utf8_encode($row_s[descripcion_database]),
-                    "camiones"=>$array_camiones
+                    "camiones"=>$array_camiones,
+                    'tipos_imagen'=>$array_tipos_imagenes,
                  );
 
                  
@@ -859,6 +873,60 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
             }
         ELSE{
             echo "{\"error\":\"Datos de inicio de sesión no validos.\"}";
+        }
+    }
+    
+    function cargaImagenesCamiones(){
+        
+        //$version = $_REQUEST[Version];
+        $cadenajsonx = json_encode($_REQUEST);
+        $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
+        $usr = $_REQUEST["usr"];
+        $json_imagenes = $_REQUEST[Imagenes];
+        $imagenes = json_decode(utf8_encode($json_imagenes), TRUE); 
+        $cantidad_imagenes_a_registrar = count($imagenes);
+        $cantidad_imagenes = 0;
+
+        if($cantidad_imagenes_a_registrar>0){
+            $i = 0;
+            $ir = 0;
+            $inr = 0;
+            foreach ($imagenes as $key_i => $value_i) {
+                
+                
+                
+//                $x_errori = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $sql_vn)."','eli' )";
+//                            $this->_db->consultar($x_errori);
+                
+                    $x_imagen = "insert into $_REQUEST[bd].viajes_netos_imagenes(idviaje_neto,idtipo_imagen,imagen) values($id_viaje_neto_i,".$value_i[idtipo_imagen].",'".str_replace('\\','',$value_i[imagen])."')";
+                    $this->_db->consultar($x_imagen);
+                    if ($this->_db->affected() > 0) {
+                        $cantidad_imagenes = $cantidad_imagenes + $this->_db->affected();
+                        $imagenes_registradas[$ir] = $value_i["idImagen"];
+                        $ir++;
+                    }else{
+                        $imagenes_no_registradas[$inr] = $value_i["idImagen"];
+                        $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $x_imagen)."','$usr' )";
+                        $this->_db->consultar($x_error);
+                        if ($this->_db->affected() > 0) {
+                            /*$afv = $afv + $this->_db->affected();*/
+                        }
+                        $inr++;
+                    }
+                    //$cantidad_imagenes++;
+               
+                $i++;
+            }
+            $json_imagenes_registradas = json_encode($imagenes_registradas);
+            $json_imagenes_no_registradas = json_encode($imagenes_no_registradas);
+            $json_imagenes_no_registradas_sv = json_encode($imagenes_no_registradas_sv);
+            echo "{\"msj\":\"Imagenes Sincronizadas.  Imagenes a Registrar: ".
+                    $cantidad_imagenes_a_registrar." Imagenes Registradas: ".
+                    $cantidad_imagenes." Imagenes Sin Viaje: ".
+                    $cantidad_imagenes_sin_viaje_neto." Imagenes con Error: ".($inr)." \" , "
+                    . "\"imagenes_registradas\":".$json_imagenes_registradas.", "
+                    . "\"imagenes_no_registradas_sv\":".$json_imagenes_no_registradas_sv.", "
+                    . "\"imagenes_no_registradas\":".$json_imagenes_no_registradas."}";
         }
     }
     private function preparaDatos($bd, array $datos){
