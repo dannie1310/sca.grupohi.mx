@@ -377,8 +377,9 @@ class Usuario {
 
 
             $x="INSERT INTO 
-                    $_REQUEST[bd].viajesnetos 
-                VALUES(null,
+                    $_REQUEST[bd].viajesnetos (IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
+                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen)
+                VALUES(
                        0,
                        '$value[FechaCarga]', 
                        '$value[HoraCarga]', 

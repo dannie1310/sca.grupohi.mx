@@ -590,6 +590,8 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
             $viajes_a_registrar = count($data_viajes);
             $cantidad_imagenes = 0;
             $arreglo_id_viaje_code = array();
+            $idempresa = 'NULL';
+            $idsindicato = 'NULL';
             if ($viajes_a_registrar > 0) {
                 foreach ($data_viajes as $key => $value) {
                     
@@ -600,17 +602,22 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                             . "and HoraSalida='$value[HoraSalida]' and FechaLlegada='$value[FechaLlegada]' "
                             . "and HoraLlegada='$value[HoraLlegada]' and Code = '$value[Code]';";
 
-                    $result_valida = $this->_db ->consultar($x_v);
-                    $row_valida = $this->_db ->fetch($result_valida);
+                    $result_valida = $this->_db->consultar($x_v);
+                    $row_valida = $this->_db->fetch($result_valida);
                     if($row_valida["existe"] == 1){
                     //if(0==1){
                         $previos = $previos + 1;
                     }
-                    else{                    
+                    else{  
+                        #obtener sindicato y empresa del camion
+                        $idempresa = $this->_db->regresaDatos2("camiones","IdEmpresa","IdCamion",$value[IdCamion]);
+                        $idsindicato = $this->_db->regresaDatos2("camiones","IdSindicato","IdCamion",$value[IdCamion]);
+                        if(!($idempresa>0)){$idempresa = 'NULL';}
+                        if(!($idsindicato>0)){$idsindicato = 'NULL';}
                         #insertar viaje
                         $x = "INSERT INTO 
                         $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
-                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen) 
+                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen, IdEmpresa, IdSindicato) 
                     VALUES(
                            0,
                            NOW(), 
@@ -629,7 +636,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                            0, 
                            '$value[Code]', 
                            '$value[uidTAG]',
-                                               '$value[Imagen]', '$value[IMEI]', '$version', '$value[CodeImagen]');";
+                                               '$value[Imagen]', '$value[IMEI]', '$version', '$value[CodeImagen]',$idempresa,$idsindicato);";
 
                         $this->_db->consultar($x);
                         $x_error="";
@@ -637,24 +644,6 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                             $afv = $afv + $this->_db->affected();
                             $id_viaje_neto = $this->_db->retId();
                             $arreglo_id_viaje_code[$value[Code]] = $id_viaje_neto;
-//                            #INSERTAR IMAGEN
-//                            
-//                            if(count($value["Imagenes"])>0){
-//                                foreach ($value["Imagenes"] as $key_i => $value_i) {
-//                                    $x_imagen = "insert into $_REQUEST[bd].viajes_netos_imagenes(idviaje_neto,idtipo_imagen,imagen) values($id_viaje_neto,".$value_i[idtipo_imagen].",'".str_replace('\\','',$value_i[imagen])."')";
-//                                    $this->_db->consultar($x_imagen);
-//                                    if ($this->_db->affected() > 0) {
-//                                        $af_imagen = $af_imagen + $this->_db->affected();
-//                                    }else{
-//                                        $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $x_imagen)."','$value[Creo]' )";
-//                                        $this->_db->consultar($x_error);
-//                                        if ($this->_db->affected() > 0) {
-//                                            /*$afv = $afv + $this->_db->affected();*/
-//                                        }
-//                                    }
-//                                    $cantidad_imagenes++;
-//                                }
-//                            }
                             
                         }else{
                             $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $x)."','$value[Creo]' )";

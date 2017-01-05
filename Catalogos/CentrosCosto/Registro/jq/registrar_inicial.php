@@ -20,7 +20,8 @@ if($NSQL2>0){
 		}
 		
 $descripcion=addslashes($_REQUEST["centrocosto"]);
-$insert = "INSERT INTO centroscosto (IdProyecto,Nivel,Descripcion,IdPadre,Cuenta) VALUES (1,'".$nvo."','".$descripcion."','".$_REQUEST["IdCentroCosto"]."','".$_REQUEST[	"cuenta"]."')";
+$idcc = ($_REQUEST["IdCentroCosto"] == "")?"0":$_REQUEST["IdCentroCosto"];
+$insert = "INSERT INTO centroscosto (IdProyecto,Nivel,Descripcion,IdPadre,Cuenta) VALUES (1,'".$nvo."','".$descripcion."','".$idcc."','".$_REQUEST["cuenta"]."')";
 $rinsert = $sca->consultar($insert);
 ?>
 {"kind":"green","msg":"Registro Exitoso"}

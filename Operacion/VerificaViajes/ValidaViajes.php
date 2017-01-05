@@ -432,15 +432,17 @@ $final = $_REQUEST["final"];
                     <input name="cubicacion<?php echo $i_general; ?>" type="text" class="cubicacion detalle" id="cubicacion<?php echo $i_general; ?>" style="width:25px" value="<?php echo $v_viajes['cubicacion'] ?>" contador="<?php echo $i_general; ?>" readonly="readonly"/>
                 </td>
 <!--    Origen          -->
-                <td align="center" >                    
-                    <span class="detalle">
-                    <?php 
-                        $lista_origenes=$l->regresaSelect_evt("origen".$i_general,"distinct(origenes.IdOrigen), concat(origenes.Clave,'-',origenes.IdOrigen) AS Clave, origenes.Descripcion","origenes join rutas on (rutas.IdOrigen=origenes.IdOrigen AND rutas.Estatus=1 AND rutas.IdTiro=".$v_tiros["IdTiro"].") ","origenes.IdProyecto = ".$_SESSION["Proyecto"]." AND origenes.Estatus = 1","IdOrigen","Descripcion","desc","100px","1","0","1","hidden",$v_viajes["idmaterial"],"r");  
-                        echo $lista_origenes;
-                    ?> 
-                    <?php echo $v_viajes["origen"]; ?>
-                    </span>
-                </td>
+               
+<td align="center"><?php if($v_viajes["origen"]!='') {?>
+                <span class="detalle" title="<?php echo $v_viajes["origen"];?>"><?php echo substr($v_viajes["origen"], 0, 10) ; ?>
+                <input name="<?php echo "origen".$i_general;?>" id="<?php echo "origen".$i_general;?>" type="hidden" value="<?php echo $v_viajes["idorigen"]; ?>" /></span><?php }else {
+				
+				$lista_origenes=$l->regresaSelect_evt("origen".$i_general,"distinct(origenes.IdOrigen), concat(origenes.Clave,'-',origenes.IdOrigen) AS Clave, origenes.Descripcion","origenes join rutas on (rutas.IdOrigen=origenes.IdOrigen AND rutas.Estatus=1 AND rutas.IdTiro=".$v_tiros["IdTiro"].") ","origenes.IdProyecto = ".$_SESSION["Proyecto"]." AND origenes.Estatus = 1","IdOrigen","Descripcion","desc","100px","1","0","1"," onChange='xajax_calculos_x_tipo_tarifa(document.getElementById(\"tarifa".$i_general."\").value,\"".$v_viajes["idmaterial"]."\",\"".$i_general."\",document.getElementById(\"origen".$i_general."\").value,document.getElementById(\"tiro".$i_general."\").value,document.getElementById(\"camion".$i_general."\").value,1)'","","r");  echo $lista_origenes;?>
+                <script>
+        Arreglo_<?php echo $i_padre ?>.push('<?php echo $i_general; ?>');
+        </script><?php
+	}
+				?></td>
 <!--    Sindicato          -->
                 <td align="center">
                     <?php 
