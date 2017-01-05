@@ -532,8 +532,9 @@ class Usuario {
           $registros = 0;
           foreach ($data_viajes as $key => $value) {
            $x="INSERT INTO 
-                    $_REQUEST[bd].viajesnetos 
-                VALUES(null,
+                    $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
+                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG) 
+                VALUES(
                        0,
                        '$value[FechaCarga]', 
                        '$value[HoraCarga]', 

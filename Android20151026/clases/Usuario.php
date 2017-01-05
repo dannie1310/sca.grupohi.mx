@@ -385,7 +385,9 @@ class Usuario {
           $data_viajes = json_decode(utf8_encode($json_viajes), TRUE);
           $registros = 0;
           foreach ($data_viajes as $key => $value) {
-            $x="INSERT INTO $_REQUEST[bd].viajesnetos values(null,0,'$value[FechaCarga]', '$value[HoraCarga]', 1, $value[IdCamion], $value[IdOrigen], '$value[FechaSalida]','$value[HoraSalida]',
+            $x="INSERT INTO $_REQUEST[bd].viajesnetos  (IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
+                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code)"
+                    . "values(0,'$value[FechaCarga]', '$value[HoraCarga]', 1, $value[IdCamion], $value[IdOrigen], '$value[FechaSalida]','$value[HoraSalida]',
                 $value[IdTiro], '$value[FechaLlegada]', '$value[HoraLlegada]', $value[IdMaterial], '$value[Observaciones]','$value[Creo]',0, '$value[Code]')";
             $this->_db->consultar($x);
             $registros++;

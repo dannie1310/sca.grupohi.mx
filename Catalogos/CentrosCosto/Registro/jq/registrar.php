@@ -32,9 +32,11 @@ if($NSQL3>0){
 	}else{
 		$descripcion=addslashes($_REQUEST["centrocosto"]);
 		$insert = "INSERT INTO centroscosto (IdProyecto,Nivel,Descripcion,IdPadre,Cuenta) VALUES (1,'".$nvo."','".$descripcion."','".$_REQUEST["IdCentroCosto"]."','".$_REQUEST[	"cuenta"]."')";
-		$rinsert = $sca->consultar($insert);
-		?>
-		{"kind":"green","msg":"Registro Exitoso"}
+		echo $insert;
+                $rinsert = $sca->consultar($insert);
+		
+                ?>
+		{"kind":"green","msg":"Registro Exitoso:<?PHP ECHO $insert;?>"}
         <?php
 		}
 ?>
