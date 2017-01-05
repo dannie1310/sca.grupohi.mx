@@ -610,14 +610,15 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                     }
                     else{  
                         #obtener sindicato y empresa del camion
-                        $idempresa = $this->_db->regresaDatos2("camiones","IdEmpresa","IdCamion",$value[IdCamion]);
-                        $idsindicato = $this->_db->regresaDatos2("camiones","IdSindicato","IdCamion",$value[IdCamion]);
+                        $idempresa = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdEmpresa","IdCamion",$value[IdCamion]);
+                        $idsindicato = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdSindicato","IdCamion",$value[IdCamion]);
+                        $sss ="select IdEmpresa from ".$_REQUEST[bd].".camiones where IdCamion='".$value[IdCamion]."' limit 1";
                         if(!($idempresa>0)){$idempresa = 'NULL';}
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
                         #insertar viaje
                         $x = "INSERT INTO 
                         $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
-                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen, IdEmpresa, IdSindicato) 
+                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato) 
                     VALUES(
                            0,
                            NOW(), 
@@ -887,7 +888,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
 //                $x_errori = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $sql_vn)."','eli' )";
 //                            $this->_db->consultar($x_errori);
                     $id_tipo_imagen = ($value_i[idtipo_imagen]=="a")?"t":$value_i[idtipo_imagen];
-                    $x_imagen = "insert into $_REQUEST[bd].camiones_imagenes(IdCamion,TipoC,Imagen,Tipo) values(".$value_i[idcamion].",'".$id_tipo_imagen."','".str_replace('\\','',$value_i[imagen])."')";
+                    $x_imagen = "insert into $_REQUEST[bd].camiones_imagenes(IdCamion,TipoC,Imagen,Tipo) values(".$value_i[idcamion].",'".$id_tipo_imagen."','".str_replace('\\','',$value_i[imagen])."','0')";
                     $this->_db->consultar($x_imagen);
                     if ($this->_db->affected() > 0) {
                         $cantidad_imagenes = $cantidad_imagenes + $this->_db->affected();
