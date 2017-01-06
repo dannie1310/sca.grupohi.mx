@@ -847,11 +847,11 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                             
                         }
                         if (($actualizados) == $a_registrar && $error == 0)
-                            echo "{\"msj\":\"Camiones actualizados correctamente. Acualizados: ".$actualizados." Acualizados Previamente: ".$previos." A actualizar: ".$a_registrar."\"}";
+                            echo "{\"msj\":\"Camiones actualizados correctamente. Actualizados: ".$actualizados." Actualizados Previamente: ".$previos." A actualizar: ".$a_registrar."\"}";
                         else if($error > 0 && ($actualizados + $error) == $a_registrar)
-                            echo "{\"msj\":\"No se actualizaron todos los camiones. Acualizados: ".$actualizados." A actualizar: ".$a_registrar." Errores: ".$error." .\"}";
+                            echo "{\"msj\":\"No se actualizaron todos los camiones. Actualizados: ".$actualizados." A actualizar: ".$a_registrar." Errores: ".$error." .\"}";
                         else
-                            echo "{\"error\":\"No se actualizaron todos los camiones. Acualizados: ".$actualizados." A actualizar: ".$a_registrar." Errores: ".$error." .\"}";
+                            echo "{\"error\":\"No se actualizaron todos los camiones. Actualizados: ".$actualizados." A actualizar: ".$a_registrar." Errores: ".$error." .\"}";
                     }
                     }else{
                         echo "{\"error\":\"No ha mandado ningún registro para sincronizar.\"}";
