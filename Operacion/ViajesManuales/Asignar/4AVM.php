@@ -62,7 +62,9 @@
 			$camiones = mysql_fetch_array($sql_camiones);
 			$sindicato[$a] = $camiones['IdSindicato'];
 			$empresa[$a] = $camiones['IdEmpresa'];
-			
+			if (empty($empresa[$a])){
+                         $empresa[$a] = "NULL";
+                        }
 			
 			// Primero Definimos nuestras Variables
 
@@ -132,7 +134,7 @@ $FechaOrigen = explode(" ", $FechaStr);*/
 									'".$Creo."', 
 									29,
 									'".$sindicato[$a]."',
-									'".$empresa[$a]."'
+									".$empresa[$a]."
 									);";
 					$sql=$insert.$values;
 					//echo "zaasdasdasdasdasdsql=".$sql;
