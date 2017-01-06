@@ -325,7 +325,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
        camiones.IdCamion AS id_camion
   FROM (((camiones camiones
           LEFT OUTER JOIN sindicatos sindicatos
-             ON (camiones.IdSindicato = sindicatos.Descripcion))
+             ON (camiones.IdSindicato = sindicatos.IdSindicato))
          LEFT OUTER JOIN marcas marcas
             ON (camiones.IdMarca = marcas.IdMarca))
         LEFT OUTER JOIN empresas empresas
