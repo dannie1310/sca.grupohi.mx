@@ -612,7 +612,6 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                         #obtener sindicato y empresa del camion
                         $idempresa = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdEmpresa","IdCamion",$value[IdCamion]);
                         $idsindicato = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdSindicato","IdCamion",$value[IdCamion]);
-                        $sss ="select IdEmpresa from ".$_REQUEST[bd].".camiones where IdCamion='".$value[IdCamion]."' limit 1";
                         if(!($idempresa>0)){$idempresa = 'NULL';}
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
                         #insertar viaje
