@@ -335,6 +335,47 @@ function actualiza_imagen()
 }
 
 </script>
+
+
+
+<?
+$imgs = "
+    SELECT TipoC,max(id), imagen 
+    FROM camiones_imagenes 
+    WHERE IdCamion = ".$camion." 
+      AND TipoC <> ''
+    GROUP BY TipoC,Imagen
+    ORDER BY TipoC";
+echo $imgs;
+
+$img=$SCA->consultar($imgs);
+while($v_img=mysql_fetch_array($img))
+{
+  switch ($v_img['TipoC']) {
+    case 'f':
+        $frente =  $v_img['imagen'];
+        echo '<br>'.strlen($frente);
+      break;
+
+    case 'd':
+        $derecha =  $v_img['imagen'];
+      break;
+
+    case 't':
+        $atras =  $v_img['imagen'];
+      break;
+
+    case 'i':
+        $izquierda =  $v_img['imagen'];
+      break;
+  }
+}
+
+
+
+?>
+
+
 </head>
 
 <body >
@@ -425,31 +466,62 @@ function actualiza_imagen()
                        <fieldset >
                         <legend ><img src="../../Imagenes/image.gif" width="16" height="16" />&nbsp;Información Fotográfica</legend>
                         <div id="fila"></div>
-                        <div id="fila"><div id="caja"><div id="i_f"><img src="muestra_imagen.php?im=<?php echo $camion; ?>f" width="330" height="200" /></div></div><div id="caja" style="padding-left:15px"><div id="i_d"><img src="muestra_imagen.php?im=<?php echo $camion; ?>d" width="330" height="200" /></div></div></div>
+                        <div id="fila">
+                            <div id="caja">
+                                <div id="i_f">
+                                    <img src="<?if(strlen($frente) == 0){ echo 'muestra_imagen.php?im=' . $camion . 'f';}else{ echo'data:image/png;base64,' . $frente;} ?>" width="330" height="200" />
+                                    
+                                </div>
+                            </div>
+
+                            <div id="caja" style="padding-left:15px">
+                                <div id="i_d">
+                                    <img src="<?if(strlen($derecha) == 0){ echo 'muestra_imagen.php?im=' . $camion . 'd';}else{ echo'data:image/png;base64,' . $derecha;} ?>" width="330" height="200" />
+                                </div>
+                            </div>
+                        </div>
                         <div id="fila" >
                             <div id="label" style="width:100px">
-                            Frente:</div>
+                                Frente:
+                            </div>
                             <div id="caja">
-                            <input name="frente" id="frente" type="file" class="text" />
+                                <input name="frente" id="frente" type="file" class="text" />
                             </div>
                             <div id="label" style="width:100px;padding-left:15px">
-           		        Derecha:</div>
-                            	<div id="caja">
-                                	 <input name="derecha" id="derecha" type="file" class="text" />  </div>
+           		                   Derecha:
                             </div>
+                            <div id="caja">
+                                <input name="derecha" id="derecha" type="file" class="text" />  
+                            </div>
+                        </div>
                             
-                            <div id="fila"><div id="caja"><div id="i_t"><img src="muestra_imagen.php?im=<?php echo $camion; ?>t" width="330" height="200" /></div></div><div id="caja" style="padding-left:15px"><div id="i_i"><img src="muestra_imagen.php?im=<?php echo $camion; ?>i" width="330" height="200" /></div></div></div>
+                        <div id="fila">
+                            <div id="caja">
+                                <div id="i_t">
+                                    <img src="<?if(strlen($atras) == 0){ echo 'muestra_imagen.php?im=' . $camion . 't';}else{ echo'data:image/png;base64,' . $atras;} ?>" width="330" height="200" />
+                                </div>
+                            </div>
+                            <div id="caja" style="padding-left:15px">
+                                <div id="i_i">
+                                    <img src="<?if(strlen($izquierda) == 0){ echo 'muestra_imagen.php?im=' . $camion . 'i';}else{ echo'data:image/png;base64,' . $izquierda;} ?>" width="330" height="200" />
+                                </div>
+                            </div>
+                        </div>
                             
-                            <div id="fila">
-                              <div id="label" style="width:100px;">
-                    Atras:</div>
-                          <div id="caja">
-                             <input name="atras" id="atras" type="file" class="text" /> </div>
+                        <div id="fila">
+                            <div id="label" style="width:100px;">
+                                Atras:
+                            </div>
+                            <div id="caja">
+                                <input name="atras" id="atras" type="file" class="text" /> 
+                            </div>
                         
-                        <div id="label" style="width:100px;padding-left:15px">
-           		        Izquierda:</div>
-                            	<div id="caja">
-                                	 <input name="izquierda" id="izquierda" type="file" class="text" />  </div>
+                            <div id="label" style="width:100px;padding-left:15px">
+           		                   Izquierda:
+                            </div>
+                            <div id="caja">
+                                	<input name="izquierda" id="izquierda" type="file" class="text" />  
+                            </div>
                         </div>
                    </fieldset>
                       <fieldset >
