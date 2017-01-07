@@ -25,8 +25,8 @@ class Usuario {
             
 			if ($row_s = $this->_db ->fetch($result_s)) {
                 $_SESSION["databasesca"]=$row_s[base_datos];
+                
             
-
                 //CAMIONES
                 $this->_database_sca = SCA::getConexion();
                 /*$sql_camiones="SELECT idcamion, idboton, concat(Economico, '-', Placas, '-', Propietario) as descripcion  FROM scatest.camiones where Estatus=1";

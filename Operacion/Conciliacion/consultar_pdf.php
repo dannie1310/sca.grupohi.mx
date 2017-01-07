@@ -37,6 +37,14 @@ $row_result =mysql_fetch_array($result);
 
 if(isset($array)) $rutas=implode(', ', $array);
 else $rutas="";
+if ($_SESSION["tiene_logo"] == 2){
+	$logo ='data:image/png;base64,'.$_SESSION["logo"];
+}
+else{
+	$logo = 'http://sca.grupohi.mx/Imgs/sca_login.jpg';
+}
+
+
 $html='<style>
 table{
 	border-collapse:collapse;
@@ -45,8 +53,8 @@ table{
 </style>
 <table style="width:100%">
 	<tr>
-		<td colspan="2" style="height:80px;"><img src="http://sca.grupohi.mx/Imgs/sca_login.jpg" width="106" height="67"></td>
-        <td align="center">&nbsp;</td>
+		<td colspan="2" style="height:80px;"><img src="'.$logo.'" width="106" height="67"></td>
+        <td align="center">&nbsp;</td> 
         <td valign="top" colspan="4" align="center"><strong>REPORTE DE CONCILIACION</strong></td>
     </tr>
 	<tr>
