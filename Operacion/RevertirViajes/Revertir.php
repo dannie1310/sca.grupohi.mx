@@ -68,7 +68,7 @@ function horas($dec) {
             -->
         </style>
         <?php 
-            nftcb($_SERVER['PHP_SELF']);
+            nftcb(substr($_SERVER['PHP_SELF'],1));
         ?>
         
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -339,7 +339,8 @@ function horas($dec) {
                                 <input name="tiro<?php echo $i_general; ?>" id="tiro<?php echo $i_general; ?>" type="hidden" value="<?php echo $v_tiros["IdTiro"]; ?>" />
                                 <input name="camion<?php echo $i_general; ?>" id="camion<?php echo $i_general; ?>" type="hidden" value="<?php echo $v_camiones["IdCamion"]; ?>" />
                                 <input name="idviaje<?php echo $i_general; ?>" id="idviaje<?php echo $i_general; ?>" type="hidden" value="<?php echo $v_viajes["IdViaje"]; ?>" />
-                                <tr class="fila<?php echo $i ?>" id="fila<?php echo $i ?>" >
+                           
+                                <tr name="viaje_<?php echo $v_viajes["IdViaje"]; ?>" id="viaje_<?php echo $v_viajes["IdViaje"]; ?>"  >
                                     <td class="detalle" id="filas<?php echo $i ?>">
                                         <?php echo $i ?>&nbsp;
                                     </td>
@@ -485,14 +486,16 @@ function horas($dec) {
             try{
                     accion=(document.getElementById('r'+arreglo[o]).checked)?0:'n';
                     idviaje=(document.getElementById('idviaje'+arreglo[o]).value);
-                   // alert(idviaje);
+                    id = '#viaje_' + idviaje;
+                    //alert(idviaje);
 
 
             }catch(e){accion='n'}
 
                 if(accion!='n'){
                     xajax_registra_viaje(arreglo[o],idviaje);
-                    document.getElementById('fila'+arreglo[o]).style.backgroundColor= "#DDDDDD";
+                    $(id).css('background-color', '#DDDDDD');
+                    //document.getElementById('fila'+arreglo[o]).style.backgroundColor= "#DDDDDD";
                 }
             }
 
