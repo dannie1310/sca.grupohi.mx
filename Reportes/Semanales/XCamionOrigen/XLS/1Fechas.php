@@ -121,11 +121,7 @@ viajes using(IdCamion)
     <td width="195" align="center" class="texto" valign="top"><fieldset class="textoG" title="Consulta por Sindicato">
       <legend><label style="cursor:hand"><input name="tipo_consulta" type="radio" value="sindicato" onClick="document.getElementById('radios').style.display='';document.getElementById('camion').disabled=true;document.getElementById('sindicato').disabled=false" >Consulta por Sindicato</label></legend>
       <?php 
-	  $sql="select distinct(IdSindicato),Sindicato from (Select c.Economico, c.IdCamion, c.IdSindicato as IdSindicato, s.NombreCorto as Sindicato from camiones as c, sindicatos as s where c.IdProyecto=".$IdProyecto." and c.IdCamion in (Select IdCamion from viajes) and s.IdSindicato=c.IdSindicato order by Sindicato) as tabla";
-	  //echo $sql;
-	   $sql="select distinct(s.IdSindicato), s.NombreCorto as Sindicato
-from viajes as v join camiones as c using(IdCamion) join
-sindicatos as s using(IdSindicato) where v.IdProyecto=".$IdProyecto."";
+	   $sql="select distinct(IdSindicato),Sindicato from (Select c.Economico, c.IdCamion, c.IdSindicato as IdSindicato, s.NombreCorto as Sindicato from camiones as c, sindicatos as s where c.IdProyecto=".$IdProyecto." and c.IdCamion in (Select IdCamion from viajes) and s.IdSindicato=c.IdSindicato order by Sindicato) as tabla";
 	$r=$link->consultar($sql);
 	$size=$link->affected();
 	if($size>5)
@@ -209,6 +205,20 @@ sindicatos as s using(IdSindicato) where v.IdProyecto=".$IdProyecto."";
 				timeFormat     :    "24",
 				onUpdate       :    catcalc
 			});
+</script>
+<script>
+    $(".reporte").click(function(){
+      //$("form").submit();
+      fechainicial = $("#FechaInicial").val();
+      fechafinal = $("#FechaFinal").val();
+      camion = $("#camion").val();
+      sindicato = $("#sindicato").val();
+      tipo_consulta = $('input:radio[name=tipo_consulta]:checked').val();
+      estatus = $('input:radio[name=estatus]:checked').val();
+      ruta='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal+'&tipo_consulta='+tipo_consulta+'&camion='+camion+'&sindicato='+sindicato+'+&estatus='+estatus+'+&v='+1;
+      window.open(ruta);
+      });
+  });
 </script>
 </body>
 </html>

@@ -1,7 +1,9 @@
 <?php
-	session_start();
-	header("Content-type: application/vnd.ms-excel");
-	header('Content-Disposition:  filename=Acarreos Ejecutados por Origen '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
+  session_start();
+  if(isset($_REQUEST["v"]) && ($_REQUEST["v"]==1)){
+  header("Content-type: application/vnd.ms-excel");
+  header('Content-Disposition:  filename=Acarreos Ejecutados por Origen '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
+  }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -40,10 +42,9 @@ $final=$_REQUEST["final"];
 </table>-->
 <?php 
 
-	include("../../../../inc/php/conexiones/SCA.php");
-	include("../../../../Clases/Funciones/Catalogos/Genericas.php");
+  include("../../../../inc/php/conexiones/SCA.php");
+  include("../../../../Clases/Funciones/Catalogos/Genericas.php");
 $sql="SELECT DISTINCT p.Descripcion as Obra, Propietario from  viajes v, proyectos p, camiones as c, sindicatos s WHERE v.IdCamion=c.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.IdProyecto = p.IdProyecto and  c.idSindicato=s.IdSindicato";
-//echo $sql;
 $link=SCA::getConexion();
 
 $row=$link->consultar($sql);
@@ -114,7 +115,7 @@ if($hay>0)
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">IMPORTE&nbsp;($)</font></div></td>
       </tr>
       <?php
-	 
+   
   $llena="SELECT DISTINCT IdOrigen  from viajes as v, proyectos as p WHERE v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto.";";
   $r=$link->consultar($llena);
   
@@ -131,36 +132,30 @@ $impsub=0;
 $imp=0; 
    
     ##########
-		$mat="SELECT DISTINCT v.IdMaterial from viajes as v,  proyectos as p WHERE v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.IdOrigen=".$d[IdOrigen]." and p.IdProyecto=".$IdProyecto.";";
-		$ma=$link->consultar($mat);
-		while($dmat=mysql_fetch_array($ma))
-   		{
+    $mat="SELECT DISTINCT v.IdMaterial from viajes as v,  proyectos as p WHERE v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.IdOrigen=".$d[IdOrigen]." and p.IdProyecto=".$IdProyecto.";";
+    $ma=$link->consultar($mat);
+    while($dmat=mysql_fetch_array($ma))
+      {
    
    
    #########
    
    
-		$rows="Select count(v.IdViaje) as Viajes, t.Descripcion as Tiro, o.Descripcion as Banco, m.Descripcion as Material, v.Distancia as Distancia, 
-		sum(v.VolumenPrimerKM) as Vol1KM, 
-		sum(v.VolumenKMSubsecuentes) as VolSub, 
-		sum(v.VolumenKMAdicionales) as VolAdic, 
-		sum(v.ImportePrimerKM) as Imp1Km, 
-		sum(v.ImporteKMSubsecuentes) as ImpSub, 
-		sum(v.Importe) as Importe, 
-		sum(v.ImportePrimerKM)/sum(v.VolumenPrimerKM) as 'PU1Km', 
-		 if(sum(v.VolumenKMSubsecuentes)>0,sum(v.ImporteKMSubsecuentes)/sum(v.VolumenKMSubsecuentes),0) as 'PUSub', 
-		 if(sum(v.VolumenKMAdicionales)>0,sum(v.ImporteKMAdicionales)/sum(v.VolumenKMAdicionales),0) as 'PUAdc'
-		from viajes as v, tiros as t, origenes as o, materiales as m where  t.IdTiro=v.IdTiro and o.IdOrigen=v.IdOrigen and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and v.IdProyecto=".$IdProyecto." and v.IdOrigen=".$d[IdOrigen]." and m.IdMaterial=v.IdMaterial and m.IdMaterial=".$dmat[IdMaterial]." Group By Tiro";
-
+$rows="Select count(v.IdViaje) as Viajes, t.Descripcion as Tiro, o.Descripcion as Banco, m.Descripcion as Material, v.Distancia as Distancia, sum(v.VolumenPrimerKM) as Vol1KM, sum(v.VolumenKMSubsecuentes) as VolSub, sum(v.VolumenKMAdicionales) as VolAdic, sum(v.ImportePrimerKM) as Imp1Km, sum(v.ImporteKMSubsecuentes) as ImpSub, sum(v.Importe) as Importe, 
+    fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') as 'PU1Km', 
+    fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') as 'PUSub', 
+    fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') as 'PUAdic'
+    from viajes as v, tiros as t, origenes as o, materiales as m where t.IdTiro=v.IdTiro and o.IdOrigen=v.IdOrigen and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and v.IdProyecto=".$IdProyecto." and v.IdOrigen=".$d[IdOrigen]." and m.IdMaterial=v.IdMaterial and m.IdMaterial=".$dmat[IdMaterial]." Group By Tiro,TipoTarifa,IdTarifa";
+    //echo $rows;
 $ro=$link->consultar($rows);
 $x=1;
  $sumtont=0;
  
 
  
-	while($fil=mysql_fetch_array($ro))
-	{
-	 
+  while($fil=mysql_fetch_array($ro))
+  {
+   
 
 ?>
       <tr>
@@ -184,43 +179,39 @@ $x=1;
    }
    
   
-	$sum="SELECT 
-			SUM(Viajes) as sumaviajes, 
-			SUM(Vol1KM) as sumavolumen,
-			SUM(VolSub) as sumasubsecuentes, 
-			SUM(Imp1Km) as sumaimporte, 
-			SUM(ImpSub) as sumasub, 
-			SUM(Importe) as sumatotal 
-		FROM(Select 
-		    count(v.IdViaje) as Viajes,
-			t.Descripcion as Tiro, 
-			o.Descripcion as Banco,
-			m.Descripcion as Material,
-			v.Distancia as Distancia,
-			sum(v.VolumenPrimerKM) as Vol1KM,
-			sum(v.VolumenKMSubsecuentes) as VolSub,
-			sum(v.VolumenKMAdicionales) as VolAdic,
-			sum(v.ImportePrimerKM) as Imp1Km,
-			sum(v.ImporteKMSubsecuentes) as ImpSub,
-			sum(v.Importe) as Importe,
-			sum(v.ImportePrimerKM)/sum(v.VolumenPrimerKM) as 'PU1Km', 
-		 	if(sum(v.VolumenKMSubsecuentes)>0,sum(v.ImporteKMSubsecuentes)/sum(v.VolumenKMSubsecuentes),0) as 'PUSub', 
-		 	if(sum(v.VolumenKMAdicionales)>0,sum(v.ImporteKMAdicionales)/sum(v.VolumenKMAdicionales),0) as 'PUAdc'		
-		from 
-			viajes as v, 
-			tiros as t, 
-			origenes as o,
-			materiales as m
-		where 
-			t.IdTiro=v.IdTiro and
-			o.IdOrigen=v.IdOrigen and
-			v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and 
-			v.IdProyecto=".$IdProyecto." and 
-			v.IdOrigen=".$d[IdOrigen]." and
-			m.IdMaterial=v.IdMaterial and
-			m.IdMaterial=".$dmat[IdMaterial]."
-			Group By Banco) AS Registros";
-
+  $sum="SELECT 
+      SUM(Viajes) as sumaviajes, 
+      SUM(Vol1KM) as sumavolumen,
+      SUM(VolSub) as sumasubsecuentes, 
+      SUM(Imp1Km) as sumaimporte, 
+      SUM(ImpSub) as sumasub, 
+      SUM(Importe) as sumatotal 
+    FROM(Select 
+        count(v.IdViaje) as Viajes,
+      t.Descripcion as Tiro, 
+      o.Descripcion as Banco,
+      m.Descripcion as Material,
+      v.Distancia as Distancia,
+      sum(v.VolumenPrimerKM) as Vol1KM,
+      sum(v.VolumenKMSubsecuentes) as VolSub,
+      sum(v.VolumenKMAdicionales) as VolAdic,
+      sum(v.ImportePrimerKM) as Imp1Km,
+      sum(v.ImporteKMSubsecuentes) as ImpSub,
+      sum(v.Importe) as Importe
+    from 
+      viajes as v, 
+      tiros as t, 
+      origenes as o,
+      materiales as m
+    where 
+      t.IdTiro=v.IdTiro and
+      o.IdOrigen=v.IdOrigen and
+      v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and 
+      v.IdProyecto=".$IdProyecto." and 
+      v.IdOrigen=".$d[IdOrigen]." and
+      m.IdMaterial=v.IdMaterial and
+      m.IdMaterial=".$dmat[IdMaterial]."
+      Group By Banco) AS Registros";
 $suma=$link->consultar($sum);
 $sumv=mysql_fetch_array($suma);
 $sumtot=$sumtot+$sumv["sumaviajes"];
@@ -285,7 +276,7 @@ $imp=$imp+($sumv["sumaimporte"]+$sumv["sumasub"]);
         <td bgcolor="#969696"><div align="right"> <font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php $total[4]=$total[4]+$impsub; echo number_format($impsub,2,".",","); ?></font></div></td>
         <td bgcolor="#969696"><div align="right"> <font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold"><?php $total[5]=$total[5]+$imp;  echo number_format($imp,2,".",","); ?></font></div></td>
       </tr>
-	  <tr>
+    <tr>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
@@ -301,7 +292,7 @@ $imp=$imp+($sumv["sumaimporte"]+$sumv["sumasub"]);
       </tr>
       <?php
     }?>
-	<tr>
+  <tr>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td bgcolor="#000000"><div align="right"><font color="#FFFFFF" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">TOTAL: </font></div></td>
