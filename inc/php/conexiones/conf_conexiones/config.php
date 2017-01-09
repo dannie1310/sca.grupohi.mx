@@ -188,4 +188,9 @@ $host["prod_sca_pista_aeropuerto_2"] = 'localhost';
 $user["prod_sca_pista_aeropuerto_2"] = 'sca';
 $password["prod_sca_pista_aeropuerto_2"] = 'w6FCR56sLT';
 $db["prod_sca_pista_aeropuerto_2"] = 'prod_sca_pista_aeropuerto_2';
+
+$host["prod_sca_queretaro_san_luis"] = 'localhost';
+$user["prod_sca_queretaro_san_luis"] = 'sca';
+$password["prod_sca_queretaro_san_luis"] = 'w6FCR56sLT';
+$db["prod_sca_queretaro_san_luis"] = 'prod_sca_queretaro_san_luis';
 ?>

@@ -100,7 +100,7 @@
                                                 <a href="Logout.php">
                                                 <button>Cerrar Sesi&oacute;n</button>                                                    
                                                 </a>
-                                                2017.2.0.0
+                                                2017.2.0.1
                                             </div>
                                         </td>
                                     </tr>
