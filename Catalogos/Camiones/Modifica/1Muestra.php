@@ -74,7 +74,19 @@ function manda(id)
     <?php 
 include("../../../inc/php/conexiones/SCA.php");
 include("../../../Clases/Funciones/Catalogos/Genericas.php");
-$sql="select * from camiones where IdProyecto=$IdProyecto order by Economico";
+$sql="
+SELECT ca.IdCamion, 
+    ca.Propietario, 
+    ca.CubicacionReal, 
+    ca.CubicacionParaPago, 
+    ca.Estatus, 
+    ca.Economico,
+    IFNULL(op.Nombre,'---') as Nombre
+FROM camiones as ca
+LEFT JOIN operadores as op on ca.IdOperador = op.IdOperador
+WHERE ca.IdProyecto= ". $IdProyecto ."
+ORDER BY ca.Economico";
+//$sql="select * from camiones where IdProyecto=$IdProyecto order by Economico";
 //echo $sql;
 $link=SCA::getConexion();
 $r=$link->consultar($sql);
@@ -94,7 +106,8 @@ if($v[Estatus]==0)
       <input type="hidden" name="camion" value="<?php echo $v[IdCamion]; ?>" />
     </div></td>
     <td valign="bottom"><?php echo $v[Propietario]; ?></td>
-    <td valign="bottom"><?php echo regresa(operadores,Nombre,IdOperador,$v[IdOperador]); ?></td>
+    <td valign="bottom"><?php echo $v[Nombre]; ?></td>
+    <!-- <td valign="bottom"><?php echo regresa(operadores,Nombre,IdOperador,$v[IdOperador]); ?></td> -->
     <td>
 		<table width="98">
 		  <tr>
