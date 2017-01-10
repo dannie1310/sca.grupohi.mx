@@ -31,7 +31,7 @@ class Usuario {
                 $this->_database_sca = SCA::getConexion();
 				
                  $sql_camiones="SELECT idcamion, Placas, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago FROM camiones C
-                                INNER JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
+                                LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
                 $result_camiones=$this->_database_sca->consultar($sql_camiones);
                 while($row_camiones=$this->_database_sca->fetch($result_camiones)) 
                         $array_camiones[]=array(
@@ -209,7 +209,7 @@ SELECT
                 //CAMIONES
                 $sql_camiones="SELECT idcamion, Placas, M.descripcion as marca, Modelo, Ancho, largo, Alto, economico, (select count(*)
 from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
-                                INNER JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
+                                LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
                 $result_camiones=$this->_database_sca->consultar($sql_camiones);
                 
                 while($row_camiones=$this->_database_sca->fetch($result_camiones)) 

@@ -107,7 +107,6 @@ if($v[Estatus]==0)
     </div></td>
     <td valign="bottom"><?php echo $v[Propietario]; ?></td>
     <td valign="bottom"><?php echo $v[Nombre]; ?></td>
-    <!-- <td valign="bottom"><?php echo regresa(operadores,Nombre,IdOperador,$v[IdOperador]); ?></td> -->
     <td>
 		<table width="98">
 		  <tr>
