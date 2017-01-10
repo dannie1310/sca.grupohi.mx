@@ -2,6 +2,8 @@
 	session_start();
 	header("Content-type: application/vnd.ms-excel");
 	header('Content-Disposition:  filename=Concentrado de Acarreos Ejecutados por Origen '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
+  include("../../../../inc/php/conexiones/SCA.php");
+  include("../../../../Clases/Funciones/Catalogos/Genericas.php");
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,9 +27,15 @@ $IdProyecto=$_SESSION['Proyecto'];
 $inicial=$_REQUEST["inicial"];
 $final=$_REQUEST["final"];
 
-	include("../../../../inc/php/conexiones/SCA.php");
-	include("../../../../Clases/Funciones/Catalogos/Genericas.php");
-$sql="SELECT DISTINCT p.Descripcion as Obra, Propietario from  viajes v, proyectos p, camiones as c, sindicatos s WHERE v.IdCamion=c.IdCamion and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto." and v.IdProyecto = p.IdProyecto and  c.idSindicato=s.IdSindicato";
+	
+$sql="
+SELECT DISTINCT p.Descripcion AS Obra, Propietario 
+FROM  viajes AS v
+  LEFT JOIN proyectos AS p ON v.IdProyecto = p.IdProyecto
+  LEFT JOIN camiones AS c ON v.IdCamion = c.IdCamion
+WHERE v.IdCamion=c.IdCamion 
+  AND v.FechaLlegada between '".fechasql($inicial)."' AND '".fechasql($final)."' 
+  AND p.IdProyecto=".$IdProyecto;
 $link=SCA::getConexion();
 
 $row=$link->consultar($sql);
@@ -100,7 +108,13 @@ if($hay>0)
       </tr>
       <?php
 	 
-  $llena="SELECT DISTINCT FechaLlegada  from viajes as v, proyectos as p WHERE v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and p.IdProyecto=".$IdProyecto.";";
+  $llena="
+  SELECT DISTINCT FechaLlegada  
+  FROM viajes AS v
+    LEFT JOIN proyectos AS p ON v.IdProyecto = p.IdProyecto
+  WHERE v.FechaLlegada between '".fechasql($inicial)."' 
+    and '".fechasql($final)."' 
+    and p.IdProyecto=".$IdProyecto.";";
   //echo $llena;
   $r=$link->consultar($llena);
   

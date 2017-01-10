@@ -147,6 +147,7 @@ if($hay>0)
         <td bgcolor="C0C0C0"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Km Adc.</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Importe</font> </div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Estatus</font> </div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Ticket</font> </div></td>
         
       </tr>
       <?php
@@ -161,6 +162,7 @@ if($hay>0)
       c.Economico AS Camion,
       v.IdViajeNeto as IdViaje,
       v.estatus as idEstatus,
+      v.code,
       CASE 
         WHEN v.estatus in (1,11,21,31) THEN 'Validado'
         WHEN v.estatus in (0,10,20,30) THEN 'Pendiente de Validar'
@@ -231,6 +233,7 @@ if($hay>0)
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[tarifa_material_ka],2,".",","); ?></font></div></td>
         <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[ImporteTotal_M],2,".",","); ?></font></div></td>
         <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Estatus]; ?></font></div></td>
+        <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[code]; ?></font></div></td>
       </tr>
 
       <?php

@@ -41,9 +41,7 @@ $ffin2=$_REQUEST["final"];
     <td colspan="5">&nbsp;</td>
   </tr>
   <tr>
-    <td width="51"><font color="#666666" face="Trebuchet MS" style="font-size:12px;">
-      <input type="checkbox" name="checkbox" id="checkbox" readonly>
-    </font></td>
+    <td width="51"></td>
     <td width="115" class="Concepto"> &nbsp;Fecha Inicial:</td>
     <td width="59"><input name="inicial"   type="text" id="FechaInicial" size="9" maxlength="10" class="text" value="<?php if ($seg!=1)echo date("d-m-Y"); else if($seg=1)echo $fini2; ?>" onChange='this.value=ValidaFechaIni(this.value,"<?php echo date("d-m-Y"); ?>",document.frm.FechaFinal.value);'/></td>
     <td width="30"><img src="../../../../Imgs/calendarp.gif" width="19" height="21" align="baseline" id="boton" style="cursor:hand" /></td>

@@ -170,7 +170,7 @@ $camion=$_REQUEST[camion];
   <tr>
     <td width="19">&nbsp;</td>
     <td><div align="center">
-        <input name="Submit" type="submit" class="Boton" value="Consultar Reporte">
+        <input name="Submit" type="button" class="Boton reporte" value="Consultar Reporte">
         <input type="hidden" name="usr" value="<?php echo $usr;?>">
     </div></td>
     <td>&nbsp;</td>
@@ -203,6 +203,36 @@ $camion=$_REQUEST[camion];
 				timeFormat     :    "24",
 				onUpdate       :    catcalc
 			});
+
+</script>
+
+
+<script type="text/javascript" src="../../../../inc/js/jquery-1.4.4.js"></script>
+<script>
+$(document).ready(function() {
+    $(".vista_previa").click(function(){
+      //$("form").submit();
+      fechainicial = $("#FechaInicial").val();
+      fechafinal = $("#FechaFinal").val();
+      camion = $("#camion").val();
+      sindicato = $("#sindicato").val();
+      tipo_consulta = $('input:radio[name=tipo_consulta]:checked').val();
+      estatus = $('input:radio[name=estatus]:checked').val();
+      ruta='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal+'&tipo_consulta='+tipo_consulta+'&camion='+camion+'&sindicato='+sindicato+'+&estatus='+estatus;
+      window.open(ruta);
+      });
+    $(".reporte").click(function(){
+      //$("form").submit();
+      fechainicial = $("#FechaInicial").val();
+      fechafinal = $("#FechaFinal").val();
+      camion = $("#camion").val();
+      sindicato = $("#sindicato").val();
+      tipo_consulta = $('input:radio[name=tipo_consulta]:checked').val();
+      estatus = $('input:radio[name=estatus]:checked').val();
+      ruta='2Muestra.php?v=0&inicial='+fechainicial+'&final='+fechafinal+'&tipo_consulta='+tipo_consulta+'&camion='+camion+'&sindicato='+sindicato+'+&estatus='+estatus+'+&v='+1;
+      window.open(ruta);
+      });
+  });
 </script>
 </body>
 </html>

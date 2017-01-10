@@ -16,7 +16,9 @@ if(!empty($_SESSION['IdUsuario'])) {
        proyectos.base_datos,
        usuarios_proyectos.id_usuario_intranet,
        proyectos.descripcion,
-       proyectos.descripcion_corta
+       proyectos.descripcion_corta,
+       proyectos.tiene_logo,
+       proyectos.logo
   FROM    sca_configuracion.proyectos proyectos
        RIGHT OUTER JOIN
           sca_configuracion.usuarios_proyectos usuarios_proyectos
@@ -31,6 +33,8 @@ if(!empty($_SESSION['IdUsuario'])) {
         $_SESSION['DescripcionProyecto'] = $row["Descripcion"];
 	    $_SESSION["IdUsuarioAc"] =$_SESSION[IdUsuario];//$row["id_usuario"];
         $_SESSION["databasesca"] =$_POST[proyecto];
+        $_SESSION["tiene_logo"]= $row["tiene_logo"];
+        $_SESSION["logo"]= $row["logo"];
         
          $usuario = new Usuario();
         $varMenu = $usuario->creaMenu($_SESSION['IdUsuario'],$row["id_proyecto"]); 
