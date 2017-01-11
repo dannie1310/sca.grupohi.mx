@@ -56,7 +56,7 @@ while($v_img=mysql_fetch_array($img))
 function inicializa_formulario($camion)
 {
 	$rpt=new xajaxResponse();
-	$rpt->script("actualiza_imagen()");
+  $rpt->script("cargar()");
 	return $rpt;
 }
 $xajax->register(XAJAX_FUNCTION,"inicializa_formulario");
@@ -91,6 +91,8 @@ select#botones{ width:114px}
  
 <script src="../../inc/js/jquery-1.4.4.js"></script>
 <script src="../../inc/generales.js"></script>
+
+<script src="http://malsup.github.io/jquery.blockUI.js"></script>
 
 <script>
 $(function() {
@@ -164,28 +166,32 @@ $(function() {
   });
 
 
-function actualiza_imagen()
-{
-	
-	document.getElementById('i_f').contentDocument.location.reload(true);
-	document.getElementById('i_d').contentDocument.location.reload(true);
-	document.getElementById('i_t').contentDocument.location.reload(true);
-	document.getElementById('i_i').contentDocument.location.reload(true);
-	//alert("z");
-}
+function cargar(){
+      //$.blockUI({ message: null }); 
+      $.blockUI({ 
+            message: $('#displayBox'), 
+            css: { 
+                top:  ($(window).height() - 400) /2 + 'px', 
+                left: ($(window).width() - 400) /2 + 'px', 
+                width: '400px',
+                backgroundColor: '#00000',
+                Color: '#00000',
+                border: '3px solid #00000',
+            } 
+        }); 
+      setTimeout('window.location.reload()', 2000);
+    }
 
 </script>
 
 </head>
 
+<img id="displayBox" src="cargar.gif" width="50" height="50" style="cursor: default; display: none;">
+
 <body >
 <div id="layout">
 <div id="cuerpo">
 <div id="contenido" style="margin:0px">
-	<iframe name="i_f" id="i_f" width="1px" height="1px" frameborder="0" src="muestra_imagen.php?im=<?php echo $camion; ?>f"></iframe>
-    <iframe name="i_d" id="i_d" width="1px" height="1px" frameborder="0" src="muestra_imagen.php?im=<?php echo $camion; ?>d"></iframe>
-    <iframe name="i_t" id="i_t" width="1px" height="1px" frameborder="0" src="muestra_imagen.php?im=<?php echo $camion; ?>t"></iframe>
-    <iframe name="i_i" id="i_i" width="1px" height="1px" frameborder="0" src="muestra_imagen.php?im=<?php echo $camion; ?>i"></iframe>
                 <div id="opc_ctg">MODIFICACI&Oacute;N DE CAMIONES</div>
                     <hr />
                    <div id="mnsj" class="instrucciones" style="min-width:95%;font-size:1.2em">Ingrese los datos del camión que se solicitan a continuación </div>

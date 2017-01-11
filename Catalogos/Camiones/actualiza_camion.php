@@ -157,9 +157,10 @@ echo addslashes($mensajes);
 		function inicializa_formulario(id_camion){
 			window.parent.xajax_inicializa_formulario(id_camion);
 			window.parent.actualiza_imagen();
-			setTimeout("window.parent.location.reload()",<?php echo $del;?>)
+			//setTimeout("window.parent.location.reload()",<?php //echo $del;?>)
 			//kwindow.parent.location.reload();
 		}
+		
 		
 </script>
 <?php if($error==0){?><script language="javascript" type="text/javascript">inicializa_formulario('<?php echo $_REQUEST["idcamion"]; ?>');</script> <?php } ?>
