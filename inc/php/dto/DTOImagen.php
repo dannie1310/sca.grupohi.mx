@@ -23,6 +23,7 @@
 			  $this->_tmp_name=$name;
 			  $fp = fopen($name, "rb");
 			  $img2save = fread($fp, $this->get_size());
+			  $img2save = base64_encode($img2save);
 			  $this->set_imagen(addslashes($img2save));
 			  fclose($fp);
 			}	

@@ -340,13 +340,12 @@ function actualiza_imagen()
 
 <?
 $imgs = "
-    SELECT TipoC,max(id), imagen 
+    SELECT TipoC, id, imagen 
     FROM camiones_imagenes 
     WHERE IdCamion = ".$camion." 
       AND TipoC <> ''
-    GROUP BY TipoC,Imagen
-    ORDER BY TipoC";
-echo $imgs;
+      AND id in (SELECT MAX(id) FROM camiones_imagenes 
+          WHERE IdCamion = ".$camion."  AND TipoC <> '' GROUP BY TipoC)";
 
 $img=$SCA->consultar($imgs);
 while($v_img=mysql_fetch_array($img))
@@ -354,7 +353,6 @@ while($v_img=mysql_fetch_array($img))
   switch ($v_img['TipoC']) {
     case 'f':
         $frente =  $v_img['imagen'];
-        echo '<br>'.strlen($frente);
       break;
 
     case 'd':
