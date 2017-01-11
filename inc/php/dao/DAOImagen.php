@@ -40,7 +40,7 @@ session_start();
 			$imagen->set_ruta_destino($this->RUTA.$_SESSION[ProyectoGlobal]."-".$imagen->get_id_camion().$imagen->get_tipo_c().".jpg");
 		
 			$SQLs ="sp_registra_imagen_camion(".$imagen->get_id_camion().",'".$imagen->get_tipo_c()."','".$imagen->get_tipo()."','".$imagen->get_imagen()."','".$imagen->get_ruta_destino()."',@kind,@message)";
-			echo $SQLs;
+			//echo $SQLs;
 			try
 			{
 				$this->SCA->exSP($SQLs);

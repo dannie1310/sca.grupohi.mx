@@ -149,8 +149,8 @@ try
 echo addslashes($mensajes);
 ?>
 <script language="javascript" type="text/javascript">
-presenta_mensaje('<?php echo addslashes($mensajes); ?>');
-function presenta_mensaje(mensajes){
+	presenta_mensaje('<?php echo addslashes($mensajes); ?>');
+		function presenta_mensaje(mensajes){
 			window.parent.llena_mensaje(mensajes);
 			window.parent.presenta_mensaje(<?php echo $del;?>);
 		}
