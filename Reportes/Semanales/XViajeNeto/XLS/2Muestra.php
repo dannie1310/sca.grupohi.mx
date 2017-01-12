@@ -95,20 +95,10 @@ if($hay>0)
     <td colspan="2"><table width="1300" border="0" align="center" >
       <tr>
         <td >&nbsp;</td>
-        <td >&nbsp;</td>
-        <td >&nbsp;</td>
-        <td >&nbsp;</td>
-        <td >&nbsp;</td>
-        <td >&nbsp;</td>
-        <td >&nbsp;</td>
-        <td >&nbsp;</td>
-        <td >&nbsp;</td>
-        <td >&nbsp;</td>
-        <td >&nbsp;</td>
-        <td >&nbsp;</td>
-        <td >&nbsp;</td>
       </tr>
       <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
@@ -137,6 +127,8 @@ if($hay>0)
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Empresa</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Fecha Llegada</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Hora Llegada</font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Turno</font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Día de aplicación</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Orígen</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Destino</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Material</font></div></td>
@@ -207,21 +199,46 @@ if($hay>0)
       AND v.IdViajeNeto not in (select IdViajeNeto from viajesrechazados)
       group by idviaje
       ORDER BY FechaLlegada, camion, HoraLlegada, idEstatus
-";      
+";   
+   //echo $rows;   
     $ro=$link->consultar($rows);
     $p=0;
     while($fil=mysql_fetch_array($ro))
       {
         $p++;
+        $horaini = '07:00:00';
+        $horafin = '19:00:00';
+        if($fil[Hora] >= $horaini && $fil[Hora] < $horafin){
+          $turno ='Primer Turno';
+        }
+        else{
+          $turno ='Segundo Turno';
+        }
+
+        $dia = date('N',strtotime($fil[Fecha]));
+        //echo $dia;
+
+        if($fil[Hora] >= '00:00:00' && $fil[Hora] < $horaini){
+          $fechaAplica = strtotime ( '-1 day' , strtotime ( $fil[Fecha] ) ) ;
+          $fechaAplica = date ( 'd-m-Y' , $fechaAplica );
+
+        }
+        else {
+          $fechaAplica = $fil[Fecha];
+        }
+        
+
       ?>
       <tr>
         <td width="1"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $p; ?>       </font></div></td>
         <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[cubicacion]; ?></font></div></td>
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Camion]; ?></font></div></td>
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Sindicato]; ?></font></div></td>
-        <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Empresa]; ?></font></div></td>
+        <td width="90"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Empresa]; ?></font></div></td>
         <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Fecha]; ?></font></div></td>
         <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Hora]; ?></font></div></td>
+        <td width="60"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $turno; ?></font></div></td>
+        <td width="60"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fechaAplica; ?></font></div></td>
         <td width="40"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[origen]; ?></font></div></td>
         <td width="40"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Tiro]; ?></font></div></td>
         <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[material]; ?></font></div></td>
