@@ -149,17 +149,18 @@ try
 echo addslashes($mensajes);
 ?>
 <script language="javascript" type="text/javascript">
-presenta_mensaje('<?php echo addslashes($mensajes); ?>');
-function presenta_mensaje(mensajes){
+	presenta_mensaje('<?php echo addslashes($mensajes); ?>');
+		function presenta_mensaje(mensajes){
 			window.parent.llena_mensaje(mensajes);
 			window.parent.presenta_mensaje(<?php echo $del;?>);
 		}
 		function inicializa_formulario(id_camion){
 			window.parent.xajax_inicializa_formulario(id_camion);
 			window.parent.actualiza_imagen();
-			setTimeout("window.parent.location.reload()",<?php echo $del;?>)
+			//setTimeout("window.parent.location.reload()",<?php //echo $del;?>)
 			//kwindow.parent.location.reload();
 		}
+		
 		
 </script>
 <?php if($error==0){?><script language="javascript" type="text/javascript">inicializa_formulario('<?php echo $_REQUEST["idcamion"]; ?>');</script> <?php } ?>

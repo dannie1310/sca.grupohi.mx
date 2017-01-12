@@ -98,7 +98,7 @@
 							);
 			try
 			{
-				echo $SQLs;
+				//echo $SQLs;
 				$this->SCA->exSP($SQLs);
 			}
 			catch(Exception $e)

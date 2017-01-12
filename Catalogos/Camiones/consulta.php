@@ -18,6 +18,39 @@ $sql="select c.*,date_format(c.VigenciaPolizaSeguro,'%d-%m-%Y') as vp from camio
 $r=$SCA->consultar($sql);
 $vc=mysql_fetch_array($r);
 
+
+$imgs = "
+    SELECT TipoC, id, imagen 
+    FROM camiones_imagenes 
+    WHERE IdCamion = ".$camion." 
+      AND TipoC <> ''
+      AND id in (SELECT MAX(id) FROM camiones_imagenes 
+          WHERE IdCamion = ".$camion."  AND TipoC <> '' GROUP BY TipoC)";
+
+$img=$SCA->consultar($imgs);
+while($v_img=mysql_fetch_array($img))
+{
+  switch ($v_img['TipoC']) {
+    case 'f':
+        $frente =  $v_img['imagen'];
+      break;
+
+    case 'd':
+        $derecha =  $v_img['imagen'];
+      break;
+
+    case 't':
+        $atras =  $v_img['imagen'];
+      break;
+
+    case 'i':
+        $izquierda =  $v_img['imagen'];
+      break;
+  }
+}
+
+
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,7 +63,7 @@ $vc=mysql_fetch_array($r);
 <link href="../../css/tabla_formulario.css" rel="stylesheet" type="text/css" />
 <link href="../../css/advertencias.css" rel="stylesheet" type="text/css" />
 
-<link href="../../inc/js/GreyBox_v5_54/GreyBox_v5_54/greybox/gb_styles.css" rel="stylesheet" type="text/css" media="all" />
+
 
 <style>
 body{background:#FFF;}
@@ -47,17 +80,18 @@ div#i_f,div#i_i,div#i_d,div#i_t{ border:2px #06C solid; }
  <script type="text/javascript">
         var GB_ROOT_DIR = "../../inc/js/GreyBox_v5_54/GreyBox_v5_54/greybox/";
     </script>
-	<script type="text/javascript" src="../../inc/js/GreyBox_v5_54/GreyBox_v5_54/greybox/AJS.js"></script> 
     <script type="text/javascript" src="../../inc/js/GreyBox_v5_54/GreyBox_v5_54/greybox/AJS.js"></script> 
     <script type="text/javascript" src="../../inc/js/GreyBox_v5_54/GreyBox_v5_54/greybox/AJS_fx.js"></script>
     <script type="text/javascript" src="../../inc/js/GreyBox_v5_54/GreyBox_v5_54/greybox/gb_scripts.js"></script>
 
+<link href="../../inc/js/GreyBox_v5_54/GreyBox_v5_54/greybox/gb_styles.css" rel="stylesheet" type="text/css" media="all" />
+
 <script type="text/javascript">
 var image_set_camiones = [
-				 {'caption': 'Frente', 'url': '<?php echo ROOT; ?>Catalogos/Camiones/muestra_imagen.php?im=<?php echo $camion; ?>f'},
-				 {'caption': 'Derecha', 'url': '<?php echo ROOT; ?>Catalogos/Camiones/muestra_imagen.php?im=<?php echo $camion; ?>d'},
-				 {'caption': 'Atras', 'url': '<?php echo ROOT; ?>Catalogos/Camiones/muestra_imagen.php?im=<?php echo $camion; ?>t'},
-                 {'caption': 'Izquierda', 'url': '<?php echo ROOT; ?>Catalogos/Camiones/muestra_imagen.php?im=<?php echo $camion; ?>f'}
+				 {'caption': 'Frente', 'url': '<?  if(strlen($frente) == 0){ echo "muestra_imagen.php?im=" . $camion . "f";}else{ echo"data:image/png;base64," . $frente;} ?>'},
+         {'caption': 'Derecha', 'url': '<? if(strlen($derecha) == 0){ echo 'muestra_imagen.php?im=' . $camion . 'd';}else{ echo'data:image/png;base64,' . $derecha;} ?>'},
+         {'caption': 'Atras', 'url': '<?   if(strlen($atras) == 0){ echo 'muestra_imagen.php?im=' . $camion . 't';}else{ echo'data:image/png;base64,' . $atras;} ?>'},
+         {'caption': 'Izquierda', 'url': '<? if(strlen($izquierda) == 0){ echo '../../../../../SourcesFiles/imagenes_camiones/empty.jpg';}else{ echo'data:image/png;base64,' . $izquierda;}  ?>'}
 				];
 </script>
 
@@ -139,36 +173,62 @@ var image_set_camiones = [
                             </div>
                         </div>
                       </fieldset>
+
                        <fieldset >
-                        <legend ><img src="../../Imagenes/image.gif" width="16" height="16" />&nbsp;Información Fotográfica</legend>
-                        <div id="fila"></div>
-                        <div id="fila"><div id="caja"><div id="i_f" onclick="return GB_showImageSet(image_set_camiones, 1)"><img src="muestra_imagen.php?im=<?php echo $camion; ?>f" width="330" height="200" /></div></div><div id="caja" style="padding-left:15px"><div id="i_d" onclick="return GB_showImageSet(image_set_camiones, 2)"><img src="muestra_imagen.php?im=<?php echo $camion; ?>d" width="330" height="200" /></div></div></div>
-                        <div id="fila" >
-                            <div id="label" style="width:334px; text-align:center; background-color:#06C;color:#fff;">
-                            Frente</div>
+                          <legend ><img src="../../Imagenes/image.gif" width="16" height="16" />&nbsp;Información Fotográfica</legend>
+                          <div id="fila"></div>
+
+                          <div id="fila">
                             <div id="caja">
-                            
+                                <div id="i_f" >
+                                    <img src="<?if(strlen($frente) == 0){ echo 'muestra_imagen.php?im=' . $camion . 'f';}else{ echo'data:image/png;base64,' . $frente;} ?>" width="330" height="200" />
+                                </div>
                             </div>
-                            <div id="label" style="width:334px;margin-left:15px; text-align:center;background-color:#06C;color:#fff;">
-           		        Derecha</div>
-                            	<div id="caja">
-                                	 </div>
-                         </div>
-                            
-                            <div id="fila"><div id="caja"><div id="i_t" onclick="return GB_showImageSet(image_set_camiones, 3)"><img src="muestra_imagen.php?im=<?php echo $camion; ?>t" width="330" height="200" /></div></div><div id="caja" style="padding-left:15px"><div id="i_i" onclick="return GB_showImageSet(image_set_camiones, 4)"><img src="muestra_imagen.php?im=<?php echo $camion; ?>i" width="330" height="200" /></div></div></div>
-                            
-                            <div id="fila">
-                              <div id="label" style="width:334px; text-align:center;background-color:#06C;color:#fff;">
-                    Atras</div>
-                          <div id="caja">
+
+                            <div id="caja" style="padding-left:15px">
+                              <div id="i_d" >
+                                  <img src="<?if(strlen($derecha) == 0){ echo 'muestra_imagen.php?im=' . $camion . 'd';}else{ echo'data:image/png;base64,' . $derecha;} ?>" width="330" height="200" />
+                              </div>
                             </div>
+                          </div>
                         
-                        <div id="label" style="width:334px;margin-left:15px;; text-align:center;background-color:#06C;color:#fff;">
-           		        Izquierda</div>
-                            	<div id="caja">
-                                	  </div>
-                        </div>
+                          <div id="fila" >
+                              <div id="label" style="width:334px; text-align:center; background-color:#06C;color:#fff;">
+                                Frente
+                              </div>
+                              <div id="caja"></div>
+                              <div id="label" style="width:334px;margin-left:15px; text-align:center;background-color:#06C;color:#fff;">
+             		                   Derecha
+                              </div>
+                              <div id="caja"></div>
+                          </div>
+                            
+                          <div id="fila">
+                            <div id="caja">
+                              <div id="i_t" >
+                                  <img src="<?if(strlen($atras) == 0){ echo 'muestra_imagen.php?im=' . $camion . 't';}else{ echo'data:image/png;base64,' . $atras;} ?>" width="330" height="200" />
+                              </div>
+                            </div>
+                            <div id="caja" style="padding-left:15px">
+                              <div id="i_i" >
+                                  <img src="<?if(strlen($izquierda) == 0){ echo 'muestra_imagen.php?im=' . $camion . 'i';}else{ echo'data:image/png;base64,' . $izquierda;} ?>" width="330" height="200" />
+                              </div>
+                            </div>
+                          </div>
+                            
+                          <div id="fila">
+                            <div id="label" style="width:334px; text-align:center;background-color:#06C;color:#fff;">
+                                  Atras
+                            </div>
+                            <div id="caja"></div>
+                            <div id="label" style="width:334px;margin-left:15px;; text-align:center;background-color:#06C;color:#fff;">
+                                  Izquierda
+                            </div>
+                            <div id="caja"></div>
+                          </div>
                    </fieldset>
+
+
                       <fieldset >
                         <legend ><img src="../../Imgs/MenuIcons/CerrarSesion.gif" width="16" height="16" />&nbsp;Información de Seguro</legend>
                         <div id="fila"></div>
