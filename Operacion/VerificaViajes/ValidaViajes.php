@@ -375,7 +375,7 @@ $final = $_REQUEST["final"];
                                        // echo 'console.log(Fotos_' . $v_viajes["IdViaje"] . '.length);';
                                         $count++;
                                     }
-                                    echo '</script> <br>';
+                                    echo '</script> ';
 
                                 ?>
                                 <script>
@@ -428,7 +428,7 @@ $final = $_REQUEST["final"];
 <!--    cubicación         -->
                 <td align="center" class="detalle">
                     <?php //echo $v_viajes["cubicacion"] ?>
-                     <input name="cubicacion1<?php echo $i_general; ?>" type="hidden"  id="cubicacion1<?php echo $i_general; ?>" style="width:25px" value="<?php echo $v_viajes['cubicacion'] ?>" readonly="readonly"/>
+                     <input name="cubicacion_O<?php echo $i_general; ?>" type="hidden"  id="cubicacion_O<?php echo $i_general; ?>" style="width:25px" value="<?php echo $v_viajes['cubicacion'] ?>" readonly="readonly"/>
                     <input name="cubicacion<?php echo $i_general; ?>" type="text" class="cubicacion detalle" id="cubicacion<?php echo $i_general; ?>" style="width:25px" value="<?php echo $v_viajes['cubicacion'] ?>" contador="<?php echo $i_general; ?>" readonly="readonly"/>
                 </td>
 <!--    Origen          -->
@@ -629,7 +629,7 @@ $final = $_REQUEST["final"];
                             tara=document.getElementById('tara'+arreglo[o]).value;
                             bruto=document.getElementById('bruto'+arreglo[o]).value;
                             cubiNueva=document.getElementById('cubicacion'+arreglo[o]).value;
-                            cubiOriginal=document.getElementById('cubicacion1'+arreglo[o]).value;
+                            cubiOriginal=document.getElementById('cubicacion_O'+arreglo[o]).value;
 
             }catch(e){accion='n'}
 
