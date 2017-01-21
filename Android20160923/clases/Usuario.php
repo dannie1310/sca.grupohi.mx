@@ -299,7 +299,18 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                $_SESSION["databasesca"]=$row_s[base_datos];
                $this->_database_sca = SCA::getConexion();
                 
+                //SINDICATOS
+               
+               $sql = "SELECT sindicatos.Descripcion as sindicato, sindicatos.IdSindicato as id from sindicatos where Estatus = 1;
+ ";
+               $result=$this->_database_sca->consultar($sql);
                 
+                while($row_sindicato=$this->_database_sca->fetch($result)){
+                    $array_sindicatos[]=array(
+                        "id"=>utf8_encode($row_sindicato[id]),
+                        "sindicato"=>utf8_encode($row_sindicato[sindicato]),
+                        );
+                }
                 
                 //CAMIONES
                 
@@ -379,6 +390,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                     "base_datos"=>$row_s[base_datos], 
                     "descripcion_database"=>utf8_encode($row_s[descripcion_database]),
                     "camiones"=>$array_camiones,
+                    "sindicatos"=>$array_sindicatos,
                     'tipos_imagen'=>$array_tipos_imagenes,
                  );
 
@@ -956,10 +968,10 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
     }
     private function regresaIdSindicato($bd,$sindicato){
         $id_sindicato = "NULL";
-        if($sindicato == ""){
+        if($sindicato == "" || $sindicato == "0"){
             return "NULL";
         }
-        $id_sindicato = $this->_db->regresaDatos3("$bd.sindicatos","IdSindicato", "NombreCorto", utf8_decode(substr($sindicato, 0, 20)));
+        $id_sindicato = $this->_db->regresaDatos3("$bd.sindicatos","IdSindicato", "Descripcion", utf8_decode($sindicato));
         if($id_sindicato>0){
             return $id_sindicato;
         }else{
