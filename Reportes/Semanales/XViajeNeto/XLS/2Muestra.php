@@ -112,6 +112,7 @@ if($hay>0)
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
+        <td>&nbsp;</td>
         <td colspan="3" bgcolor="969696">
           <div align="center">
             <font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Tarifa</font></font>
@@ -123,7 +124,8 @@ if($hay>0)
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">#</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Cubicaci&oacute;n m<sup>3</sup></font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Cami&oacute;n</font></div></td>
-        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Sindicato</font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Sindicato Camion</font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Sindicato Viaje</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Empresa</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Fecha Llegada</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Hora Llegada</font></div></td>
@@ -140,6 +142,8 @@ if($hay>0)
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Importe</font> </div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Estatus</font> </div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Ticket</font> </div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Folio Conciliación</font> </div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Fecha Conciliación</font> </div></td>
         
       </tr>
       <?php
@@ -152,7 +156,7 @@ if($hay>0)
       t.Descripcion AS Tiro,
       c.IdCamion AS IdCamion,
       c.Economico AS Camion,
-      v.IdViajeNeto as IdViaje,
+      v.IdViajeNeto as IdViajeNeto,
       v.estatus as idEstatus,
       v.code,
       CASE 
@@ -167,11 +171,9 @@ if($hay>0)
       m.Descripcion as material,
       m.IdMaterial as idmaterial,
       sin.Descripcion as Sindicato,
+      sinca.Descripcion as SindicatoCamion,
       emp.razonSocial as Empresa,
-      TIMEDIFF(
-              (CONCAT(FechaLlegada,' ',HoraLlegada)),
-              (CONCAT(FechaSalida,' ',HoraSalida))
-              ) as tiempo_mostrar,
+      TIMEDIFF( (CONCAT(v.FechaLlegada,' ',v.HoraLlegada)),(CONCAT(v.FechaSalida,' ',v.HoraSalida)) ) as tiempo_mostrar,
       ROUND((HOUR(TIMEDIFF(v.HoraLlegada,v.HoraSalida))*60)+(MINUTE(TIMEDIFF(v.HoraLlegada,v.HoraSalida)))+(SECOND(TIMEDIFF(v.HoraLlegada,v.HoraSalida))/60),2) AS tiempo,
       concat('R-',r.IdRuta) as ruta,
       r.TotalKM as distancia,
@@ -180,7 +182,13 @@ if($hay>0)
       tm.PrimerKM as tarifa_material_pk,
       tm.KMSubsecuente as tarifa_material_ks,
       tm.KMAdicional as tarifa_material_ka,
-      ((tm.PrimerKM*1*c.CubicacionParaPago)+(tm.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago)+(tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)) as ImporteTotal_M
+      ((tm.PrimerKM*1*c.CubicacionParaPago)+(tm.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago)+(tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)) as ImporteTotal_M,
+      conci.idconciliacion,
+      conci.fecha_conciliacion,
+      conci.fecha_inicial,
+      conci.fecha_final,
+      conci.estado,
+      vi.IdViaje
       FROM
         viajesnetos AS v
       JOIN tiros AS t USING (IdTiro)
@@ -190,15 +198,19 @@ if($hay>0)
       left join tarifas as tm on(tm.IdMaterial=m.IdMaterial AND tm.Estatus=1) 
       left join rutas as r on(v.IdOrigen=r.IdOrigen AND v.IdTiro=r.IdTiro AND r.Estatus=1) 
       left join sindicatos as sin on sin.IdSindicato = v.IdSindicato
+      left join sindicatos as sinca on sinca.IdSindicato = c.IdSindicato
       left join empresas as emp on emp.IdEmpresa = v.IdEmpresa
+      LEFT JOIN viajes AS vi ON vi.IdViajeNeto = v.IdViajeNeto
+      LEFT JOIN conciliacion_detalle AS conde ON conde.idviaje =  vi.IdViaje
+      LEFT JOIN conciliacion as conci ON conci.idconciliacion = conde.idconciliacion 
       WHERE
           v.Estatus " . $estatus  . "
       AND v.IdProyecto = ".$IdProyecto."
       AND v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."'
       AND v.HoraLlegada BETWEEN '".$horaInicial."' AND '".$horaFinal."'
       AND v.IdViajeNeto not in (select IdViajeNeto from viajesrechazados)
-      group by idviaje
-      ORDER BY FechaLlegada, camion, HoraLlegada, idEstatus
+      group by IdViajeNeto
+      ORDER BY v.FechaLlegada, camion, v.HoraLlegada, idEstatus
 ";   
    //echo $rows;   
     $ro=$link->consultar($rows);
@@ -233,6 +245,7 @@ if($hay>0)
         <td width="1"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $p; ?>       </font></div></td>
         <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[cubicacion]; ?></font></div></td>
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Camion]; ?></font></div></td>
+        <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[SindicatoCamion]; ?></font></div></td>
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Sindicato]; ?></font></div></td>
         <td width="90"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Empresa]; ?></font></div></td>
         <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Fecha]; ?></font></div></td>
@@ -251,6 +264,9 @@ if($hay>0)
         <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[ImporteTotal_M],2,".",","); ?></font></div></td>
         <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Estatus]; ?></font></div></td>
         <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[code]; ?></font></div></td>
+        <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[idconciliacion]; ?></font></div></td>
+        <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[fecha_conciliacion]; ?></font></div></td>
+        <!--<td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[IdViaje]; ?></font></div></td>-->
       </tr>
 
       <?php
