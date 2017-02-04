@@ -8,6 +8,8 @@
 		include("../../Clases/Funciones/FuncionesModificaViajes.php");
 		#LA VARIABLE SIGUIENTE ES LA ENCARGADA DE CONTROLAR  QUE VIAJES SON LOS QUE SE DESPLEGARÁN, 0 ->COMPLETOS; 10->SIN ORIGEN; 20->MANUALES
 		$tipo=$_REQUEST[tipo];
+		$fechaini=$_REQUEST['inicial'];
+		$fechafin=$_REQUEST['final'];
 		if($_REQUEST[flag]==1)
 		{
 			$ori=explode("-",$_REQUEST[ori]);
@@ -158,7 +160,10 @@ function cambiaFondo(id,it,ch)
 <table width="845" border="0" cellpadding="0" cellspacing="0" align="center" bordercolor="#FFFFFF">
   <?php 
   		$Link=SCA::getConexion();
-  		$SQL="SELECT  viajesnetos.FechaLlegada as Fecha,COUNT(viajesnetos.IdViajeNeto) AS Total FROM viajesnetos WHERE viajesnetos.Estatus = ".$tipo." AND viajesnetos.IdProyecto = ".$_SESSION['Proyecto']." GROUP BY viajesnetos.FechaLlegada;";
+  		$SQL="SELECT  FechaLlegada as Fecha,COUNT(IdViajeNeto) AS Total FROM viajesnetos
+			 WHERE Estatus = ".$tipo." AND IdProyecto = ".$_SESSION['Proyecto']." 
+			 and FechaLlegada BETWEEN '".fechasql($fechaini)."' AND '".fechasql($fechafin)."' 
+			 GROUP BY FechaLlegada;";
 		//echo "<br><br>".$SQL;
 		$Result=$Link->consultar($SQL);
 		//$Link->cerrar();
