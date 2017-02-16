@@ -158,9 +158,9 @@ $rows="
     sum(v.ImportePrimerKM) AS Imp1Km, 
     sum(v.ImporteKMSubsecuentes) AS ImpSub, 
     sum(v.Importe) AS Importe, 
-		fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') AS 'PU1Km', 
-		fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') AS 'PUSub', 
-		fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') AS 'PUAdic'
+    v.TPrimerKM as 'PU1Km', 
+      v.TKMSubsecuente as 'PUSub', 
+      v.TKMAdicional as 'PUAdic'
 	FROM viajes AS v, tiros AS t, origenes AS o, materiales AS m 
   WHERE t.IdTiro=v.IdTiro 
     AND o.IdOrigen=v.IdOrigen 

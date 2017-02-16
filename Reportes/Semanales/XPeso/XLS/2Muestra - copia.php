@@ -208,9 +208,9 @@ if($hay>0)
 			v.Importe as Importe,
 			v.CubicacionCamion as Volumen,
 			
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') as 'PU1Km', 
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') as 'PUSub', 
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') as 'PUAdc',
+      v.TPrimerKM as 'PU1Km', 
+      v.TKMSubsecuente as 'PUSub', 
+      v.TKMAdicional as 'PUAdc',
 			v.Tara,
 			v.Bruto,
 			v.Peso/1000 as Neto

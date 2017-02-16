@@ -159,9 +159,9 @@ if($hay>0)
 			sum(v.ImporteKMSubsecuentes) as ImpSub,
 			sum(v.Importe) as Importe,
 			
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') as 'PU1Km', 
-		fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') as 'PUSub', 
-		fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') as 'PUAdic'
+			v.TPrimerKM as 'PU1Km', 
+      v.TKMSubsecuente as 'PUSub', 
+      v.TKMAdicional as 'PUAdic'
 			
 		from 
 			viajes as v, 

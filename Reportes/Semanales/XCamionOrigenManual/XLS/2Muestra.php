@@ -224,9 +224,9 @@ if($hay>0)
 			sum(v.ImporteKMAdicionales) as ImpAdc,
 			sum(v.Importe) as Importe,
 			
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') as 'PU1Km', 
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') as 'PUSub', 
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') as 'PUAdc'
+			v.TPrimerKM as 'PU1Km', 
+      v.TKMSubsecuente as 'PUSub', 
+      v.TKMAdicional as 'PUAdc'
 		 
 	FROM  
 	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
@@ -476,9 +476,9 @@ $imp=$imp+($sumv["sumaimporte"]+$sumv["sumasub"]+$sumv["sumaadc"]);
 			sum(v.ImporteKMAdicionales) as ImpAdc,
 			sum(v.Importe) as Importe,
 			
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') as 'PU1Km', 
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') as 'PUSub', 
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') as 'PUAdc'
+			v.TPrimerKM as 'PU1Km', 
+      v.TKMSubsecuente as 'PUSub', 
+      v.TKMAdicional as 'PUAdc'
 		 
 	FROM  
 	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
@@ -728,9 +728,9 @@ $imp2=$imp2+($sumv2["sumaimporte"]+$sumv2["sumasub"]+$sumv2["sumaadc"]);
 			sum(v.ImporteKMAdicionales) as ImpAdc,
 			sum(v.Importe) as Importe,
 			
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') as 'PU1Km', 
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') as 'PUSub', 
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') as 'PUAdc'
+			v.TPrimerKM as 'PU1Km', 
+      v.TKMSubsecuente as 'PUSub', 
+      v.TKMAdicional as 'PUAdc'
 		 
 	FROM  
 	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
@@ -934,9 +934,9 @@ $imp3=$imp3+($sumv3["sumaimporte"]+$sumv3["sumasub"]+$sumv3["sumaadc"]);
 			sum(v.ImporteKMAdicionales) as ImpAdc,
 			sum(v.Importe) as Importe,
 			
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') as 'PU1Km', 
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') as 'PUSub', 
-			fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') as 'PUAdc'
+			v.TPrimerKM as 'PU1Km', 
+      v.TKMSubsecuente as 'PUSub', 
+      v.TKMAdicional as 'PUAdc'
 		 
 	FROM  
 	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
