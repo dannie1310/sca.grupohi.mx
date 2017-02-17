@@ -202,10 +202,9 @@ if($tipo_consulta=='camion'){
                   , v.ImportePrimerKM as Imp1Km
                   , v.ImporteKMSubsecuentes as ImpSub
                   , v.ImporteKMAdicionales as ImpAdc
-                  , v.Importe as Importe
-                  , TipoTarifa,IdTarifa as 'PU1Km'
-                  , TipoTarifa,IdTarifa as 'PUSub'
-                  ,TipoTarifa,IdTarifa as 'PUAdc' 
+                  , v.TPrimerKM as 'PU1Km'
+                  , v.TKMSubsecuente as 'PUSub'
+                  , v.TKMAdicional as 'PUAdc' 
               FROM 
               	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
               WHERE
@@ -523,9 +522,9 @@ if($hay>0)
                   , v.ImporteKMSubsecuentes as ImpSub
                   , v.ImporteKMAdicionales as ImpAdc
                   , v.Importe as Importe
-                  , TipoTarifa,IdTarifa as 'PU1Km'
-                  , TipoTarifa,IdTarifa as 'PUSub'
-                  ,TipoTarifa,IdTarifa as 'PUAdc' 
+                  , v.TPrimerKM as 'PU1Km'
+                  , v.TKMSubsecuente as 'PUSub'
+                  , v.TKMAdicional as 'PUAdc'  
         	FROM  
         	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
         WHERE
