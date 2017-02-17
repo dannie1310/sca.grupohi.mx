@@ -235,9 +235,9 @@ if($tipo_consulta=='camion'){
               sum(v.ImporteKMSubsecuentes) as ImpSub, 
               sum(v.ImporteKMAdicionales) as ImpAdc, 
               sum(v.Importe) as Importe, 
-              fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') as 'PU1Km',
-              fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') as 'PUSub', 
-              fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') as 'PUAdc',
+              v.TPrimerKM as 'PU1Km', 
+      v.TKMSubsecuente as 'PUSub', 
+      v.TKMAdicional as 'PUAdc',
               cc.Descripcion as centroscostos
             FROM viajes v
             LEFT join origenes o on o.IdOrigen=v.IdOrigen

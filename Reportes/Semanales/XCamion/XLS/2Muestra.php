@@ -210,10 +210,9 @@ if($hay>0)
       sum(v.ImporteKMSubsecuentes) as ImpSub,
       sum(v.ImporteKMAdicionales) as ImpAdc,
       sum(v.Importe) as Importe,
-      
-      fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') as 'PU1Km', 
-      fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') as 'PUSub', 
-      fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') as 'PUAdc'
+      v.TPrimerKM as 'PU1Km', 
+      v.TKMSubsecuente as 'PUSub', 
+      v.TKMAdicional as 'PUAdc'
      
   FROM  
   viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m 
@@ -223,6 +222,10 @@ if($hay>0)
   and p.IdProyecto=".$IdProyecto." and  v.IdProyecto = p.IdProyecto  and  v.idCamion=c.idCamion and c.idSindicato=s.IdSindicato 
   and v.IdOrigen=o.IdOrigen and v.IdTiro=t.IdTiro and v.IdMaterial=m.IdMaterial  
  group by Fecha, Cubicacion,Material,Banco,Tiro,TipoTarifa,IdTarifa Order by Fecha";
+
+       //fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') as 'PU1Km', 
+      //fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') as 'PUSub', 
+      //fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') as 'PUAdc'
 
 $ro=$link->consultar($rows);
 $x=1;

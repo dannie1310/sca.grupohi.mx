@@ -142,9 +142,9 @@ $imp=0;
    
    
 $rows="Select count(v.IdViaje) as Viajes, t.Descripcion as Tiro, o.Descripcion as Banco, m.Descripcion as Material, v.Distancia as Distancia, sum(v.VolumenPrimerKM) as Vol1KM, sum(v.VolumenKMSubsecuentes) as VolSub, sum(v.VolumenKMAdicionales) as VolAdic, sum(v.ImportePrimerKM) as Imp1Km, sum(v.ImporteKMSubsecuentes) as ImpSub, sum(v.Importe) as Importe, 
-    fn_devuelve_tarifa(TipoTarifa,IdTarifa,'p_km') as 'PU1Km', 
-    fn_devuelve_tarifa(TipoTarifa,IdTarifa,'s_km') as 'PUSub', 
-    fn_devuelve_tarifa(TipoTarifa,IdTarifa,'a_km') as 'PUAdic'
+      v.TPrimerKM as 'PU1Km', 
+      v.TKMSubsecuente as 'PUSub', 
+      v.TKMAdicional as 'PUAdic'
     from viajes as v, tiros as t, origenes as o, materiales as m where t.IdTiro=v.IdTiro and o.IdOrigen=v.IdOrigen and v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."' and v.IdProyecto=".$IdProyecto." and v.IdOrigen=".$d[IdOrigen]." and m.IdMaterial=v.IdMaterial and m.IdMaterial=".$dmat[IdMaterial]." Group By Tiro,TipoTarifa,IdTarifa";
     //echo $rows;
 $ro=$link->consultar($rows);
