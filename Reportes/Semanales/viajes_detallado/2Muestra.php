@@ -524,7 +524,7 @@ if($hay>0)
                   , v.Importe as Importe
                   , v.TPrimerKM as 'PU1Km'
                   , v.TKMSubsecuente as 'PUSub'
-                  , v.TKMAdicional as 'PUAdc'  
+                  , v.TKMAdicional as 'PUAdc'    
         	FROM  
         	viajes v, proyectos p, sindicatos s, camiones c, origenes o, tiros t, materiales m
         WHERE
