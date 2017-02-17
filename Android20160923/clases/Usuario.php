@@ -30,13 +30,14 @@ class Usuario {
                 //CAMIONES
                 $this->_database_sca = SCA::getConexion();
 				
-                 $sql_camiones="SELECT idcamion, Placas, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago FROM camiones C
+                 $sql_camiones="SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago FROM camiones C
                                 LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
                 $result_camiones=$this->_database_sca->consultar($sql_camiones);
                 while($row_camiones=$this->_database_sca->fetch($result_camiones)) 
                         $array_camiones[]=array(
                             "idcamion"=>$row_camiones[idcamion],
                             "placas"=>$row_camiones[Placas],
+                            "placas_caja"=>$row_camiones[PlacasCaja],
                             "marca"=>utf8_encode($row_camiones[marca]),
                             "modelo"=>utf8_encode($row_camiones[Modelo]),
                             "ancho"=>utf8_encode($row_camiones[Ancho]),
