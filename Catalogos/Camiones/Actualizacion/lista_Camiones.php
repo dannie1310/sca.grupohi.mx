@@ -37,7 +37,7 @@
  		$sql="
 				SELECT 
 					@rownum:=@rownum+1 AS rownum ,
-					idSolicitudReactivacion as idReactivacion,
+					IdSolicitudActualizacion as idReactivacion,
 					ca.IdCamion,
 					ca.Economico,
 				    ca.Propietario, 
@@ -48,9 +48,9 @@
 				    CASE(ca.Estatus)
 				    WHEN 0 THEN 'INACTIVO'
 				    WHEN -1 THEN 'CANCELADO'
-				    WHEN 1 THEN 'ACTIVADO'
+				    WHEN 1 THEN 'ACTUALIZADO'
 				    END  AS Estatus			    
-				FROM (SELECT @rownum:=0) r,solicitud_reactivacion_camion as ca
+				FROM (SELECT @rownum:=0) r,solicitud_actualizacion_camion as ca
 				LEFT JOIN operadores as op on ca.IdOperador = op.IdOperador
 				WHERE 
 				 	ca.estatus = ".$estatus."
@@ -82,7 +82,7 @@
 	}
 
 	function cancelar($idReactivacion,$IdCamion,$observaciones){
-		$SQLs = "call `sca_Solicitud_Reactivacion_camion` (".$idReactivacion.",".$IdCamion.",'".$observaciones."',".$_SESSION['IdUsuario'].",-1,@a);";
+		$SQLs = "call `sca_Solicitud_Actualizacion_camion` (".$idReactivacion.",".$IdCamion.",'".$observaciones."',".$_SESSION['IdUsuario'].",-1,@a);";
 		
 		$link=SCA::getConexion();
 		$link->consultar($SQLs);
@@ -93,11 +93,11 @@
 	function guardar($idReactivacion,$IdCamion,$observaciones){
 
 
-		$SQLs = "call `sca_Solicitud_Reactivacion_camion` (".$idReactivacion.",".$IdCamion.",'".$observaciones."',".$_SESSION['IdUsuario'].",1,@a);";
+		$SQLs = "call `sca_Solicitud_Actualizacion_camion` (".$idReactivacion.",".$IdCamion.",'".$observaciones."',".$_SESSION['IdUsuario'].",1,@a);";
 		
 		$link=SCA::getConexion();
 		$link->consultar($SQLs);
 		//echo $SQLs;
-		echo '<script>alert("Camion Reactivado correctamente!!");location.href="reactivacion.php";</script>';
+		echo '<script>alert("Camion Actualizado correctamente!!");location.href="reactivacion.php";</script>';
 	}
 ?>
