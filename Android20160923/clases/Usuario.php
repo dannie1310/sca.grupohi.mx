@@ -334,7 +334,8 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
        operadores.Nombre AS operador,
        operadores.NoLicencia AS numero_licencia,
        operadores.VigenciaLicencia AS vigencia_licencia,
-       camiones.IdCamion AS id_camion
+       camiones.IdCamion AS id_camion,
+       camiones.Estatus as estatus
   FROM (((camiones camiones
           LEFT OUTER JOIN sindicatos sindicatos
              ON (camiones.IdSindicato = sindicatos.IdSindicato))
@@ -343,7 +344,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         LEFT OUTER JOIN empresas empresas
            ON (camiones.IdEmpresa = empresas.IdEmpresa))
        LEFT OUTER JOIN operadores operadores
-          ON (camiones.IdOperador = operadores.IdOperador) where camiones.Estatus = 1";
+          ON (camiones.IdOperador = operadores.IdOperador) ";
                 $result_tags=$this->_database_sca->consultar($sql_tags);
                 
                 while($row_tags=$this->_database_sca->fetch($result_tags))
@@ -368,6 +369,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                         "disminucion"=>utf8_encode($row_tags[disminucion]),
                         "cubicacion_real"=>utf8_encode($row_tags[cubicacion_real]),
                         "cubicacion_para_pago"=>utf8_encode($row_tags[cubicacion_para_pago]),
+                        "estatus"=>utf8_encode($row_tags[estatus]),
                         );
                 
                 $sql_tipos_imagenes="select 'f' as id, 'Frente' as descripcion
@@ -817,7 +819,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
             if($this->accesoValidoActualizacionCamiones($row["IdUsuario"], $_REQUEST[id_proyecto])){
                 $cadenajsonx=json_encode($_REQUEST);
                 $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
-                if(isset($_REQUEST['camiones_editados'])){
+                if(isset($_REQUEST['camiones_editados']) || isset($_REQUEST['solicitud_activacion'])){
                     $json_datos_actualizacion = $_REQUEST['camiones_editados'];
                     $datos_actualizacion = json_decode(utf8_encode($json_datos_actualizacion), TRUE);
                     $a_registrar = count($datos_actualizacion);
@@ -828,7 +830,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                         foreach ($datos_actualizacion as $key => $value) {
                             $datos_preparados = $this->preparaDatos($_REQUEST[bd],$value);
 
-                            $x="UPDATE $_REQUEST[bd].camiones "
+                            /*$a="UPDATE $_REQUEST[bd].camiones "
                                 . "SET "
                                 . "IdSindicato = ".$datos_preparados["id_sindicato"].", "
                                 . "IdEmpresa = ".$datos_preparados["id_empresa"].", "
@@ -846,7 +848,53 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                                 . "Disminucion=".$datos_preparados["disminucion"].", "
                                 . "CubicacionReal=".$datos_preparados["cu_real"].", "
                                 . "CubicacionParaPago=".$datos_preparados["cu_pago"]." "
-                                . "WHERE IdCamion=".$datos_preparados["id_camion"]."";
+                                . "WHERE IdCamion=".$datos_preparados["id_camion"]."";*/
+                            
+                            $x="INSERT INTO $_REQUEST[bd].solicitud_actualizacion_camion(IdCamion
+                                ,IdSindicato
+                                ,IdEmpresa
+                                ,Propietario
+                                ,IdOperador
+                                ,Placas
+                                ,PlacasCaja
+                                ,IdMarca
+                                ,Modelo
+                                ,Ancho
+                                ,Largo
+                                ,Alto
+                                ,Gato
+                                ,Extension
+                                ,Disminucion
+                                ,CubicacionReal
+                                ,CubicacionParaPago
+                                ,Economico
+                                ,IMEI
+                                ,Registro
+                                ,Version
+                                ) values("
+                                . "".$datos_preparados["id_camion"].", "
+                                . "".$datos_preparados["id_sindicato"].", "
+                                . "".$datos_preparados["id_empresa"].", "
+                                . "'".$datos_preparados["propietario"]."', "
+                                . "".$datos_preparados["id_operador"].", "
+                                . "'".$datos_preparados["placas_camion"]."', "
+                                . "'".$datos_preparados["placas_caja"]."', "
+                                . "".$datos_preparados["id_marca"].", "
+                                . "'".$datos_preparados["modelo"]."', "
+                                . "".$datos_preparados["ancho"].", "
+                                . "".$datos_preparados["largo"].", "
+                                . "".$datos_preparados["alto"].", "
+                                . "".$datos_preparados["gato"].", "
+                                . "".$datos_preparados["extension"].", "
+                                . "".$datos_preparados["disminucion"].", "
+                                . "".$datos_preparados["cu_real"].", "
+                                . "".$datos_preparados["cu_pago"].", "
+                                . "'".$datos_preparados["economico"]."', "    
+                                . "'".$_REQUEST["IMEI"]."', "
+                                . "'".$_REQUEST["usr"]."', "
+                                . "'".$_REQUEST["Version"]."' "        
+                                . ")";
+                            //echo $x;
                             $this->_db->consultar($x);
                             if($this->_db->affected()>=0){
                                 $actualizados = $actualizados+$this->_db->affected();
@@ -859,20 +907,94 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                             }
                             
                         }
-                        if (($actualizados) == $a_registrar && $error == 0)
-                            echo "{\"msj\":\"Camiones actualizados correctamente. Actualizados: ".$actualizados." Actualizados Previamente: ".$previos." A actualizar: ".$a_registrar."\"}";
-                        else if($error > 0 && ($actualizados + $error) == $a_registrar)
-                            echo "{\"msj\":\"No se actualizaron todos los camiones. Actualizados: ".$actualizados." A actualizar: ".$a_registrar." Errores: ".$error." .\"}";
-                        else
-                            echo "{\"error\":\"No se actualizaron todos los camiones. Actualizados: ".$actualizados." A actualizar: ".$a_registrar." Errores: ".$error." .\"}";
+                        #AQUI VAN LOS MENSAJES QUE QUITE
                     }
-                    }else{
-                        echo "{\"error\":\"No ha mandado ningún registro para sincronizar.\"}";
+                    ###############################
+                    $json_solicitudes_activacion = $_REQUEST['solicitud_activacion'];
+                    $datos_solicitudes_activacion = json_decode(utf8_encode($json_solicitudes_activacion), TRUE);
+                    $a_solicitar_activacion = count($datos_solicitudes_activacion);
+                    if($a_solicitar_activacion > 0){
+                        $solicitudes_registradas = 0;
+                        $solicitudes_registradas_previamente = 0;
+                        $error_solicitudes = 0;
+                        foreach ($datos_solicitudes_activacion as $key => $value) {
+                            $datos_preparados = $this->preparaDatos($_REQUEST[bd],$value);
+
+                            $x="INSERT INTO $_REQUEST[bd].solicitud_reactivacion_camion(IdCamion
+                                ,IdSindicato
+                                ,IdEmpresa
+                                ,Propietario
+                                ,IdOperador
+                                ,Placas
+                                ,PlacasCaja
+                                ,IdMarca
+                                ,Modelo
+                                ,Ancho
+                                ,Largo
+                                ,Alto
+                                ,Gato
+                                ,Extension
+                                ,Disminucion
+                                ,CubicacionReal
+                                ,CubicacionParaPago
+                                ,Economico
+                                ,IMEI
+                                ,Registro
+                                ,Version
+                                ) values("
+                                . "".$datos_preparados["id_camion"].", "
+                                . "".$datos_preparados["id_sindicato"].", "
+                                . "".$datos_preparados["id_empresa"].", "
+                                . "'".$datos_preparados["propietario"]."', "
+                                . "".$datos_preparados["id_operador"].", "
+                                . "'".$datos_preparados["placas_camion"]."', "
+                                . "'".$datos_preparados["placas_caja"]."', "
+                                . "".$datos_preparados["id_marca"].", "
+                                . "'".$datos_preparados["modelo"]."', "
+                                . "".$datos_preparados["ancho"].", "
+                                . "".$datos_preparados["largo"].", "
+                                . "".$datos_preparados["alto"].", "
+                                . "".$datos_preparados["gato"].", "
+                                . "".$datos_preparados["extension"].", "
+                                . "".$datos_preparados["disminucion"].", "
+                                . "".$datos_preparados["cu_real"].", "
+                                . "".$datos_preparados["cu_pago"].", "
+                                . "'".$datos_preparados["economico"]."', "    
+                                . "'".$_REQUEST["IMEI"]."', "
+                                . "'".$_REQUEST["usr"]."' "
+                                . "'".$_REQUEST["Version"]."' "        
+                                . ")";
+                            $this->_db->consultar($x);
+                            if($this->_db->affected()>=0){
+                                $solicitudes_registradas = $solicitudes_registradas+$this->_db->affected();
+                            }else{
+                                $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $x)."','".$row["IdUsuario"]."' )";
+                                $this->_db->consultar($x_error);
+                                if ($this->_db->affected() > 0) {
+                                    $error_solicitudes = $error_solicitudes + $this->_db->affected();
+                                }
+                            }
+                            
+                        }
+                        
                     }
+                    ###############################
+                    if (($actualizados+$error) == $a_registrar && ($solicitudes_registradas+$error_solicitudes)== $a_solicitar_activacion)
+                            echo "{\"msj\":\"Actualizacion de Camiones y Registro de Solicitudes correcto." . " \"}";
+                        else if(($actualizados+$error) == $a_registrar && ($solicitudes_registradas+$error_solicitudes)!= $a_solicitar_activacion)
+                            echo "{\"error_solicitudes\":\"No se registraron todas las solicitudes. $solicitudes_registradas _ $error_solicitudes _ $a_solicitar_activacion \"}";
+                        else if(($actualizados+$error) != $a_registrar && ($solicitudes_registradas+$error_solicitudes)== $a_solicitar_activacion)
+                            echo "{\"error_actualizaciones\":\"No se actualizaron todos los camiones. $actualizados _ $error _ $a_registrar \"}";
+                        else if(($actualizados+$error) != $a_registrar && ($solicitudes_registradas+$error_solicitudes)!= $a_solicitar_activacion)
+                            echo "{\"error_ambos\":\"Actualizacion de Camiones y Registro de Solicitudes Incorrecto.\"}";
+                    
                 }else{
-                    echo "{\"error\":\"No tiene privilegios para actualizar el catálogo de camiones.\"}";
-                }
+                    echo "{\"error\":\"No ha mandado ningún registro para sincronizar.\"}";
+                    }
+            }else{
+                echo "{\"error\":\"No tiene privilegios para actualizar el catálogo de camiones.\"}";
             }
+        }
         ELSE{
             echo "{\"error\":\"Datos de inicio de sesión no validos.\"}";
         }
@@ -888,7 +1010,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         $imagenes = json_decode(utf8_encode($json_imagenes), TRUE); 
         $cantidad_imagenes_a_registrar = count($imagenes);
         $cantidad_imagenes = 0;
-
+        $bd = $_REQUEST["bd"];
         if($cantidad_imagenes_a_registrar>0){
             $i = 0;
             $ir = 0;
@@ -899,8 +1021,22 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                 
 //                $x_errori = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $sql_vn)."','eli' )";
 //                            $this->_db->consultar($x_errori);
+                
                     $id_tipo_imagen = ($value_i[idtipo_imagen]=="a")?"t":$value_i[idtipo_imagen];
-                    $x_imagen = "insert into $_REQUEST[bd].camiones_imagenes(IdCamion,TipoC,Imagen,Tipo) values(".$value_i[idcamion].",'".$id_tipo_imagen."','".str_replace('\\','',$value_i[imagen])."','0')";
+                    if(array_key_exists("estatus", $value_i)){
+                        if($value_i["estatus"]==1){
+                            $id_solicitud_actualizacion = $this->_db->regresaDatos("$bd.solicitud_actualizacion_camion","IdSolicitudActualizacion", "WHERE IdCamion = ".$value_i[idcamion]." order by IdSolicitudActualizacion desc LIMIT 1");
+                            $x_imagen = "insert into $_REQUEST[bd].solicitud_actualizacion_camion_imagenes(IdSolicitudActualizacion,IdCamion,TipoC,Imagen,Tipo) values(".$id_solicitud_actualizacion.",".$value_i[idcamion].",'".$id_tipo_imagen."','".str_replace('\\','',$value_i[imagen])."','0')";
+
+                        }else{
+                            $id_solicitud_reactivacion = $this->_db->regresaDatos("$bd.solicitud_reactivacion_camion","IdSolicitudReactivacion", "WHERE IdCamion = ".$value_i[idcamion]." order by IdSolicitudReactivacion desc LIMIT 1");
+                            $x_imagen = "insert into $_REQUEST[bd].solicitud_reactivacion_camion_imagenes(IdSolicitudReactivacion,IdCamion,TipoC,Imagen,Tipo) values(".$id_solicitud_reactivacion.",".$value_i[idcamion].",'".$id_tipo_imagen."','".str_replace('\\','',$value_i[imagen])."','0')";
+                        }
+                    }else{
+                        $id_solicitud_actualizacion = $this->_db->regresaDatos("$bd.solicitud_actualizacion_camion","IdSolicitudActualizacion", "WHERE IdCamion = ".$value_i[idcamion]." order by IdSolicitudActualizacion desc LIMIT 1");
+                        $x_imagen = "insert into $_REQUEST[bd].solicitud_actualizacion_camion_imagenes(IdSolicitudActualizacion,IdCamion,TipoC,Imagen,Tipo) values(".$id_solicitud_actualizacion.",".$value_i[idcamion].",'".$id_tipo_imagen."','".str_replace('\\','',$value_i[imagen])."','0')";
+
+                    }
                     $this->_db->consultar($x_imagen);
                     if ($this->_db->affected() > 0) {
                         $cantidad_imagenes = $cantidad_imagenes + $this->_db->affected();
@@ -954,6 +1090,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
         $datos_salida["cu_real"] = $this->eliminaCaracteresEspecialesN($datos["cu_real"]);
         $datos_salida["cu_pago"] = $this->eliminaCaracteresEspecialesN($datos["cu_pago"]);
         $datos_salida["id_camion"] = $datos["id_camion"];
+        $datos_salida["economico"] = $datos["economico"];
         
         return $datos_salida;
     }
