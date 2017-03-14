@@ -607,6 +607,8 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
             $arreglo_id_viaje_code = array();
             $idempresa = 'NULL';
             $idsindicato = 'NULL';
+            $i_deductiva = 0;
+            $deductivas = array();
             if ($viajes_a_registrar > 0) {
                 foreach ($data_viajes as $key => $value) {
                     
@@ -627,12 +629,13 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                         #obtener sindicato y empresa del camion
                         $idempresa = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdEmpresa","IdCamion",$value[IdCamion]);
                         $idsindicato = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdSindicato","IdCamion",$value[IdCamion]);
+                        $code_random = (array_key_exists("CodeRandom", $value))?"'".$value["CodeRandom"]."'":"'NA'";
                         if(!($idempresa>0)){$idempresa = 'NULL';}
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
                         #insertar viaje
                         $x = "INSERT INTO 
                         $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
-                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato) 
+                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom) 
                     VALUES(
                            0,
                            NOW(), 
@@ -651,7 +654,7 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                            0, 
                            '$value[Code]', 
                            '$value[uidTAG]',
-                                               '$value[Imagen]', '$value[IMEI]', '$version', '$value[CodeImagen]',$idempresa,$idsindicato);";
+                                               '$value[Imagen]', '$value[IMEI]', '$version', '$value[CodeImagen]',$idempresa,$idsindicato,$code_random);";
 
                         $this->_db->consultar($x);
                         $x_error="";
@@ -659,6 +662,14 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                             $afv = $afv + $this->_db->affected();
                             $id_viaje_neto = $this->_db->retId();
                             $arreglo_id_viaje_code[$value[Code]] = $id_viaje_neto;
+                            #GENERA DEDUCTIVAS
+                            if(array_key_exists("Deductiva", $value) ){
+                                if($value["Deductiva"]>0){
+                                    
+                                    $deductivas[$id_viaje_neto] = $value["Deductiva"];
+                                    //echo "ENTRAAAAA DEDUCTIVA";
+                                }
+                            }
                             
                         }else{
                             $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $x)."','$value[Creo]' )";
@@ -692,7 +703,20 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                     $registros_coordenadas++;
                 }
             }
-            
+            #PROCESA DEDUCTIVAS
+             foreach ($deductivas as $key_d => $value_d) {
+                 $xd = "INSERT INTO $_REQUEST[bd].deductivas_viajes_netos 
+                  (id_viaje_neto, deductiva, id_registro) values
+                  ($key_d,$value_d,$usuario_creo)";
+                    $this->_db->consultar($xd);
+                if ($this->_db->affected() > 0) {
+                            
+                }else{
+                    $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $xd)."','$value[Creo]' )";
+                    $this->_db->consultar($x_error);
+                    
+                }
+             }
             #INSERTAR IMAGEN
             $json_imagenes = $_REQUEST[Imagenes];
             $imagenes = json_decode(utf8_encode($json_imagenes), TRUE); 
