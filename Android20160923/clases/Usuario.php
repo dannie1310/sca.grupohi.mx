@@ -148,6 +148,16 @@ SELECT
                             "id"=>$row_tipos_imagenes[id],
                             "descripcion"=>utf8_encode($row_tipos_imagenes[descripcion]),
                             );
+                
+                //MOTIVOS DEDUCTIVA
+                $sql_d="SELECT id, motivo FROM deductivas_motivos where estatus=1;";
+                $result_d=$this->_database_sca->consultar($sql_d);
+                
+                while($row_d=$this->_database_sca->fetch($result_d)) 
+                        $array_d[]=array(
+                            "id"=>$row_d[id],
+                            "motivo"=>utf8_encode($row_d[motivo])
+                            );
 
                             
                             
@@ -166,7 +176,8 @@ SELECT
                      "Rutas"=>$array_rutas,
                      "Materiales"=>$array_materiales,
                      "TiposImagenes"=>$array_tipos_imagenes,
-                     "Tags"=>$array_tags
+                     "Tags"=>$array_tags,
+                    "MotivosDeductiva"=>$array_d,
                  );
 
 
@@ -665,9 +676,8 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
                             #GENERA DEDUCTIVAS
                             if(array_key_exists("Deductiva", $value) ){
                                 if($value["Deductiva"]>0){
-                                    
-                                    $deductivas[$id_viaje_neto] = $value["Deductiva"];
-                                    //echo "ENTRAAAAA DEDUCTIVA";
+                                    $deductivas[$id_viaje_neto]["Deductiva"] = $value["Deductiva"];
+                                    $deductivas[$id_viaje_neto]["IdMotivoDeductiva"] = $value["IdMotivoDeductiva"];
                                 }
                             }
                             
@@ -706,8 +716,8 @@ from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
             #PROCESA DEDUCTIVAS
              foreach ($deductivas as $key_d => $value_d) {
                  $xd = "INSERT INTO $_REQUEST[bd].deductivas_viajes_netos 
-                  (id_viaje_neto, deductiva, id_registro) values
-                  ($key_d,$value_d,$usuario_creo)";
+                  (id_viaje_neto, id_motivo, deductiva, id_registro) values
+                  ($key_d,".$value_d["IdMotivoDeductiva"].",".$value_d["Deductiva"].",$usuario_creo)";
                     $this->_db->consultar($xd);
                 if ($this->_db->affected() > 0) {
                             
