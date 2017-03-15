@@ -219,8 +219,7 @@ SELECT
                $this->_database_sca = SCA::getConexion();
                 
                 //CAMIONES
-                $sql_camiones="SELECT idcamion, Placas, M.descripcion as marca, Modelo, Ancho, largo, Alto, economico, (select count(*)
-from viajesnetos where idcamion = C.idcamion) as numero_viajes FROM camiones C
+                $sql_camiones="SELECT idcamion, Placas, M.descripcion as marca, Modelo, Ancho, largo, Alto, economico, 0 as numero_viajes FROM camiones C
                                 LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
                 $result_camiones=$this->_database_sca->consultar($sql_camiones);
                 
