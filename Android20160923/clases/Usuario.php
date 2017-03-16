@@ -26,6 +26,16 @@ class Usuario {
             
             if ($row_s = $this->_db ->fetch($result_s)) {
                 $_SESSION["databasesca"]=$row_s[base_datos];
+                
+                //CONFIGURACION
+                $sql_c="select validacion_placas
+                from sca_configuracion.configuracion
+                where idproyecto = ".$row_s["id_proyecto"]."";
+                $result_c = $this->_db ->consultar($sql_c);
+                $row_c = $this->_db ->fetch($result_c);
+                
+                $array_configuracion = array("ValidacionPlacas"=>($row_c["validacion_placas"]==1)?$row_c["validacion_placas"]:"0");
+                
 
                 //CAMIONES
                 $this->_database_sca = SCA::getConexion();
@@ -178,6 +188,7 @@ SELECT
                      "TiposImagenes"=>$array_tipos_imagenes,
                      "Tags"=>$array_tags,
                     "MotivosDeductiva"=>$array_d,
+                    "Configuracion"=>$array_configuracion,
                  );
 
 
