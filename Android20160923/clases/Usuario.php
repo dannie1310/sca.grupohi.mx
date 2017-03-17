@@ -642,7 +642,7 @@ SELECT
 
                     $result_valida = $this->_db->consultar($x_v);
                     $row_valida = $this->_db->fetch($result_valida);
-                    if($row_valida["existe"] == 1){
+                    if($row_valida["existe"] > 0){
                     //if(0==1){
                         $previos = $previos + 1;
                     }
