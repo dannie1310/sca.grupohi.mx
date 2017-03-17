@@ -331,7 +331,9 @@ $final = $_REQUEST["final"];
                                         tm.PrimerKM*1*c.CubicacionParaPago as ImportePK_M,
                                         tm.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago as ImporteKS_M,
                                         tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago as ImporteKA_M,
-                                        ((tm.PrimerKM*1*c.CubicacionParaPago)+(tm.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago)+(tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)) as ImporteTotal_M
+                                        ((tm.PrimerKM*1*c.CubicacionParaPago)+(tm.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago)+(tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)) as ImporteTotal_M,
+                                        deductiva,
+                                        dedu.id as idDeductiva
                                     FROM
                                         viajesnetos as v 
                                         join camiones as c using(IdCamion) 
@@ -344,6 +346,7 @@ $final = $_REQUEST["final"];
                                         left join cronometrias as cn on (cn.IdRuta=r.IdRuta AND cn.Estatus=1)
                                         left join sindicatos as sin on (c.IdSindicato = sin.IdSindicato)
                                         left join empresas as emp on (c.IdEmpresa = emp.IdEmpresa)
+                                        left join deductivas_viajes_netos AS dedu ON dedu.id_viaje_neto = v.idViajeNeto and  dedu.estatus = 1
                                     WHERE 
                                         (v.Estatus = 0 OR v.Estatus = 10 OR v.Estatus = 20 ) AND
                                         v.IdProyecto = ".$_SESSION['Proyecto']." AND
@@ -427,9 +430,20 @@ $final = $_REQUEST["final"];
                 </td>
 <!--    cubicación         -->
                 <td align="center" class="detalle">
-                    <?php //echo $v_viajes["cubicacion"] ?>
-                     <input name="cubicacion_O<?php echo $i_general; ?>" type="hidden"  id="cubicacion_O<?php echo $i_general; ?>" style="width:25px" value="<?php echo $v_viajes['cubicacion'] ?>" readonly="readonly"/>
-                    <input name="cubicacion<?php echo $i_general; ?>" type="text" class="cubicacion detalle" id="cubicacion<?php echo $i_general; ?>" style="width:25px" value="<?php echo $v_viajes['cubicacion'] ?>" contador="<?php echo $i_general; ?>" readonly="readonly"/>
+                 
+                     <input name="cubicacion_O<?php echo $i_general; ?>" type="hidden"  id="cubicacion_O<?php echo $i_general; ?>" style="width:25px;" value="<?php echo $v_viajes['cubicacion'] ?>" readonly="readonly"/>
+
+                     <input name="idDeductiva<?php echo $i_general; ?>" type="hidden"  id="idDeductiva<?php echo $i_general; ?>" style="width:25px;" value="<?php echo $v_viajes['idDeductiva'] ?>" readonly="readonly"/>
+
+                     <input name="deductiva<?php echo $i_general; ?>" type="hidden"  id="deductiva<?php echo $i_general; ?>" style="width:25px;" value="<?php echo $v_viajes['deductiva'] ?>" readonly="readonly"/>
+
+                    <input name="cubicacion<?php echo $i_general; ?>" type="text" class="cubicacion detalle" id="cubicacion<?php echo $i_general; ?>" style="width:25px" value="<?php echo $v_viajes['cubicacion'] -  $v_viajes["deductiva"]; ?>" contador="<?php echo $i_general; ?>" readonly="readonly"/>
+                   <?php
+                        if(isset($v_viajes["deductiva"])){
+                            echo '<script>$("#cubicacion'.$i_general.'").css("color","red");</script>';
+
+                        }
+                     ?>
                 </td>
 <!--    Origen          -->
                
@@ -445,6 +459,7 @@ $final = $_REQUEST["final"];
 				?></td>
 <!--    Sindicato          -->
                 <td align="center">
+                    <input name="sindicato_O<?php echo $i_general; ?>" type="hidden"  id="sindicato_O<?php echo $i_general; ?>" style="width:25px;" value="<?php echo $v_viajes['IdSindicato'] ?>" readonly="readonly"/>
                     <?php 
                         $lista_sindicatos=$l->regresaSelect_evt("sindicato".$i_general,"IdSindicato, Descripcion, NombreCorto","sindicatos","Estatus = 1","IdSindicato","Descripcion","asc","","1","0","1","",$v_viajes["IdSindicato"],"r");  
                         echo $lista_sindicatos;
@@ -452,6 +467,7 @@ $final = $_REQUEST["final"];
                 </td>
 <!--    Empresa          -->
                 <td align="center">
+                    <input name="empresa_O<?php echo $i_general; ?>" type="hidden"  id="empresa_O<?php echo $i_general; ?>" style="width:25px;" value="<?php echo $v_viajes['IdEmpresa'] ?>" readonly="readonly"/>
                     <?php 
                         $lista_empresas=$l->regresaSelect_evt("empresa".$i_general,"IdEmpresa, razonSocial, RFC","empresas","Estatus = 1","IdEmpresa","razonSocial","asc","","1","0","1","",$v_viajes["IdEmpresa"],"r");  
                         echo $lista_empresas;
@@ -621,8 +637,10 @@ $final = $_REQUEST["final"];
                             horas_efectivas=(document.getElementById('hef'+arreglo[o]).value=='')?0.00:document.getElementById('hef'+arreglo[o]).value;
                             maquinaria=(document.getElementById('cr'+arreglo[o]).value=='A99')?0:document.getElementById('cr'+arreglo[o]).value;
                             origen=(document.getElementById('origen'+arreglo[o]).value=='A99')?0:document.getElementById('origen'+arreglo[o]).value;
-                            sindicato=(document.getElementById('sindicato'+arreglo[o]).value=='A99')?0:document.getElementById('sindicato'+arreglo[o]).value;
+                            sindicato=(document.getElementById('sindicato'+arreglo[o]).value=='A99')?'NULL':document.getElementById('sindicato'+arreglo[o]).value;
+                            sindicatoOriginal=(document.getElementById('sindicato_O'+arreglo[o]).value=='')?'NULL':document.getElementById('sindicato_O'+arreglo[o]).value;
                             empresa=(document.getElementById('empresa'+arreglo[o]).value=='A99')?'NULL':document.getElementById('empresa'+arreglo[o]).value;
+                            empresaOriginal=(document.getElementById('empresa_O'+arreglo[o]).value=='NULL')?0:document.getElementById('empresa_O'+arreglo[o]).value;
                             id_viaje_neto=document.getElementById('idviaje'+arreglo[o]).value;
                             tarifa=document.getElementById('tarifa'+arreglo[o]).value;
                             fda=document.getElementById('fda'+arreglo[o]).value;
@@ -630,11 +648,25 @@ $final = $_REQUEST["final"];
                             bruto=document.getElementById('bruto'+arreglo[o]).value;
                             cubiNueva=document.getElementById('cubicacion'+arreglo[o]).value;
                             cubiOriginal=document.getElementById('cubicacion_O'+arreglo[o]).value;
-
+                            deductiva=document.getElementById('deductiva'+arreglo[o]).value;
+                            idDeductiva=document.getElementById('idDeductiva'+arreglo[o]).value;
+                            if(!idDeductiva){
+                                idDeductiva ='null';
+                            }
+                            estausdeductiva = 0;
+                            if(deductiva){
+                                cubicadeduc = cubiOriginal - deductiva
+                                estausdeductiva = 1;
+                                if(cubiNueva != cubicadeduc){
+                                    estausdeductiva = -1;
+                                }
+                            }
             }catch(e){accion='n'}
 
             if(accion!='n')
-                xajax_registra_viaje(arreglo[o],accion,id_viaje_neto,maquinaria,horas_efectivas,origen,sindicato,empresa,tarifa,fda,tara,bruto,cubiNueva,cubiOriginal);
+                {
+                    xajax_registra_viaje(arreglo[o],accion,id_viaje_neto,maquinaria,horas_efectivas,origen,sindicatoOriginal,sindicato,empresaOriginal,empresa,tarifa,fda,tara,bruto,cubiNueva,cubiOriginal,idDeductiva,estausdeductiva);
+                }
             }
 
     }
