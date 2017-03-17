@@ -21,7 +21,7 @@ switch ($accion) {
 		break;
 
 	default:
-		 echo 'Error Luis';
+		 echo 'Error';
 		break;
 }
 function CancelarDeduccion($idDeduccion, $usuario){
@@ -45,16 +45,59 @@ function AprobarDeduccion($idDeduccion, $usuario){
 	';
 	$link->consultar($update);
 
+
+	$query = "SELECT v.IdViaje, dedu.deductiva, v.CubicacionCamion, v.IdViajeNeto
+		FROM viajes AS v
+		INNER JOIN deductivas_viajes_netos  AS dedu ON v.IdViajeNeto = dedu.id_viaje_neto
+		WHERE id = ".$idDeduccion;
+
+	$r=$link->consultar($query);
+	while($v=mysql_fetch_array($r)){
+		$IdViaje = $v['IdViaje'];
+		$deductiva = $v['deductiva'];
+		$CubicacionCamion = $v['CubicacionCamion'];
+		$IdViajeNeto = $v['IdViajeNeto'];
+	}
+
+	if(isset($IdViaje)){
+		cambiarViaje($IdViaje,$deductiva,$CubicacionCamion,$IdViajeNeto,$idDeduccion);
+	}
 	echo '<script>
 			alert("Aprobado Correctamente!!");	
 		</script>';
 }
 
+function cambiarViaje($IdViaje,$deductiva,$Cubicacion,$IdViajeNeto,$idDeduccion){
+	$link=SCA::getConexion();
+
+	$insert = "
+		INSERT INTO Cambio_Cubicacion (IdViajeNeto,FechaRegistro,VolumenViejo,VolumenNuevo,IdDeductiva) 
+		VALUES (".$IdViajeNeto.", now(), ".$Cubicacion.", ".($Cubicacion - $deductiva).",".$idDeduccion.");  ";
+	//echo $insert;
+	$link->consultar($insert);
+
+	$update = "	UPDATE viajes SET CubicacionCamion=".($Cubicacion - $deductiva)." WHERE IdViajeNeto =" .$IdViajeNeto.";";
+	//echo $update;
+	$link->consultar($update);
+
+	$call = "	call `calcular_Volumen_Importe` (" .$IdViajeNeto.");	";	
+	//echo $call;
+	$link->consultar($call);
+
+	$update = 'UPDATE deductivas_viajes_netos SET estatus=3
+	WHERE id='.$idDeduccion.';
+	';
+	$link->consultar($update);
+
+
+}
+
+
 
 function VerLista($fechaini,$fechafin,$estatus){
 	$link=SCA::getConexion();
 	if($estatus == -3){
-		$estatus1 = ' LIMIT 10';
+		$estatus1 = ' ORDER BY v.FechaLlegada,d.fecha_hora_registro  DESC  LIMIT 10';
 	}
 	else{
 		$estatus1 = ' WHERE  d.estatus = ' .$estatus . ' AND DATE(v.FechaLlegada) BETWEEN "'.fechasql($fechaini).'" and "'.fechasql($fechafin).'" ';
@@ -74,14 +117,24 @@ function VerLista($fechaini,$fechafin,$estatus){
 		LEFT JOIN  deductivas_motivos AS demo ON demo.id = d.id_motivo 
 		".$estatus1."
 	";
+	
 	$r=$link->consultar($query);
 	while($v=mysql_fetch_array($r)){
 		 	switch ($v['estatus']) {
+		 		case '-2':
+		 			$desc = 'No aplicado';
+		 			break;
 		 		case '-1':
 		 			$desc = 'Cancelado';
 		 			break;
 		 		case '1':
 		 			$desc = 'Aprobado';
+		 			break;
+		 		case '2':
+		 			$desc = 'Aplicada';
+		 			break;
+		 		case '3':
+		 			$desc = 'Aplicada al viaje';
 		 			break;
 		 		case '0':
 		 			$desc = 'Pendiente';
@@ -103,8 +156,8 @@ function VerLista($fechaini,$fechafin,$estatus){
 			'newcubicacion' 		=> $v['newcubicacion'],
 			'FechaLlegada' 			=> $v['FechaLlegada'],
 			'HoraLlegada' 			=> $v['HoraLlegada'],
-			'Origen' 				=> $v['Origen'],
-			'Sindicato' 			=> $v['Sindicato'],
+			'Origen' 				=> utf8_decode($v['Origen']),
+			'Sindicato' 			=> utf8_decode($v['Sindicato']),
 			'Empresa'				=> $v['Empresa'],
 			'estatus'				=> $desc,
 			'motivo'				=> utf8_decode($v['motivo']),

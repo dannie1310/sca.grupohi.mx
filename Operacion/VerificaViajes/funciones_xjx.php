@@ -1,11 +1,11 @@
 <?php
-function registra_viaje($i,$Accion,$IdViaje,$IdMaquinaria,$Horas,$IdOrigen,$IdSindicato,$IdEmpresa,$TipoTarifa,$TipoFda,$Tara=0.00,$Bruto=0.00,$CubiNueva,$CubiVieja)
+function registra_viaje($i,$Accion,$IdViaje,$IdMaquinaria,$Horas,$IdOrigen,$IdSindicatoOri,$IdSindicato,$IdEmpresaOri,$IdEmpresa,$TipoTarifa,$TipoFda,$Tara=0.00,$Bruto=0.00,$CubiNueva,$CubiVieja,$idDeductiva,$estausdeductiva)
 	{
 		$respuesta=new xajaxResponse();
 		//$l = SCA::getConexion();
 		$l = $GLOBALS["l"];
-		$SQLs = "call `sca_sp_registra_viaje_fda` (".$Accion.",".$IdViaje.",".$IdMaquinaria.",".$Horas.",".$IdOrigen.",".$IdSindicato.",".$IdEmpresa.",".$_SESSION["IdUsuarioAc"].",'".$TipoTarifa."','".$TipoFda."','".$Tara."','".$Bruto."','".$CubiNueva."','".$CubiVieja."',@a);";
-	//	$respuesta->alert($SQLs);
+		$SQLs = "call `sca_sp_registra_viaje_fda` (".$Accion.",".$IdViaje.",".$IdMaquinaria.",".$Horas.",".$IdOrigen.",".$IdSindicatoOri.",".$IdSindicato.",".$IdEmpresaOri.",".$IdEmpresa.",".$_SESSION["IdUsuarioAc"].",'".$TipoTarifa."','".$TipoFda."','".$Tara."','".$Bruto."','".$CubiNueva."','".$CubiVieja."',".$idDeductiva.",".$estausdeductiva.",@a);";
+		//$respuesta->alert($SQLs);
 		
 		$r=$l->consultar($SQLs);
 		$r2=$l->consultar("select @a");

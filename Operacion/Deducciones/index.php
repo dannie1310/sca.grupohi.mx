@@ -82,10 +82,13 @@ require_once("../../inc/php/conexiones/SCA.php");
 				</td>
 				<td>
 					<select name="estatus" id="estatus">
-						<option value=-2>Seleccione...</option>
+						<option value=-4>Seleccione...</option>
 						<option value=0>Pendientes</option>
-						<option value=1>Autorizadas</option>
+						<option value=1>Aprobados</option>
+						<option value=2>Aplicados</option>
+						<option value=3>Aplicados al viaje</option>
 						<option value=-1>Cancelados</option>
+						<option value=-2>No aplicados</option>
 					</select>
 				</td>
 				<td></td>
@@ -107,7 +110,7 @@ require_once("../../inc/php/conexiones/SCA.php");
 			fechaini = $('#FechaInicial').val();
 			fechafin = $('#FechaFinal').val();
 			estatus = $('#estatus').val();
-			if(estatus > -2){
+			if(estatus > -4){
 				if(!estatus){estatus = -3}
 				$.post("consultas.php",{accion: "VerLista",fechaini,fechafin,estatus},function(data){
 					$("#ListaDeduccion").html(data);
@@ -118,7 +121,7 @@ require_once("../../inc/php/conexiones/SCA.php");
 			}
 		});
 		$('#estatus').val(-3).change();
-		$('#estatus').val(-2);
+		$('#estatus').val(-4);
 	});
 
 	$('#ListaDeduccion').on('click',"#aprobar",function(){
