@@ -467,7 +467,7 @@ $final = $_REQUEST["final"];
                 </td>
 <!--    Empresa          -->
                 <td align="center">
-                    <input name="empresa_O<?php echo $i_general; ?>" type="hidden"  id="empresa_O<?php echo $i_general; ?>" style="width:25px;" value="<?php echo $v_viajes['IdEmpresa'] ?>" readonly="readonly"/>
+                    <input name="empresa_O<?php echo $i_general; ?>" type="text"  id="empresa_O<?php echo $i_general; ?>" style="width:25px;" value="<?php echo $v_viajes['IdEmpresa'] ?>" readonly="readonly"/>
                     <?php 
                         $lista_empresas=$l->regresaSelect_evt("empresa".$i_general,"IdEmpresa, razonSocial, RFC","empresas","Estatus = 1","IdEmpresa","razonSocial","asc","","1","0","1","",$v_viajes["IdEmpresa"],"r");  
                         echo $lista_empresas;
@@ -640,7 +640,7 @@ $final = $_REQUEST["final"];
                             sindicato=(document.getElementById('sindicato'+arreglo[o]).value=='A99')?'NULL':document.getElementById('sindicato'+arreglo[o]).value;
                             sindicatoOriginal=(document.getElementById('sindicato_O'+arreglo[o]).value=='')?'NULL':document.getElementById('sindicato_O'+arreglo[o]).value;
                             empresa=(document.getElementById('empresa'+arreglo[o]).value=='A99')?'NULL':document.getElementById('empresa'+arreglo[o]).value;
-                            empresaOriginal=(document.getElementById('empresa_O'+arreglo[o]).value=='NULL')?0:document.getElementById('empresa_O'+arreglo[o]).value;
+                            empresaOriginal=(document.getElementById('empresa_O'+arreglo[o]).value=='')?'NULL':document.getElementById('empresa_O'+arreglo[o]).value;
                             id_viaje_neto=document.getElementById('idviaje'+arreglo[o]).value;
                             tarifa=document.getElementById('tarifa'+arreglo[o]).value;
                             fda=document.getElementById('fda'+arreglo[o]).value;

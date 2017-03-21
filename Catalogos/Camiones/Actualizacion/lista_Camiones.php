@@ -46,7 +46,7 @@
 				    ca.CubicacionParaPago, 
 				    DATE(ca.fechaHoraRegistro) as FechaRegistro,
 				    CASE(ca.Estatus)
-				    WHEN 0 THEN 'INACTIVO'
+				    WHEN 0 THEN 'PENDIENTE'
 				    WHEN -1 THEN 'CANCELADO'
 				    WHEN 1 THEN 'ACTUALIZADO'
 				    END  AS Estatus			    
