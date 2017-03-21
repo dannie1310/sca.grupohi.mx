@@ -467,7 +467,7 @@ $final = $_REQUEST["final"];
                 </td>
 <!--    Empresa          -->
                 <td align="center">
-                    <input name="empresa_O<?php echo $i_general; ?>" type="text"  id="empresa_O<?php echo $i_general; ?>" style="width:25px;" value="<?php echo $v_viajes['IdEmpresa'] ?>" readonly="readonly"/>
+                    <input name="empresa_O<?php echo $i_general; ?>" type="hidden"  id="empresa_O<?php echo $i_general; ?>" style="width:25px;" value="<?php echo $v_viajes['IdEmpresa'] ?>" readonly="readonly"/>
                     <?php 
                         $lista_empresas=$l->regresaSelect_evt("empresa".$i_general,"IdEmpresa, razonSocial, RFC","empresas","Estatus = 1","IdEmpresa","razonSocial","asc","","1","0","1","",$v_viajes["IdEmpresa"],"r");  
                         echo $lista_empresas;
