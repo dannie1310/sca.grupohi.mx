@@ -640,7 +640,7 @@ $final = $_REQUEST["final"];
                             sindicato=(document.getElementById('sindicato'+arreglo[o]).value=='A99')?'NULL':document.getElementById('sindicato'+arreglo[o]).value;
                             sindicatoOriginal=(document.getElementById('sindicato_O'+arreglo[o]).value=='')?'NULL':document.getElementById('sindicato_O'+arreglo[o]).value;
                             empresa=(document.getElementById('empresa'+arreglo[o]).value=='A99')?'NULL':document.getElementById('empresa'+arreglo[o]).value;
-                            empresaOriginal=(document.getElementById('empresa_O'+arreglo[o]).value=='NULL')?0:document.getElementById('empresa_O'+arreglo[o]).value;
+                            empresaOriginal=(document.getElementById('empresa_O'+arreglo[o]).value=='')?'NULL':document.getElementById('empresa_O'+arreglo[o]).value;
                             id_viaje_neto=document.getElementById('idviaje'+arreglo[o]).value;
                             tarifa=document.getElementById('tarifa'+arreglo[o]).value;
                             fda=document.getElementById('fda'+arreglo[o]).value;
