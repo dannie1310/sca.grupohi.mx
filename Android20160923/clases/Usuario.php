@@ -1036,7 +1036,7 @@ SELECT
                     echo "{\"error\":\"No ha mandado ningún registro para sincronizar.\"}";
                     }
             }else{
-                echo "{\"error\":\"No tiene privilegios para actualizar el catálogo de camiones.\"}";
+                echo utf8_encode("{\"error\":\"No tiene privilegios para actualizar el catálogo de camiones.\"}");
             }
         }
         ELSE{
