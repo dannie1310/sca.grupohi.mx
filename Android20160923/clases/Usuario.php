@@ -1033,14 +1033,14 @@ SELECT
                             echo "{\"error_ambos\":\"Actualizacion de Camiones y Registro de Solicitudes Incorrecto.\"}";
                     
                 }else{
-                    echo "{\"error_sin_datos\":\"No ha mandado ningún registro para sincronizar.\"}";
+                    echo "{\"error\":\"No ha mandado ningún registro para sincronizar.\"}";
                     }
             }else{
-                echo "{\"error_sin_privilegios\":\"No tiene privilegios para actualizar el catálogo de camiones.\"}";
+                echo "{\"error\":\"No tiene privilegios para actualizar el catálogo de camiones.\"}";
             }
         }
         ELSE{
-            echo "{\"error_datos_sesion\":\"Datos de inicio de sesión no validos.\"}";
+            echo "{\"error\":\"Datos de inicio de sesión no validos.\"}";
         }
     }
     
