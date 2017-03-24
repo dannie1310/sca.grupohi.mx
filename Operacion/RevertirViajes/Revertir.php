@@ -15,7 +15,7 @@ $año=$partes[2];
 $inicial=$año."-".$mes."-".$dia;
         
         
-$partes=explode("-", $final);
+$partes=explode("-", $final);  
 $dia=$partes[0];
 $mes=$partes[1];
 $año=$partes[2];
