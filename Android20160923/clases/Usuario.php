@@ -650,16 +650,25 @@ SELECT
                         #obtener sindicato y empresa del camion
                         $idempresa = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdEmpresa","IdCamion",$value[IdCamion]);
                         $idsindicato = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdSindicato","IdCamion",$value[IdCamion]);
+                        $cubicacion_camion_tel = (array_key_exists("CubicacionCamion", $value))?"'".$value["CubicacionCamion"]."'":"'0'";
+                        $cubicacion_camion_cam = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","CubicacionParaPago","IdCamion",$value[IdCamion]);
+                        
                         $code_random = (array_key_exists("CodeRandom", $value))?"'".$value["CodeRandom"]."'":"'NA'";
                         $creo_primer_toque = (array_key_exists("CreoPrimerToque", $value))?$value["CreoPrimerToque"]:0;
+                        
                         if(!($idempresa>0)){$idempresa = 'NULL';}
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
                         if(!($creo_primer_toque>0)){$creo_primer_toque = 'NULL';}
+                        if($cubicacion_camion_tel == 0){
+                            $cubicacion_camion = $cubicacion_camion_cam;
+                        }else{
+                            $cubicacion_camion = $cubicacion_camion_tel;
+                        }
                         #insertar viaje
                         $x = "INSERT INTO 
                         $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
                             FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom,
-                            CreoPrimerToque) 
+                            CreoPrimerToque, CubicacionCamion)
                     VALUES(
                            0,
                            NOW(), 
@@ -678,7 +687,7 @@ SELECT
                            0, 
                            '$value[Code]', 
                            '$value[uidTAG]',
-                                               '$value[Imagen]', '$value[IMEI]', '$version', '$value[CodeImagen]',$idempresa,$idsindicato,$code_random,$creo_primer_toque);";
+                                               '$value[Imagen]', '$value[IMEI]', '$version', '$value[CodeImagen]',$idempresa,$idsindicato,$code_random,$creo_primer_toque,$cubicacion_camion);";
 
                         $this->_db->consultar($x);
                         $x_error="";
