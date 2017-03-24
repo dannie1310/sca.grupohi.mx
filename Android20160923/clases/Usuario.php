@@ -651,12 +651,15 @@ SELECT
                         $idempresa = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdEmpresa","IdCamion",$value[IdCamion]);
                         $idsindicato = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdSindicato","IdCamion",$value[IdCamion]);
                         $code_random = (array_key_exists("CodeRandom", $value))?"'".$value["CodeRandom"]."'":"'NA'";
+                        $creo_primer_toque = (array_key_exists("CreoPrimerToque", $value))?$value["CreoPrimerToque"]:0;
                         if(!($idempresa>0)){$idempresa = 'NULL';}
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
+                        if(!($creo_primer_toque>0)){$creo_primer_toque = 'NULL';}
                         #insertar viaje
                         $x = "INSERT INTO 
                         $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
-                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom) 
+                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom,
+                            CreoPrimerToque) 
                     VALUES(
                            0,
                            NOW(), 
@@ -675,7 +678,7 @@ SELECT
                            0, 
                            '$value[Code]', 
                            '$value[uidTAG]',
-                                               '$value[Imagen]', '$value[IMEI]', '$version', '$value[CodeImagen]',$idempresa,$idsindicato,$code_random);";
+                                               '$value[Imagen]', '$value[IMEI]', '$version', '$value[CodeImagen]',$idempresa,$idsindicato,$code_random,$creo_primer_toque);";
 
                         $this->_db->consultar($x);
                         $x_error="";
