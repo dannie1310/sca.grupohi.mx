@@ -130,7 +130,9 @@ if($hay>0)
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Placas Caja</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Sindicato Camion</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Sindicato Viaje</font></div></td>
-        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Empresa</font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Empresa Viaje</font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Sindicato Conciliado</font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Empresa Conciliado</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Fecha Llegada</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Hora Llegada</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Turno</font></div></td>
@@ -178,6 +180,8 @@ if($hay>0)
       sin.Descripcion as Sindicato,
       sinca.Descripcion as SindicatoCamion,
       emp.razonSocial as Empresa,
+      sincon.Descripcion as SindicatoConci,
+      empcon.razonSocial as Empresaconci,
       TIMEDIFF( (CONCAT(v.FechaLlegada,' ',v.HoraLlegada)),(CONCAT(v.FechaSalida,' ',v.HoraSalida)) ) as tiempo_mostrar,
       ROUND((HOUR(TIMEDIFF(v.HoraLlegada,v.HoraSalida))*60)+(MINUTE(TIMEDIFF(v.HoraLlegada,v.HoraSalida)))+(SECOND(TIMEDIFF(v.HoraLlegada,v.HoraSalida))/60),2) AS tiempo,
       concat('R-',r.IdRuta) as ruta,
@@ -210,6 +214,9 @@ if($hay>0)
       left join empresas as emp on emp.IdEmpresa = vi.IdEmpresa
       LEFT JOIN conciliacion_detalle AS conde ON conde.idviaje =  vi.IdViaje
       LEFT JOIN conciliacion as conci ON conci.idconciliacion = conde.idconciliacion 
+      left join sindicatos as sincon on sincon.IdSindicato = conci.IdSindicato
+      left join empresas as empcon on empcon.IdEmpresa = conci.IdEmpresa
+
       WHERE
           v.Estatus " . $estatus  . "
       AND v.IdProyecto = ".$IdProyecto."
@@ -257,6 +264,8 @@ if($hay>0)
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[SindicatoCamion]; ?></font></div></td>
         <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Sindicato]; ?></font></div></td>
         <td width="150"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Empresa]; ?></font></div></td>
+        <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[SindicatoConci]; ?></font></div></td>
+        <td width="150"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Empresaconci]; ?></font></div></td>
         <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Fecha]; ?></font></div></td>
         <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Hora]; ?></font></div></td>
         <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $turno; ?></font></div></td>
