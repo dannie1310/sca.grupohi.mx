@@ -73,16 +73,22 @@ $estatus = $_POST['estatus'];
 				echo  "<td>" . $row['newcubicacion'] . "</td>";
 				echo  "<td>" . $row['estatus'] . "</td>";
 				echo  "<td>" . $row['motivo'] . "</td>";
-			if ($row['estatusnum'] == 0 ) {
-				echo  "<td class='accion'> <img src='../../Imgs/Check.gif' id='aprobar'> </td>";
-			
-				echo  "<td class='accion'> <img src='../../Imgs/Cross.gif' id='cancelar'> </td>";
+			if($row['newcubicacion'] > 0){
+				if ($row['estatusnum'] == 0 ) {
+					echo  "<td class='accion'> <img src='../../Imgs/Check.gif' id='aprobar'> </td>";
+				
+					echo  "<td class='accion'> <img src='../../Imgs/Cross.gif' id='cancelar'> </td>";
+				}
+				else{
+					echo  "<td class='accion'> N/A </td>";
+					echo  "<td class='accion'> N/A </td>";
+				}
 			}
 			else{
-				echo  "<td class='accion'> N/A </td>";
-				echo  "<td class='accion'> N/A </td>";
+					echo  "<td class='accion'> Error de Cubicaci&oacute;n Nueva</td>";
+					echo  "<td class='accion'> <img src='../../Imgs/Cross.gif' id='cancelar'> </td>";
 			}
-
+			
 			echo "</tr>";	
 		}
 
