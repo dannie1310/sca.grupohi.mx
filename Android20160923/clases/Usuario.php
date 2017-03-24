@@ -26,6 +26,14 @@ class Usuario {
             
             if ($row_s = $this->_db ->fetch($result_s)) {
                 $_SESSION["databasesca"]=$row_s[base_datos];
+                $sql_perfil = "SELECT role_user.user_id
+                FROM sca_configuracion.role_user role_user
+               WHERE     (role_user.user_id = ".$row[IdUsuario].")
+                     AND (role_user.role_id = 7)
+                     AND (role_user.id_proyecto = ".$row_s[id_proyecto].")";
+                $result_perfil = $this->_db ->consultar($sql_perfil);
+                
+                if($row_perfil = $this->_db ->fetch($result_perfil)){
                 
                 //CHECADORES
                 
@@ -213,7 +221,10 @@ SELECT
 
 
                  //print_r($arraydata);                 
-                 echo json_encode($arraydata);                                                                                                                                                           
+                 echo json_encode($arraydata);     
+            }else{
+                echo "{\"error\":\"El usuario no tiene perfil de CHECADOR favor de solicitarlo.\"}";
+            }
             } else {
 
                 echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningun proyecto.\"}";
