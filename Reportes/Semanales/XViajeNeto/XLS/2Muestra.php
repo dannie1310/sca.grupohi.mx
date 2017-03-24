@@ -204,10 +204,10 @@ if($hay>0)
       join materiales as m using(IdMaterial) 
       left join tarifas as tm on(tm.IdMaterial=m.IdMaterial AND tm.Estatus=1) 
       left join rutas as r on(v.IdOrigen=r.IdOrigen AND v.IdTiro=r.IdTiro AND r.Estatus=1) 
-      left join sindicatos as sin on sin.IdSindicato = v.IdSindicato
       left join sindicatos as sinca on sinca.IdSindicato = c.IdSindicato
-      left join empresas as emp on emp.IdEmpresa = v.IdEmpresa
       LEFT JOIN viajes AS vi ON vi.IdViajeNeto = v.IdViajeNeto
+      left join sindicatos as sin on sin.IdSindicato = vi.IdSindicato
+      left join empresas as emp on emp.IdEmpresa = vi.IdEmpresa
       LEFT JOIN conciliacion_detalle AS conde ON conde.idviaje =  vi.IdViaje
       LEFT JOIN conciliacion as conci ON conci.idconciliacion = conde.idconciliacion 
       WHERE
