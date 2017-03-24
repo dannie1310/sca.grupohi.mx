@@ -5,28 +5,22 @@ include("../../Clases/Funciones/Configuracion.php");
 include("../../inc/php/conexiones/SCA.php");
 require_once("../../Clases/xajax/xajax_core/xajax.inc.php");
 require_once("funciones_xjx.php");
+$inicial = $_REQUEST["inicial"];
+$final = $_REQUEST["final"];
 
+$partes=explode("-", $inicial);
+$dia=$partes[0];
+$mes=$partes[1];
+$año=$partes[2];
+$inicial=$año."-".$mes."-".$dia;
+        
+        
+$partes=explode("-", $final);  
+$dia=$partes[0];
+$mes=$partes[1];
+$año=$partes[2];
+$final=$año."-".$mes."-".$dia;
   
-function horas($dec) {
-    $hours = $dec/60;
-    $var = explode(".",$hours);
-    $hours = $var[0];
-    $mins = (($var[1]*60)/10);
-    if(strlen($hours)>1){
-      $hours=$hours;
-      }else{
-        $hours='0'.$hours;
-        }
-    if(strlen($mins)>1){
-      $mins=substr($mins,0,2);
-      }else{
-        $mins='0'.$mins;
-        }
-    $hora =  $hours.":".$mins;
-    
-    return $hora;
-    
-  }
   
   $l = SCA::getConexion(); 
   $xajax = new xajax();   
@@ -38,7 +32,9 @@ function horas($dec) {
     FROM viajes 
     WHERE (Estatus = 0 OR Estatus = 10 OR Estatus = 20 )
         AND IdProyecto = ".$_SESSION['Proyecto']." 
+        AND FechaLlegada BETWEEN '".$inicial."' AND '".$final."' 
     GROUP BY FechaLlegada;";
+//echo $SQLs;
   
   $r=$l->consultar($SQLs);
   $condicion="";  
