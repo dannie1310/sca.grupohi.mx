@@ -27,6 +27,25 @@ class Usuario {
             if ($row_s = $this->_db ->fetch($result_s)) {
                 $_SESSION["databasesca"]=$row_s[base_datos];
                 
+                //CHECADORES
+                
+                $sql_che = "SELECT
+      
+                        users.IdUsuario,
+                        users.Descripcion
+                   FROM igh.users users
+                        INNER JOIN sca_configuracion.role_user role_user
+                           ON (users.IdUsuario = role_user.user_id)
+                  WHERE (role_user.role_id = 7) AND (role_user.id_proyecto = ".$row_s[id_proyecto]." )";
+                
+                $result_che = $this->_db->consultar($sql_che);
+                while($row_che=$this->_db->fetch($result_che)) {
+                    $array_checadores[]=array(
+                        "id"=>$row_che[IdUsuario],
+                        "descripcion"=>$row_che[Descripcion],
+                    );
+                }
+                
                 //CONFIGURACION
                 $sql_c="select validacion_placas
                 from sca_configuracion.configuracion
@@ -189,6 +208,7 @@ SELECT
                      "Tags"=>$array_tags,
                     "MotivosDeductiva"=>$array_d,
                     "Configuracion"=>$array_configuracion,
+                    "Checadores"=>$array_checadores,
                  );
 
 
