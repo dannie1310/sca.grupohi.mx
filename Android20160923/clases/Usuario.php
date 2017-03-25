@@ -235,7 +235,7 @@ SELECT
         }
 
     }
-    #FUNCIÓN PARA DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE CONFIGURACIÓN DE TAGS
+    #FUNCIÓN PARA LOGUEO Y DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE CONFIGURACIÓN DE TAGS
     function  ConfDATA($usr, $pass){
         $arraydata=array();
         $pass = md5($pass);
@@ -259,6 +259,16 @@ SELECT
                
                $_SESSION["databasesca"]=$row_s[base_datos];
                $this->_database_sca = SCA::getConexion();
+               $sql_perfil = "SELECT role_user.user_id
+                FROM sca_configuracion.role_user role_user
+               WHERE     (role_user.user_id = ".$row[IdUsuario].")
+                     AND (role_user.role_id = 10)
+                     AND (role_user.id_proyecto = ".$row_s[id_proyecto].")";
+                $result_perfil = $this->_db ->consultar($sql_perfil);
+                
+                if($row_perfil = $this->_db ->fetch($result_perfil)){
+               
+               ########################
                 
                 //CAMIONES
                 $sql_camiones="SELECT idcamion, Placas, M.descripcion as marca, Modelo, Ancho, largo, Alto, economico, 0 as numero_viajes FROM camiones C
@@ -314,6 +324,10 @@ SELECT
                  
                                 
                  echo json_encode($arraydata);  
+                 ##############################
+                }else{
+                    echo "{\"error\":\"El usuario no tiene el perfil para asignar tags \"}";
+                }
             }else {
 
                 echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningun proyecto. \"}";
