@@ -10,7 +10,8 @@ function registra_viaje($i,$Accion,$IdViaje,$IdMaquinaria,$Horas,$IdOrigen,$IdSi
 		$r=$l->consultar($SQLs);
 		$r2=$l->consultar("select @a");
 		$v2=$l->fetch($r2);
-		
+
+
 		if($Accion==1)
 			{$desAccion2="Aprobado";
 			$desAccion="Aprobar";}			

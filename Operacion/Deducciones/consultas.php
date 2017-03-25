@@ -105,8 +105,8 @@ function VerLista($fechaini,$fechafin,$estatus){
 
 	$query ="
 		SELECT @rownum:=@rownum+1 AS rownum , 
-			d.id, d.id_viaje_neto, d.deductiva, date(d.fecha_hora_registro) AS fecha, c.CubicacionParaPago, c.Economico, 
-			(c.CubicacionParaPago - d.deductiva) AS newcubicacion, v.FechaLlegada, v.HoraLlegada, o.Descripcion AS Origen, s.Descripcion AS Sindicato, 
+			d.id, d.id_viaje_neto, d.deductiva, date(d.fecha_hora_registro) AS fecha, v.CubicacionCamion, c.Economico, 
+			(v.CubicacionCamion - d.deductiva) AS newcubicacion, v.FechaLlegada, v.HoraLlegada, o.Descripcion AS Origen, s.Descripcion AS Sindicato, 
 			e.razonSocial AS Empresa, d.estatus, demo.motivo
 		FROM (SELECT @rownum:=0) r, deductivas_viajes_netos AS d
 		INNER JOIN viajesnetos AS v ON v.IdViajeNeto = d.id_viaje_neto
@@ -151,7 +151,7 @@ function VerLista($fechaini,$fechafin,$estatus){
 			'id_viaje_neto' 		=> $v['id_viaje_neto'],
 			'deductiva' 			=> $v['deductiva'],
 			'fecha' 				=> $v['fecha'],
-			'CubicacionParaPago' 	=> $v['CubicacionParaPago'],
+			'CubicacionParaPago' 	=> $v['CubicacionCamion'],
 			'Economico' 			=> $v['Economico'],
 			'newcubicacion' 		=> $v['newcubicacion'],
 			'FechaLlegada' 			=> $v['FechaLlegada'],

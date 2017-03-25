@@ -294,7 +294,7 @@ $final = $_REQUEST["final"];
                                         v.HoraLlegada as Hora,
                                         v.code,
                                         if(fa.FactorAbundamiento is null,0.00,fa.FactorAbundamiento) as FactorAbundamiento,
-                                        c.CubicacionParaPago as cubicacion,
+                                        v.CubicacionCamion as cubicacion,
                                         o.Descripcion as origen,
                                         o.IdOrigen as idorigen,
                                         m.Descripcion as material,
@@ -664,10 +664,17 @@ $final = $_REQUEST["final"];
             }catch(e){accion='n'}
 
             if(accion!='n')
-                {
+            {
+                if( cubiNueva > 0 ){
                     xajax_registra_viaje(arreglo[o],accion,id_viaje_neto,maquinaria,horas_efectivas,origen,sindicatoOriginal,sindicato,empresaOriginal,empresa,tarifa,fda,tara,bruto,cubiNueva,cubiOriginal,idDeductiva,estausdeductiva);
                 }
+                else{
+                    alert("Error en la cubicacion!!!");
+                }
             }
+                
+            }
+
 
     }
     /*

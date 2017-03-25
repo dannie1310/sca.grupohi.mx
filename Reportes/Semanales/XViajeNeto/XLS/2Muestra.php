@@ -124,7 +124,11 @@ if($hay>0)
       </tr>
       <tr bgcolor="#0A8FC7">
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">#</font></div></td>
-        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Cubicaci&oacute;n m<sup>3</sup></font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Creo Primer Toque</font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Creo Segundo Toque</font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Cubicaci&oacute;n Cami&oacute;nm<sup>3</sup></font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Cubicaci&oacute;n Viaje Neto m<sup>3</sup></font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Cubicaci&oacute;n Viaje m<sup>3</sup></font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Cami&oacute;n</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Placas Cami&oacute;n</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Placas Caja</font></div></td>
@@ -173,6 +177,8 @@ if($hay>0)
       v.HoraLlegada as Hora,
       v.code,
       c.CubicacionParaPago as cubicacion,
+      v.CubicacionCamion as CubicacionViajeNeto,
+      vi.CubicacionCamion as CubicacionViaje,
       o.Descripcion as origen,
       o.IdOrigen as idorigen,
       m.Descripcion as material,
@@ -199,7 +205,9 @@ if($hay>0)
       conci.estado,
       vi.IdViaje,
       c.placas,
-      c.PlacasCaja
+      c.PlacasCaja,
+      concat(usu1.nombre,' ',usu1.apaterno , ' ',usu1.amaterno) as usu1toque,
+      concat(usu2.nombre,' ',usu2.apaterno , ' ',usu2.amaterno) as usu2toque
       FROM
         viajesnetos AS v
       JOIN tiros AS t USING (IdTiro)
@@ -216,6 +224,8 @@ if($hay>0)
       LEFT JOIN conciliacion as conci ON conci.idconciliacion = conde.idconciliacion 
       left join sindicatos as sincon on sincon.IdSindicato = conci.IdSindicato
       left join empresas as empcon on empcon.IdEmpresa = conci.IdEmpresa
+      left join igh.usuario as usu1 on   v.CreoPrimerToque =  usu1.idusuario
+      left join igh.usuario as usu2 on   v.Creo =  usu2.idusuario
 
       WHERE
           v.Estatus " . $estatus  . "
@@ -257,7 +267,11 @@ if($hay>0)
       ?>
       <tr>
         <td width="1"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $p; ?>       </font></div></td>
+        <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[usu1toque]; ?></font></div></td>
+        <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[usu2toque]; ?></font></div></td>
         <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[cubicacion]; ?></font></div></td>
+        <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[CubicacionViajeNeto]; ?></font></div></td>
+        <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[CubicacionViaje]; ?></font></div></td>
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Camion]; ?></font></div></td>
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[placas]; ?></font></div></td>
         <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[PlacasCaja]; ?></font></div></td>
