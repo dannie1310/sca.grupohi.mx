@@ -663,13 +663,16 @@ $final = $_REQUEST["final"];
                             }
             }catch(e){accion='n'}
 
-            if(accion!='n' && cubiNueva > 0 )
+            if(accion!='n')
             {
-                xajax_registra_viaje(arreglo[o],accion,id_viaje_neto,maquinaria,horas_efectivas,origen,sindicatoOriginal,sindicato,empresaOriginal,empresa,tarifa,fda,tara,bruto,cubiNueva,cubiOriginal,idDeductiva,estausdeductiva);
-            }
+                if( cubiNueva > 0 ){
+                    xajax_registra_viaje(arreglo[o],accion,id_viaje_neto,maquinaria,horas_efectivas,origen,sindicatoOriginal,sindicato,empresaOriginal,empresa,tarifa,fda,tara,bruto,cubiNueva,cubiOriginal,idDeductiva,estausdeductiva);
+                }
                 else{
-                alert("Error en la cubicacion!!!");
+                    alert("Error en la cubicacion!!!");
+                }
             }
+                
             }
 
 
