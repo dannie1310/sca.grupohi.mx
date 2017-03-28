@@ -5,8 +5,12 @@ class proyectos {
 
     function __construct() {
         $this->sca_config = SCA_config::getConexion();
+        $this->sca_config = SCA_IGH::getConexion();
     }
     public function getsca_config(){
+            return $this->sca_config;
+    }
+    public function getsca_config_igh(){
             return $this->sca_config;
     }
     function en_listar_proyectos() {

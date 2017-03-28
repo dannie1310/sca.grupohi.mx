@@ -1,43 +1,48 @@
 <?php
  
-	$host["SCA"] = 'localhost';
+	$host["SCA"] = '172.20.74.7:3306';
 	$user["SCA"] = 'sca';
 	$password["SCA"] = 'w6FCR56sLT';
 	$db["SCA"] = 'scatest34';
 
-	$host["scatest34"] = 'localhost';
+	$host["scatest34"] = '172.20.74.7:3306';
 	$user["scatest34"] = 'sca';
 	$password["scatest34"] = 'w6FCR56sLT';
 	$db["scatest34"] = 'scatest34';
 
 //para las configuracion de inicio de sesion
 //$host["SCA_config"] = '172.20.74.232';
-	$host["SCA_config"] = 'localhost';
+	$host["SCA_config"] = '172.20.74.7:3306';
 	$user["SCA_config"] = 'sca';
 	$password["SCA_config"] = 'w6FCR56sLT';
 	$db["SCA_config"] = 'sca_configuracion';
 
+	$host["igh"] = 'localhost';
+	$user["igh"] = 'sca';
+	$password["igh"] = 'w6FCR56sLT';
+	$db["igh"] = 'sca_configuracion';
 
 
-	$host['scaatlacomulco_xiii_pruebas']='localhost';
-	$host['sca_atlacomulco_xi']='localhost';
-	$host['scaatlacomulco_xii']='localhost';
-	$host['scacaracol']='localhost';
-	$host['SCALerma']='localhost';
-	$host['scaatlacomulco_maravatio']='localhost';
-	$host['SCADurango']='localhost';
-	$host['scaevantigua']='localhost';
-	$host['scaevjamapa']='localhost';
-	$host['scamisantla']='localhost';
-	$host['scatexcoco']='localhost';
-	$host['scasinaloa']='localhost';
-	$host['scacarrizal_i']='localhost';
-	$host['scacarrizal_ii']='localhost';
-	$host['scasuchiate']='localhost';
-	$host['scarcii']='localhost';
-	$host['scarciii']='localhost';
-	$host['scatest34']='localhost';
-	$host['scacutzamala']='localhost';
+
+	$host['scaatlacomulco_xiii_pruebas']='172.20.74.7:3306';
+	$host['sca_atlacomulco_xi']='172.20.74.7:3306';
+	$host['scaatlacomulco_xii']='172.20.74.7:3306';
+	$host['scacaracol']='172.20.74.7:3306';
+	$host['SCALerma']='172.20.74.7:3306';
+	$host['scaatlacomulco_maravatio']='172.20.74.7:3306';
+	$host['SCADurango']='172.20.74.7:3306';
+	$host['scaevantigua']='172.20.74.7:3306';
+	$host['scaevjamapa']='172.20.74.7:3306';
+	$host['scamisantla']='172.20.74.7:3306';
+	$host['scatexcoco']='172.20.74.7:3306';
+	$host['scasinaloa']='172.20.74.7:3306';
+	$host['scacarrizal_i']='172.20.74.7:3306';
+	$host['scacarrizal_ii']='172.20.74.7:3306';
+	$host['scasuchiate']='172.20.74.7:3306';
+	$host['scarcii']='172.20.74.7:3306';
+	$host['scarciii']='172.20.74.7:3306';
+	$host['scatest34']='172.20.74.7:3306';
+	$host['scacutzamala']='172.20.74.7:3306';
 
 	$db['sca_atlacomulco_xi']='sca_atlacomulco_xi';
 	$db['scaatlacomulco_xii']='scaatlacomulco_xii';
@@ -100,27 +105,27 @@ $password['scaatlacomulco_xiii_pruebas']='w6FCR56sLT';
 $password['scacutzamala']='w6FCR56sLT';
 
 
-$host["scaatlacomulco_xiv"] = 'localhost';
+$host["scaatlacomulco_xiv"] = '172.20.74.7:3306';
 $user["scaatlacomulco_xiv"] = 'sca';
 $password["scaatlacomulco_xiv"] = 'w6FCR56sLT';
 $db["scaatlacomulco_xiv"] = 'scaatlacomulco_xiv';
 
-$host["scaatlamara"] = 'localhost';
+$host["scaatlamara"] = '172.20.74.7:3306';
 $user["scaatlamara"] = 'sca';
 $password["scaatlamara"] = 'w6FCR56sLT';
 $db["scaatlamara"] = 'scaatlamara';
 
-$host["dev_sca_mib"] = 'localhost';
+$host["dev_sca_mib"] = '172.20.74.7:3306';
 $user["dev_sca_mib"] = 'sca';
 $password["dev_sca_mib"] = 'w6FCR56sLT';
 $db["dev_sca_mib"] = 'dev_sca_mib';
 
-$host["prod_sca_trenmt"] = 'localhost';
+$host["prod_sca_trenmt"] = '172.20.74.7:3306';
 $user["prod_sca_trenmt"] = 'sca';
 $password["prod_sca_trenmt"] = 'w6FCR56sLT';
 $db["prod_sca_trenmt"] = 'prod_sca_trenmt';
 
-$host["scaatlacomulco_xiv_prueba"] = 'localhost';
+$host["scaatlacomulco_xiv_prueba"] = '172.20.74.7:3306';
 $user["scaatlacomulco_xiv_prueba"] = 'sca';
 $password["scaatlacomulco_xiv_prueba"] = 'w6FCR56sLT';
 $db["scaatlacomulco_xiv_prueba"] = 'scaatlacomulco_xiv_prueba';
@@ -129,43 +134,43 @@ $db["scaatlacomulco_xiv_prueba"] = 'scaatlacomulco_xiv_prueba';
 //ya estaba agregada scasinaloa, scadurango
 
 
-$host["scapuebla"] = 'localhost';
+$host["scapuebla"] = '172.20.74.7:3306';
 $user["scapuebla"] = 'sca';
 $password["scapuebla"] = 'w6FCR56sLT';
 $db["scapuebla"] = 'scapuebla';
 
 //Tren Mex-Tol MOVIL
-$host["prod_sca_trenmt_movil"] = 'localhost';
+$host["prod_sca_trenmt_movil"] = '172.20.74.7:3306';
 $user["prod_sca_trenmt_movil"] = 'sca';
 $password["prod_sca_trenmt_movil"] = 'w6FCR56sLT';
 $db["prod_sca_trenmt_movil"] = 'prod_sca_trenmt_movil';
 
 //Tren Mex-Tol TOUCH
-$host["prod_sca_trenmt_touch"] = 'localhost';
+$host["prod_sca_trenmt_touch"] = '172.20.74.7:3306';
 $user["prod_sca_trenmt_touch"] = 'sca';
 $password["prod_sca_trenmt_touch"] = 'w6FCR56sLT';
 $db["prod_sca_trenmt_touch"] = 'prod_sca_trenmt_touch';
 
 //Chimalhuacan
-$host["prod_sca_chimalhuacan"] = 'localhost';
+$host["prod_sca_chimalhuacan"] = '172.20.74.7:3306';
 $user["prod_sca_chimalhuacan"] = 'sca';
 $password["prod_sca_chimalhuacanh"] = 'w6FCR56sLT';
 $db["prod_sca_chimalhuacan"] = 'prod_sca_chimalhuacan';
 
 //Tren Mex-Tol Movil LPC
-$host["prod_sca_trenmt_movil_lpc"] = 'localhost';
+$host["prod_sca_trenmt_movil_lpc"] = '172.20.74.7:3306';
 $user["prod_sca_trenmt_movil_lpc"] = 'sca';
 $password["prod_sca_trenmt_movil_lpc"] = 'w6FCR56sLT';
 $db["prod_sca_trenmt_movil_lpc"] = 'prod_sca_trenmt_movil_lpc';
 
 //Autodromo
-$host["prod_sca_autodromo"] = 'localhost';
+$host["prod_sca_autodromo"] = '172.20.74.7:3306';
 $user["prod_sca_autodromo"] = 'sca';
 $password["prod_sca_autodromo"] = 'w6FCR56sLT';
 $db["prod_sca_autodromo"] = 'prod_sca_autodromo';
 
 //Tunel Ferroviario Manzanillo
-$host["prod_sca_tfm"] = 'localhost';
+$host["prod_sca_tfm"] = '172.20.74.7:3306';
 $user["prod_sca_tfm"] = 'sca';
 $password["prod_sca_tfm"] = 'w6FCR56sLT';
 $db["prod_sca_tfm"] = 'prod_sca_tfm';
@@ -173,23 +178,23 @@ $db["prod_sca_tfm"] = 'prod_sca_tfm';
 
 
 //Pruebas
-$host["dev_sca_pruebas"] = 'localhost';
+$host["dev_sca_pruebas"] = '172.20.74.7:3306';
 $user["dev_sca_pruebas"] = 'sca';
 $password["dev_sca_pruebas"] = 'w6FCR56sLT';
 $db["dev_sca_pruebas"] = 'dev_sca_pruebas';
 
 //Pruebas
-$host["prod_sca_pista_aeropuerto"] = 'localhost';
+$host["prod_sca_pista_aeropuerto"] = '172.20.74.7:3306';
 $user["prod_sca_pista_aeropuerto"] = 'sca';
 $password["prod_sca_pista_aeropuerto"] = 'w6FCR56sLT';
 $db["prod_sca_pista_aeropuerto"] = 'prod_sca_pista_aeropuerto';
 
-$host["prod_sca_pista_aeropuerto_2"] = 'localhost';
+$host["prod_sca_pista_aeropuerto_2"] = '172.20.74.7:3306';
 $user["prod_sca_pista_aeropuerto_2"] = 'sca';
 $password["prod_sca_pista_aeropuerto_2"] = 'w6FCR56sLT';
 $db["prod_sca_pista_aeropuerto_2"] = 'prod_sca_pista_aeropuerto_2';
 
-$host["prod_sca_queretaro_san_luis"] = 'localhost';
+$host["prod_sca_queretaro_san_luis"] = '172.20.74.7:3306';
 $user["prod_sca_queretaro_san_luis"] = 'sca';
 $password["prod_sca_queretaro_san_luis"] = 'w6FCR56sLT';
 $db["prod_sca_queretaro_san_luis"] = 'prod_sca_queretaro_san_luis';

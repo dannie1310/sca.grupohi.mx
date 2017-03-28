@@ -46,7 +46,7 @@ $('input[type="text"]').focus(function() {
            'database':'Debe ingresar la database'
        },
        debug: true,
-       submitHandler: function(){
+       submitHandler: function(){ 
            var datos  = $('#forproyecto_alta').serialize();
           // alert('El formulario ha sido validado correctamente!');*/
             $.post('alta_proyecto.php',datos,function(data){                

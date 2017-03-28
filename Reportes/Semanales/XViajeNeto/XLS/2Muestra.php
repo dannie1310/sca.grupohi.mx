@@ -44,7 +44,9 @@ switch ($_REQUEST["estatus"]) {
 <?php 
 
   include("../../../../inc/php/conexiones/SCA.php");
+  include("../../../../inc/php/conexiones/SCA_IGH.php");
   include("../../../../Clases/Funciones/Catalogos/Genericas.php");
+
 $sql="
   SELECT DISTINCT p.Descripcion AS Obra,
          Propietario 
@@ -56,6 +58,7 @@ $sql="
       AND v.IdProyecto = p.IdProyecto AND  c.idSindicato=s.IdSindicato";
 
 $link=SCA::getConexion();
+$conexion_igh = SCA_IGH::getConexion();
 
 $row=$link->consultar($sql);
 $v=mysql_fetch_array($row);
@@ -206,8 +209,8 @@ if($hay>0)
       vi.IdViaje,
       c.placas,
       c.PlacasCaja,
-      concat(usu1.nombre,' ',usu1.apaterno , ' ',usu1.amaterno) as usu1toque,
-      concat(usu2.nombre,' ',usu2.apaterno , ' ',usu2.amaterno) as usu2toque
+      CreoPrimerToque,
+      Creo
       FROM
         viajesnetos AS v
       JOIN tiros AS t USING (IdTiro)
@@ -224,9 +227,6 @@ if($hay>0)
       LEFT JOIN conciliacion as conci ON conci.idconciliacion = conde.idconciliacion 
       left join sindicatos as sincon on sincon.IdSindicato = conci.IdSindicato
       left join empresas as empcon on empcon.IdEmpresa = conci.IdEmpresa
-      left join igh.usuario as usu1 on   v.CreoPrimerToque =  usu1.idusuario
-      left join igh.usuario as usu2 on   v.Creo =  usu2.idusuario
-
       WHERE
           v.Estatus " . $estatus  . "
       AND v.IdProyecto = ".$IdProyecto."
@@ -236,70 +236,77 @@ if($hay>0)
       group by IdViajeNeto
       ORDER BY v.FechaLlegada, camion, v.HoraLlegada, idEstatus
 ";   
-   //echo $rows;   
+   echo $rows;   
     $ro=$link->consultar($rows);
     $p=0;
     while($fil=mysql_fetch_array($ro))
       {
-        $p++;
-        $horaini = '07:00:00';
-        $horafin = '19:00:00';
-        if($fil[Hora] >= $horaini && $fil[Hora] < $horafin){
-          $turno ='Primer Turno';
-        }
-        else{
-          $turno ='Segundo Turno';
-        }
+        $query = "  
+          SELECT 
+            concat(usu1.nombre,' ',usu1.apaterno , ' ',usu1.amaterno) as usu1toque,
+            concat(usu2.nombre,' ',usu2.apaterno , ' ',usu2.amaterno) as usu2toque
+            FROM igh.usuario as usu1 on   v.CreoPrimerToque =  usu1.idusuario
+            left join igh.usuario as usu2 on   v.Creo =  usu2.idusuario
+        ";
+              $p++;
+              $horaini = '07:00:00';
+              $horafin = '19:00:00';
+              if($fil[Hora] >= $horaini && $fil[Hora] < $horafin){
+                $turno ='Primer Turno';
+              }
+              else{
+                $turno ='Segundo Turno';
+              }
 
-        $dia = date('N',strtotime($fil[Fecha]));
-        //echo $dia;
+              $dia = date('N',strtotime($fil[Fecha]));
+              //echo $dia;
 
-        if($fil[Hora] >= '00:00:00' && $fil[Hora] < $horaini){
-          $fechaAplica = strtotime ( '-1 day' , strtotime ( $fil[Fecha] ) ) ;
-          $fechaAplica = date ( 'd-m-Y' , $fechaAplica );
+              if($fil[Hora] >= '00:00:00' && $fil[Hora] < $horaini){
+                $fechaAplica = strtotime ( '-1 day' , strtotime ( $fil[Fecha] ) ) ;
+                $fechaAplica = date ( 'd-m-Y' , $fechaAplica );
 
-        }
-        else {
-          $fechaAplica = $fil[Fecha];
-        }
-        
+              }
+              else {
+                $fechaAplica = $fil[Fecha];
+              }
+              
 
-      ?>
-      <tr>
-        <td width="1"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $p; ?>       </font></div></td>
-        <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[usu1toque]; ?></font></div></td>
-        <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[usu2toque]; ?></font></div></td>
-        <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[cubicacion]; ?></font></div></td>
-        <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[CubicacionViajeNeto]; ?></font></div></td>
-        <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[CubicacionViaje]; ?></font></div></td>
-        <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Camion]; ?></font></div></td>
-        <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[placas]; ?></font></div></td>
-        <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[PlacasCaja]; ?></font></div></td>
-        <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[SindicatoCamion]; ?></font></div></td>
-        <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Sindicato]; ?></font></div></td>
-        <td width="150"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Empresa]; ?></font></div></td>
-        <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[SindicatoConci]; ?></font></div></td>
-        <td width="150"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Empresaconci]; ?></font></div></td>
-        <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Fecha]; ?></font></div></td>
-        <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Hora]; ?></font></div></td>
-        <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $turno; ?></font></div></td>
-        <td width="60"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fechaAplica; ?></font></div></td>
-        <td width="40"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[origen]; ?></font></div></td>
-        <td width="90"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Tiro]; ?></font></div></td>
-        <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[material]; ?></font></div></td>
-        <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[tiempo_mostrar]; ?></font></div></td>
-        <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[ruta]; ?></font></div></td>
-        <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[distancia]; ?></font></div></td>
-        <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[tarifa_material_pk],2,".",",");; ?></font></div></td>
-        <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[tarifa_material_ks],2,".",",");; ?></font></div></td>
-        <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[tarifa_material_ka],2,".",","); ?></font></div></td>
-        <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[ImporteTotal_M],2,".",","); ?></font></div></td>
-        <td width="80"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Estatus]; ?></font></div></td>
-        <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[code]; ?></font></div></td>
-        <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[idconciliacion]; ?></font></div></td>
-        <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[fecha_conciliacion]; ?></font></div></td>
-        <!--<td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php //echo $fil[IdViaje]; ?></font></div></td>-->
-      </tr>
+            ?>
+            <tr>
+              <td width="1"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $p; ?>       </font></div></td>
+              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[usu1toque]; ?></font></div></td>
+              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[usu2toque]; ?></font></div></td>
+              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[cubicacion]; ?></font></div></td>
+              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[CubicacionViajeNeto]; ?></font></div></td>
+              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[CubicacionViaje]; ?></font></div></td>
+              <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Camion]; ?></font></div></td>
+              <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[placas]; ?></font></div></td>
+              <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[PlacasCaja]; ?></font></div></td>
+              <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[SindicatoCamion]; ?></font></div></td>
+              <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Sindicato]; ?></font></div></td>
+              <td width="150"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Empresa]; ?></font></div></td>
+              <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[SindicatoConci]; ?></font></div></td>
+              <td width="150"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Empresaconci]; ?></font></div></td>
+              <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Fecha]; ?></font></div></td>
+              <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Hora]; ?></font></div></td>
+              <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $turno; ?></font></div></td>
+              <td width="60"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fechaAplica; ?></font></div></td>
+              <td width="40"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[origen]; ?></font></div></td>
+              <td width="90"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Tiro]; ?></font></div></td>
+              <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[material]; ?></font></div></td>
+              <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[tiempo_mostrar]; ?></font></div></td>
+              <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[ruta]; ?></font></div></td>
+              <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[distancia]; ?></font></div></td>
+              <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[tarifa_material_pk],2,".",",");; ?></font></div></td>
+              <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[tarifa_material_ks],2,".",",");; ?></font></div></td>
+              <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[tarifa_material_ka],2,".",","); ?></font></div></td>
+              <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[ImporteTotal_M],2,".",","); ?></font></div></td>
+              <td width="80"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Estatus]; ?></font></div></td>
+              <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[code]; ?></font></div></td>
+              <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[idconciliacion]; ?></font></div></td>
+              <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[fecha_conciliacion]; ?></font></div></td>
+              <!--<td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php //echo $fil[IdViaje]; ?></font></div></td>-->
+            </tr>
 
       <?php
         }

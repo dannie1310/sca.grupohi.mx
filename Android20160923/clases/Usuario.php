@@ -9,6 +9,7 @@ class Usuario {
 
     function __construct() {
         $this->_db = SCA_config::getConexion();
+        $this->_db_igh = SCA_IGH::getConexion();
     }
     #FUNCIÓN PARA DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE VIAJES
     function getData($usr, $pass) {       
@@ -16,9 +17,9 @@ class Usuario {
         $arraydata=array();
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        $result = $this->_db ->consultar($sql);
+        $result = $this->_db_igh ->consultar($sql);
         
-        if ($row = $this->_db ->fetch($result)) {
+        if ($row = $this->_db_igh ->fetch($result)) {
             $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database, p.empresa, p.tiene_logo, p.logo  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 "
                     . "And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
@@ -211,8 +212,8 @@ SELECT
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         //echo $sql;
 
-        $result = $this->_db ->consultar($sql);
-        $row = $this->_db ->fetch($result);
+        $result = $this->_db_igh ->consultar($sql);
+        $row = $this->_db_igh ->fetch($result);
         
 //echo 'roesssss'.count($row)."ssssss";
         
@@ -298,11 +299,11 @@ SELECT
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         //echo $sql;
 
-        $result = $this->_db ->consultar($sql);
-        $row = $this->_db ->fetch($result);
+        $result = $this->_db_igh ->consultar($sql);
+        $row = $this->_db_igh ->fetch($result);
 
         
-        if ($this->_db->affected()>0) {
+        if ($this->_db_igh->affected()>0) {
             
 //            $sql_valido = "select if( vigencia > NOW() OR vigencia is null, 1,0) AS valido from sca_configuracion.permisos_alta_tag where idusuario = ".$row["IdUsuario"].";";
 //            $result_valido = $this->_db ->consultar($sql_valido);
@@ -439,11 +440,11 @@ SELECT
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         //echo $sql;
 
-        $result = $this->_db ->consultar($sql);
-        $row = $this->_db ->fetch($result);
+        $result = $this->_db_igh ->consultar($sql);
+        $row = $this->_db_igh ->fetch($result);
 
         
-        if ($this->_db->affected()>0) {
+        if ($this->_db_igh->affected()>0) {
             
             $sql_valido = "select if( vigencia > NOW() OR vigencia is null, 1,0) AS valido from sca_configuracion.permisos_alta_tag where idusuario = ".$row["IdUsuario"].";";
             $result_valido = $this->_db ->consultar($sql_valido);
@@ -500,8 +501,8 @@ SELECT
     function capturaConfiguracion($usr,$pass){
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        $result = $this->_db ->consultar($sql);
-        if ($row = $this->_db ->fetch($result)) {
+        $result = $this->_db_igh ->consultar($sql);
+        if ($row = $this->_db_igh ->fetch($result)) {
             $cadenajsonx=json_encode($_REQUEST);
             $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
             if(isset($_REQUEST['tag_camion'])){
@@ -542,8 +543,8 @@ SELECT
     function capturaAltas($usr,$pass){
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        $result = $this->_db ->consultar($sql);
-        if ($row = $this->_db ->fetch($result)) {
+        $result = $this->_db_igh ->consultar($sql);
+        if ($row = $this->_db_igh ->fetch($result)) {
             
             $sql_valido = "select if( vigencia > NOW() OR vigencia is null, 1,0) AS valido from sca_configuracion.permisos_alta_tag where idusuario = ".$row["IdUsuario"].";";
             $result_valido = $this->_db ->consultar($sql_valido);
@@ -861,8 +862,8 @@ SELECT
     function capturaActualizacionCamiones($usr,$pass){
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        $result = $this->_db ->consultar($sql);
-        if ($row = $this->_db ->fetch($result)) {
+        $result = $this->_db_igh ->consultar($sql);
+        if ($row = $this->_db_igh ->fetch($result)) {
             if($this->accesoValidoActualizacionCamiones($row["IdUsuario"], $_REQUEST[id_proyecto])){
                 $cadenajsonx=json_encode($_REQUEST);
                 $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");

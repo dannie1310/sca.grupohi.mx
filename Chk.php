@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-include("inc/php/conexiones/SCA_config.php");
+include("inc/php/conexiones/SCA_IGH.php");
 
 $Usr=$_POST['usr'];
 $Pwd=$_POST['pwd'];
 $clave_md5=md5($Pwd);
-$sca_config = SCA_config::getConexion();
+$sca_config = SCA_IGH::getConexion();
 
 
  $SQL="SELECT * FROM igh.users where Usuario='$Usr' and Clave='$clave_md5' ;";
