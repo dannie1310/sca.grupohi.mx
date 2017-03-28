@@ -58,7 +58,7 @@ $sql="
       AND v.IdProyecto = p.IdProyecto AND  c.idSindicato=s.IdSindicato";
 
 $link=SCA::getConexion();
-$conexion_igh = SCA_IGH::getConexion();
+$SCA_IGH = SCA_IGH::getConexion();
 
 $row=$link->consultar($sql);
 $v=mysql_fetch_array($row);
@@ -209,8 +209,8 @@ if($hay>0)
       vi.IdViaje,
       c.placas,
       c.PlacasCaja,
-      CreoPrimerToque,
-      Creo
+      v.CreoPrimerToque,
+      v.Creo
       FROM
         viajesnetos AS v
       JOIN tiros AS t USING (IdTiro)
@@ -236,18 +236,31 @@ if($hay>0)
       group by IdViajeNeto
       ORDER BY v.FechaLlegada, camion, v.HoraLlegada, idEstatus
 ";   
-   echo $rows;   
+   //echo $rows;   
     $ro=$link->consultar($rows);
     $p=0;
     while($fil=mysql_fetch_array($ro))
       {
         $query = "  
-          SELECT 
-            concat(usu1.nombre,' ',usu1.apaterno , ' ',usu1.amaterno) as usu1toque,
-            concat(usu2.nombre,' ',usu2.apaterno , ' ',usu2.amaterno) as usu2toque
-            FROM igh.usuario as usu1 on   v.CreoPrimerToque =  usu1.idusuario
-            left join igh.usuario as usu2 on   v.Creo =  usu2.idusuario
-        ";
+          SELECT concat(usu1.nombre,' ',usu1.apaterno , ' ',usu1.amaterno) as usu1toque
+          FROM
+              igh.usuario as usu1
+          where idusuario = ".$fil[CreoPrimerToque] ;
+        $consulta1=$SCA_IGH->consultar($query);
+        while ($Row = $SCA_IGH->fetch($consulta1)){
+          $usu1toque = $Row['usu1toque'];
+        }
+
+        $query = "  
+          SELECT concat(usu1.nombre,' ',usu1.apaterno , ' ',usu1.amaterno) as usu1toque
+          FROM
+              igh.usuario as usu1
+          where idusuario = ".$fil[Creo] ;
+        $consulta1=$SCA_IGH->consultar($query);
+        while ($Row = $SCA_IGH->fetch($consulta1)){
+          $usu2toque = $Row['usu1toque'];
+        }
+
               $p++;
               $horaini = '07:00:00';
               $horafin = '19:00:00';
@@ -274,8 +287,8 @@ if($hay>0)
             ?>
             <tr>
               <td width="1"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $p; ?>       </font></div></td>
-              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[usu1toque]; ?></font></div></td>
-              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[usu2toque]; ?></font></div></td>
+              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $usu1toque; ?></font></div></td>
+              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $usu2toque; ?></font></div></td>
               <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[cubicacion]; ?></font></div></td>
               <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[CubicacionViajeNeto]; ?></font></div></td>
               <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[CubicacionViaje]; ?></font></div></td>
