@@ -1215,6 +1215,27 @@ SELECT
             return $id_marca;
         }
     }
+
+
+
+    function ActualizarAcceso() {
+
+        $cadenajsonx = json_encode($_REQUEST);
+        $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
+        $this->_db->consultar("INSERT INTO $_REQUEST[bd].cambio_contrasena (usr,Idusuario,Version,IMEI) VALUES('".$_REQUEST[usr]."',".$_REQUEST[idusuario].",'".$_REQUEST[Version]."','".$_REQUEST[IMEI]."')");
+
+
+        $this->_db_igh->consultar("UPDATE igh.usuario SET clave= md5('".$_REQUEST[NuevaClave]."') where idusuario = ".$_REQUEST[idusuario]);
+        echo utf8_encode("{\"msj\":\"Contraseña Guardada Correctamente!!\"}");
+
+
+
+    }
+
+
+
+
+
     function eliminaCaracteresEspeciales($entrada){
         $string = str_replace(        
              array("\\", "¨", "º", "-", "~",
