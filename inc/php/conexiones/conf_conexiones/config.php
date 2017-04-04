@@ -18,9 +18,9 @@
 	$db["SCA_config"] = 'sca_configuracion';
 
 	$host["igh"] = 'localhost';
-	$user["igh"] = 'sca';
-	$password["igh"] = 'w6FCR56sLT';
-	$db["igh"] = 'sca_configuracion';
+	$user["igh"] = 'sca_igh';
+	$password["igh"] = 'PbdK58Tl9JsK';
+	$db["igh"] = 'igh';
 
 
 

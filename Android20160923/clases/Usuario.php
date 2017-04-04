@@ -335,6 +335,19 @@ SELECT
                         );
                 }
                 
+                //EMPRESAS
+               
+               $sqlE = "SELECT empresas.razonSocial as empresa, empresas.IdEmpresa as id from empresas where Estatus = 1;
+ ";
+               $resultE=$this->_database_sca->consultar($sqlE);
+                
+                while($row_empresa=$this->_database_sca->fetch($resultE)){
+                    $array_empresas[]=array(
+                        "id"=>utf8_encode($row_empresa[id]),
+                        "empresa"=>utf8_encode($row_empresa[empresa]),
+                        );
+                }
+                
                 //CAMIONES
                 
                 $sql_tags="SELECT sindicatos.Descripcion AS sindicato,
@@ -416,6 +429,7 @@ SELECT
                     "descripcion_database"=>utf8_encode($row_s[descripcion_database]),
                     "camiones"=>$array_camiones,
                     "sindicatos"=>$array_sindicatos,
+                    "empresas"=>$array_empresas,
                     'tipos_imagen'=>$array_tipos_imagenes,
                  );
 
@@ -651,16 +665,18 @@ SELECT
                         #obtener sindicato y empresa del camion
                         $idempresa = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdEmpresa","IdCamion",$value[IdCamion]);
                         $idsindicato = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdSindicato","IdCamion",$value[IdCamion]);
+                        $cubicacion_camion = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","CubicacionParaPago","IdCamion",$value[IdCamion]);
                         $code_random = (array_key_exists("CodeRandom", $value))?"'".$value["CodeRandom"]."'":"'NA'";
                         $creo_primer_toque = (array_key_exists("CreoPrimerToque", $value))?$value["CreoPrimerToque"]:0;
                         if(!($idempresa>0)){$idempresa = 'NULL';}
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
+                        if(!($cubicacion_camion>0)){$cubicacion_camion = 0;}
                         if(!($creo_primer_toque>0)){$creo_primer_toque = 'NULL';}
                         #insertar viaje
                         $x = "INSERT INTO 
                         $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
                             FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom,
-                            CreoPrimerToque) 
+                            CreoPrimerToque, CubicacionCamion) 
                     VALUES(
                            0,
                            NOW(), 
@@ -679,7 +695,16 @@ SELECT
                            0, 
                            '$value[Code]', 
                            '$value[uidTAG]',
-                                               '$value[Imagen]', '$value[IMEI]', '$version', '$value[CodeImagen]',$idempresa,$idsindicato,$code_random,$creo_primer_toque);";
+                            '$value[Imagen]',
+                            '$value[IMEI]', 
+                            '$version', 
+                            '$value[CodeImagen]'
+                                ,$idempresa
+                                    ,$idsindicato
+                                ,$code_random
+                                    ,$creo_primer_toque,
+                                $cubicacion_camion
+                                );";
 
                         $this->_db->consultar($x);
                         $x_error="";

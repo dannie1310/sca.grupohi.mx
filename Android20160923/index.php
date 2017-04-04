@@ -1,5 +1,5 @@
 <?php
-ini_set("display_errors", "on");
+ini_set("display_errors", "off");
 include("../inc/php/conexiones/SCA_config.php");
 include("../inc/php/conexiones/SCA.php");
 include "clases/Usuario.php"; 
