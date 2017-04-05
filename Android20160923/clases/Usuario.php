@@ -9,6 +9,7 @@ class Usuario {
 
     function __construct() {
         $this->_db = SCA_config::getConexion();
+        $this->_db_igh = SCA_IGH::getConexion();
     }
     #FUNCIÓN PARA DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE VIAJES
     function getData($usr, $pass) {       
@@ -16,9 +17,9 @@ class Usuario {
         $arraydata=array();
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        $result = $this->_db ->consultar($sql);
+        $result = $this->_db_igh ->consultar($sql);
         
-        if ($row = $this->_db ->fetch($result)) {
+        if ($row = $this->_db_igh ->fetch($result)) {
             $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database, p.empresa, p.tiene_logo, p.logo  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 "
                     . "And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
@@ -67,7 +68,7 @@ class Usuario {
                 //CAMIONES
                 $this->_database_sca = SCA::getConexion();
 				
-                 $sql_camiones="SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago FROM camiones C
+                 $sql_camiones="SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago, IdEmpresa, IdSindicato FROM camiones C
                                 LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
                 $result_camiones=$this->_database_sca->consultar($sql_camiones);
                 while($row_camiones=$this->_database_sca->fetch($result_camiones)) 
@@ -81,7 +82,10 @@ class Usuario {
                             "largo"=>utf8_encode($row_camiones[largo]),
                             "alto"=>utf8_encode($row_camiones[Alto]),
                             "economico"=>utf8_encode($row_camiones[Economico]),
-                            "capacidad"=>utf8_encode($row_camiones[CubicacionParaPago])
+                            "capacidad"=>utf8_encode($row_camiones[CubicacionParaPago]),
+                            "id_empresa"=>utf8_encode($row_camiones[IdEmpresa]),
+                            "id_sindicato"=>utf8_encode($row_camiones[IdSindicato])
+                            
                         );
 
                         
@@ -242,8 +246,8 @@ SELECT
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         //echo $sql;
 
-        $result = $this->_db ->consultar($sql);
-        $row = $this->_db ->fetch($result);
+        $result = $this->_db_igh ->consultar($sql);
+        $row = $this->_db_igh ->fetch($result);
         
 //echo 'roesssss'.count($row)."ssssss";
         
@@ -343,11 +347,11 @@ SELECT
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         //echo $sql;
 
-        $result = $this->_db ->consultar($sql);
-        $row = $this->_db ->fetch($result);
+        $result = $this->_db_igh ->consultar($sql);
+        $row = $this->_db_igh ->fetch($result);
 
         
-        if ($this->_db->affected()>0) {
+        if ($this->_db_igh->affected()>0) {
             
 //            $sql_valido = "select if( vigencia > NOW() OR vigencia is null, 1,0) AS valido from sca_configuracion.permisos_alta_tag where idusuario = ".$row["IdUsuario"].";";
 //            $result_valido = $this->_db ->consultar($sql_valido);
@@ -379,9 +383,25 @@ SELECT
                         );
                 }
                 
+                //EMPRESAS
+               
+               $sqlE = "SELECT empresas.razonSocial as empresa, empresas.IdEmpresa as id from empresas where Estatus = 1;
+ ";
+               $resultE=$this->_database_sca->consultar($sqlE);
+                
+                while($row_empresa=$this->_database_sca->fetch($resultE)){
+                    $array_empresas[]=array(
+                        "id"=>utf8_encode($row_empresa[id]),
+                        "empresa"=>utf8_encode($row_empresa[empresa]),
+                        );
+                }
+                
                 //CAMIONES
                 
-                $sql_tags="SELECT sindicatos.Descripcion AS sindicato,
+                $sql_tags="SELECT 
+                    camiones.IdSindicato,
+                    camiones.IdEmpresa,
+                    sindicatos.Descripcion AS sindicato,
        empresas.razonSocial AS empresa,
        camiones.Propietario AS propietario,
        camiones.Economico AS economico,
@@ -416,6 +436,8 @@ SELECT
                 while($row_tags=$this->_database_sca->fetch($result_tags))
                     $array_camiones[]=array(
                         "id_camion"=>utf8_encode($row_tags[id_camion]),
+                        "id_sindicato"=>utf8_encode($row_tags[IdSindicato]),
+                        "id_empresa"=>utf8_encode($row_tags[IdEmpresa]),
                         "sindicato"=>utf8_encode($row_tags[sindicato]),
                         "empresa"=>utf8_encode($row_tags[empresa]),
                         "propietario"=>utf8_encode($row_tags[propietario]),
@@ -460,6 +482,7 @@ SELECT
                     "descripcion_database"=>utf8_encode($row_s[descripcion_database]),
                     "camiones"=>$array_camiones,
                     "sindicatos"=>$array_sindicatos,
+                    "empresas"=>$array_empresas,
                     'tipos_imagen'=>$array_tipos_imagenes,
                  );
 
@@ -484,11 +507,11 @@ SELECT
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         //echo $sql;
 
-        $result = $this->_db ->consultar($sql);
-        $row = $this->_db ->fetch($result);
+        $result = $this->_db_igh ->consultar($sql);
+        $row = $this->_db_igh ->fetch($result);
 
         
-        if ($this->_db->affected()>0) {
+        if ($this->_db_igh->affected()>0) {
             
             $sql_valido = "select if( vigencia > NOW() OR vigencia is null, 1,0) AS valido from sca_configuracion.permisos_alta_tag where idusuario = ".$row["IdUsuario"].";";
             $result_valido = $this->_db ->consultar($sql_valido);
@@ -545,8 +568,8 @@ SELECT
     function capturaConfiguracion($usr,$pass){
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        $result = $this->_db ->consultar($sql);
-        if ($row = $this->_db ->fetch($result)) {
+        $result = $this->_db_igh ->consultar($sql);
+        if ($row = $this->_db_igh ->fetch($result)) {
             $cadenajsonx=json_encode($_REQUEST);
             $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
             if(isset($_REQUEST['tag_camion'])){
@@ -587,8 +610,8 @@ SELECT
     function capturaAltas($usr,$pass){
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        $result = $this->_db ->consultar($sql);
-        if ($row = $this->_db ->fetch($result)) {
+        $result = $this->_db_igh ->consultar($sql);
+        if ($row = $this->_db_igh ->fetch($result)) {
             
             $sql_valido = "select if( vigencia > NOW() OR vigencia is null, 1,0) AS valido from sca_configuracion.permisos_alta_tag where idusuario = ".$row["IdUsuario"].";";
             $result_valido = $this->_db ->consultar($sql_valido);
@@ -703,6 +726,7 @@ SELECT
                         
                         if(!($idempresa>0)){$idempresa = 'NULL';}
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
+                        if(!($cubicacion_camion>0)){$cubicacion_camion = 0;}
                         if(!($creo_primer_toque>0)){$creo_primer_toque = 'NULL';}
                         if($cubicacion_camion_tel == 0){
                             $cubicacion_camion = $cubicacion_camion_cam;
@@ -915,8 +939,8 @@ SELECT
     function capturaActualizacionCamiones($usr,$pass){
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        $result = $this->_db ->consultar($sql);
-        if ($row = $this->_db ->fetch($result)) {
+        $result = $this->_db_igh ->consultar($sql);
+        if ($row = $this->_db_igh ->fetch($result)) {
             if($this->accesoValidoActualizacionCamiones($row["IdUsuario"], $_REQUEST[id_proyecto])){
                 $cadenajsonx=json_encode($_REQUEST);
                 $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
@@ -1268,6 +1292,27 @@ SELECT
             return $id_marca;
         }
     }
+
+
+
+    function ActualizarAcceso() {
+
+        $cadenajsonx = json_encode($_REQUEST);
+        $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
+        $this->_db->consultar("INSERT INTO $_REQUEST[bd].cambio_contrasena (usr,Idusuario,Version,IMEI) VALUES('".$_REQUEST[usr]."',".$_REQUEST[idusuario].",'".$_REQUEST[Version]."','".$_REQUEST[IMEI]."')");
+
+
+        $this->_db_igh->consultar("UPDATE igh.usuario SET clave= md5('".$_REQUEST[NuevaClave]."') where idusuario = ".$_REQUEST[idusuario]);
+        echo utf8_encode("{\"msj\":\"Contraseña Guardada Correctamente!!\"}");
+
+
+
+    }
+
+
+
+
+
     function eliminaCaracteresEspeciales($entrada){
         $string = str_replace(        
              array("\\", "¨", "º", "-", "~",

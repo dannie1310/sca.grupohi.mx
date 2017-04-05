@@ -1,6 +1,7 @@
 <?php
 ini_set("display_errors", "on");
 include("inc/php/conexiones/SCA_config.php");
+include("inc/php/conexiones/SCA_IGH.php");
 include("inc/php/conexiones/SCA.php");
 include "Android20151106/clases/Usuario.php"; 
 

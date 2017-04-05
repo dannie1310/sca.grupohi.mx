@@ -6,16 +6,16 @@
     function llena_combo_users() {
         $sql = "Select IdUsuario, Descripcion from igh.users where IdUsuario not in (SELECT id_usuario_Intranet FROM sca_configuracion.usuarios_proyectos group by id_usuario_Intranet) And estatus=2 order by Descripcion;";
         $combo_use_alta = '';
-        $result = $this->getsca_config()->consultar($sql);
-        while ($row = $this->getsca_config()->fetch($result))
+        $result = $this->getsca_config_igh()->consultar($sql);
+        while ($row = $this->getsca_config_igh()->fetch($result))
             $combo_use_alta.="<option value=$row[IdUsuario]>$row[Descripcion]</option>";
         return $combo_use_alta;
     }
       function llena_combo_users_registrados() {
         $sql = "Select IdUsuario, Descripcion from igh.users where IdUsuario  in (SELECT id_usuario_Intranet FROM sca_configuracion.usuarios_proyectos group by id_usuario_Intranet) order by Descripcion;";
         $combo_use_alta = '';
-        $result = $this->getsca_config()->consultar($sql);
-        while ($row = $this->getsca_config()->fetch($result))
+        $result = $this->getsca_config_igh()->consultar($sql);
+        while ($row = $this->getsca_config_igh()->fetch($result))
             $combo_use_alta.="<option value=$row[IdUsuario]>$row[Descripcion]</option>";
         return $combo_use_alta;
     }
@@ -50,8 +50,8 @@
 where estatus=2 And c.IdUsuario not in (SELECT sca.IdUsuario FROM sca_configuracion.notificaciones  sca where IdEvento=$evento and IdNotificacionTipo in (1,2,3) and IdProyecto=$proyecto)
 order by Descripcion";
         $combo_use_alta = '';
-        $result = $this->getsca_config()->consultar($sql);
-        while ($row = $this->getsca_config()->fetch($result))
+        $result = $this->getsca_config_igh()->consultar($sql);
+        while ($row = $this->getsca_config_igh()->fetch($result))
             $combo_use_alta.="<option value=$row[IdUsuario]>$row[Descripcion]</option>";
         return $combo_use_alta;
     }

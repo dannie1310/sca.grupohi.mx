@@ -9,6 +9,7 @@ class Usuario {
 
     function __construct() {
         $this->_db = SCA_config::getConexion();
+        $this->_db_igh = SCA_IGH::getConexion();
     }
 
     function getData($usr, $pass) {       
@@ -16,9 +17,9 @@ class Usuario {
 		$arraydata=array();
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        $result = $this->_db ->consultar($sql);
+        $result = $this->_db_igh ->consultar($sql);
         
-		if ($row = $this->_db ->fetch($result)) {
+		if ($row = $this->_db_igh ->fetch($result)) {
             $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
             $result_s = $this->_db ->consultar($sql_s);
@@ -197,9 +198,9 @@ class Usuario {
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass';";
 		
-		$result = $this->_db ->consultar($sql);
+		$result = $this->_db_igh ->consultar($sql);
 		
-        if ($row = $this->_db ->fetch($result)) {
+        if ($row = $this->_db_igh ->fetch($result)) {
 
 
 
@@ -298,8 +299,8 @@ class Usuario {
         $arraydata=array();
         $pass = md5($pass);
          $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        $result = $this->_db ->consultar($sql);
-        if ($row = $this->_db ->fetch($result)) {
+        $result = $this->_db_igh ->consultar($sql);
+        if ($row = $this->_db_igh ->fetch($result)) {
               $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
             $result_s = $this->_db ->consultar($sql_s);
