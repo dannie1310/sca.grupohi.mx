@@ -140,6 +140,8 @@ if($hay>0)
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Empresa Viaje</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Sindicato Conciliado</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Empresa Conciliado</font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Fecha Salida</font></div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Hora Salida</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Fecha Llegada</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Hora Llegada</font></div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Turno</font></div></td>
@@ -158,6 +160,7 @@ if($hay>0)
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Ticket</font> </div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Folio Conciliación</font> </div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Fecha Conciliación</font> </div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Viajes en Conflicto</font> </div></td>
         
       </tr>
       <?php
@@ -166,6 +169,8 @@ if($hay>0)
     $rows="
     SELECT
       DATE_FORMAT(v.FechaLlegada, '%d-%m-%Y') AS Fecha,
+       DATE_FORMAT(v.FechaSalida, '%d-%m-%Y') AS FechaSalida,
+       DATE_FORMAT(v.HoraSalida, '%h:%i:%s') AS HoraSalida,
       t.IdTiro,
       t.Descripcion AS Tiro,
       c.IdCamion AS IdCamion,
@@ -210,7 +215,8 @@ if($hay>0)
       c.placas,
       c.PlacasCaja,
       v.CreoPrimerToque,
-      v.Creo
+      v.Creo,
+      cev.identifiacador as conflictos
       FROM
         viajesnetos AS v
       JOIN tiros AS t USING (IdTiro)
@@ -227,6 +233,62 @@ if($hay>0)
       LEFT JOIN conciliacion as conci ON conci.idconciliacion = conde.idconciliacion 
       left join sindicatos as sincon on sincon.IdSindicato = conci.IdSindicato
       left join empresas as empcon on empcon.IdEmpresa = conci.IdEmpresa
+       left join (
+      
+      
+      SELECT conflictos_entre_viajes_detalle.idviaje_neto,
+       conflictos_entre_viajes.id as idconflicto
+  FROM (((conflictos_entre_viajes_detalle conflictos_entre_viajes_detalle_1
+          INNER JOIN
+          conflictos_entre_viajes conflictos_entre_viajes
+             ON (conflictos_entre_viajes_detalle_1.idconflicto =
+                    conflictos_entre_viajes.id))
+         INNER JOIN
+         conflictos_entre_viajes_detalle conflictos_entre_viajes_detalle
+            ON (conflictos_entre_viajes_detalle.idconflicto =
+                   conflictos_entre_viajes.id))
+        INNER JOIN prod_sca_pista_aeropuerto_2.viajesnetos viajesnetos
+           ON     (conflictos_entre_viajes_detalle.idviaje_neto =
+                      viajesnetos.IdViajeNeto)
+              AND (conflictos_entre_viajes_detalle_1.idviaje_neto =
+                      viajesnetos.IdViajeNeto))
+       INNER JOIN
+       (SELECT max(date_format(timestamp, '%Y-%m-%d')) AS maximo
+          FROM conflictos_entre_viajes conflictos_entre_viajes)
+       Subquery
+          ON (date_format(timestamp, '%Y-%m-%d') = Subquery.maximo)
+      
+      
+      ) as cevd on cevd.idviaje_neto = v.IdViajeNeto
+            
+       left join (
+       
+      
+       SELECT 
+       conflictos_entre_viajes.id,
+      
+       group_concat(if(viajesnetos.Code IS NULL,
+          concat(viajesnetos.FechaLlegada, ' ', viajesnetos.HoraLlegada),
+          viajesnetos.Code))
+          AS identifiacador
+  FROM ((conflictos_entre_viajes_detalle conflictos_entre_viajes_detalle
+         INNER JOIN viajesnetos viajesnetos
+            ON (conflictos_entre_viajes_detalle.idviaje_neto =
+                   viajesnetos.IdViajeNeto))
+        INNER JOIN
+        conflictos_entre_viajes conflictos_entre_viajes
+           ON (conflictos_entre_viajes_detalle.idconflicto =
+                  conflictos_entre_viajes.id))
+       INNER JOIN
+       (SELECT max(date_format(timestamp, '%Y-%m-%d')) AS maximo
+          FROM conflictos_entre_viajes conflictos_entre_viajes)
+       Subquery
+          ON (date_format(timestamp, '%Y-%m-%d') = Subquery.maximo)
+          group by  conflictos_entre_viajes.id
+     
+        
+        ) as cev
+                 on(cev.id = cevd.idconflicto)
       WHERE
           v.Estatus " . $estatus  . "
       AND v.IdProyecto = ".$IdProyecto."
@@ -285,7 +347,7 @@ if($hay>0)
               
 
             ?>
-            <tr>
+            <tr <?php if($fil[conflictos]!=''): ?> style="background-color: #FCC" <?php endif; ?> >
               <td width="1"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $p; ?>       </font></div></td>
               <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $usu1toque; ?></font></div></td>
               <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $usu2toque; ?></font></div></td>
@@ -300,6 +362,8 @@ if($hay>0)
               <td width="150"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Empresa]; ?></font></div></td>
               <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[SindicatoConci]; ?></font></div></td>
               <td width="150"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Empresaconci]; ?></font></div></td>
+              <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[FechaSalida]; ?></font></div></td>
+              <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[HoraSalida]; ?></font></div></td>
               <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Fecha]; ?></font></div></td>
               <td width="50"><div align="center"> <font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Hora]; ?></font></div></td>
               <td width="70"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $turno; ?></font></div></td>
@@ -315,9 +379,11 @@ if($hay>0)
               <td width="30"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[tarifa_material_ka],2,".",","); ?></font></div></td>
               <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo number_format($fil[ImporteTotal_M],2,".",","); ?></font></div></td>
               <td width="80"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Estatus]; ?></font></div></td>
-              <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[code]; ?></font></div></td>
+              <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;">'<?php echo $fil[code]; ?></font></div></td>
               <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[idconciliacion]; ?></font></div></td>
               <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[fecha_conciliacion]; ?></font></div></td>
+              
+              <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;">'<?php echo $fil[conflictos]; ?></font></div></td>
               <!--<td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php //echo $fil[IdViaje]; ?></font></div></td>-->
             </tr>
 

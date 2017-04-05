@@ -41,7 +41,7 @@ class Usuario {
                 //CAMIONES
                 $this->_database_sca = SCA::getConexion();
 				
-                 $sql_camiones="SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago FROM camiones C
+                 $sql_camiones="SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago, IdEmpresa, IdSindicato FROM camiones C
                                 LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
                 $result_camiones=$this->_database_sca->consultar($sql_camiones);
                 while($row_camiones=$this->_database_sca->fetch($result_camiones)) 
@@ -55,7 +55,10 @@ class Usuario {
                             "largo"=>utf8_encode($row_camiones[largo]),
                             "alto"=>utf8_encode($row_camiones[Alto]),
                             "economico"=>utf8_encode($row_camiones[Economico]),
-                            "capacidad"=>utf8_encode($row_camiones[CubicacionParaPago])
+                            "capacidad"=>utf8_encode($row_camiones[CubicacionParaPago]),
+                            "id_empresa"=>utf8_encode($row_camiones[IdEmpresa]),
+                            "id_sindicato"=>utf8_encode($row_camiones[IdSindicato])
+                            
                         );
 
                         
@@ -350,7 +353,10 @@ SELECT
                 
                 //CAMIONES
                 
-                $sql_tags="SELECT sindicatos.Descripcion AS sindicato,
+                $sql_tags="SELECT 
+                    camiones.IdSindicato,
+                    camiones.IdEmpresa,
+                    sindicatos.Descripcion AS sindicato,
        empresas.razonSocial AS empresa,
        camiones.Propietario AS propietario,
        camiones.Economico AS economico,
@@ -385,6 +391,8 @@ SELECT
                 while($row_tags=$this->_database_sca->fetch($result_tags))
                     $array_camiones[]=array(
                         "id_camion"=>utf8_encode($row_tags[id_camion]),
+                        "id_sindicato"=>utf8_encode($row_tags[IdSindicato]),
+                        "id_empresa"=>utf8_encode($row_tags[IdEmpresa]),
                         "sindicato"=>utf8_encode($row_tags[sindicato]),
                         "empresa"=>utf8_encode($row_tags[empresa]),
                         "propietario"=>utf8_encode($row_tags[propietario]),

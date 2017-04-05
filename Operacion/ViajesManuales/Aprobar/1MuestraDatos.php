@@ -1,5 +1,8 @@
 <?php 
 	session_start();
+        if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+            exit();
+        }
 	include("../../../inc/php/conexiones/SCA.php");
 	include("../../../Clases/Funciones/Catalogos/Genericas.php");
 	include("../../../Clases/Funciones/FuncionesValidaViajes.php");
