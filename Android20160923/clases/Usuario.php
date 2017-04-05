@@ -1246,7 +1246,7 @@ SELECT
     }
     private function regresaIdEmpresa($bd,$empresa){
         $id_empresa = "NULL";
-        if($empresa == "" || $sindicato == "0"){
+        if($empresa == "" || $empresa == "0"){
             return "NULL";
         }
         $id_empresa = $this->_db->regresaDatos3("$bd.empresas","IdEmpresa", "razonSocial", utf8_decode($empresa));
