@@ -1,5 +1,8 @@
 <?php
 session_start();
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+            exit();
+        }
   ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><META HTTP-EQUIV="Expires" CONTENT="0"> 

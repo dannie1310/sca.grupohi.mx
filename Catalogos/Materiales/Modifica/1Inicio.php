@@ -4,6 +4,9 @@
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 <?php
 	session_start();
+        if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+            exit();
+        }
 	
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />

@@ -161,7 +161,8 @@ if($hay>0)
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Folio Conciliación</font> </div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Fecha Conciliación</font> </div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Viajes en Conflicto</font> </div></td>
-        
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">IMEI</font> </div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Perfil</font> </div></td>
       </tr>
       <?php
  
@@ -172,6 +173,8 @@ if($hay>0)
        DATE_FORMAT(v.FechaSalida, '%d-%m-%Y') AS FechaSalida,
        DATE_FORMAT(v.HoraSalida, '%h:%i:%s') AS HoraSalida,
       t.IdTiro,
+      cpc.name as Perfil,
+      cpc.id as IdPerfil,
       t.Descripcion AS Tiro,
       c.IdCamion AS IdCamion,
       c.Economico AS Camion,
@@ -216,7 +219,10 @@ if($hay>0)
       c.PlacasCaja,
       v.CreoPrimerToque,
       v.Creo,
-      cev.identifiacador as conflictos
+      cev.identifiacador as conflictos,
+      concat(usuario1.nombre,' ',usuario1.apaterno,' ', usuario1.amaterno) as usu1toque,
+      concat(usuario2.nombre,' ',usuario2.apaterno,' ', usuario2.amaterno) as usu2toque,
+      v.imei
       FROM
         viajesnetos AS v
       JOIN tiros AS t USING (IdTiro)
@@ -233,6 +239,9 @@ if($hay>0)
       LEFT JOIN conciliacion as conci ON conci.idconciliacion = conde.idconciliacion 
       left join sindicatos as sincon on sincon.IdSindicato = conci.IdSindicato
       left join empresas as empcon on empcon.IdEmpresa = conci.IdEmpresa
+      left join igh.usuario as usuario1 on usuario1.idusuario = v.CreoPrimerToque
+      left join igh.usuario as usuario2 on usuario2.idusuario = v.Creo
+      left join configuracion_perfiles_cat as cpc on cpc.id = v.IdPerfil
        left join (
       
       
@@ -298,12 +307,12 @@ if($hay>0)
       group by IdViajeNeto
       ORDER BY v.FechaLlegada, camion, v.HoraLlegada, idEstatus
 ";   
-   //echo $rows;   
+   //cho $rows;   
     $ro=$link->consultar($rows);
     $p=0;
     while($fil=mysql_fetch_array($ro))
       {
-        $query = "  
+        /*$query = "  
           SELECT concat(usu1.nombre,' ',usu1.apaterno , ' ',usu1.amaterno) as usu1toque
           FROM
               igh.usuario as usu1
@@ -321,11 +330,11 @@ if($hay>0)
         $consulta1=$SCA_IGH->consultar($query);
         while ($Row = $SCA_IGH->fetch($consulta1)){
           $usu2toque = $Row['usu1toque'];
-        }
+        }*/
 
               $p++;
               $horaini = '07:00:00';
-              $horafin = '19:00:00';
+              $horafin = '18:59:59';
               if($fil[Hora] >= $horaini && $fil[Hora] < $horafin){
                 $turno ='Primer Turno';
               }
@@ -349,8 +358,8 @@ if($hay>0)
             ?>
             <tr <?php if($fil[conflictos]!=''): ?> style="background-color: #FCC" <?php endif; ?> >
               <td width="1"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $p; ?>       </font></div></td>
-              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $usu1toque; ?></font></div></td>
-              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $usu2toque; ?></font></div></td>
+              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[usu1toque]; ?></font></div></td>
+              <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo ($fil[IdPerfil] != 3)?$fil[usu2toque]:"N/A"; ?></font></div></td>
               <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[cubicacion]; ?></font></div></td>
               <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[CubicacionViajeNeto]; ?></font></div></td>
               <td width="5"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[CubicacionViaje]; ?></font></div></td>
@@ -384,7 +393,9 @@ if($hay>0)
               <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[fecha_conciliacion]; ?></font></div></td>
               
               <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;">'<?php echo $fil[conflictos]; ?></font></div></td>
-              <!--<td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php //echo $fil[IdViaje]; ?></font></div></td>-->
+              <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;">'<?php echo $fil[imei]; ?></font></div></td>
+              <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Perfil]; ?></font></div></td>
+<!--<td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php //echo $fil[IdViaje]; ?></font></div></td>-->
             </tr>
 
       <?php

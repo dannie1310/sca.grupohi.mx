@@ -1,5 +1,8 @@
 <?php 
-session_start();    
+session_start();   
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+            exit();
+        }
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 

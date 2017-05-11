@@ -61,7 +61,7 @@ $ffin2=$_REQUEST["final"];
       <span class="FondoSeriesUno">
         <img src="../../../../Imgs/calendarp.gif" width="19" height="21" align="baseline" id="boton2" style="cursor:hand" />
         <input name="final"  type="text" id="FechaFinal" size="9" maxlength="9" class="text" style="heigth:54" value="<?php if ($seg!=1)echo date("d-m-Y"); else if($seg=1)echo $ffin2; ?>"  onChange='this.value=ValidaFechaVen(document.frm.FechaInicial.value,"<?php echo date("d-m-Y"); ?>",this.value);'/>
-        <input name="horaFinal"  type="time" id="horaFinal" class="text" value="23:59:00" step="1" />
+        <input name="horaFinal"  type="time" id="horaFinal" class="text" value="23:59:59" step="1" />
       </span>
     </td>
 

@@ -1,5 +1,8 @@
 <?php 
 session_start();
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+            exit();
+        }
 require_once("../../inc/php/conexiones/SCA.php");
 require_once("../../inc/php/Usuario.php");
 require_once("../../inc/generales.php");

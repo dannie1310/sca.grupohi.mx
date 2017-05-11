@@ -27,8 +27,9 @@ class Usuario {
             
             if ($row_s = $this->_db ->fetch($result_s)) {
                 $_SESSION["databasesca"]=$row_s[base_datos];
-                $sql_perfil = "SELECT role_user.user_id
-                FROM sca_configuracion.role_user role_user
+                $sql_perfil = "SELECT role_user.user_id, cd.id_origen, cd.id_tiro, cd.id_perfil,tipo
+                FROM sca_configuracion.role_user role_user left join
+                ".$row_s[base_datos].".configuracion_diaria as cd on (role_user.user_id = cd.id_usuario)
                WHERE     (role_user.user_id = ".$row[IdUsuario].")
                      AND (role_user.role_id = 7)
                      AND (role_user.id_proyecto = ".$row_s[id_proyecto].")";
@@ -90,11 +91,12 @@ class Usuario {
 
                         
                 //TIROS
-                $sql_tiros="Select idtiro, descripcion from tiros where estatus=1;";
+                $sql_tiros="Select idtiro, descripcion, IdEsquema as idesquema from tiros where estatus=1;";
                 $result_tiros=$this->_database_sca->consultar($sql_tiros);
                 while($row_tiros=$this->_database_sca->fetch($result_tiros)) 
                         $array_tiros[]=array(
                             "idtiro"=>$row_tiros[idtiro],
+                            "idesquema"=>$row_tiros[idesquema],
                             "descripcion"=>utf8_encode($row_tiros[descripcion])
                             );
 
@@ -208,7 +210,10 @@ SELECT
                      "IdProyecto"=>$row_s[id_proyecto],
                      "base_datos"=>$row_s[base_datos], 
                      "empresa"=>$row_s[empresa], 
-                     "tiene_logo"=>$row_s[tiene_logo], 
+                     "tiene_logo"=>$row_s[tiene_logo],
+                    "IdOrigen"=>$row_perfil[id_origen],
+                    "IdTiro"=>$row_perfil[id_tiro],
+                    "IdPerfil"=>$row_perfil[id_perfil],
                      "logo"=>$row_s[logo], 
                      "descripcion_database"=>utf8_encode($row_s[descripcion_database]),
                      "Camiones"=>$array_camiones,
@@ -368,6 +373,16 @@ SELECT
             if ($row_s = $this->_db ->fetch($result_s)) {
                
                $_SESSION["databasesca"]=$row_s[base_datos];
+               ####################
+                $sql_perfil = "SELECT role_user.user_id
+                FROM sca_configuracion.role_user role_user
+               WHERE     (role_user.user_id = ".$row[IdUsuario].")
+                     AND (role_user.role_id = 19)
+                     AND (role_user.id_proyecto = ".$row_s[id_proyecto].")";
+                $result_perfil = $this->_db ->consultar($sql_perfil);
+                if($row_perfil = $this->_db ->fetch($result_perfil)){
+               ######################
+               
                $this->_database_sca = SCA::getConexion();
                 
                 //SINDICATOS
@@ -488,7 +503,10 @@ SELECT
 
                  
                                 
-                 echo json_encode($arraydata);  
+                 echo json_encode($arraydata); 
+            }else{
+                echo utf8_encode("{\"error\":\"El usuario no tiene el perfil para utilizar el catálogo de camiones \"}");
+            }
             }else {
 
                 echo "{\"error\":\"Error al obtener los datos. \"}";
@@ -682,7 +700,7 @@ SELECT
         $cadenajsonx = json_encode($_REQUEST);
         $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
 
-        if (isset($_REQUEST[carddata])) {
+        if (isset($_REQUEST[carddata]) || isset($_REQUEST[inicioCamion])) {
             $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$_REQUEST[carddata]')"); //coordenadas
             $json_viajes = $_REQUEST[carddata];
             $data_viajes = json_decode(utf8_encode($json_viajes), TRUE);
@@ -698,7 +716,50 @@ SELECT
             $idsindicato = 'NULL';
             $i_deductiva = 0;
             $deductivas = array();
+            $json_inicio_camion = $_REQUEST["inicioCamion"];
+            $inicio_camion = json_decode(utf8_encode($json_inicio_camion), TRUE);
+            if(count($inicio_camion)>0 ){
+                foreach($inicio_camion as $key => $value){
+                    #insertar inicio
+                    
+                    $ic = "INSERT INTO $_REQUEST[bd].`inicio_camion`
+                        (
+                        `idcamion`,
+                        `idmaterial`,
+                        `idorigen`,
+                        `fecha_origen`,
+                        `idusuario`,
+                        `uidTAG`,
+                        `IMEI`,
+                        `idperfil`)
+                        VALUES
+                        (
+                        $value[idcamion],
+                        $value[idmaterial],
+                        $value[idorigen],
+                        '$value[fecha_origen]',
+                        '$value[idusuario]',
+                        '$value[uidTAG]',
+                        '$value[IMEI]',
+                        $value[idperfil]);";
+                    
+                        
+                        $this->_db->consultar($ic);
+                        
+                        $ic_error="";
+                        if ($this->_db->affected() > 0) {
+                            
+                            
+                        }else{
+                            $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $ic)."','$value[Creo]' )";
+                            $this->_db->consultar($x_error);
+                            
+                        }
+                        
+                }
+            }
             if ($viajes_a_registrar > 0) {
+                
                 foreach ($data_viajes as $key => $value) {
                     
                     #validar que viaje no exista
@@ -720,7 +781,7 @@ SELECT
                         $idsindicato = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdSindicato","IdCamion",$value[IdCamion]);
                         $cubicacion_camion_tel = (array_key_exists("CubicacionCamion", $value))?"'".$value["CubicacionCamion"]."'":"'0'";
                         $cubicacion_camion_cam = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","CubicacionParaPago","IdCamion",$value[IdCamion]);
-                        
+                        $idperfil = (array_key_exists("IdPerfil", $value))?"'".$value["IdPerfil"]."'":"NULL";
                         $code_random = (array_key_exists("CodeRandom", $value))?"'".$value["CodeRandom"]."'":"'NA'";
                         $creo_primer_toque = (array_key_exists("CreoPrimerToque", $value))?$value["CreoPrimerToque"]:0;
                         
@@ -737,7 +798,7 @@ SELECT
                         $x = "INSERT INTO 
                         $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
                             FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom,
-                            CreoPrimerToque, CubicacionCamion)
+                            CreoPrimerToque, CubicacionCamion, IdPerfil)
                     VALUES(
                            0,
                            NOW(), 
@@ -756,7 +817,7 @@ SELECT
                            0, 
                            '$value[Code]', 
                            '$value[uidTAG]',
-                                               '$value[Imagen]', '$value[IMEI]', '$version', '$value[CodeImagen]',$idempresa,$idsindicato,$code_random,$creo_primer_toque,$cubicacion_camion);";
+                                               '$value[Imagen]', '$value[IMEI]', '$version', '$value[CodeImagen]',$idempresa,$idsindicato,$code_random,$creo_primer_toque,$cubicacion_camion,$idperfil);";
 
                         $this->_db->consultar($x);
                         $x_error="";
@@ -941,7 +1002,21 @@ SELECT
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         $result = $this->_db_igh ->consultar($sql);
         if ($row = $this->_db_igh ->fetch($result)) {
-            if($this->accesoValidoActualizacionCamiones($row["IdUsuario"], $_REQUEST[id_proyecto])){
+            ####################
+                $sql_perfil = "SELECT role_user.user_id
+                FROM sca_configuracion.role_user role_user
+               WHERE     (role_user.user_id = ".$row[IdUsuario].")
+                     AND (role_user.role_id = 19)
+                     AND (role_user.id_proyecto = ".$row_s[id_proyecto].")";
+                $result_perfil = $this->_db ->consultar($sql_perfil);
+                
+                if($row_perfil = $this->_db ->fetch($result_perfil)){
+               
+               
+               
+               
+               ######################
+            //if($this->accesoValidoActualizacionCamiones($row["IdUsuario"], $_REQUEST[id_proyecto])){
                 $cadenajsonx=json_encode($_REQUEST);
                 $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
                 if(isset($_REQUEST['camiones_editados']) || isset($_REQUEST['solicitud_activacion'])){
@@ -1086,7 +1161,7 @@ SELECT
                                 . "".$datos_preparados["cu_pago"].", "
                                 . "'".$datos_preparados["economico"]."', "    
                                 . "'".$_REQUEST["IMEI"]."', "
-                                . "'".$_REQUEST["usr"]."' "
+                                . "'".$_REQUEST["usr"]."', "
                                 . "'".$_REQUEST["Version"]."' "        
                                 . ")";
                             $this->_db->consultar($x);
