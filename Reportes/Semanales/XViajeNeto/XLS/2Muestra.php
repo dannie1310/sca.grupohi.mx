@@ -313,7 +313,7 @@ if($hay>0)
       group by IdViajeNeto
       ORDER BY v.FechaLlegada, camion, v.HoraLlegada, idEstatus
 ";   
-   //echo $rows;   
+   // echo $rows;   
     $ro=$link->consultar($rows);
     $p=0;
     while($fil=mysql_fetch_array($ro))
