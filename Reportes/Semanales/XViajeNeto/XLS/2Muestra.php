@@ -160,6 +160,7 @@ if($hay>0)
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Ticket</font> </div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Folio Conciliación</font> </div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Fecha Conciliación</font> </div></td>
+        <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Estatus Conciliación</font> </div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Viajes en Conflicto</font> </div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">IMEI</font> </div></td>
         <td bgcolor="969696"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px; font-weight:bold ">Perfil</font> </div></td>
@@ -222,7 +223,12 @@ if($hay>0)
       cev.identifiacador as conflictos,
       concat(usuario1.nombre,' ',usuario1.apaterno,' ', usuario1.amaterno) as usu1toque,
       concat(usuario2.nombre,' ',usuario2.apaterno,' ', usuario2.amaterno) as usu2toque,
-      v.imei
+      v.imei,
+      CASE conci.estado
+        WHEN 1 THEN 'Cerrada'
+        WHEN 2 THEN 'Aprobada'
+        ELSE 'Cancelada'
+      END AS estatus_conciliacion
       FROM
         viajesnetos AS v
       JOIN tiros AS t USING (IdTiro)
@@ -307,7 +313,7 @@ if($hay>0)
       group by IdViajeNeto
       ORDER BY v.FechaLlegada, camion, v.HoraLlegada, idEstatus
 ";   
-   //cho $rows;   
+   //echo $rows;   
     $ro=$link->consultar($rows);
     $p=0;
     while($fil=mysql_fetch_array($ro))
@@ -391,7 +397,7 @@ if($hay>0)
               <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;">'<?php echo $fil[code]; ?></font></div></td>
               <td width="20"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[idconciliacion]; ?></font></div></td>
               <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[fecha_conciliacion]; ?></font></div></td>
-              
+              <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[estatus_conciliacion]; ?></font></div></td>
               <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;">'<?php echo $fil[conflictos]; ?></font></div></td>
               <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;">'<?php echo $fil[imei]; ?></font></div></td>
               <td width="50"><div align="center"><font color="#000000" face="Trebuchet MS" style="font-size:10px;"><?php echo $fil[Perfil]; ?></font></div></td>
