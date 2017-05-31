@@ -181,10 +181,8 @@ if($hay>0)
       v.IdViajeNeto as IdViajeNeto,
       v.estatus as idEstatus,
       v.code,
-      CASE 
-        WHEN v.estatus in (1,11,21,31) THEN 'Validado'
-        WHEN v.estatus in (0,10,20,30) THEN 'Pendiente de Validar'
-      END AS Estatus,
+      if(vi.estatus is not null, 'Validado',if(vr.estatus is not null,'Rechazado','Pendiente Validar')) as Estatus,
+      
       v.HoraLlegada as Hora,
       v.code,
       c.CubicacionParaPago as cubicacion,
@@ -208,9 +206,19 @@ if($hay>0)
       tm.PrimerKM as tarifa_material_pk,
       tm.KMSubsecuente as tarifa_material_ks,
       tm.KMAdicional as tarifa_material_ka,
-      ((tm.PrimerKM*1*c.CubicacionParaPago)+(tm.KMSubsecuente*r.KmSubsecuentes*c.CubicacionParaPago)+(tm.KMAdicional*r.KmAdicionales*c.CubicacionParaPago)) as ImporteTotal_M,
-      conci.idconciliacion,
-      conci.fecha_conciliacion,
+
+      if(vi.IdViaje is not null, vi.Importe,
+      
+
+((tm.PrimerKM*1*if(v.CubicacionCamion<=8,c.CubicacionParaPago,v.CubicacionCamion))+
+      (tm.KMSubsecuente*r.KmSubsecuentes*if(v.CubicacionCamion<=8,c.CubicacionParaPago,v.CubicacionCamion))+
+      (tm.KMAdicional*r.KmAdicionales*if(v.CubicacionCamion<=8,c.CubicacionParaPago,v.CubicacionCamion)))
+
+    )
+
+       as ImporteTotal_M,
+       group_concat(conci.idconciliacion) as idconciliacion,
+       group_concat(conci.fecha_conciliacion) as fecha_conciliacion,
       conci.fecha_inicial,
       conci.fecha_final,
       conci.estado,
@@ -227,16 +235,18 @@ if($hay>0)
         viajesnetos AS v
       JOIN tiros AS t USING (IdTiro)
       JOIN camiones AS c USING (IdCamion)
-      left join origenes as o using(IdOrigen) 
-      join materiales as m using(IdMaterial) 
-      left join tarifas as tm on(tm.IdMaterial=m.IdMaterial AND tm.Estatus=1) 
-      left join rutas as r on(v.IdOrigen=r.IdOrigen AND v.IdTiro=r.IdTiro AND r.Estatus=1) 
+      left join viajesrechazados vr ON vr.IdViajeNeto = v.IdViajeNeto
+      left join origenes as o on(v.IdOrigen = o.IdOrigen) 
+      join materiales as m on(v.IdMaterial=m.IdMaterial) 
+      left join tarifas as tm on(tm.IdMaterial=m.IdMaterial AND tm.Estatus=1 and tm.InicioVigencia < v.FechaLlegada and IFNULL(tm.FinVigencia,NOW()) > v.FechaLlegada) 
+      left join (SELECT *
+FROM rutas group by IdOrigen, IdTiro) as r on(v.IdOrigen=r.IdOrigen AND v.IdTiro=r.IdTiro) 
       left join sindicatos as sinca on sinca.IdSindicato = c.IdSindicato
       LEFT JOIN viajes AS vi ON vi.IdViajeNeto = v.IdViajeNeto
       left join sindicatos as sin on sin.IdSindicato = vi.IdSindicato
       left join empresas as emp on emp.IdEmpresa = vi.IdEmpresa
-      LEFT JOIN conciliacion_detalle AS conde ON conde.idviaje =  vi.IdViaje
-      LEFT JOIN conciliacion as conci ON conci.idconciliacion = conde.idconciliacion 
+      LEFT JOIN conciliacion_detalle AS conde ON (conde.idviaje =  vi.IdViaje and conde.estado = 1)
+      LEFT JOIN conciliacion as conci ON (conci.idconciliacion = conde.idconciliacion and conci.estado=2)
       left join sindicatos as sincon on sincon.IdSindicato = conci.IdSindicato
       left join empresas as empcon on empcon.IdEmpresa = conci.IdEmpresa
       left join igh.usuario as usuario1 on usuario1.idusuario = v.CreoPrimerToque
@@ -303,7 +313,6 @@ if($hay>0)
       AND v.IdProyecto = ".$IdProyecto."
       AND v.FechaLlegada between '".fechasql($inicial)."' and '".fechasql($final)."'
       AND v.HoraLlegada BETWEEN '".$horaInicial."' AND '".$horaFinal."'
-      AND v.IdViajeNeto not in (select IdViajeNeto from viajesrechazados)
       group by IdViajeNeto
       ORDER BY v.FechaLlegada, camion, v.HoraLlegada, idEstatus
 ";   

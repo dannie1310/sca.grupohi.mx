@@ -13,19 +13,23 @@ class Usuario {
     }
     #FUNCIÓN PARA DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE VIAJES
     function getData($usr, $pass) {       
-        
         $arraydata=array();
         $pass = md5($pass);
+        $imei = $_REQUEST["IMEI"];
+        
+        #VERIFICAR QUE USUARIO EXISTA
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         $result = $this->_db_igh ->consultar($sql);
         
         if ($row = $this->_db_igh ->fetch($result)) {
+            #OBTENER PROYECTOS
             $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database, p.empresa, p.tiene_logo, p.logo  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 "
                     . "And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
             $result_s = $this->_db ->consultar($sql_s);
             
             if ($row_s = $this->_db ->fetch($result_s)) {
+                #VERIFICAR QUE TIENE ROL DE CHECADOR
                 $_SESSION["databasesca"]=$row_s[base_datos];
                 $sql_perfil = "SELECT role_user.user_id, cd.id_origen, cd.id_tiro, cd.id_perfil,tipo
                 FROM sca_configuracion.role_user role_user left join
@@ -36,6 +40,32 @@ class Usuario {
                 $result_perfil = $this->_db ->consultar($sql_perfil);
                 
                 if($row_perfil = $this->_db ->fetch($result_perfil)){
+                    
+                    #VERIFICAR QUE TENGA EL TELÉFONO ASIGNADO
+                    ######
+                    $sql_tel = "SELECT * 
+                FROM
+                ".$row_s[base_datos].".telefonos where imei = '".$imei."' and estatus = 1";
+                  //  echo $sql_tel;
+                $result_tel = $this->_db ->consultar($sql_tel);
+                if($row_tel = $this->_db ->fetch($result_tel) || $imei==""){
+                    
+                #}
+                    ######
+                //IMPRESORAS
+                    
+                $sql_impresoras = "SELECT imei,  mac, impresoras.id as identidificador_impresora
+FROM ".$row_s[base_datos].".telefonos as telefonos left join ".$row_s[base_datos].".impresoras as impresoras on(impresoras.id = telefonos.id_impresora)
+where telefonos.imei = '".$imei."'";
+                
+                $result_imp = $this->_db->consultar($sql_impresoras);
+                while($row_imp=$this->_db->fetch($result_imp)) {
+                    $array_impresoras[]=array(
+                        "id"=>$row_imp[identidificador_impresora],
+                        "IMEI"=>$row_imp[imei],
+                        "MAC"=>$row_imp[mac],
+                    );
+                }
                 
                 //CHECADORES
                 
@@ -226,14 +256,23 @@ SELECT
                     "MotivosDeductiva"=>$array_d,
                     "Configuracion"=>$array_configuracion,
                     "Checadores"=>$array_checadores,
+                    "Celulares"=>$array_impresoras,
                  );
 
 
                  //print_r($arraydata);                 
                  echo json_encode($arraydata);     
+                 
+                 }
+            else{
+            echo utf8_encode("{\"error\":\"El teléfono no tiene autorización para operar.\"}");
+            }
+            ####
+                 
             }else{
                 echo "{\"error\":\"El usuario no tiene perfil de CHECADOR favor de solicitarlo.\"}";
             }
+            
             } else {
 
                 echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningun proyecto.\"}";
@@ -784,6 +823,7 @@ SELECT
                         $idperfil = (array_key_exists("IdPerfil", $value))?"'".$value["IdPerfil"]."'":"NULL";
                         $code_random = (array_key_exists("CodeRandom", $value))?"'".$value["CodeRandom"]."'":"'NA'";
                         $creo_primer_toque = (array_key_exists("CreoPrimerToque", $value))?$value["CreoPrimerToque"]:0;
+                        $id_origen = ($value["IdOrigen"]==0)?'NULL':$value["IdOrigen"];
                         
                         if(!($idempresa>0)){$idempresa = 'NULL';}
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
@@ -805,7 +845,7 @@ SELECT
                            NOW(), 
                            1, 
                            $value[IdCamion], 
-                           $value[IdOrigen], 
+                           $id_origen, 
                            '$value[FechaSalida]',
                            '$value[HoraSalida]',
                            $value[IdTiro], 
@@ -1002,6 +1042,16 @@ SELECT
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         $result = $this->_db_igh ->consultar($sql);
         if ($row = $this->_db_igh ->fetch($result)) {
+            
+            ##################
+            $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
+                    inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
+
+            $result_s = $this->_db ->consultar($sql_s);
+
+
+            
+            if ($row_s = $this->_db ->fetch($result_s)) {
             ####################
                 $sql_perfil = "SELECT role_user.user_id
                 FROM sca_configuracion.role_user role_user
@@ -1193,6 +1243,10 @@ SELECT
                     }
             }else{
                 echo utf8_encode("{\"error\":\"No tiene privilegios para actualizar el catálogo de camiones.\"}");
+            }
+            } else {
+
+                echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningun proyecto.\"}";
             }
         }
         ELSE{
