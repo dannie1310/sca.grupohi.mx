@@ -534,7 +534,7 @@ class Usuario {
           foreach ($data_viajes as $key => $value) {
 
             $sql = "SELECT CubicacionReal FROM camiones
-                        WHERE IdCamion = " $value[IdCamion];
+                        WHERE IdCamion = ". $value[IdCamion];  
 
             $result = $this->_db ->consultar($sql);
 
