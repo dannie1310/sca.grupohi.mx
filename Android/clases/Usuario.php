@@ -532,9 +532,17 @@ class Usuario {
           $data_viajes = json_decode(utf8_encode($json_viajes), TRUE);
           $registros = 0;
           foreach ($data_viajes as $key => $value) {
-           $x="INSERT INTO 
+
+            $sql = "SELECT CubicacionReal FROM camiones
+                        WHERE IdCamion = " $value[IdCamion];
+
+            $result = $this->_db ->consultar($sql);
+
+            $camion = $this->_db ->fetch($result);
+
+            $x="INSERT INTO 
                     $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
-                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG) 
+                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,CubicacionCamion) 
                 VALUES(
                        0,
                        '$value[FechaCarga]', 
@@ -552,7 +560,9 @@ class Usuario {
                        '$value[Creo]',
                        0, 
                        '$value[Code]', 
-                       '$value[uidTAG]');";
+                       '$value[uidTAG]',
+                       '$camion[CubicacionReal]'
+                       );";
 
 
             $this->_db->consultar($x);
