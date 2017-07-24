@@ -205,7 +205,9 @@ SELECT
                 
                 
                 //TAGS
-                $sql_tags="SELECT uid, idcamion, idproyecto_global as idproyecto FROM tags WHERE estado=1;";
+                //$sql_tags="SELECT uid, idcamion, idproyecto_global as idproyecto FROM tags WHERE estado=1;";
+
+                $sql_tags = "SELECT t.uid, t.idcamion, t.idproyecto_global as idproyecto FROM tags as t inner join camiones as c on t.idcamion = c.IdCamion WHERE t.estado=1 and c.Estatus = 1;";
                 $result_tags=$this->_database_sca->consultar($sql_tags);
                 
                 while($row_tags=$this->_database_sca->fetch($result_tags))

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4451e435-54fa-40c3-92c3-1b5b1f0775ff" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android20160923/clases/Usuario.php" afterPath="$PROJECT_DIR$/Android20160923/clases/Usuario.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,8 +60,8 @@
       <file leaf-file-name="sca.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sca.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-425">
-              <caret line="23" column="5" lean-forward="true" selection-start-line="22" selection-start-column="43" selection-end-line="23" selection-end-column="5" />
+            <state relative-caret-position="391">
+              <caret line="23" column="5" lean-forward="false" selection-start-line="22" selection-start-column="43" selection-end-line="23" selection-end-column="5" />
               <folding>
                 <marker date="1491247423300" expanded="true" signature="310:379" ph="Select * fro... usuarios" />
                 <marker date="1491247423300" expanded="true" signature="967:1173" ph="SELECT usuar... usuarios" />
@@ -73,12 +73,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Usuario.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Usuario.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Android20160923/clases/Usuario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2363">
-              <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="408">
+              <caret line="207" column="106" lean-forward="false" selection-start-line="207" selection-start-column="27" selection-end-line="207" selection-end-column="106" />
               <folding>
+                <element signature="n#ConfDATA#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#paraRegistroCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#paraRegistro#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#cargaImagenesViajes#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#capturaActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#cargaImagenesCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#preparaDatos#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#accesoValidoActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#regresaIdSindicato#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#regresaIdEmpresa#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#regresaIdOperador#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#regresaIdMarca#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#ActualizarAcceso#0;n#Usuario#0;n#!!top" expanded="false" />
+                <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
                 <marker date="1499475188521" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
                 <marker date="1499475188521" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
                 <marker date="1499475188521" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
@@ -188,18 +204,18 @@
       <file leaf-file-name="Conf.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inc/php/conexiones/conf_conexiones/Conf.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-238">
-              <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+            <state relative-caret-position="272">
+              <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inc/php/conexiones/conf_conexiones/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+            <state relative-caret-position="255">
+              <caret line="15" column="32" lean-forward="false" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -212,6 +228,7 @@
       <find>paraRe</find>
       <find>tipo_ima</find>
       <find>local</find>
+      <find>tags</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -441,15 +458,16 @@
       <workItem from="1497382554345" duration="2107000" />
       <workItem from="1499470833739" duration="2885000" />
       <workItem from="1499476682412" duration="397000" />
-      <workItem from="1499702537625" duration="893000" />
+      <workItem from="1499702537625" duration="6018000" />
+      <workItem from="1500912165043" duration="1382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11131000" />
+    <option name="totallyTimeSpent" value="17638000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.124200426" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -458,7 +476,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5545657" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33407572" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33407572" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -515,10 +533,196 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/android20160923.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/php/conexiones/SCA_config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sca.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="5" lean-forward="false" selection-start-line="22" selection-start-column="43" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <marker date="1491247423300" expanded="true" signature="310:379" ph="Select * fro... usuarios" />
+            <marker date="1491247423300" expanded="true" signature="967:1173" ph="SELECT usuar... usuarios" />
+            <marker date="1491247423300" expanded="true" signature="1402:1466" ph="Select Nombr... proyectos" />
+            <marker date="1491247423300" expanded="true" signature="1873:1933" ph="..." />
+            <marker date="1491247423300" expanded="true" signature="2112:2172" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Android20160923/clases/Usuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#ConfDATA#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#paraRegistroCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#paraRegistro#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#cargaImagenesViajes#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#cargaImagenesCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#preparaDatos#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#accesoValidoActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdSindicato#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdEmpresa#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdOperador#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdMarca#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#ActualizarAcceso#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
+            <marker date="1499475188521" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
+            <marker date="1499475188521" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
+            <marker date="1499475188521" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
+            <marker date="1499475188521" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
+            <marker date="1499475188521" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
+            <marker date="1499475188521" expanded="true" signature="3358:3738" ph="SELECT users... users" />
+            <marker date="1499475188521" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
+            <marker date="1499475188521" expanded="true" signature="4707:4957" ph="SELECT idcam... camiones" />
+            <marker date="1499475188521" expanded="true" signature="6199:6276" ph="Select idtir... tiros" />
+            <marker date="1499475188521" expanded="true" signature="8689:8789" ph="SELECT idOri... origenes" />
+            <marker date="1499475188521" expanded="true" signature="9653:9712" ph="SELECT clave... rutas" />
+            <marker date="1499475188521" expanded="true" signature="10346:10408" ph="SELECT idmat... materiales" />
+            <marker date="1499475188521" expanded="true" signature="10924:11002" ph="SELECT uid, tags" />
+            <marker date="1499475188521" expanded="true" signature="11468:11532" ph="SELECT id, d... cat_tipos_imagenes" />
+            <marker date="1499475188521" expanded="true" signature="12036:12093" ph="SELECT id, m... deductivas_motivos" />
+            <marker date="1499475188521" expanded="true" signature="14664:14757" ph="SELECT IdUsu... users" />
+            <marker date="1499475188521" expanded="true" signature="14994:15288" ph="Select p.id_... proyectos" />
+            <marker date="1499475188521" expanded="true" signature="15586:15861" ph="SELECT role_... role_user" />
+            <marker date="1499475188521" expanded="true" signature="16152:16367" ph="SELECT idcam... camiones" />
+            <marker date="1499475188521" expanded="true" signature="17347:17404" ph="SELECT uid, tags" />
+            <marker date="1499475188521" expanded="true" signature="17891:17949" ph="SELECT id, u... tags_disponibles_configurar" />
+            <marker date="1499475188521" expanded="true" signature="19746:19839" ph="SELECT IdUsu... users" />
+            <marker date="1499475188521" expanded="true" signature="20425:20719" ph="Select p.id_... proyectos" />
+            <marker date="1499475188521" expanded="true" signature="20996:21271" ph="SELECT role_... role_user" />
+            <marker date="1499475188521" expanded="true" signature="21611:21717" ph="SELECT sindi... sindicatos" />
+            <marker date="1499475188521" expanded="true" signature="22194:22290" ph="SELECT empre... empresas" />
+            <marker date="1499475188521" expanded="true" signature="22762:24188" ph="SELECT camio... camiones" />
+            <marker date="1499475188521" expanded="true" signature="28279:28372" ph="SELECT IdUsu... users" />
+            <marker date="1499475188521" expanded="true" signature="28593:28716" ph="select if( v... permisos_alta_tag" />
+            <marker date="1499475188521" expanded="true" signature="28950:29244" ph="Select p.id_... proyectos" />
+            <marker date="1499475188521" expanded="true" signature="29635:29717" ph="SELECT id_pr... proyectos" />
+            <marker date="1499475188521" expanded="true" signature="31069:31162" ph="SELECT IdUsu... users" />
+            <marker date="1499475188521" expanded="true" signature="31357:31417" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1499475188521" expanded="true" signature="32050:32316" ph="INSERT INTO tags" />
+            <marker date="1499475188521" expanded="true" signature="33235:33328" ph="SELECT IdUsu... users" />
+            <marker date="1499475188521" expanded="true" signature="33479:33602" ph="select if( v... permisos_alta_tag" />
+            <marker date="1499475188521" expanded="true" signature="33896:33956" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1499475188521" expanded="true" signature="34435:34545" ph="select count... tags" />
+            <marker date="1499475188521" expanded="true" signature="34885:35108" ph="INSERT INTO tags" />
+            <marker date="1499475188521" expanded="true" signature="36533:36593" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1499475188521" expanded="true" signature="36709:36776" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1499475188521" expanded="true" signature="37651:38409" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
+            <marker date="1499475188521" expanded="true" signature="38761:38881" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1499475188521" expanded="true" signature="39295:39657" ph="select count... viajesnetos" />
+            <marker date="1499475188521" expanded="true" signature="41684:43052" ph="INSERT INTO viajesnetos" />
+            <marker date="1499475188521" expanded="true" signature="43976:44095" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1499475188521" expanded="true" signature="44610:44680" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1499475188521" expanded="true" signature="45148:45417" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
+            <marker date="1499475188521" expanded="true" signature="45660:45887" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
+            <marker date="1499475188521" expanded="true" signature="46072:46192" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1499475188521" expanded="true" signature="47155:47334" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1499475188521" expanded="true" signature="47678:47804" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1499475188521" expanded="true" signature="49158:49218" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1499475188521" expanded="true" signature="49866:49959" ph="SELECT IdVia... viajesnetos" />
+            <marker date="1499475188521" expanded="true" signature="50540:50719" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1499475188521" expanded="true" signature="51168:51286" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1499475188521" expanded="true" signature="51781:51899" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1499475188521" expanded="true" signature="53113:53206" ph="SELECT IdUsu... users" />
+            <marker date="1499475188521" expanded="true" signature="53381:53675" ph="Select p.id_... proyectos" />
+            <marker date="1499475188521" expanded="true" signature="53873:54148" ph="SELECT role_... role_user" />
+            <marker date="1499475188521" expanded="true" signature="54605:54665" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1499475188521" expanded="true" signature="56945:59451" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
+            <marker date="1499475188521" expanded="true" signature="59772:59900" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1499475188521" expanded="true" signature="61075:63580" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
+            <marker date="1499475188521" expanded="true" signature="63884:64012" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1499475188521" expanded="true" signature="66404:66464" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1499475188521" expanded="true" signature="67677:67928" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1499475188521" expanded="true" signature="68239:68487" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
+            <marker date="1499475188521" expanded="true" signature="68815:69066" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1499475188521" expanded="true" signature="69538:69656" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1499475188521" expanded="true" signature="72738:72887" ph="SELECT count... usuarios_proyectos_modulos" />
+            <marker date="1499475188521" expanded="true" signature="73547:73796" ph="INSERT INTO ${$bd}.sindicatos... " />
+            <marker date="1499475188521" expanded="true" signature="74332:74454" ph="INSERT INTO ${$bd}.empresas... " />
+            <marker date="1499475188521" expanded="true" signature="75004:75320" ph="INSERT INTO ${$bd}.operadores... " />
+            <marker date="1499475188521" expanded="true" signature="75815:75933" ph="INSERT INTO ${$bd}.marcas... " />
+            <marker date="1499475188521" expanded="true" signature="76198:76258" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1499475188521" expanded="true" signature="76293:76466" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
+            <marker date="1499475188521" expanded="true" signature="76507:76588" ph="UPDATE igh.u... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/php/conexiones/MySQL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+          <folding>
+            <marker date="1491247471729" expanded="true" signature="3039:3114" ph="select * fro... ${$tbl}" />
+            <marker date="1491247471729" expanded="true" signature="4385:4460" ph="select * fro... ${$tbl}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/php/conexiones/Intranet.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="46" lean-forward="false" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/php/conexiones/conf_conexiones/Conf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/php/conexiones/conf_conexiones/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="32" lean-forward="false" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/android20160923.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -570,6 +774,22 @@
         <state relative-caret-position="2465">
           <caret line="145" column="40" lean-forward="false" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
           <folding>
+            <element signature="n#ConfDATA#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#paraRegistroCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#paraRegistro#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#cargaImagenesViajes#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#cargaImagenesCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#preparaDatos#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#accesoValidoActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdSindicato#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdEmpresa#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdOperador#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdMarca#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#ActualizarAcceso#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
             <marker date="1499475188521" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
             <marker date="1499475188521" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
             <marker date="1499475188521" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
@@ -700,6 +920,22 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#ConfDATA#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#paraRegistroCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#paraRegistro#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#cargaImagenesViajes#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#cargaImagenesCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#preparaDatos#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#accesoValidoActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdSindicato#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdEmpresa#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdOperador#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdMarca#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#ActualizarAcceso#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
             <marker date="1499475188521" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
             <marker date="1499475188521" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
             <marker date="1499475188521" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
@@ -795,6 +1031,22 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#ConfDATA#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#paraRegistroCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#paraRegistro#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#cargaImagenesViajes#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#cargaImagenesCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#preparaDatos#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#accesoValidoActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdSindicato#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdEmpresa#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdOperador#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdMarca#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#ActualizarAcceso#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
             <marker date="1499475188521" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
             <marker date="1499475188521" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
             <marker date="1499475188521" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
@@ -890,6 +1142,22 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#ConfDATA#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#paraRegistroCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#paraRegistro#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#cargaImagenesViajes#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#cargaImagenesCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#preparaDatos#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#accesoValidoActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdSindicato#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdEmpresa#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdOperador#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdMarca#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#ActualizarAcceso#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
             <marker date="1499475188521" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
             <marker date="1499475188521" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
             <marker date="1499475188521" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
@@ -1033,8 +1301,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sca.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="22" selection-start-column="43" selection-end-line="23" selection-end-column="5" />
+        <state relative-caret-position="391">
+          <caret line="23" column="5" lean-forward="false" selection-start-line="22" selection-start-column="43" selection-end-line="23" selection-end-column="5" />
           <folding>
             <marker date="1491247423300" expanded="true" signature="310:379" ph="Select * fro... usuarios" />
             <marker date="1491247423300" expanded="true" signature="967:1173" ph="SELECT usuar... usuarios" />
@@ -1047,8 +1315,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/inc/php/conexiones/conf_conexiones/Conf.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+        <state relative-caret-position="272">
+          <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1061,11 +1329,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/inc/php/conexiones/conf_conexiones/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="32" lean-forward="false" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Android20160923/clases/Usuario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2363">
-          <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="408">
+          <caret line="207" column="106" lean-forward="false" selection-start-line="207" selection-start-column="27" selection-end-line="207" selection-end-column="106" />
           <folding>
+            <element signature="n#ConfDATA#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#paraRegistroCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#paraRegistro#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#cargaImagenesViajes#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#capturaActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#cargaImagenesCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#preparaDatos#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#accesoValidoActualizacionCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdSindicato#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdEmpresa#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdOperador#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#regresaIdMarca#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#ActualizarAcceso#0;n#Usuario#0;n#!!top" expanded="false" />
+            <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
             <marker date="1499475188521" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
             <marker date="1499475188521" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
             <marker date="1499475188521" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
@@ -1145,14 +1437,6 @@
             <marker date="1499475188521" expanded="true" signature="76293:76466" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
             <marker date="1499475188521" expanded="true" signature="76507:76588" ph="UPDATE igh.u... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/php/conexiones/conf_conexiones/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
