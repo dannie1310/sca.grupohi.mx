@@ -99,8 +99,8 @@ where telefonos.imei = '".$imei."'";
                 //CAMIONES
                 $this->_database_sca = SCA::getConexion();
 				
-                 $sql_camiones="SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago, IdEmpresa, IdSindicato FROM camiones C
-                                LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
+                 $sql_camiones="SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago, IdEmpresa, IdSindicato, Estatus FROM camiones C
+                                LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca;";
                 $result_camiones=$this->_database_sca->consultar($sql_camiones);
                 while($row_camiones=$this->_database_sca->fetch($result_camiones)) 
                         $array_camiones[]=array(
@@ -115,8 +115,8 @@ where telefonos.imei = '".$imei."'";
                             "economico"=>utf8_encode($row_camiones[Economico]),
                             "capacidad"=>utf8_encode($row_camiones[CubicacionParaPago]),
                             "id_empresa"=>utf8_encode($row_camiones[IdEmpresa]),
-                            "id_sindicato"=>utf8_encode($row_camiones[IdSindicato])
-                            
+                            "id_sindicato"=>utf8_encode($row_camiones[IdSindicato]),
+                            "estatus"=>utf8_encode($row_camiones[Estatus])
                         );
 
                         
