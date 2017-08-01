@@ -99,7 +99,7 @@ where telefonos.imei = '".$imei."'";
                 //CAMIONES
                 $this->_database_sca = SCA::getConexion();
 				
-                 $sql_camiones="SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago, IdEmpresa, IdSindicato, Estatus FROM camiones C
+                 $sql_camiones="SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago, IdEmpresa, IdSindicato, C.Estatus FROM camiones C
                                 LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca;";
                 $result_camiones=$this->_database_sca->consultar($sql_camiones);
                 while($row_camiones=$this->_database_sca->fetch($result_camiones)) 
