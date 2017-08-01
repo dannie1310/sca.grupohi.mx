@@ -11,7 +11,7 @@ class Usuario {
         $this->_db = SCA_config::getConexion();
         $this->_db_igh = SCA_IGH::getConexion();
     }
-    #FUNCIÓN PARA DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE VIAJES
+    #FUNCIï¿½N PARA DESCARGA DE CATï¿½LOGOS PARA LA APLICACIï¿½N DE VIAJES
     function getData($usr, $pass) {       
         $arraydata=array();
         $pass = md5($pass);
@@ -41,7 +41,7 @@ class Usuario {
                 
                 if($row_perfil = $this->_db ->fetch($result_perfil)){
                     
-                    #VERIFICAR QUE TENGA EL TELÉFONO ASIGNADO
+                    #VERIFICAR QUE TENGA EL TELï¿½FONO ASIGNADO
                     ######
                     $sql_tel = "SELECT * 
                 FROM
@@ -132,7 +132,7 @@ where telefonos.imei = '".$imei."'";
 
                             
                 //ORIGENES
-                $sql_origenes="
+                /*$sql_origenes="
                                             (SELECT 
                                                 origen_x_usuario.idorigen as idorigen, 
                                                     origenes.Descripcion as descripcion,
@@ -159,7 +159,8 @@ SELECT
                                             WHERE (origen_x_usuario.idusuario_intranet = ".$row[IdUsuario].")
 )
                                             )
-                                              ";
+                                              ";*/
+                $sql_origenes = "SELECT idOrigen as idorigen, Descripcion as descripcion, 2 as estado FROM origenes where estatus = 1";
                 $result_origenes=$this->_database_sca->consultar($sql_origenes);
                 
                 if(mysql_num_rows($result_origenes)>0){
@@ -204,7 +205,9 @@ SELECT
                 
                 
                 //TAGS
-                $sql_tags="SELECT uid, idcamion, idproyecto_global as idproyecto FROM tags WHERE estado=1;";
+                //$sql_tags="SELECT uid, idcamion, idproyecto_global as idproyecto FROM tags WHERE estado=1;";
+
+                $sql_tags = "SELECT t.uid, t.idcamion, t.idproyecto_global as idproyecto FROM tags as t inner join camiones as c on t.idcamion = c.IdCamion WHERE t.estado=1 and c.Estatus = 1;";
                 $result_tags=$this->_database_sca->consultar($sql_tags);
                 
                 while($row_tags=$this->_database_sca->fetch($result_tags))
@@ -265,7 +268,7 @@ SELECT
                  
                  }
             else{
-            echo utf8_encode("{\"error\":\"El teléfono no tiene autorización para operar.\"}");
+            echo utf8_encode("{\"error\":\"El telï¿½fono no tiene autorizaciï¿½n para operar.\"}");
             }
             ####
                  
@@ -283,7 +286,7 @@ SELECT
         }
 
     }
-    #FUNCIÓN PARA LOGUEO Y DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE CONFIGURACIÓN DE TAGS
+    #FUNCIï¿½N PARA LOGUEO Y DESCARGA DE CATï¿½LOGOS PARA LA APLICACIï¿½N DE CONFIGURACIï¿½N DE TAGS
     function  ConfDATA($usr, $pass){
         $arraydata=array();
         $pass = md5($pass);
@@ -384,7 +387,7 @@ SELECT
            echo "{\"error\":\"Error en iniciar sesion. No se encontraron los datos que especifica.\"}";
         }
     }
-    #FUNCIÓN PARA LOGUEO Y DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE REGRISTOR DE CAMIONES
+    #FUNCIï¿½N PARA LOGUEO Y DESCARGA DE CATï¿½LOGOS PARA LA APLICACIï¿½N DE REGRISTOR DE CAMIONES
     function  paraRegistroCamiones($usr, $pass){
         $arraydata=array();
         $pass = md5($pass);
@@ -544,7 +547,7 @@ SELECT
                                 
                  echo json_encode($arraydata); 
             }else{
-                echo utf8_encode("{\"error\":\"El usuario no tiene el perfil para utilizar el catálogo de camiones \"}");
+                echo utf8_encode("{\"error\":\"El usuario no tiene el perfil para utilizar el catï¿½logo de camiones \"}");
             }
             }else {
 
@@ -557,7 +560,7 @@ SELECT
            echo "{\"error\":\"Error en iniciar sesion. No se encontraron los datos que especifica.\"}";
         }
     }
-    #FUNCIÓN PARA LOGUEO Y DESCARGA DE CATÁLOGOS PARA LA APLICACIÓN DE REGISTRO DE TAGS
+    #FUNCIï¿½N PARA LOGUEO Y DESCARGA DE CATï¿½LOGOS PARA LA APLICACIï¿½N DE REGISTRO DE TAGS
     function  paraRegistro($usr, $pass){
         $arraydata=array();
         $pass = md5($pass);
@@ -612,7 +615,7 @@ SELECT
                  echo json_encode($arraydata);  
             }else {
 
-                echo "{\"error\":\"Error al obtener los datos de configuración. \"}";
+                echo "{\"error\":\"Error al obtener los datos de configuraciï¿½n. \"}";
             } 
             }else{
                 echo "{\"error\":\"No tiene los privilegios para dar de alta tags en los proyectos.\"}";
@@ -621,7 +624,7 @@ SELECT
            echo "{\"error\":\"Error en iniciar sesion. No se encontraron los datos que especifica.\"}";
         }
     }
-    #FUNCIÓN PARA REGISTRAR LA CONFIGURACIÓN DE TAGS REALIZADA DESDE LA APLICACIÓN DE CONFIGURACIÓN DE TAGS
+    #FUNCIï¿½N PARA REGISTRAR LA CONFIGURACIï¿½N DE TAGS REALIZADA DESDE LA APLICACIï¿½N DE CONFIGURACIï¿½N DE TAGS
     function capturaConfiguracion($usr,$pass){
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
@@ -652,18 +655,18 @@ SELECT
                     echo "{\"error\":\"No se sincronizaron los todos los registros.\"}";
                 }
                 }else{
-                    echo "{\"error\":\"No ha mandado ningún registro para sincronizar.\"}";
+                    echo "{\"error\":\"No ha mandado ningï¿½n registro para sincronizar.\"}";
                 }
             }
             
         ELSE{
             
-            echo "{\"error\":\"Datos de inicio de sesión no validos.\"}";
+            echo "{\"error\":\"Datos de inicio de sesiï¿½n no validos.\"}";
         }
         
         //RETURN $registros;
     }
-    #Función utilizada para registrar los datos enviados por la aplicación de registro de tags (App Registro)
+    #Funciï¿½n utilizada para registrar los datos enviados por la aplicaciï¿½n de registro de tags (App Registro)
     function capturaAltas($usr,$pass){
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
@@ -713,7 +716,7 @@ SELECT
                     echo "{\"error\":\"No se registraron todos los uids. Registrados:".$registros." A registrar:".$a_registrar."  .\"}";
                 }
                 }else{
-                    echo "{\"error\":\"No ha mandado ningún registro para sincronizar.\"}";
+                    echo "{\"error\":\"No ha mandado ningï¿½n registro para sincronizar.\"}";
                 }
                 }else{
                     echo "{\"error\":\"No tiene privilegios vigentes para dar de alta tags.\"}";
@@ -727,12 +730,12 @@ SELECT
             
         ELSE{
             
-            echo "{\"error\":\"Datos de inicio de sesión no validos.\"}";
+            echo "{\"error\":\"Datos de inicio de sesiï¿½n no validos.\"}";
         }
         
         //RETURN $registros;
     }
-#Función utilizada para registrar los datos enviados por la aplicación (App Viajes)
+#Funciï¿½n utilizada para registrar los datos enviados por la aplicaciï¿½n (App Viajes)
     function captura() {
 
         $version = $_REQUEST[Version];
@@ -962,7 +965,7 @@ SELECT
                 echo "{\"error\":\"No se registraron todos los viajes. Registrados: " . $afv . " Registrados Previamente: ".$previos." A registrar: " . $viajes_a_registrar . " \"}";
             }
         }else {
-            echo "{\"error\":\"No hay ningún viaje a registrar: " . $viajes_a_registrar . " \"}";
+            echo "{\"error\":\"No hay ningï¿½n viaje a registrar: " . $viajes_a_registrar . " \"}";
         }
 
     }
@@ -1036,7 +1039,7 @@ SELECT
                     . "\"imagenes_no_registradas\":".$json_imagenes_no_registradas."}";
         }
     }
-    #Función utilizada para registrar los datos enviados por la aplicación de actualización de camiones
+    #Funciï¿½n utilizada para registrar los datos enviados por la aplicaciï¿½n de actualizaciï¿½n de camiones
     function capturaActualizacionCamiones($usr,$pass){
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
@@ -1239,10 +1242,10 @@ SELECT
                             echo "{\"error_ambos\":\"Actualizacion de Camiones y Registro de Solicitudes Incorrecto.\"}";
                     
                 }else{
-                    echo utf8_encode("{\"error\":\"No ha mandado ningún registro para sincronizar.\"}");
+                    echo utf8_encode("{\"error\":\"No ha mandado ningï¿½n registro para sincronizar.\"}");
                     }
             }else{
-                echo utf8_encode("{\"error\":\"No tiene privilegios para actualizar el catálogo de camiones.\"}");
+                echo utf8_encode("{\"error\":\"No tiene privilegios para actualizar el catï¿½logo de camiones.\"}");
             }
             } else {
 
@@ -1250,7 +1253,7 @@ SELECT
             }
         }
         ELSE{
-            echo utf8_encode("{\"error\":\"Datos de inicio de sesión no validos.\"}");
+            echo utf8_encode("{\"error\":\"Datos de inicio de sesiï¿½n no validos.\"}");
         }
     }
     
@@ -1432,7 +1435,7 @@ SELECT
 
 
         $this->_db_igh->consultar("UPDATE igh.usuario SET clave= md5('".$_REQUEST[NuevaClave]."') where idusuario = ".$_REQUEST[idusuario]);
-        echo utf8_encode("{\"msj\":\"Contraseña Guardada Correctamente!!\"}");
+        echo utf8_encode("{\"msj\":\"Contraseï¿½a Guardada Correctamente!!\"}");
 
 
 
@@ -1444,12 +1447,12 @@ SELECT
 
     function eliminaCaracteresEspeciales($entrada){
         $string = str_replace(        
-             array("\\", "¨", "º", "-", "~",
+             array("\\", "ï¿½", "ï¿½", "-", "~",
                  "#", "@", "|", "!", "\"",
-                 "·", "$", "%", "&", "/",
-                 "(", ")", "?", "'", "¡",
-                 "¿", "[", "^", "`", "]",
-                 "+", "}", "{", "¨", "´",
+                 "ï¿½", "$", "%", "&", "/",
+                 "(", ")", "?", "'", "ï¿½",
+                 "ï¿½", "[", "^", "`", "]",
+                 "+", "}", "{", "ï¿½", "ï¿½",
                  ">", "<", ";", ",", ":",
                  ),
              '',        
@@ -1460,12 +1463,12 @@ SELECT
     
     function eliminaCaracteresEspecialesN($entrada){
         $string = str_replace(        
-             array("\\", "¨", "º", "-", "~",
+             array("\\", "ï¿½", "ï¿½", "-", "~",
                  "#", "@", "|", "!", "\"",
                   "$", "%", "&", "/",
-                 "(", ")", "?", "'", "¡",
-                 "¿", "[", "^", "`", "]",
-                 "+", "}", "{", "¨", "´",
+                 "(", ")", "?", "'", "ï¿½",
+                 "ï¿½", "[", "^", "`", "]",
+                 "+", "}", "{", "ï¿½", "ï¿½",
                  ">", "<", ";", ",", ":"),
              '',        
              $entrada    
