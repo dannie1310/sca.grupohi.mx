@@ -198,4 +198,10 @@ $host["prod_sca_queretaro_san_luis"] = '172.20.74.7:3306';
 $user["prod_sca_queretaro_san_luis"] = 'sca';
 $password["prod_sca_queretaro_san_luis"] = 'w6FCR56sLT';
 $db["prod_sca_queretaro_san_luis"] = 'prod_sca_queretaro_san_luis';
+
+$host["prod_sca_cabos"] = '172.20.74.7:3306';
+$user["prod_sca_cabos"] = 'sca';
+$password["prod_sca_cabos"] = 'w6FCR56sLT';
+$db["prod_sca_cabos"] = 'prod_sca_cabos';
+
 ?>
