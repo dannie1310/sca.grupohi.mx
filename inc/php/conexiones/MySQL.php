@@ -49,6 +49,7 @@
 		function consultar($sql){
                     $this->last_id = "NULL";
                     $r=mysql_query($sql,$this->enlace);
+
                     if($this->affected()>0){
                         $this->last_id = mysql_insert_id($this->enlace);
                     }
@@ -87,6 +88,7 @@
 		
 		function regresaDatos2($tbl,$campo,$campoid, $valorid){
 			$sql="select ".$campo." from ".$tbl." where ".$campoid."='".$valorid."' limit 1";
+			echo $sql;
 			$r=mysql_query($sql,$this->enlace);
 			$v=mysql_fetch_array($r);
 			return $v[$campo];	
