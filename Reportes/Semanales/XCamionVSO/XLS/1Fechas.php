@@ -1,4 +1,9 @@
-<?php 	session_start();?>
+<?php
+session_start();
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
+?>
 <html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
@@ -88,9 +93,9 @@ $camion=$_REQUEST[camion];
 </table>
 <table width="400" border="0" align="center" >
   <tr>
-    <td width="195"  valign="top"><fieldset class="textoG" title="Consultas por Camión">
+    <td width="195"  valign="top"><fieldset class="textoG" title="Consultas por Camiï¿½n">
       
-      <legend><label style="cursor:hand" onClick="if(document.getElementById('camion').value=='T') document.getElementById('radios').style.display=''; else document.getElementById('radios').style.display='none';document.getElementById('camion').disabled=false;document.getElementById('sindicato').disabled=true"><input name="tipo_consulta" type="radio" value="camion" checked id="consulta_camion">Consulta por Camión</label></legend>
+      <legend><label style="cursor:hand" onClick="if(document.getElementById('camion').value=='T') document.getElementById('radios').style.display=''; else document.getElementById('radios').style.display='none';document.getElementById('camion').disabled=false;document.getElementById('sindicato').disabled=true"><input name="tipo_consulta" type="radio" value="camion" checked id="consulta_camion">Consulta por Camiï¿½n</label></legend>
       
       <?php 
 	  $IdProyecto=$_SESSION['Proyecto'];

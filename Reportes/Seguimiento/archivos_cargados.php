@@ -2,7 +2,13 @@
 	include("../../inc/php/conexiones/SCA.php");
 	//include("../../Clases/Funciones/Catalogos/Genericas.php");
 	require_once("../../inc/php/xajax/xajax_core/xajax.inc.php");
-	$xajax = new xajax(); 
+
+session_start();
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
+
+	$xajax = new xajax();
 	$xajax->setCharEncoding('ISO-8859-1');
 	$xajax->configure('decodeUTF8Input',true);
 	$SCA = SCA::getConexion();
@@ -60,8 +66,8 @@ $salida.='
   <tr>
     <td>&nbsp;</td>
 	<th>Viajes Detectados</th>
-	<th>Viajes Inválidos</th>
-	<th>Viajes Válidos</th>
+	<th>Viajes Invï¿½lidos</th>
+	<th>Viajes Vï¿½lidos</th>
 	<th>Viajes Registrados Previamente</th>
     <th>Viajes Registrados con Archivo</th>
 	<th>Diferencia</th>
@@ -105,8 +111,8 @@ $salida.='
 		$partes=explode("-", $cambio);
 		$dia=$partes[0];
 		$mes=$partes[1];
-		$año=$partes[2];
-		$Fechasql=$año."-".$mes."-".$dia;
+		$aï¿½o=$partes[2];
+		$Fechasql=$aï¿½o."-".$mes."-".$dia;
 		return ($Fechasql);
 	}
 	$xajax->register(XAJAX_FUNCTION,"muestra_detalle");

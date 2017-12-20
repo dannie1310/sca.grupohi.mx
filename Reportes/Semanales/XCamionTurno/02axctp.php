@@ -1,4 +1,10 @@
 <?php
+session_start();
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
+?>
+<?php
 
 if(isset($_REQUEST["v"]) && ($_REQUEST["v"]==1)){
 	header("Content-type: application/vnd.ms-excel");

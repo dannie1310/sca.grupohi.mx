@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
+
 if(isset($_REQUEST["value"]) && ($_REQUEST["value"]==1)){
 	header("Content-type: application/vnd.ms-excel");
     header('Content-Disposition:  filename=Tiempo de Recorrido Por Viaje y Camion'.date("d-m-Y").'_'.date("H.i.s",time()).'.xls');

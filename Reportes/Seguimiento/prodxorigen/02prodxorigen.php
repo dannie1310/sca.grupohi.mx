@@ -3,7 +3,11 @@
     header('Content-Disposition:  filename=Produccion por Origen del '.$_REQUEST["fi"].' al '.$_REQUEST["fi"].'_'.date("d-m-Y").'_'.date("H.i.s",time()).'.xls;');
   	include("../../../inc/php/conexiones/SCA.php");
   include("../../../inc/funciones/formato_fecha_ingles.php");
-	
+
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
+
   $fi    = $_POST["fi"];
 	$ff    = $_POST["ff"];
   $fi_fi = formato_fecha_ingles($_POST["fi"]);

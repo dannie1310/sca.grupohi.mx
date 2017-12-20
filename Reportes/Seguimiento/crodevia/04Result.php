@@ -1,5 +1,10 @@
 <?php
   //include("../../../Clases/Conexiones/Conexion.php");
+
+session_start();
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
 	include("../../../inc/funciones/formato_fecha_ingles.php");
 	include("../../../inc/php/conexiones/SCA.php");
 	

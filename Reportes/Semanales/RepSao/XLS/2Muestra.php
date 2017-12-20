@@ -1,5 +1,8 @@
 <?php
 	session_start();
+	if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
 	header('Content-Disposition:  filename=Reporte Captura SAO '.date("d-m-Y").'_'.date("H.i.s",time()).'cvs;');
 header("Content-type: application/vnd.ms-excel");
 ?>

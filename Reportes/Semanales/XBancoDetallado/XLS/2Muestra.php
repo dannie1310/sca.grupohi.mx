@@ -1,5 +1,9 @@
 <?php
 	session_start();
+    if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+        exit();
+    }
+
 	header("Content-type: application/vnd.ms-excel");
 	header('Content-Disposition:  filename=Acarreos Ejecutados por Origen Semanal (Detallado) '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
 ?>
@@ -39,7 +43,7 @@ body,td,th {
 	$partes=explode("-", $cambio); 
 	$dia=$partes[2];
 	$mes=$partes[1];
-	$año=$partes[0];
+	$aï¿½o=$partes[0];
 	if ($select==1)
 	return ($dia);
 	else
@@ -47,7 +51,7 @@ body,td,th {
 	return ($mes);
 	else
 	if($select==3)
-	return ($año);
+	return ($aï¿½o);
 	
 }
 	$rowspan='';
@@ -195,12 +199,12 @@ body,td,th {
 														$mes=regresac($DiasDeLaSemana[$a],2);
 														$dia=regresac($DiasDeLaSemana[$a],1);
 														$anio=regresac($DiasDeLaSemana[$a],3);
-														$diaAño=date(z,mktime(0,0,0,$mes,$dia,$anio));	
+														$diaAï¿½o=date(z,mktime(0,0,0,$mes,$dia,$anio));	
 														$segundos=date(U,mktime(0,0,0,$mes,$dia,$anio));
 														$segundosIni=$segundos-($a*86400);
 														$segundosFin=$segundos+(518400-($a*86400));
-														$inicio=$diaAño-$a;
-														$fins=$diaAño+(6-$a);
+														$inicio=$diaAï¿½o-$a;
+														$fins=$diaAï¿½o+(6-$a);
 		
 														$ini=date("d-m-Y",$segundosIni);
 														$fin=date("d-m-Y",$segundosFin);
@@ -345,7 +349,7 @@ body,td,th {
 									 <td align="center"><font style="font-family:'Trebuchet MS'; font-size:8px" color="#000000"><?php echo $vc[Camion]; ?></font></td>
 									 <td align="center"><font style="font-family:'Trebuchet MS'; font-size:8px" color="#000000"><?php echo $vc[Capacidad]; ?> m<sup>3</sup></font></td>
 									 <?php 
-									 #A CONTINUACION, POR CADA DÍA DE LA SEMANA SE HARA UNA CONSULTA PARA OBTENER SUS DATOS
+									 #A CONTINUACION, POR CADA Dï¿½A DE LA SEMANA SE HARA UNA CONSULTA PARA OBTENER SUS DATOS
 									 $datosdia1="select sum(VolumenPrimerKM) as vp, sum(VolumenKMSubsecuentes) as vs, sum(ImportePrimerKM) as ip, sum(ImporteKMSubsecuentes) as isu, count(v.IdViaje) as viajexdia from camiones as c, viajes as v where v.FechaSalida='".fechasql($rango[0])."' and v.IdCamion=".$vc[IdCamion]." and v.IdProyecto = ".$_SESSION["Proyecto"]." AND v.IdMaterial=".$vm[IdMaterial]." AND v.IdOrigen=".$v[IdOrigen]." and v.IdTiro=".$vt[IdTiro]." and year(v.FechaSalida) = ".$Anio." and weekofyear(v.FechaSalida) = ".$Semana." and c.IdCamion=v.IdCamion Group By v.IdCamion";
 									 $rdia1=$link->consultar($datosdia1);
 									 $vdia1=mysql_fetch_array($rdia1);

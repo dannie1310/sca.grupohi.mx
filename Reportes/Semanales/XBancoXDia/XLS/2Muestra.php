@@ -1,5 +1,8 @@
 <?php
 	session_start();
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
 	header("Content-type: application/vnd.ms-excel");
 	header('Content-Disposition:  filename=Concentrado de Acarreos Ejecutados por Origen '.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs;');
   include("../../../../inc/php/conexiones/SCA.php");

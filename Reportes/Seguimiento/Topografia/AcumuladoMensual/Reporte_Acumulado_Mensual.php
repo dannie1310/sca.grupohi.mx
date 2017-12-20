@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
+
 header("Content-type: application/vnd.ms-excel");
 header('Content-Disposition: attachment; filename="Topografia_Acumulado_Mensual_'.date("d-m-Y").'_'.date("H.i.s").'.xls"');
 include("../../../../inc/php/conexiones/SCA.php");
@@ -92,10 +97,10 @@ while($vsql = $SCA->fetch($rsql)){
 	<td style="background-color:#03F; color:#FFF; font-weight:bold;" align="center">Volumen <br />Acumulado</td>
     <td style="background-color:#03F; color:#FFF; font-weight:bold;" align="center">Volumen <br />Total Programado</td>
     <td style="background-color:#03F; color:#FFF; font-weight:bold;" align="center">Volumen <br />Total por Ejecutar</td>
-    <td style="background-color:#03F; color:#FFF; font-weight:bold;" align="center">Dias Hábiles <br />Faltantes</td>
+    <td style="background-color:#03F; color:#FFF; font-weight:bold;" align="center">Dias Hï¿½biles <br />Faltantes</td>
     <td style="background-color:#03F; color:#FFF; font-weight:bold;" align="center">Rendimiento <br />Acelerado (Necesario)</td>
     <td style="background-color:#03F; color:#FFF; font-weight:bold;" align="center">Rendimiento <br />de Contrato</td>
-    <td style="background-color:#03F; color:#FFF; font-weight:bold;" align="center">Aceleración de Rendimiento <br />Respecto a lo contratado</td>
+    <td style="background-color:#03F; color:#FFF; font-weight:bold;" align="center">Aceleraciï¿½n de Rendimiento <br />Respecto a lo contratado</td>
 </tr>
 <?php
 	$sql1 = "select distinct IdMaterial from topografias where Fecha<='".$final."' order by IdMaterial";

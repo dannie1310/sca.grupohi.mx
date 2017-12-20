@@ -1,5 +1,8 @@
 <?php
-	session_start();
+session_start();
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
 	if(isset($_REQUEST["v"]) && ($_REQUEST["v"]==1)){
     header("Content-type: application/vnd.ms-excel");
     header('Content-Disposition:  filename=AcarreosEjecutadosPorCamionDetallado_'.date("d-m-Y").'_'.date("H.i.s",time()).'.cvs');

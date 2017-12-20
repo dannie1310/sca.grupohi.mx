@@ -4,7 +4,12 @@
 	
 	include("../../../inc/php/conexiones/SCA.php");
 	include("../../../Clases/Funciones/Catalogos/Genericas.php");
-	
+
+session_start();
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
+
   $fi    = $_REQUEST["fi"];
 	$ff    = $_REQUEST["ff"];
 	

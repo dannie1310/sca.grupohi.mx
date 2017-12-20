@@ -1,4 +1,10 @@
 <?php ini_set("display_errors","on");?>
+<?php
+session_start();
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
+?>
 <html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />

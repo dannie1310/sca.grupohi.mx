@@ -3,6 +3,11 @@
 	include("../../../inc/funciones/formato_fecha_ingles.php");
 	include("../../../inc/php/conexiones/SCA.php");
 
+session_start();
+if($_SESSION["databasesca"] == 'prod_sca_pista_aeropuerto_2'){
+    exit();
+}
+
   //$fi_fi=formato_fecha_ingles($_POST["fi"]);
 	//$ff_fi=formato_fecha_ingles($_POST["ff"]);
 	//$crono_base = $_POST["cronb"];
