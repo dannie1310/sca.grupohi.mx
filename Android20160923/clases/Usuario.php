@@ -791,7 +791,7 @@ SELECT
             $i_deductiva = 0;
             $deductivas = array();
             $json_inicio_camion = $_REQUEST["inicioCamion"];
-            $inicio_camion = json_decode(utf8_encode($json_inicio_camion), TRUE);//para pruebas*/
+            $inicio_camion = json_decode(utf8_encode($json_inicio_camion), TRUE);// comentar para pruebas*/
             //$inicio_camion = $_REQUEST["inicioCamion"];
             $inicio_registrar = count($inicio_camion);
 
@@ -821,6 +821,8 @@ SELECT
                         $code = (array_key_exists("Code", $value)) ? "'" . $value["Code"] . "'" : "NULL";
                         $tipo = (array_key_exists("tipo_suministro", $value)) ? "'" . $value["tipo_suministro"] . "'" : "NULL";
                         $num = (array_key_exists("numImpresion", $value)) ? "'" . $value["numImpresion"] . "'" : "NULL";
+                        $deductiva = (array_key_exists("deductiva", $value))?"'".$value["deductiva"]."'":"NULL";
+                        $idmotivo = (array_key_exists("idmotivo", $value))?"'".$value["idmotivo"]."'":"NULL";
                         $version = $_REQUEST[Version];
 
                         $ic = "INSERT INTO $_REQUEST[bd].`inicio_camion`
@@ -840,7 +842,9 @@ SELECT
                         `numImpresion`,
                          `tipo`,
                             `estatus`,
-                            `version`)
+                            `version`,
+                            deductiva,
+                             idmotivo)
                         VALUES
                         (
                         $value[idcamion],
@@ -858,7 +862,9 @@ SELECT
                         $num,
                         $tipo,
                             '0',
-                            '$version');";
+                            '$version',
+                            $deductiva,
+                            $idmotivo);";
 
                         $this->_db->consultar($ic);
 
