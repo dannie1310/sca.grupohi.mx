@@ -204,4 +204,10 @@ $user["prod_sca_cabos"] = 'sca';
 $password["prod_sca_cabos"] = 'w6FCR56sLT';
 $db["prod_sca_cabos"] = 'prod_sca_cabos';
 
+
+$host["dev_prueba_sca_pista_aeropuerto_2"] = '172.20.74.7:3306';
+$user["dev_prueba_sca_pista_aeropuerto_2"] = 'sca';
+$password["dev_prueba_sca_pista_aeropuerto_2"] = 'w6FCR56sLT';
+$db["dev_prueba_sca_pista_aeropuerto_2"] = 'dev_prueba_sca_pista_aeropuerto_2';
+
 ?>
