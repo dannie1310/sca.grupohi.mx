@@ -268,7 +268,7 @@ SELECT
                  
                  }
             else{
-            echo utf8_encode("{\"error\":\"El tel�fono no tiene autorizaci�n para operar.\"}");
+            echo utf8_encode("{\"error\":\"El teléfono no tiene autorización para operar.\"}");
             }
             ####
                  
@@ -291,20 +291,15 @@ SELECT
         $arraydata=array();
         $pass = md5($pass);
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
-        //echo $sql;
 
         $result = $this->_db_igh ->consultar($sql);
         $row = $this->_db_igh ->fetch($result);
-        
-//echo 'roesssss'.count($row)."ssssss";
         
         if (count($row) == 4) {
             $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
 
             $result_s = $this->_db ->consultar($sql_s);
-
-
             
             if ($row_s = $this->_db ->fetch($result_s)) {
                
@@ -740,31 +735,97 @@ SELECT
 
         $version = $_REQUEST[Version];
         $cadenajsonx = json_encode($_REQUEST);
+        $viajes_a_registrar = 0;
+        $inicio_registrar = 0;
+        $imei = $_REQUEST["IMEI"];
+        if($imei == ""){
+
+            $json_viajes = $_REQUEST[carddata];
+            $data_viajes = json_decode(utf8_encode($json_viajes), TRUE);
+            //$data_viajes = $_REQUEST[carddata];
+            if(count($data_viajes)>0 ) {
+                foreach ($data_viajes as $key => $value) {
+                    $imei = $value[IMEI];
+                }
+            }else{
+                $json_inicio_camion = $_REQUEST["inicioCamion"];
+                $inicio_camion = json_decode(utf8_encode($json_inicio_camion), TRUE);
+                //$inicio_camion = $_REQUEST["inicioCamion"];
+                if(count($inicio_camion)>0 ) {
+                    foreach ($inicio_camion as $key => $value) {
+                        $imei = $value[IMEI];
+                    }
+                }
+            }
+        }
+
         $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
+        #VERIFICAR QUE TENGA EL TEL�FONO ASIGNADO
+
+        ######
+        $sql_tel = "SELECT *  FROM ".$_REQUEST[bd].".telefonos where imei = '".$imei."' and estatus = 1";
+
+        $result_tel = $this->_db ->consultar($sql_tel);
+
+        if($row_tel = $this->_db ->fetch($result_tel)){
 
         if (isset($_REQUEST[carddata]) || isset($_REQUEST[inicioCamion])) {
             $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$_REQUEST[carddata]')"); //coordenadas
             $json_viajes = $_REQUEST[carddata];
             $data_viajes = json_decode(utf8_encode($json_viajes), TRUE);
+            //$data_viajes = $_REQUEST[carddata];
             $registros_viajes = 0;
+            $registros_inicio = 0;
             $afv = 0;
+            $afi=0;
             $af_imagen = 0 ;
             $error = "";
             $previos = 0;
+            $previos_i = 0;
             $viajes_a_registrar = count($data_viajes);
             $cantidad_imagenes = 0;
             $arreglo_id_viaje_code = array();
+            $arreglo_id_inicio = array();
             $idempresa = 'NULL';
             $idsindicato = 'NULL';
             $i_deductiva = 0;
             $deductivas = array();
             $json_inicio_camion = $_REQUEST["inicioCamion"];
-            $inicio_camion = json_decode(utf8_encode($json_inicio_camion), TRUE);
+            $inicio_camion = json_decode(utf8_encode($json_inicio_camion), TRUE);// comentar para pruebas*/
+            //$inicio_camion = $_REQUEST["inicioCamion"];
+            $inicio_registrar = count($inicio_camion);
+
             if(count($inicio_camion)>0 ){
                 foreach($inicio_camion as $key => $value){
-                    #insertar inicio
-                    
-                    $ic = "INSERT INTO $_REQUEST[bd].`inicio_camion`
+                    #validar si existe el viaje
+                    $code = (array_key_exists("Code", $value))?"'".$value["Code"]."'":"NULL";
+                    if($code != "NULL"){
+                        $x_i = "select count(*) as existe from $_REQUEST[bd].inicio_camion  
+                        where IdCamion = $value[idcamion] and fecha_origen = '$value[fecha_origen]' and Code = '$value[Code]';";
+                    }else{
+                        $x_i = "select count(*) as existe from $_REQUEST[bd].inicio_camion  
+                        where IdCamion = $value[idcamion] and fecha_origen = '$value[fecha_origen]';";
+                    }
+
+                    $result_v_inicio = $this->_db->consultar($x_i);
+                    $row_valida_i = $this->_db->fetch($result_v_inicio);
+                    if($row_valida_i["existe"] > 0){
+                        //if(0==1){
+                        $previos_i = $previos_i + 1;
+                    }
+                    else {
+                        #insertar inicio
+                        $folioMina = (array_key_exists("foliomina", $value)) ? "'" . $value["foliomina"] . "'" : "NULL";
+                        $folioSeguimiento = (array_key_exists("folioseguimiento", $value)) ? "'" . $value["folioseguimiento"] . "'" : "NULL";
+                        $volumen = (array_key_exists("volumen", $value)) ? "'" . $value["volumen"] . "'" : "NULL";
+                        $code = (array_key_exists("Code", $value)) ? "'" . $value["Code"] . "'" : "NULL";
+                        $tipo = (array_key_exists("tipo_suministro", $value)) ? "'" . $value["tipo_suministro"] . "'" : "NULL";
+                        $num = (array_key_exists("numImpresion", $value)) ? "'" . $value["numImpresion"] . "'" : "NULL";
+                        $deductiva = (array_key_exists("deductiva", $value))?"'".$value["deductiva"]."'":"NULL";
+                        $idmotivo = (array_key_exists("idmotivo", $value))?"'".$value["idmotivo"]."'":"NULL";
+                        $version = $_REQUEST[Version];
+
+                        $ic = "INSERT INTO $_REQUEST[bd].`inicio_camion`
                         (
                         `idcamion`,
                         `idmaterial`,
@@ -773,7 +834,17 @@ SELECT
                         `idusuario`,
                         `uidTAG`,
                         `IMEI`,
-                        `idperfil`)
+                        `idperfil`,
+                        `folioMina`,
+                        `folioSeguimiento`,
+                        `volumen`,
+                        `code`,
+                        `numImpresion`,
+                         `tipo`,
+                            `estatus`,
+                            `version`,
+                            deductiva,
+                             idmotivo)
                         VALUES
                         (
                         $value[idcamion],
@@ -783,21 +854,37 @@ SELECT
                         '$value[idusuario]',
                         '$value[uidTAG]',
                         '$value[IMEI]',
-                        $value[idperfil]);";
-                    
-                        
+                        $value[idperfil],
+                        $folioMina,
+                        $folioSeguimiento,
+                        $volumen,
+                        $code,
+                        $num,
+                        $tipo,
+                            '0',
+                            '$version',
+                            $deductiva,
+                            $idmotivo);";
+
                         $this->_db->consultar($ic);
-                        
-                        $ic_error="";
+
+                        $ic_error = "";
                         if ($this->_db->affected() > 0) {
-                            
-                            
-                        }else{
-                            $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $ic)."','$value[Creo]' )";
+                            $afi = $afi + $this->_db->affected();
+                            $id_inicio = $this->_db->retId();
+                            $arreglo_id_inicio[$value[Code]] = $id_inicio;
+
+                        } else {
+                            $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('" . str_replace("'", "\'", $ic) . "','$value[Creo]' )";
                             $this->_db->consultar($x_error);
-                            
+                            if ($this->_db->affected() > 0) {
+                                $afi = $afi + $this->_db->affected();
+                            }
+
                         }
-                        
+                        $error = $error + $this->_db->mensaje;
+                        $registros_inicio++;
+                    }
                 }
             }
             if ($viajes_a_registrar > 0) {
@@ -819,6 +906,7 @@ SELECT
                     }
                     else{  
                         #obtener sindicato y empresa del camion
+                        $cubicacion_camion = 0;
                         $idempresa = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdEmpresa","IdCamion",$value[IdCamion]);
                         $idsindicato = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdSindicato","IdCamion",$value[IdCamion]);
                         $cubicacion_camion_tel = (array_key_exists("CubicacionCamion", $value))?"'".$value["CubicacionCamion"]."'":"'0'";
@@ -827,7 +915,10 @@ SELECT
                         $code_random = (array_key_exists("CodeRandom", $value))?"'".$value["CodeRandom"]."'":"'NA'";
                         $creo_primer_toque = (array_key_exists("CreoPrimerToque", $value))?$value["CreoPrimerToque"]:0;
                         $id_origen = ($value["IdOrigen"]==0)?'NULL':$value["IdOrigen"];
-                        
+                        $folioMina = (array_key_exists("folioMina", $value))?"'".$value["folioMina"]."'":"NULL";
+                        $folioSeguimiento = (array_key_exists("folioSeguimiento", $value))?"'".$value["folioSeguimiento"]."'":"NULL";
+                        $num = (array_key_exists("numImpresion", $value))?"'".$value["numImpresion"]."'":"NULL";
+
                         if(!($idempresa>0)){$idempresa = 'NULL';}
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
                         if(!($cubicacion_camion>0)){$cubicacion_camion = 0;}
@@ -841,7 +932,7 @@ SELECT
                         $x = "INSERT INTO 
                         $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
                             FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom,
-                            CreoPrimerToque, CubicacionCamion, IdPerfil)
+                            CreoPrimerToque, CubicacionCamion, IdPerfil, folioMina, folioSeguimiento, numImpresion)
                     VALUES(
                            0,
                            NOW(), 
@@ -860,7 +951,19 @@ SELECT
                            0, 
                            '$value[Code]', 
                            '$value[uidTAG]',
-                                               '$value[Imagen]', '$value[IMEI]', '$version', '$value[CodeImagen]',$idempresa,$idsindicato,$code_random,$creo_primer_toque,$cubicacion_camion,$idperfil);";
+                           '$value[Imagen]',
+                           '$value[IMEI]', 
+                           '$version', 
+                           '$value[CodeImagen]',
+                           $idempresa,
+                           $idsindicato,
+                           $code_random,
+                           $creo_primer_toque,
+                           $cubicacion_camion,
+                           $idperfil,
+                           $folioMina, 
+                           $folioSeguimiento, 
+                           $num);";
 
                         $this->_db->consultar($x);
                         $x_error="";
@@ -891,6 +994,7 @@ SELECT
             
             if (isset($_REQUEST[coordenadas])) {
                 $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$_REQUEST[coordenadas]')"); //coordenadas
+                //$data_coordenada = $_REQUEST[coordenadas];
                 $json_coordenada = $_REQUEST[coordenadas];
                 $data_coordenada = json_decode(utf8_encode($json_coordenada), TRUE);
                 $registros_coordenadas = 0;
@@ -958,16 +1062,25 @@ SELECT
 
             //preg_replace("[\n|\r|\n\r]", ' ', $x_v)
 
-            if (($afv + $previos) == $viajes_a_registrar){
-                echo "{\"msj\":\"Viajes sincronizados correctamente. Registrados: " . $afv . " Registrados Previamente: ".$previos." A registrar: " . $viajes_a_registrar . "  \"}";
-            }
-            else{
-                echo "{\"error\":\"No se registraron todos los viajes. Registrados: " . $afv . " Registrados Previamente: ".$previos." A registrar: " . $viajes_a_registrar . " \"}";
+                if (($afv + $previos) == $viajes_a_registrar || ($afi + $previos_i) == $inicio_registrar){
+                    if($viajes_a_registrar == 0){
+                        echo "{\"msj\":\"Suministro sincronizados correctamente. Registrados: " . $afi . " Registrados Previamente: ".$previos_i." A registrar: " . $inicio_registrar . " \"}";
+                    }elseif ($inicio_registrar == 0){
+                        echo "{\"msj\":\"Viajes sincronizados correctamente. Registrados: " . $afv . " Registrados Previamente: ".$previos." A registrar: " . $viajes_a_registrar . ".\"}";
+                    }else{
+                        echo "{\"msj\":\"Viajes sincronizados correctamente: Registrados: " . $afv . " Registrados Previamente: ".$previos." A registrar: " . $viajes_a_registrar . ". Los Suministro sincronizados correctamente: Registrados: " . $afi . " Registrados Previamente: ".$previos_i." A registrar: " . $inicio_registrar . " \"}";
+                    }
+                }
+                else{
+                    echo "{\"error\":\"No se registraron todos los viajes. Registrados: " . $afv . " Registrados Previamente: ".$previos." A registrar: " . $viajes_a_registrar . " No se registraron todos los suministros. Registrados: " . $afi . " Registrados Previamente: ".$previos_i." A registrar: " . $inicio_registrar . " \"}";
+                }
+
+            }else {
+                echo "{\"error\":\"No hay ning�n viaje a registrar: " . $viajes_a_registrar . " \"}";
             }
         }else {
-            echo "{\"error\":\"No hay ning�n viaje a registrar: " . $viajes_a_registrar . " \"}";
+            echo "{\"error\":\"El teléfono no tiene autorización para operar imei: " . $imei . " \"}";
         }
-
     }
 
     function cargaImagenesViajes(){
