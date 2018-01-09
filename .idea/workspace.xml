@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4451e435-54fa-40c3-92c3-1b5b1f0775ff" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inc/php/conexiones/conf_conexiones/config.php" afterPath="$PROJECT_DIR$/inc/php/conexiones/conf_conexiones/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android20160923/clases/Usuario.php" afterPath="$PROJECT_DIR$/Android20160923/clases/Usuario.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +21,8 @@
       <file leaf-file-name="Usuario.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Android20160923/clases/Usuario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1254">
-              <caret line="867" column="38" lean-forward="true" selection-start-line="867" selection-start-column="38" selection-end-line="867" selection-end-column="38" />
+            <state relative-caret-position="220">
+              <caret line="853" column="41" lean-forward="false" selection-start-line="853" selection-start-column="41" selection-end-line="853" selection-end-column="41" />
               <folding>
                 <element signature="n#getData#0;n#Usuario#0;n#!!top" expanded="false" />
                 <element signature="n#paraRegistroCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
@@ -30,87 +30,87 @@
                 <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
                 <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
                 <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
-                <marker date="1515460260693" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
-                <marker date="1515460260693" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
-                <marker date="1515460260693" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
-                <marker date="1515460260693" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
-                <marker date="1515460260693" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
-                <marker date="1515460260693" expanded="true" signature="3358:3738" ph="SELECT users... users" />
-                <marker date="1515460260693" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
-                <marker date="1515460260693" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
-                <marker date="1515460260693" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
-                <marker date="1515460260693" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
-                <marker date="1515460260693" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
-                <marker date="1515460260693" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
-                <marker date="1515460260693" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
-                <marker date="1515460260693" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
-                <marker date="1515460260693" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
-                <marker date="1515460260693" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
-                <marker date="1515460260693" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
-                <marker date="1515460260693" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
-                <marker date="1515460260693" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
-                <marker date="1515460260693" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
-                <marker date="1515460260693" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
-                <marker date="1515460260693" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
-                <marker date="1515460260693" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
-                <marker date="1515460260693" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
-                <marker date="1515460260693" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
-                <marker date="1515460260693" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
-                <marker date="1515460260693" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
-                <marker date="1515460260693" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
-                <marker date="1515460260693" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
-                <marker date="1515460260693" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
-                <marker date="1515460260693" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
-                <marker date="1515460260693" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
-                <marker date="1515460260693" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-                <marker date="1515460260693" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
-                <marker date="1515460260693" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
-                <marker date="1515460260693" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
-                <marker date="1515460260693" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-                <marker date="1515460260693" expanded="true" signature="34530:34640" ph="select count... tags" />
-                <marker date="1515460260693" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
-                <marker date="1515460260693" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-                <marker date="1515460260693" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
-                <marker date="1515460260693" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-                <marker date="1515460260693" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
-                <marker date="1515460260693" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
-                <marker date="1515460260693" expanded="true" signature="41240:42818" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
-                <marker date="1515460260693" expanded="true" signature="43251:43375" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-                <marker date="1515460260693" expanded="true" signature="44028:44390" ph="select count... viajesnetos" />
-                <marker date="1515460260693" expanded="true" signature="46801:48563" ph="INSERT INTO viajesnetos" />
-                <marker date="1515460260693" expanded="true" signature="49487:49606" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-                <marker date="1515460260693" expanded="true" signature="50121:50191" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-                <marker date="1515460260693" expanded="true" signature="50720:50989" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
-                <marker date="1515460260693" expanded="true" signature="51232:51459" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
-                <marker date="1515460260693" expanded="true" signature="51644:51764" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-                <marker date="1515460260693" expanded="true" signature="52727:52906" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-                <marker date="1515460260693" expanded="true" signature="53250:53376" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-                <marker date="1515460260693" expanded="true" signature="55771:55831" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-                <marker date="1515460260693" expanded="true" signature="56479:56572" ph="SELECT IdVia... viajesnetos" />
-                <marker date="1515460260693" expanded="true" signature="57153:57332" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-                <marker date="1515460260693" expanded="true" signature="57781:57899" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-                <marker date="1515460260693" expanded="true" signature="58394:58512" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-                <marker date="1515460260693" expanded="true" signature="59726:59819" ph="SELECT IdUsu... users" />
-                <marker date="1515460260693" expanded="true" signature="59994:60288" ph="Select p.id_... proyectos" />
-                <marker date="1515460260693" expanded="true" signature="60486:60761" ph="SELECT role_... role_user" />
-                <marker date="1515460260693" expanded="true" signature="61218:61278" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-                <marker date="1515460260693" expanded="true" signature="63558:66064" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
-                <marker date="1515460260693" expanded="true" signature="66385:66513" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-                <marker date="1515460260693" expanded="true" signature="67688:70193" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
-                <marker date="1515460260693" expanded="true" signature="70497:70625" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-                <marker date="1515460260693" expanded="true" signature="73017:73077" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-                <marker date="1515460260693" expanded="true" signature="74290:74541" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-                <marker date="1515460260693" expanded="true" signature="74852:75100" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
-                <marker date="1515460260693" expanded="true" signature="75428:75679" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-                <marker date="1515460260693" expanded="true" signature="76151:76269" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-                <marker date="1515460260693" expanded="true" signature="79351:79500" ph="SELECT count... usuarios_proyectos_modulos" />
-                <marker date="1515460260693" expanded="true" signature="80160:80409" ph="INSERT INTO ${$bd}.sindicatos... " />
-                <marker date="1515460260693" expanded="true" signature="80945:81067" ph="INSERT INTO ${$bd}.empresas... " />
-                <marker date="1515460260693" expanded="true" signature="81617:81933" ph="INSERT INTO ${$bd}.operadores... " />
-                <marker date="1515460260693" expanded="true" signature="82428:82546" ph="INSERT INTO ${$bd}.marcas... " />
-                <marker date="1515460260693" expanded="true" signature="82811:82871" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-                <marker date="1515460260693" expanded="true" signature="82906:83079" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
-                <marker date="1515460260693" expanded="true" signature="83120:83201" ph="UPDATE igh.u... " />
+                <marker date="1515518456078" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
+                <marker date="1515518456078" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
+                <marker date="1515518456078" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
+                <marker date="1515518456078" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
+                <marker date="1515518456078" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
+                <marker date="1515518456078" expanded="true" signature="3358:3738" ph="SELECT users... users" />
+                <marker date="1515518456078" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
+                <marker date="1515518456078" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
+                <marker date="1515518456078" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
+                <marker date="1515518456078" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
+                <marker date="1515518456078" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
+                <marker date="1515518456078" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
+                <marker date="1515518456078" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
+                <marker date="1515518456078" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
+                <marker date="1515518456078" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
+                <marker date="1515518456078" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
+                <marker date="1515518456078" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
+                <marker date="1515518456078" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
+                <marker date="1515518456078" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
+                <marker date="1515518456078" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
+                <marker date="1515518456078" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
+                <marker date="1515518456078" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
+                <marker date="1515518456078" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
+                <marker date="1515518456078" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
+                <marker date="1515518456078" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
+                <marker date="1515518456078" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
+                <marker date="1515518456078" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
+                <marker date="1515518456078" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
+                <marker date="1515518456078" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
+                <marker date="1515518456078" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
+                <marker date="1515518456078" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
+                <marker date="1515518456078" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
+                <marker date="1515518456078" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+                <marker date="1515518456078" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
+                <marker date="1515518456078" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
+                <marker date="1515518456078" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
+                <marker date="1515518456078" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+                <marker date="1515518456078" expanded="true" signature="34530:34640" ph="select count... tags" />
+                <marker date="1515518456078" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
+                <marker date="1515518456078" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+                <marker date="1515518456078" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
+                <marker date="1515518456078" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+                <marker date="1515518456078" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
+                <marker date="1515518456078" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
+                <marker date="1515518456078" expanded="true" signature="41394:42977" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
+                <marker date="1515518456078" expanded="true" signature="43410:43534" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+                <marker date="1515518456078" expanded="true" signature="44187:44549" ph="select count... viajesnetos" />
+                <marker date="1515518456078" expanded="true" signature="46960:48722" ph="INSERT INTO viajesnetos" />
+                <marker date="1515518456078" expanded="true" signature="49646:49765" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+                <marker date="1515518456078" expanded="true" signature="50280:50350" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+                <marker date="1515518456078" expanded="true" signature="50879:51148" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
+                <marker date="1515518456078" expanded="true" signature="51391:51618" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
+                <marker date="1515518456078" expanded="true" signature="51803:51923" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+                <marker date="1515518456078" expanded="true" signature="52886:53065" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+                <marker date="1515518456078" expanded="true" signature="53409:53535" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+                <marker date="1515518456078" expanded="true" signature="55930:55990" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+                <marker date="1515518456078" expanded="true" signature="56638:56731" ph="SELECT IdVia... viajesnetos" />
+                <marker date="1515518456078" expanded="true" signature="57312:57491" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+                <marker date="1515518456078" expanded="true" signature="57940:58058" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+                <marker date="1515518456078" expanded="true" signature="58553:58671" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+                <marker date="1515518456078" expanded="true" signature="59885:59978" ph="SELECT IdUsu... users" />
+                <marker date="1515518456078" expanded="true" signature="60153:60447" ph="Select p.id_... proyectos" />
+                <marker date="1515518456078" expanded="true" signature="60645:60920" ph="SELECT role_... role_user" />
+                <marker date="1515518456078" expanded="true" signature="61377:61437" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+                <marker date="1515518456078" expanded="true" signature="63717:66223" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
+                <marker date="1515518456078" expanded="true" signature="66544:66672" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+                <marker date="1515518456078" expanded="true" signature="67847:70352" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
+                <marker date="1515518456078" expanded="true" signature="70656:70784" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+                <marker date="1515518456078" expanded="true" signature="73176:73236" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+                <marker date="1515518456078" expanded="true" signature="74449:74700" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+                <marker date="1515518456078" expanded="true" signature="75011:75259" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
+                <marker date="1515518456078" expanded="true" signature="75587:75838" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+                <marker date="1515518456078" expanded="true" signature="76310:76428" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+                <marker date="1515518456078" expanded="true" signature="79510:79659" ph="SELECT count... usuarios_proyectos_modulos" />
+                <marker date="1515518456078" expanded="true" signature="80319:80568" ph="INSERT INTO ${$bd}.sindicatos... " />
+                <marker date="1515518456078" expanded="true" signature="81104:81226" ph="INSERT INTO ${$bd}.empresas... " />
+                <marker date="1515518456078" expanded="true" signature="81776:82092" ph="INSERT INTO ${$bd}.operadores... " />
+                <marker date="1515518456078" expanded="true" signature="82587:82705" ph="INSERT INTO ${$bd}.marcas... " />
+                <marker date="1515518456078" expanded="true" signature="82970:83030" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+                <marker date="1515518456078" expanded="true" signature="83065:83238" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
+                <marker date="1515518456078" expanded="true" signature="83279:83360" ph="UPDATE igh.u... " />
               </folding>
             </state>
           </provider>
@@ -129,7 +129,7 @@
       <file leaf-file-name="MySQL.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inc/php/conexiones/MySQL.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="55">
+            <state relative-caret-position="1958">
               <caret line="89" column="93" lean-forward="false" selection-start-line="89" selection-start-column="93" selection-end-line="89" selection-end-column="93" />
               <folding>
                 <marker date="1515459608241" expanded="true" signature="3040:3115" ph="select * fro... ${$tbl}" />
@@ -162,8 +162,8 @@
       <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inc/php/conexiones/conf_conexiones/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+            <state relative-caret-position="171">
+              <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -194,6 +194,7 @@
       <find>json_decode</find>
       <find>$cubicacion_camion</find>
       <find>json_decode(utf8_encode</find>
+      <find>localhost</find>
     </findStrings>
     <replaceStrings>
       <replace>$input</replace>
@@ -217,8 +218,8 @@
       <list>
         <option value="$PROJECT_DIR$/android20160923.php" />
         <option value="$PROJECT_DIR$/inc/php/conexiones/MySQL.php" />
-        <option value="$PROJECT_DIR$/Android20160923/clases/Usuario.php" />
         <option value="$PROJECT_DIR$/inc/php/conexiones/conf_conexiones/config.php" />
+        <option value="$PROJECT_DIR$/Android20160923/clases/Usuario.php" />
       </list>
     </option>
   </component>
@@ -374,24 +375,25 @@
       <workItem from="1515167922963" duration="1957000" />
       <workItem from="1515434379062" duration="1312000" />
       <workItem from="1515455042196" duration="2586000" />
-      <workItem from="1515457984128" duration="3179000" />
+      <workItem from="1515457984128" duration="4022000" />
+      <workItem from="1515517847310" duration="630000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61757000" />
+    <option name="totallyTimeSpent" value="63230000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28214827" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43207127" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43207127" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -453,7 +455,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/Android20160923/clases/Usuario.php</url>
-          <line>868</line>
+          <line>874</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -529,87 +531,87 @@
             <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
-            <marker date="1515460260693" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="3358:3738" ph="SELECT users... users" />
-            <marker date="1515460260693" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
-            <marker date="1515460260693" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
-            <marker date="1515460260693" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
-            <marker date="1515460260693" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
-            <marker date="1515460260693" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
-            <marker date="1515460260693" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
-            <marker date="1515460260693" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
-            <marker date="1515460260693" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
-            <marker date="1515460260693" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
-            <marker date="1515460260693" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
-            <marker date="1515460260693" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
-            <marker date="1515460260693" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
-            <marker date="1515460260693" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
-            <marker date="1515460260693" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="34530:34640" ph="select count... tags" />
-            <marker date="1515460260693" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="41240:42818" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
-            <marker date="1515460260693" expanded="true" signature="43251:43375" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="44028:44390" ph="select count... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="46801:48563" ph="INSERT INTO viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="49487:49606" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="50121:50191" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="50720:50989" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
-            <marker date="1515460260693" expanded="true" signature="51232:51459" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
-            <marker date="1515460260693" expanded="true" signature="51644:51764" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="52727:52906" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="53250:53376" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="55771:55831" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="56479:56572" ph="SELECT IdVia... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="57153:57332" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="57781:57899" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="58394:58512" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="59726:59819" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="59994:60288" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="60486:60761" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="61218:61278" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="63558:66064" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="66385:66513" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="67688:70193" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="70497:70625" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="73017:73077" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="74290:74541" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="74852:75100" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="75428:75679" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="76151:76269" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="79351:79500" ph="SELECT count... usuarios_proyectos_modulos" />
-            <marker date="1515460260693" expanded="true" signature="80160:80409" ph="INSERT INTO ${$bd}.sindicatos... " />
-            <marker date="1515460260693" expanded="true" signature="80945:81067" ph="INSERT INTO ${$bd}.empresas... " />
-            <marker date="1515460260693" expanded="true" signature="81617:81933" ph="INSERT INTO ${$bd}.operadores... " />
-            <marker date="1515460260693" expanded="true" signature="82428:82546" ph="INSERT INTO ${$bd}.marcas... " />
-            <marker date="1515460260693" expanded="true" signature="82811:82871" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="82906:83079" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
-            <marker date="1515460260693" expanded="true" signature="83120:83201" ph="UPDATE igh.u... " />
+            <marker date="1515518456078" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="3358:3738" ph="SELECT users... users" />
+            <marker date="1515518456078" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
+            <marker date="1515518456078" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
+            <marker date="1515518456078" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
+            <marker date="1515518456078" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
+            <marker date="1515518456078" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
+            <marker date="1515518456078" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
+            <marker date="1515518456078" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
+            <marker date="1515518456078" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
+            <marker date="1515518456078" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
+            <marker date="1515518456078" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
+            <marker date="1515518456078" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
+            <marker date="1515518456078" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
+            <marker date="1515518456078" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
+            <marker date="1515518456078" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="34530:34640" ph="select count... tags" />
+            <marker date="1515518456078" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="41394:42977" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
+            <marker date="1515518456078" expanded="true" signature="43410:43534" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="44187:44549" ph="select count... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="46960:48722" ph="INSERT INTO viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="49646:49765" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="50280:50350" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="50879:51148" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
+            <marker date="1515518456078" expanded="true" signature="51391:51618" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
+            <marker date="1515518456078" expanded="true" signature="51803:51923" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="52886:53065" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="53409:53535" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="55930:55990" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="56638:56731" ph="SELECT IdVia... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="57312:57491" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="57940:58058" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="58553:58671" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="59885:59978" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="60153:60447" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="60645:60920" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="61377:61437" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="63717:66223" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="66544:66672" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="67847:70352" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="70656:70784" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="73176:73236" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="74449:74700" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75011:75259" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75587:75838" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="76310:76428" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="79510:79659" ph="SELECT count... usuarios_proyectos_modulos" />
+            <marker date="1515518456078" expanded="true" signature="80319:80568" ph="INSERT INTO ${$bd}.sindicatos... " />
+            <marker date="1515518456078" expanded="true" signature="81104:81226" ph="INSERT INTO ${$bd}.empresas... " />
+            <marker date="1515518456078" expanded="true" signature="81776:82092" ph="INSERT INTO ${$bd}.operadores... " />
+            <marker date="1515518456078" expanded="true" signature="82587:82705" ph="INSERT INTO ${$bd}.marcas... " />
+            <marker date="1515518456078" expanded="true" signature="82970:83030" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="83065:83238" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
+            <marker date="1515518456078" expanded="true" signature="83279:83360" ph="UPDATE igh.u... " />
           </folding>
         </state>
       </provider>
@@ -661,87 +663,87 @@
             <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
-            <marker date="1515460260693" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="3358:3738" ph="SELECT users... users" />
-            <marker date="1515460260693" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
-            <marker date="1515460260693" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
-            <marker date="1515460260693" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
-            <marker date="1515460260693" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
-            <marker date="1515460260693" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
-            <marker date="1515460260693" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
-            <marker date="1515460260693" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
-            <marker date="1515460260693" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
-            <marker date="1515460260693" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
-            <marker date="1515460260693" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
-            <marker date="1515460260693" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
-            <marker date="1515460260693" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
-            <marker date="1515460260693" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
-            <marker date="1515460260693" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="34530:34640" ph="select count... tags" />
-            <marker date="1515460260693" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="41240:42818" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
-            <marker date="1515460260693" expanded="true" signature="43251:43375" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="44028:44390" ph="select count... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="46801:48563" ph="INSERT INTO viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="49487:49606" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="50121:50191" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="50720:50989" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
-            <marker date="1515460260693" expanded="true" signature="51232:51459" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
-            <marker date="1515460260693" expanded="true" signature="51644:51764" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="52727:52906" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="53250:53376" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="55771:55831" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="56479:56572" ph="SELECT IdVia... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="57153:57332" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="57781:57899" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="58394:58512" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="59726:59819" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="59994:60288" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="60486:60761" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="61218:61278" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="63558:66064" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="66385:66513" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="67688:70193" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="70497:70625" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="73017:73077" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="74290:74541" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="74852:75100" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="75428:75679" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="76151:76269" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="79351:79500" ph="SELECT count... usuarios_proyectos_modulos" />
-            <marker date="1515460260693" expanded="true" signature="80160:80409" ph="INSERT INTO ${$bd}.sindicatos... " />
-            <marker date="1515460260693" expanded="true" signature="80945:81067" ph="INSERT INTO ${$bd}.empresas... " />
-            <marker date="1515460260693" expanded="true" signature="81617:81933" ph="INSERT INTO ${$bd}.operadores... " />
-            <marker date="1515460260693" expanded="true" signature="82428:82546" ph="INSERT INTO ${$bd}.marcas... " />
-            <marker date="1515460260693" expanded="true" signature="82811:82871" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="82906:83079" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
-            <marker date="1515460260693" expanded="true" signature="83120:83201" ph="UPDATE igh.u... " />
+            <marker date="1515518456078" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="3358:3738" ph="SELECT users... users" />
+            <marker date="1515518456078" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
+            <marker date="1515518456078" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
+            <marker date="1515518456078" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
+            <marker date="1515518456078" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
+            <marker date="1515518456078" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
+            <marker date="1515518456078" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
+            <marker date="1515518456078" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
+            <marker date="1515518456078" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
+            <marker date="1515518456078" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
+            <marker date="1515518456078" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
+            <marker date="1515518456078" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
+            <marker date="1515518456078" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
+            <marker date="1515518456078" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
+            <marker date="1515518456078" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="34530:34640" ph="select count... tags" />
+            <marker date="1515518456078" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="41394:42977" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
+            <marker date="1515518456078" expanded="true" signature="43410:43534" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="44187:44549" ph="select count... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="46960:48722" ph="INSERT INTO viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="49646:49765" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="50280:50350" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="50879:51148" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
+            <marker date="1515518456078" expanded="true" signature="51391:51618" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
+            <marker date="1515518456078" expanded="true" signature="51803:51923" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="52886:53065" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="53409:53535" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="55930:55990" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="56638:56731" ph="SELECT IdVia... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="57312:57491" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="57940:58058" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="58553:58671" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="59885:59978" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="60153:60447" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="60645:60920" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="61377:61437" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="63717:66223" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="66544:66672" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="67847:70352" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="70656:70784" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="73176:73236" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="74449:74700" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75011:75259" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75587:75838" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="76310:76428" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="79510:79659" ph="SELECT count... usuarios_proyectos_modulos" />
+            <marker date="1515518456078" expanded="true" signature="80319:80568" ph="INSERT INTO ${$bd}.sindicatos... " />
+            <marker date="1515518456078" expanded="true" signature="81104:81226" ph="INSERT INTO ${$bd}.empresas... " />
+            <marker date="1515518456078" expanded="true" signature="81776:82092" ph="INSERT INTO ${$bd}.operadores... " />
+            <marker date="1515518456078" expanded="true" signature="82587:82705" ph="INSERT INTO ${$bd}.marcas... " />
+            <marker date="1515518456078" expanded="true" signature="82970:83030" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="83065:83238" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
+            <marker date="1515518456078" expanded="true" signature="83279:83360" ph="UPDATE igh.u... " />
           </folding>
         </state>
       </provider>
@@ -821,87 +823,87 @@
             <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
-            <marker date="1515460260693" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="3358:3738" ph="SELECT users... users" />
-            <marker date="1515460260693" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
-            <marker date="1515460260693" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
-            <marker date="1515460260693" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
-            <marker date="1515460260693" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
-            <marker date="1515460260693" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
-            <marker date="1515460260693" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
-            <marker date="1515460260693" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
-            <marker date="1515460260693" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
-            <marker date="1515460260693" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
-            <marker date="1515460260693" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
-            <marker date="1515460260693" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
-            <marker date="1515460260693" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
-            <marker date="1515460260693" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
-            <marker date="1515460260693" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="34530:34640" ph="select count... tags" />
-            <marker date="1515460260693" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="41240:42818" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
-            <marker date="1515460260693" expanded="true" signature="43251:43375" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="44028:44390" ph="select count... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="46801:48563" ph="INSERT INTO viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="49487:49606" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="50121:50191" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="50720:50989" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
-            <marker date="1515460260693" expanded="true" signature="51232:51459" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
-            <marker date="1515460260693" expanded="true" signature="51644:51764" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="52727:52906" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="53250:53376" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="55771:55831" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="56479:56572" ph="SELECT IdVia... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="57153:57332" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="57781:57899" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="58394:58512" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="59726:59819" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="59994:60288" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="60486:60761" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="61218:61278" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="63558:66064" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="66385:66513" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="67688:70193" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="70497:70625" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="73017:73077" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="74290:74541" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="74852:75100" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="75428:75679" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="76151:76269" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="79351:79500" ph="SELECT count... usuarios_proyectos_modulos" />
-            <marker date="1515460260693" expanded="true" signature="80160:80409" ph="INSERT INTO ${$bd}.sindicatos... " />
-            <marker date="1515460260693" expanded="true" signature="80945:81067" ph="INSERT INTO ${$bd}.empresas... " />
-            <marker date="1515460260693" expanded="true" signature="81617:81933" ph="INSERT INTO ${$bd}.operadores... " />
-            <marker date="1515460260693" expanded="true" signature="82428:82546" ph="INSERT INTO ${$bd}.marcas... " />
-            <marker date="1515460260693" expanded="true" signature="82811:82871" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="82906:83079" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
-            <marker date="1515460260693" expanded="true" signature="83120:83201" ph="UPDATE igh.u... " />
+            <marker date="1515518456078" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="3358:3738" ph="SELECT users... users" />
+            <marker date="1515518456078" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
+            <marker date="1515518456078" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
+            <marker date="1515518456078" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
+            <marker date="1515518456078" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
+            <marker date="1515518456078" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
+            <marker date="1515518456078" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
+            <marker date="1515518456078" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
+            <marker date="1515518456078" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
+            <marker date="1515518456078" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
+            <marker date="1515518456078" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
+            <marker date="1515518456078" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
+            <marker date="1515518456078" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
+            <marker date="1515518456078" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
+            <marker date="1515518456078" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="34530:34640" ph="select count... tags" />
+            <marker date="1515518456078" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="41394:42977" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
+            <marker date="1515518456078" expanded="true" signature="43410:43534" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="44187:44549" ph="select count... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="46960:48722" ph="INSERT INTO viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="49646:49765" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="50280:50350" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="50879:51148" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
+            <marker date="1515518456078" expanded="true" signature="51391:51618" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
+            <marker date="1515518456078" expanded="true" signature="51803:51923" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="52886:53065" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="53409:53535" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="55930:55990" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="56638:56731" ph="SELECT IdVia... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="57312:57491" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="57940:58058" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="58553:58671" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="59885:59978" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="60153:60447" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="60645:60920" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="61377:61437" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="63717:66223" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="66544:66672" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="67847:70352" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="70656:70784" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="73176:73236" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="74449:74700" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75011:75259" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75587:75838" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="76310:76428" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="79510:79659" ph="SELECT count... usuarios_proyectos_modulos" />
+            <marker date="1515518456078" expanded="true" signature="80319:80568" ph="INSERT INTO ${$bd}.sindicatos... " />
+            <marker date="1515518456078" expanded="true" signature="81104:81226" ph="INSERT INTO ${$bd}.empresas... " />
+            <marker date="1515518456078" expanded="true" signature="81776:82092" ph="INSERT INTO ${$bd}.operadores... " />
+            <marker date="1515518456078" expanded="true" signature="82587:82705" ph="INSERT INTO ${$bd}.marcas... " />
+            <marker date="1515518456078" expanded="true" signature="82970:83030" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="83065:83238" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
+            <marker date="1515518456078" expanded="true" signature="83279:83360" ph="UPDATE igh.u... " />
           </folding>
         </state>
       </provider>
@@ -953,87 +955,87 @@
             <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
-            <marker date="1515460260693" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="3358:3738" ph="SELECT users... users" />
-            <marker date="1515460260693" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
-            <marker date="1515460260693" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
-            <marker date="1515460260693" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
-            <marker date="1515460260693" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
-            <marker date="1515460260693" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
-            <marker date="1515460260693" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
-            <marker date="1515460260693" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
-            <marker date="1515460260693" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
-            <marker date="1515460260693" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
-            <marker date="1515460260693" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
-            <marker date="1515460260693" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
-            <marker date="1515460260693" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
-            <marker date="1515460260693" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
-            <marker date="1515460260693" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="34530:34640" ph="select count... tags" />
-            <marker date="1515460260693" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="41240:42818" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
-            <marker date="1515460260693" expanded="true" signature="43251:43375" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="44028:44390" ph="select count... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="46801:48563" ph="INSERT INTO viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="49487:49606" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="50121:50191" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="50720:50989" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
-            <marker date="1515460260693" expanded="true" signature="51232:51459" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
-            <marker date="1515460260693" expanded="true" signature="51644:51764" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="52727:52906" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="53250:53376" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="55771:55831" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="56479:56572" ph="SELECT IdVia... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="57153:57332" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="57781:57899" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="58394:58512" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="59726:59819" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="59994:60288" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="60486:60761" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="61218:61278" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="63558:66064" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="66385:66513" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="67688:70193" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="70497:70625" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="73017:73077" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="74290:74541" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="74852:75100" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="75428:75679" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="76151:76269" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="79351:79500" ph="SELECT count... usuarios_proyectos_modulos" />
-            <marker date="1515460260693" expanded="true" signature="80160:80409" ph="INSERT INTO ${$bd}.sindicatos... " />
-            <marker date="1515460260693" expanded="true" signature="80945:81067" ph="INSERT INTO ${$bd}.empresas... " />
-            <marker date="1515460260693" expanded="true" signature="81617:81933" ph="INSERT INTO ${$bd}.operadores... " />
-            <marker date="1515460260693" expanded="true" signature="82428:82546" ph="INSERT INTO ${$bd}.marcas... " />
-            <marker date="1515460260693" expanded="true" signature="82811:82871" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="82906:83079" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
-            <marker date="1515460260693" expanded="true" signature="83120:83201" ph="UPDATE igh.u... " />
+            <marker date="1515518456078" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="3358:3738" ph="SELECT users... users" />
+            <marker date="1515518456078" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
+            <marker date="1515518456078" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
+            <marker date="1515518456078" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
+            <marker date="1515518456078" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
+            <marker date="1515518456078" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
+            <marker date="1515518456078" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
+            <marker date="1515518456078" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
+            <marker date="1515518456078" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
+            <marker date="1515518456078" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
+            <marker date="1515518456078" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
+            <marker date="1515518456078" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
+            <marker date="1515518456078" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
+            <marker date="1515518456078" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
+            <marker date="1515518456078" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="34530:34640" ph="select count... tags" />
+            <marker date="1515518456078" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="41394:42977" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
+            <marker date="1515518456078" expanded="true" signature="43410:43534" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="44187:44549" ph="select count... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="46960:48722" ph="INSERT INTO viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="49646:49765" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="50280:50350" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="50879:51148" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
+            <marker date="1515518456078" expanded="true" signature="51391:51618" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
+            <marker date="1515518456078" expanded="true" signature="51803:51923" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="52886:53065" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="53409:53535" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="55930:55990" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="56638:56731" ph="SELECT IdVia... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="57312:57491" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="57940:58058" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="58553:58671" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="59885:59978" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="60153:60447" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="60645:60920" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="61377:61437" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="63717:66223" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="66544:66672" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="67847:70352" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="70656:70784" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="73176:73236" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="74449:74700" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75011:75259" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75587:75838" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="76310:76428" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="79510:79659" ph="SELECT count... usuarios_proyectos_modulos" />
+            <marker date="1515518456078" expanded="true" signature="80319:80568" ph="INSERT INTO ${$bd}.sindicatos... " />
+            <marker date="1515518456078" expanded="true" signature="81104:81226" ph="INSERT INTO ${$bd}.empresas... " />
+            <marker date="1515518456078" expanded="true" signature="81776:82092" ph="INSERT INTO ${$bd}.operadores... " />
+            <marker date="1515518456078" expanded="true" signature="82587:82705" ph="INSERT INTO ${$bd}.marcas... " />
+            <marker date="1515518456078" expanded="true" signature="82970:83030" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="83065:83238" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
+            <marker date="1515518456078" expanded="true" signature="83279:83360" ph="UPDATE igh.u... " />
           </folding>
         </state>
       </provider>
@@ -1057,87 +1059,87 @@
             <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
-            <marker date="1515460260693" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="3358:3738" ph="SELECT users... users" />
-            <marker date="1515460260693" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
-            <marker date="1515460260693" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
-            <marker date="1515460260693" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
-            <marker date="1515460260693" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
-            <marker date="1515460260693" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
-            <marker date="1515460260693" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
-            <marker date="1515460260693" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
-            <marker date="1515460260693" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
-            <marker date="1515460260693" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
-            <marker date="1515460260693" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
-            <marker date="1515460260693" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
-            <marker date="1515460260693" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
-            <marker date="1515460260693" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
-            <marker date="1515460260693" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="34530:34640" ph="select count... tags" />
-            <marker date="1515460260693" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="41240:42818" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
-            <marker date="1515460260693" expanded="true" signature="43251:43375" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="44028:44390" ph="select count... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="46801:48563" ph="INSERT INTO viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="49487:49606" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="50121:50191" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="50720:50989" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
-            <marker date="1515460260693" expanded="true" signature="51232:51459" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
-            <marker date="1515460260693" expanded="true" signature="51644:51764" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="52727:52906" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="53250:53376" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="55771:55831" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="56479:56572" ph="SELECT IdVia... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="57153:57332" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="57781:57899" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="58394:58512" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="59726:59819" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="59994:60288" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="60486:60761" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="61218:61278" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="63558:66064" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="66385:66513" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="67688:70193" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="70497:70625" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="73017:73077" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="74290:74541" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="74852:75100" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="75428:75679" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="76151:76269" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="79351:79500" ph="SELECT count... usuarios_proyectos_modulos" />
-            <marker date="1515460260693" expanded="true" signature="80160:80409" ph="INSERT INTO ${$bd}.sindicatos... " />
-            <marker date="1515460260693" expanded="true" signature="80945:81067" ph="INSERT INTO ${$bd}.empresas... " />
-            <marker date="1515460260693" expanded="true" signature="81617:81933" ph="INSERT INTO ${$bd}.operadores... " />
-            <marker date="1515460260693" expanded="true" signature="82428:82546" ph="INSERT INTO ${$bd}.marcas... " />
-            <marker date="1515460260693" expanded="true" signature="82811:82871" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="82906:83079" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
-            <marker date="1515460260693" expanded="true" signature="83120:83201" ph="UPDATE igh.u... " />
+            <marker date="1515518456078" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="3358:3738" ph="SELECT users... users" />
+            <marker date="1515518456078" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
+            <marker date="1515518456078" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
+            <marker date="1515518456078" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
+            <marker date="1515518456078" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
+            <marker date="1515518456078" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
+            <marker date="1515518456078" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
+            <marker date="1515518456078" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
+            <marker date="1515518456078" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
+            <marker date="1515518456078" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
+            <marker date="1515518456078" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
+            <marker date="1515518456078" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
+            <marker date="1515518456078" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
+            <marker date="1515518456078" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
+            <marker date="1515518456078" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="34530:34640" ph="select count... tags" />
+            <marker date="1515518456078" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="41394:42977" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
+            <marker date="1515518456078" expanded="true" signature="43410:43534" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="44187:44549" ph="select count... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="46960:48722" ph="INSERT INTO viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="49646:49765" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="50280:50350" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="50879:51148" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
+            <marker date="1515518456078" expanded="true" signature="51391:51618" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
+            <marker date="1515518456078" expanded="true" signature="51803:51923" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="52886:53065" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="53409:53535" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="55930:55990" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="56638:56731" ph="SELECT IdVia... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="57312:57491" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="57940:58058" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="58553:58671" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="59885:59978" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="60153:60447" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="60645:60920" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="61377:61437" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="63717:66223" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="66544:66672" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="67847:70352" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="70656:70784" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="73176:73236" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="74449:74700" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75011:75259" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75587:75838" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="76310:76428" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="79510:79659" ph="SELECT count... usuarios_proyectos_modulos" />
+            <marker date="1515518456078" expanded="true" signature="80319:80568" ph="INSERT INTO ${$bd}.sindicatos... " />
+            <marker date="1515518456078" expanded="true" signature="81104:81226" ph="INSERT INTO ${$bd}.empresas... " />
+            <marker date="1515518456078" expanded="true" signature="81776:82092" ph="INSERT INTO ${$bd}.operadores... " />
+            <marker date="1515518456078" expanded="true" signature="82587:82705" ph="INSERT INTO ${$bd}.marcas... " />
+            <marker date="1515518456078" expanded="true" signature="82970:83030" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="83065:83238" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
+            <marker date="1515518456078" expanded="true" signature="83279:83360" ph="UPDATE igh.u... " />
           </folding>
         </state>
       </provider>
@@ -1161,87 +1163,87 @@
             <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
-            <marker date="1515460260693" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="3358:3738" ph="SELECT users... users" />
-            <marker date="1515460260693" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
-            <marker date="1515460260693" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
-            <marker date="1515460260693" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
-            <marker date="1515460260693" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
-            <marker date="1515460260693" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
-            <marker date="1515460260693" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
-            <marker date="1515460260693" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
-            <marker date="1515460260693" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
-            <marker date="1515460260693" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
-            <marker date="1515460260693" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
-            <marker date="1515460260693" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
-            <marker date="1515460260693" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
-            <marker date="1515460260693" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
-            <marker date="1515460260693" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="34530:34640" ph="select count... tags" />
-            <marker date="1515460260693" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="41240:42818" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
-            <marker date="1515460260693" expanded="true" signature="43251:43375" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="44028:44390" ph="select count... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="46801:48563" ph="INSERT INTO viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="49487:49606" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="50121:50191" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="50720:50989" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
-            <marker date="1515460260693" expanded="true" signature="51232:51459" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
-            <marker date="1515460260693" expanded="true" signature="51644:51764" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="52727:52906" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="53250:53376" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="55771:55831" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="56479:56572" ph="SELECT IdVia... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="57153:57332" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="57781:57899" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="58394:58512" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="59726:59819" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="59994:60288" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="60486:60761" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="61218:61278" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="63558:66064" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="66385:66513" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="67688:70193" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="70497:70625" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="73017:73077" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="74290:74541" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="74852:75100" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="75428:75679" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="76151:76269" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="79351:79500" ph="SELECT count... usuarios_proyectos_modulos" />
-            <marker date="1515460260693" expanded="true" signature="80160:80409" ph="INSERT INTO ${$bd}.sindicatos... " />
-            <marker date="1515460260693" expanded="true" signature="80945:81067" ph="INSERT INTO ${$bd}.empresas... " />
-            <marker date="1515460260693" expanded="true" signature="81617:81933" ph="INSERT INTO ${$bd}.operadores... " />
-            <marker date="1515460260693" expanded="true" signature="82428:82546" ph="INSERT INTO ${$bd}.marcas... " />
-            <marker date="1515460260693" expanded="true" signature="82811:82871" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="82906:83079" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
-            <marker date="1515460260693" expanded="true" signature="83120:83201" ph="UPDATE igh.u... " />
+            <marker date="1515518456078" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="3358:3738" ph="SELECT users... users" />
+            <marker date="1515518456078" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
+            <marker date="1515518456078" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
+            <marker date="1515518456078" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
+            <marker date="1515518456078" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
+            <marker date="1515518456078" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
+            <marker date="1515518456078" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
+            <marker date="1515518456078" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
+            <marker date="1515518456078" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
+            <marker date="1515518456078" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
+            <marker date="1515518456078" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
+            <marker date="1515518456078" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
+            <marker date="1515518456078" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
+            <marker date="1515518456078" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
+            <marker date="1515518456078" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="34530:34640" ph="select count... tags" />
+            <marker date="1515518456078" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="41394:42977" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
+            <marker date="1515518456078" expanded="true" signature="43410:43534" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="44187:44549" ph="select count... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="46960:48722" ph="INSERT INTO viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="49646:49765" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="50280:50350" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="50879:51148" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
+            <marker date="1515518456078" expanded="true" signature="51391:51618" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
+            <marker date="1515518456078" expanded="true" signature="51803:51923" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="52886:53065" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="53409:53535" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="55930:55990" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="56638:56731" ph="SELECT IdVia... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="57312:57491" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="57940:58058" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="58553:58671" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="59885:59978" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="60153:60447" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="60645:60920" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="61377:61437" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="63717:66223" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="66544:66672" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="67847:70352" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="70656:70784" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="73176:73236" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="74449:74700" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75011:75259" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75587:75838" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="76310:76428" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="79510:79659" ph="SELECT count... usuarios_proyectos_modulos" />
+            <marker date="1515518456078" expanded="true" signature="80319:80568" ph="INSERT INTO ${$bd}.sindicatos... " />
+            <marker date="1515518456078" expanded="true" signature="81104:81226" ph="INSERT INTO ${$bd}.empresas... " />
+            <marker date="1515518456078" expanded="true" signature="81776:82092" ph="INSERT INTO ${$bd}.operadores... " />
+            <marker date="1515518456078" expanded="true" signature="82587:82705" ph="INSERT INTO ${$bd}.marcas... " />
+            <marker date="1515518456078" expanded="true" signature="82970:83030" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="83065:83238" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
+            <marker date="1515518456078" expanded="true" signature="83279:83360" ph="UPDATE igh.u... " />
           </folding>
         </state>
       </provider>
@@ -1313,7 +1315,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1335,7 +1336,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/inc/php/conexiones/MySQL.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
+        <state relative-caret-position="1958">
           <caret line="89" column="93" lean-forward="false" selection-start-line="89" selection-start-column="93" selection-end-line="89" selection-end-column="93" />
           <folding>
             <marker date="1515459608241" expanded="true" signature="3040:3115" ph="select * fro... ${$tbl}" />
@@ -1354,16 +1355,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/inc/php/conexiones/conf_conexiones/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+        <state relative-caret-position="171">
+          <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Android20160923/clases/Usuario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="867" column="38" lean-forward="true" selection-start-line="867" selection-start-column="38" selection-end-line="867" selection-end-column="38" />
+        <state relative-caret-position="220">
+          <caret line="853" column="41" lean-forward="false" selection-start-line="853" selection-start-column="41" selection-end-line="853" selection-end-column="41" />
           <folding>
             <element signature="n#getData#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#paraRegistroCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
@@ -1371,87 +1372,87 @@
             <element signature="n#capturaConfiguracion#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#capturaAltas#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#eliminaCaracteresEspeciales#0;n#Usuario#0;n#!!top" expanded="false" />
-            <marker date="1515460260693" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="3358:3738" ph="SELECT users... users" />
-            <marker date="1515460260693" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
-            <marker date="1515460260693" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
-            <marker date="1515460260693" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
-            <marker date="1515460260693" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
-            <marker date="1515460260693" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
-            <marker date="1515460260693" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
-            <marker date="1515460260693" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
-            <marker date="1515460260693" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
-            <marker date="1515460260693" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
-            <marker date="1515460260693" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
-            <marker date="1515460260693" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
-            <marker date="1515460260693" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
-            <marker date="1515460260693" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
-            <marker date="1515460260693" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
-            <marker date="1515460260693" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
-            <marker date="1515460260693" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="34530:34640" ph="select count... tags" />
-            <marker date="1515460260693" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
-            <marker date="1515460260693" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
-            <marker date="1515460260693" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
-            <marker date="1515460260693" expanded="true" signature="41240:42818" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
-            <marker date="1515460260693" expanded="true" signature="43251:43375" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="44028:44390" ph="select count... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="46801:48563" ph="INSERT INTO viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="49487:49606" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="50121:50191" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="50720:50989" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
-            <marker date="1515460260693" expanded="true" signature="51232:51459" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
-            <marker date="1515460260693" expanded="true" signature="51644:51764" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="52727:52906" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="53250:53376" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="55771:55831" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="56479:56572" ph="SELECT IdVia... viajesnetos" />
-            <marker date="1515460260693" expanded="true" signature="57153:57332" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="57781:57899" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="58394:58512" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="59726:59819" ph="SELECT IdUsu... users" />
-            <marker date="1515460260693" expanded="true" signature="59994:60288" ph="Select p.id_... proyectos" />
-            <marker date="1515460260693" expanded="true" signature="60486:60761" ph="SELECT role_... role_user" />
-            <marker date="1515460260693" expanded="true" signature="61218:61278" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="63558:66064" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="66385:66513" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="67688:70193" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
-            <marker date="1515460260693" expanded="true" signature="70497:70625" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="73017:73077" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="74290:74541" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="74852:75100" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="75428:75679" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
-            <marker date="1515460260693" expanded="true" signature="76151:76269" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
-            <marker date="1515460260693" expanded="true" signature="79351:79500" ph="SELECT count... usuarios_proyectos_modulos" />
-            <marker date="1515460260693" expanded="true" signature="80160:80409" ph="INSERT INTO ${$bd}.sindicatos... " />
-            <marker date="1515460260693" expanded="true" signature="80945:81067" ph="INSERT INTO ${$bd}.empresas... " />
-            <marker date="1515460260693" expanded="true" signature="81617:81933" ph="INSERT INTO ${$bd}.operadores... " />
-            <marker date="1515460260693" expanded="true" signature="82428:82546" ph="INSERT INTO ${$bd}.marcas... " />
-            <marker date="1515460260693" expanded="true" signature="82811:82871" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
-            <marker date="1515460260693" expanded="true" signature="82906:83079" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
-            <marker date="1515460260693" expanded="true" signature="83120:83201" ph="UPDATE igh.u... " />
+            <marker date="1515518456078" expanded="true" signature="534:627" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="798:1150" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="1426:1860" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="2162:2282" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="2615:2863" ph="SELECT imei,... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="3358:3738" ph="SELECT users... users" />
+            <marker date="1515518456078" expanded="true" signature="4160:4299" ph="select valid... configuracion" />
+            <marker date="1515518456078" expanded="true" signature="4707:4950" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="6239:6316" ph="Select idtir... tiros" />
+            <marker date="1515518456078" expanded="true" signature="8729:8829" ph="SELECT idOri... origenes" />
+            <marker date="1515518456078" expanded="true" signature="9693:9752" ph="SELECT clave... rutas" />
+            <marker date="1515518456078" expanded="true" signature="10386:10448" ph="SELECT idmat... materiales" />
+            <marker date="1515518456078" expanded="true" signature="11078:11169" ph="SELECT t.uid... tags" />
+            <marker date="1515518456078" expanded="true" signature="11635:11699" ph="SELECT id, d... cat_tipos_imagenes" />
+            <marker date="1515518456078" expanded="true" signature="12203:12260" ph="SELECT id, m... deductivas_motivos" />
+            <marker date="1515518456078" expanded="true" signature="14831:14924" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="15091:15385" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="15681:15956" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="16247:16462" ph="SELECT idcam... camiones" />
+            <marker date="1515518456078" expanded="true" signature="17442:17499" ph="SELECT uid, tags" />
+            <marker date="1515518456078" expanded="true" signature="17986:18044" ph="SELECT id, u... tags_disponibles_configurar" />
+            <marker date="1515518456078" expanded="true" signature="19841:19934" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="20520:20814" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="21091:21366" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="21706:21812" ph="SELECT sindi... sindicatos" />
+            <marker date="1515518456078" expanded="true" signature="22289:22385" ph="SELECT empre... empresas" />
+            <marker date="1515518456078" expanded="true" signature="22857:24283" ph="SELECT camio... camiones" />
+            <marker date="1515518456078" expanded="true" signature="28374:28467" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="28688:28811" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="29045:29339" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="29730:29812" ph="SELECT id_pr... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="31164:31257" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="31452:31512" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="32145:32411" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="33330:33423" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="33574:33697" ph="select if( v... permisos_alta_tag" />
+            <marker date="1515518456078" expanded="true" signature="33991:34051" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="34530:34640" ph="select count... tags" />
+            <marker date="1515518456078" expanded="true" signature="34980:35203" ph="INSERT INTO tags" />
+            <marker date="1515518456078" expanded="true" signature="37539:37599" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="37689:37772" ph="SELECT * FRO... telefonos" />
+            <marker date="1515518456078" expanded="true" signature="38001:38068" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="39388:39574" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="39637:39797" ph="select count... inicio_camion" />
+            <marker date="1515518456078" expanded="true" signature="41394:42977" ph="INSERT INTO ${$_REQUEST[bd]}.`inicio_camion`... " />
+            <marker date="1515518456078" expanded="true" signature="43410:43534" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="44187:44549" ph="select count... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="46960:48722" ph="INSERT INTO viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="49646:49765" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="50280:50350" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="50879:51148" ph="INSERT INTO ${$_REQUEST[bd]}.eventos_gps... " />
+            <marker date="1515518456078" expanded="true" signature="51391:51618" ph="INSERT INTO ${$_REQUEST[bd]}.deductivas_viajes_netos... " />
+            <marker date="1515518456078" expanded="true" signature="51803:51923" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="52886:53065" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="53409:53535" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="55930:55990" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="56638:56731" ph="SELECT IdVia... viajesnetos" />
+            <marker date="1515518456078" expanded="true" signature="57312:57491" ph="insert into ${$_REQUEST[bd]}.viajes_netos_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="57940:58058" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="58553:58671" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="59885:59978" ph="SELECT IdUsu... users" />
+            <marker date="1515518456078" expanded="true" signature="60153:60447" ph="Select p.id_... proyectos" />
+            <marker date="1515518456078" expanded="true" signature="60645:60920" ph="SELECT role_... role_user" />
+            <marker date="1515518456078" expanded="true" signature="61377:61437" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="63717:66223" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_actualizacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="66544:66672" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="67847:70352" ph="INSERT INTO ${$_REQUEST[bd]}.solicitud_reactivacion_camion... " />
+            <marker date="1515518456078" expanded="true" signature="70656:70784" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="73176:73236" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="74449:74700" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75011:75259" ph="insert into ${$_REQUEST[bd]}.solicitud_reactivacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="75587:75838" ph="insert into ${$_REQUEST[bd]}.solicitud_actualizacion_camion_imagenes... " />
+            <marker date="1515518456078" expanded="true" signature="76310:76428" ph="insert into ${$_REQUEST[bd]}.cosultas_erroneas... " />
+            <marker date="1515518456078" expanded="true" signature="79510:79659" ph="SELECT count... usuarios_proyectos_modulos" />
+            <marker date="1515518456078" expanded="true" signature="80319:80568" ph="INSERT INTO ${$bd}.sindicatos... " />
+            <marker date="1515518456078" expanded="true" signature="81104:81226" ph="INSERT INTO ${$bd}.empresas... " />
+            <marker date="1515518456078" expanded="true" signature="81776:82092" ph="INSERT INTO ${$bd}.operadores... " />
+            <marker date="1515518456078" expanded="true" signature="82587:82705" ph="INSERT INTO ${$bd}.marcas... " />
+            <marker date="1515518456078" expanded="true" signature="82970:83030" ph="INSERT INTO ${$_REQUEST[bd]}.json... " />
+            <marker date="1515518456078" expanded="true" signature="83065:83238" ph="INSERT INTO ${$_REQUEST[bd]}.cambio_contrasena... " />
+            <marker date="1515518456078" expanded="true" signature="83279:83360" ph="UPDATE igh.u... " />
           </folding>
         </state>
       </provider>

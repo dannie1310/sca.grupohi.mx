@@ -822,7 +822,13 @@ SELECT
                         $tipo = (array_key_exists("tipo_suministro", $value)) ? "'" . $value["tipo_suministro"] . "'" : "NULL";
                         $num = (array_key_exists("numImpresion", $value)) ? "'" . $value["numImpresion"] . "'" : "NULL";
                         $deductiva = (array_key_exists("deductiva", $value))?"'".$value["deductiva"]."'":"NULL";
-                        $idmotivo = (array_key_exists("idMotivo", $value))?"'".$value["idMotivo"]."'":"NULL";
+
+                        if($deductiva != 0){
+                            $idmotivo = (array_key_exists("idMotivo", $value))?"'".$value["idMotivo"]."'":"NULL";
+                        }else{
+                            $idmotivo = NULL;
+                        }
+
                         $version = $_REQUEST[Version];
 
                         $ic = "INSERT INTO $_REQUEST[bd].`inicio_camion`
@@ -843,9 +849,9 @@ SELECT
                          `tipo`,
                             `estatus`,
                             `Version`,
-                            deductiva,
-                             idMotivo_deductiva,
-                             FechaCarga)
+                            `deductiva`,
+                            `idMotivo_deductiva`,
+                             `FechaCarga`)
                         VALUES
                         (
                         $value[idcamion],
