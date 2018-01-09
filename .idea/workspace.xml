@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4451e435-54fa-40c3-92c3-1b5b1f0775ff" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Android20160923/clases/Usuario.php" afterPath="$PROJECT_DIR$/Android20160923/clases/Usuario.php" />
-    </list>
+    <list default="true" id="4451e435-54fa-40c3-92c3-1b5b1f0775ff" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +18,8 @@
       <file leaf-file-name="Usuario.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Android20160923/clases/Usuario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="830" column="25" lean-forward="false" selection-start-line="830" selection-start-column="25" selection-end-line="830" selection-end-column="25" />
+            <state relative-caret-position="264">
+              <caret line="825" column="44" lean-forward="true" selection-start-line="825" selection-start-column="44" selection-end-line="825" selection-end-column="44" />
               <folding>
                 <element signature="n#getData#0;n#Usuario#0;n#!!top" expanded="false" />
                 <element signature="n#paraRegistroCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
@@ -376,12 +373,12 @@
       <workItem from="1515434379062" duration="1312000" />
       <workItem from="1515455042196" duration="2586000" />
       <workItem from="1515457984128" duration="4022000" />
-      <workItem from="1515517847310" duration="1786000" />
+      <workItem from="1515517847310" duration="1921000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64386000" />
+    <option name="totallyTimeSpent" value="64521000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -1363,8 +1360,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Android20160923/clases/Usuario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="830" column="25" lean-forward="false" selection-start-line="830" selection-start-column="25" selection-end-line="830" selection-end-column="25" />
+        <state relative-caret-position="264">
+          <caret line="825" column="44" lean-forward="true" selection-start-line="825" selection-start-column="44" selection-end-line="825" selection-end-column="44" />
           <folding>
             <element signature="n#getData#0;n#Usuario#0;n#!!top" expanded="false" />
             <element signature="n#paraRegistroCamiones#0;n#Usuario#0;n#!!top" expanded="false" />
