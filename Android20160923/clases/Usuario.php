@@ -822,7 +822,7 @@ SELECT
                         $tipo = (array_key_exists("tipo_suministro", $value)) ? "'" . $value["tipo_suministro"] . "'" : "NULL";
                         $num = (array_key_exists("numImpresion", $value)) ? "'" . $value["numImpresion"] . "'" : "NULL";
                         $deductiva = (array_key_exists("deductiva", $value))?"'".$value["deductiva"]."'":"NULL";
-                        $idmotivo = (array_key_exists("idmotivo", $value))?"'".$value["idmotivo"]."'":"NULL";
+                        $idmotivo = (array_key_exists("idMotivo", $value))?"'".$value["idMotivo"]."'":"NULL";
                         $version = $_REQUEST[Version];
 
                         $ic = "INSERT INTO $_REQUEST[bd].`inicio_camion`
