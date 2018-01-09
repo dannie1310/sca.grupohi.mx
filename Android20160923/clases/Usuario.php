@@ -822,10 +822,7 @@ SELECT
                         $tipo = (array_key_exists("tipo_suministro", $value)) ? "'" . $value["tipo_suministro"] . "'" : "NULL";
                         $num = (array_key_exists("numImpresion", $value)) ? "'" . $value["numImpresion"] . "'" : "NULL";
                         $deductiva = (array_key_exists("deductiva", $value))?"'".$value["deductiva"]."'":"NULL";
-                        $idmotivo = (array_key_exists("idMotivo", $value))?"'".$value["idMotivo"]."'":"NULL";
-                        if($idmotivo == 0){
-                                $idmotivo = NULL;
-                        }
+                        $idmotivo = (array_key_exists("idMotivo", $value)) && $value["idMotivo"] != 0 ?"'".$value["idMotivo"]."'":"NULL";
 
                         $version = $_REQUEST[Version];
 
