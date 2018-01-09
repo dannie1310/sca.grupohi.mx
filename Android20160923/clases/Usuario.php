@@ -824,7 +824,6 @@ SELECT
                         $deductiva = (array_key_exists("deductiva", $value))?"'".$value["deductiva"]."'":"NULL";
                         $idmotivo = (array_key_exists("idmotivo", $value))?"'".$value["idmotivo"]."'":"NULL";
                         $version = $_REQUEST[Version];
-                        $deductiva = (array_key_exists("deductiva", $value)) ? "'".$value["deductiva"]."'" :"NULL";
 
                         $ic = "INSERT INTO $_REQUEST[bd].`inicio_camion`
                         (
