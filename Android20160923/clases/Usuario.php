@@ -866,7 +866,7 @@ SELECT
                             '$version',
                             $deductiva,
                             $idmotivo,
-                            NOW();";
+                            NOW());";
 
                         $this->_db->consultar($ic);
 
