@@ -825,6 +825,9 @@ SELECT
 
                         if($deductiva != 0){
                             $idmotivo = (array_key_exists("idMotivo", $value))?"'".$value["idMotivo"]."'":"NULL";
+                            if($idmotivo == 0){
+                                $idmotivo = NULL;
+                            }
                         }else{
                             $idmotivo = NULL;
                         }
