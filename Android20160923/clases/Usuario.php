@@ -30,253 +30,259 @@ class Usuario {
             
             if ($row_s = $this->_db ->fetch($result_s)) {
                 #VERIFICAR QUE TIENE ROL DE CHECADOR
-                $_SESSION["databasesca"]=$row_s[base_datos];
+                $_SESSION["databasesca"] = $row_s[base_datos];
                 $sql_perfil = "SELECT role_user.user_id, cd.id_origen, cd.id_tiro, cd.id_perfil,tipo
                 FROM sca_configuracion.role_user role_user left join
-                ".$row_s[base_datos].".configuracion_diaria as cd on (role_user.user_id = cd.id_usuario)
-               WHERE     (role_user.user_id = ".$row[IdUsuario].")
+                " . $row_s[base_datos] . ".configuracion_diaria as cd on (role_user.user_id = cd.id_usuario)
+               WHERE     (role_user.user_id = " . $row[IdUsuario] . ")
                      AND (role_user.role_id = 7)
-                     AND (role_user.id_proyecto = ".$row_s[id_proyecto].")";
-                $result_perfil = $this->_db ->consultar($sql_perfil);
-                
-                if($row_perfil = $this->_db ->fetch($result_perfil)){
-                    
-                    #VERIFICAR QUE TENGA EL TEL�FONO ASIGNADO
-                    ######
+                     AND (role_user.id_proyecto = " . $row_s[id_proyecto] . ")";
+                $result_perfil = $this->_db->consultar($sql_perfil);
+
+                if ($row_perfil = $this->_db->fetch($result_perfil)) {
+
+                    #VERIFICAR QUE TENGA EL TELEFONO ASIGNADO A OBRA#
                     $sql_tel = "SELECT * 
-                FROM
-                ".$row_s[base_datos].".telefonos where imei = '".$imei."' and estatus = 1";
-                  //  echo $sql_tel;
-                $result_tel = $this->_db ->consultar($sql_tel);
-                if($row_tel = $this->_db ->fetch($result_tel) || $imei==""){
-                    
-                #}
-                    ######
-                //IMPRESORAS
-                    
-                $sql_impresoras = "SELECT imei,  mac, impresoras.id as identidificador_impresora
-FROM ".$row_s[base_datos].".telefonos as telefonos left join ".$row_s[base_datos].".impresoras as impresoras on(impresoras.id = telefonos.id_impresora)
-where telefonos.imei = '".$imei."'";
-                
-                $result_imp = $this->_db->consultar($sql_impresoras);
-                while($row_imp=$this->_db->fetch($result_imp)) {
-                    $array_impresoras[]=array(
-                        "id"=>$row_imp[identidificador_impresora],
-                        "IMEI"=>$row_imp[imei],
-                        "MAC"=>$row_imp[mac],
-                    );
-                }
-                
-                //CHECADORES
-                
-                $sql_che = "SELECT
+                    FROM
+                    " . $row_s[base_datos] . ".telefonos where imei = '" . $imei . "' and estatus = 1";
+                    //  echo $sql_tel;
+                    $result_tel = $this->_db->consultar($sql_tel);
+                    if ($row_tel = $this->_db->fetch($result_tel) || $imei == "") {
+
+                        #VERIFICAR QUE TENGA EL TELEFONO ASIGNADO A USUARIO#
+                        $sql_tel_usuario = "SELECT * 
+                    FROM
+                    " . $row_s[base_datos] . ".telefonos where imei = '" . $imei . "' and estatus = 1 and id_checador = '" . $row[IdUsuario] . "'";
+                        //  echo $sql_tel;
+                        $result_tel_usuario = $this->_db->consultar($sql_tel_usuario);
+                        if ($row_tel_USS = $this->_db->fetch($result_tel_usuario) || $imei == "") {
+                            #
+                            ######
+                            //IMPRESORAS
+
+                            $sql_impresoras = "SELECT imei,  mac, impresoras.id as identidificador_impresora
+FROM " . $row_s[base_datos] . ".telefonos as telefonos left join " . $row_s[base_datos] . ".impresoras as impresoras on(impresoras.id = telefonos.id_impresora)
+where telefonos.imei = '" . $imei . "'";
+
+                            $result_imp = $this->_db->consultar($sql_impresoras);
+                            while ($row_imp = $this->_db->fetch($result_imp)) {
+                                $array_impresoras[] = array(
+                                    "id" => $row_imp[identidificador_impresora],
+                                    "IMEI" => $row_imp[imei],
+                                    "MAC" => $row_imp[mac],
+                                );
+                            }
+
+                            //CHECADORES
+
+                            $sql_che = "SELECT
       
                         users.IdUsuario,
                         users.Descripcion
                    FROM igh.users users
                         INNER JOIN sca_configuracion.role_user role_user
                            ON (users.IdUsuario = role_user.user_id)
-                  WHERE (role_user.role_id = 7) AND (role_user.id_proyecto = ".$row_s[id_proyecto]." )";
-                
-                $result_che = $this->_db->consultar($sql_che);
-                while($row_che=$this->_db->fetch($result_che)) {
-                    $array_checadores[]=array(
-                        "id"=>$row_che[IdUsuario],
-                        "descripcion"=>$row_che[Descripcion],
-                    );
-                }
-                
-                //CONFIGURACION
-                $sql_c="select validacion_placas
+                  WHERE (role_user.role_id = 7) AND (role_user.id_proyecto = " . $row_s[id_proyecto] . " )";
+
+                            $result_che = $this->_db->consultar($sql_che);
+                            while ($row_che = $this->_db->fetch($result_che)) {
+                                $array_checadores[] = array(
+                                    "id" => $row_che[IdUsuario],
+                                    "descripcion" => $row_che[Descripcion],
+                                );
+                            }
+
+                            //CONFIGURACION
+                            $sql_c = "select validacion_placas
                 from sca_configuracion.configuracion
-                where idproyecto = ".$row_s["id_proyecto"]."";
-                $result_c = $this->_db ->consultar($sql_c);
-                $row_c = $this->_db ->fetch($result_c);
-                
-                $array_configuracion = array("ValidacionPlacas"=>($row_c["validacion_placas"]==1)?$row_c["validacion_placas"]:"0");
-                
+                where idproyecto = " . $row_s["id_proyecto"] . "";
+                            $result_c = $this->_db->consultar($sql_c);
+                            $row_c = $this->_db->fetch($result_c);
 
-                //CAMIONES
-                $this->_database_sca = SCA::getConexion();
-				
-                 $sql_camiones="SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago, IdEmpresa, IdSindicato, C.Estatus FROM camiones C
+                            $array_configuracion = array("ValidacionPlacas" => ($row_c["validacion_placas"] == 1) ? $row_c["validacion_placas"] : "0");
+
+
+                            //CAMIONES
+                            $this->_database_sca = SCA::getConexion();
+
+                            $sql_camiones = "SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago, IdEmpresa, IdSindicato, C.Estatus FROM camiones C
                                 LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca;";
-                $result_camiones=$this->_database_sca->consultar($sql_camiones);
-                while($row_camiones=$this->_database_sca->fetch($result_camiones)) 
-                        $array_camiones[]=array(
-                            "idcamion"=>$row_camiones[idcamion],
-                            "placas"=>$row_camiones[Placas],
-                            "placas_caja"=>$row_camiones[PlacasCaja],
-                            "marca"=>utf8_encode($row_camiones[marca]),
-                            "modelo"=>utf8_encode($row_camiones[Modelo]),
-                            "ancho"=>utf8_encode($row_camiones[Ancho]),
-                            "largo"=>utf8_encode($row_camiones[largo]),
-                            "alto"=>utf8_encode($row_camiones[Alto]),
-                            "economico"=>utf8_encode($row_camiones[Economico]),
-                            "capacidad"=>utf8_encode($row_camiones[CubicacionParaPago]),
-                            "id_empresa"=>utf8_encode($row_camiones[IdEmpresa]),
-                            "id_sindicato"=>utf8_encode($row_camiones[IdSindicato]),
-                            "estatus"=>utf8_encode($row_camiones[Estatus])
-                        );
+                            $result_camiones = $this->_database_sca->consultar($sql_camiones);
+                            while ($row_camiones = $this->_database_sca->fetch($result_camiones))
+                                $array_camiones[] = array(
+                                    "idcamion" => $row_camiones[idcamion],
+                                    "placas" => $row_camiones[Placas],
+                                    "placas_caja" => $row_camiones[PlacasCaja],
+                                    "marca" => utf8_encode($row_camiones[marca]),
+                                    "modelo" => utf8_encode($row_camiones[Modelo]),
+                                    "ancho" => utf8_encode($row_camiones[Ancho]),
+                                    "largo" => utf8_encode($row_camiones[largo]),
+                                    "alto" => utf8_encode($row_camiones[Alto]),
+                                    "economico" => utf8_encode($row_camiones[Economico]),
+                                    "capacidad" => utf8_encode($row_camiones[CubicacionParaPago]),
+                                    "id_empresa" => utf8_encode($row_camiones[IdEmpresa]),
+                                    "id_sindicato" => utf8_encode($row_camiones[IdSindicato]),
+                                    "estatus" => utf8_encode($row_camiones[Estatus])
+                                );
 
-                        
-                //TIROS
-                $sql_tiros="Select idtiro, descripcion, IdEsquema as idesquema from tiros where estatus=1;";
-                $result_tiros=$this->_database_sca->consultar($sql_tiros);
-                while($row_tiros=$this->_database_sca->fetch($result_tiros)) 
-                        $array_tiros[]=array(
-                            "idtiro"=>$row_tiros[idtiro],
-                            "idesquema"=>$row_tiros[idesquema],
-                            "descripcion"=>utf8_encode($row_tiros[descripcion])
+
+                            //TIROS
+                            $sql_tiros = "Select idtiro, descripcion, IdEsquema as idesquema from tiros where estatus=1;";
+                            $result_tiros = $this->_database_sca->consultar($sql_tiros);
+                            while ($row_tiros = $this->_database_sca->fetch($result_tiros))
+                                $array_tiros[] = array(
+                                    "idtiro" => $row_tiros[idtiro],
+                                    "idesquema" => $row_tiros[idesquema],
+                                    "descripcion" => utf8_encode($row_tiros[descripcion])
+                                );
+
+
+                            //ORIGENES
+                            /*$sql_origenes="
+                                                        (SELECT
+                                                            origen_x_usuario.idorigen as idorigen,
+                                                                origenes.Descripcion as descripcion,
+                                                                1 as estado
+                                                        FROM origen_x_usuario origen_x_usuario
+                                                        INNER JOIN origenes origenes
+                                                        ON (origen_x_usuario.idorigen = origenes.IdOrigen)
+                                                         join
+                                                        rutas on(rutas.IdOrigen = origenes.IdOrigen)
+                                                        WHERE (origen_x_usuario.idusuario_intranet = ".$row[IdUsuario]."))
+                                                        UNION(
+                                                        SELECT DISTINCT
+                                                        origenes.idOrigen as idorigen,
+                                                        Descripcion as descripcion,
+                                                                2 as estado
+                                                        FROM origenes join
+                                                        rutas on(rutas.IdOrigen = origenes.IdOrigen) where origenes.idOrigen not in(
+
+            SELECT
+                                                            origen_x_usuario.idorigen
+                                                        FROM origen_x_usuario origen_x_usuario
+                                                        INNER JOIN origenes origenes
+                                                        ON (origen_x_usuario.idorigen = origenes.IdOrigen)
+                                                        WHERE (origen_x_usuario.idusuario_intranet = ".$row[IdUsuario].")
+            )
+                                                        )
+                                                          ";*/
+                            $sql_origenes = "SELECT idOrigen as idorigen, Descripcion as descripcion, 2 as estado FROM origenes where estatus = 1";
+                            $result_origenes = $this->_database_sca->consultar($sql_origenes);
+
+                            if (mysql_num_rows($result_origenes) > 0) {
+                                while ($row_origenes = $this->_database_sca->fetch($result_origenes))
+                                    $array_origenes[] = array(
+                                        "idorigen" => $row_origenes[idorigen],
+                                        "descripcion" => utf8_encode($row_origenes[descripcion]),
+                                        "estado" => $row_origenes[estado]
+                                    );
+                            } else {
+                                $array_origenes[] = array(
+                                    "idorigen" => 0,
+                                    "descripcion" => utf8_encode("- Seleccione -"),
+                                    "estado" => 1
+                                );
+
+
+                            }
+
+                            //RUTAS
+                            $sql_rutas = "SELECT clave, idruta, idorigen, idtiro, totalkm  FROM rutas";
+                            $result_rutas = $this->_database_sca->consultar($sql_rutas);
+                            while ($row_rutas = $this->_database_sca->fetch($result_rutas))
+                                $array_rutas[] = array(
+                                    "idruta" => $row_rutas[idruta],
+                                    "clave" => utf8_encode($row_rutas[clave]),
+                                    "idorigen" => $row_rutas[idorigen],
+                                    "idtiro" => $row_rutas[idtiro],
+                                    "totalkm" => $row_rutas[totalkm],
+                                );
+
+
+                            //MATERIALES
+                            $sql_materiales = "SELECT idmaterial, descripcion FROM materiales where Estatus=1;";
+                            $result_materiales = $this->_database_sca->consultar($sql_materiales);
+
+                            while ($row_materiales = $this->_database_sca->fetch($result_materiales))
+                                $array_materiales[] = array(
+                                    "idmaterial" => $row_materiales[idmaterial],
+                                    "descripcion" => utf8_encode($row_materiales[descripcion])
+                                );
+
+
+                            //TAGS
+                            //$sql_tags="SELECT uid, idcamion, idproyecto_global as idproyecto FROM tags WHERE estado=1;";
+
+                            $sql_tags = "SELECT t.uid, t.idcamion, t.idproyecto_global as idproyecto FROM tags as t WHERE t.estado=1;";
+                            $result_tags = $this->_database_sca->consultar($sql_tags);
+
+                            while ($row_tags = $this->_database_sca->fetch($result_tags))
+                                $array_tags[] = array(
+                                    "uid" => $row_tags[uid],
+                                    "idcamion" => $row_tags[idcamion],
+                                    "idproyecto" => $row_tags[idproyecto]);
+
+                            //TIPOS IMAGENES
+                            $sql_tipos_imagenes = "SELECT id, descripcion  FROM cat_tipos_imagenes where estado = 1";
+                            $result_tipos_imagenes = $this->_database_sca->consultar($sql_tipos_imagenes);
+                            while ($row_tipos_imagenes = $this->_database_sca->fetch($result_tipos_imagenes))
+                                $array_tipos_imagenes[] = array(
+                                    "id" => $row_tipos_imagenes[id],
+                                    "descripcion" => utf8_encode($row_tipos_imagenes[descripcion]),
+                                );
+
+                            //MOTIVOS DEDUCTIVA
+                            $sql_d = "SELECT id, motivo FROM deductivas_motivos where estatus=1;";
+                            $result_d = $this->_database_sca->consultar($sql_d);
+
+                            while ($row_d = $this->_database_sca->fetch($result_d))
+                                $array_d[] = array(
+                                    "id" => $row_d[id],
+                                    "motivo" => utf8_encode($row_d[motivo])
+                                );
+
+
+                            $arraydata = array(
+                                "IdUsuario" => $row[IdUsuario],
+                                "Nombre" => utf8_encode($row[nombre]),
+                                "IdProyecto" => $row_s[id_proyecto],
+                                "base_datos" => $row_s[base_datos],
+                                "empresa" => $row_s[empresa],
+                                "tiene_logo" => $row_s[tiene_logo],
+                                "IdOrigen" => $row_perfil[id_origen],
+                                "IdTiro" => $row_perfil[id_tiro],
+                                "IdPerfil" => $row_perfil[id_perfil],
+                                "logo" => $row_s[logo],
+                                "descripcion_database" => utf8_encode($row_s[descripcion_database]),
+                                "Camiones" => $array_camiones,
+                                "Tiros" => $array_tiros,
+                                "Origenes" => $array_origenes,
+                                "Rutas" => $array_rutas,
+                                "Materiales" => $array_materiales,
+                                "TiposImagenes" => $array_tipos_imagenes,
+                                "Tags" => $array_tags,
+                                "MotivosDeductiva" => $array_d,
+                                "Configuracion" => $array_configuracion,
+                                "Checadores" => $array_checadores,
+                                "Celulares" => $array_impresoras,
                             );
 
-                            
-                //ORIGENES
-                /*$sql_origenes="
-                                            (SELECT 
-                                                origen_x_usuario.idorigen as idorigen, 
-                                                    origenes.Descripcion as descripcion,
-                                                    1 as estado     
-                                            FROM origen_x_usuario origen_x_usuario
-                                            INNER JOIN origenes origenes
-                                            ON (origen_x_usuario.idorigen = origenes.IdOrigen)
-                                             join 
-                                            rutas on(rutas.IdOrigen = origenes.IdOrigen)
-                                            WHERE (origen_x_usuario.idusuario_intranet = ".$row[IdUsuario]."))
-                                            UNION(
-                                            SELECT DISTINCT
-                                            origenes.idOrigen as idorigen, 
-                                            Descripcion as descripcion,
-                                                    2 as estado
-                                            FROM origenes join 
-                                            rutas on(rutas.IdOrigen = origenes.IdOrigen) where origenes.idOrigen not in(
 
-SELECT 
-                                                origen_x_usuario.idorigen 
-                                            FROM origen_x_usuario origen_x_usuario
-                                            INNER JOIN origenes origenes
-                                            ON (origen_x_usuario.idorigen = origenes.IdOrigen)
-                                            WHERE (origen_x_usuario.idusuario_intranet = ".$row[IdUsuario].")
-)
-                                            )
-                                              ";*/
-                $sql_origenes = "SELECT idOrigen as idorigen, Descripcion as descripcion, 2 as estado FROM origenes where estatus = 1";
-                $result_origenes=$this->_database_sca->consultar($sql_origenes);
-                
-                if(mysql_num_rows($result_origenes)>0){
-                    while($row_origenes=$this->_database_sca->fetch($result_origenes)) 
-                        $array_origenes[]=array(
-                            "idorigen"=>$row_origenes[idorigen],
-                            "descripcion"=>utf8_encode($row_origenes[descripcion]),
-                            "estado"=>$row_origenes[estado]
-                            );
-                }else{
-                     $array_origenes[]=array(
-                            "idorigen"=>0,
-                            "descripcion"=>utf8_encode("- Seleccione -"),
-                            "estado"=>1
-                            );
+                            //print_r($arraydata);
+                            echo json_encode($arraydata);
 
-
+                        } else {
+                            echo utf8_encode("{\"error\":\"El usuario no tiene asignado esté teléfono. Favor de Solicitarlo.\"}");
+                        }
+                    } else {
+                        echo utf8_encode("{\"error\":\"El teléfono no tiene autorización para operar.\"}");
+                    }
+                    ####
+                } else {
+                    echo "{\"error\":\"El usuario no tiene perfil de CHECADOR favor de solicitarlo.\"}";
                 }
-
-                //RUTAS
-                $sql_rutas="SELECT clave, idruta, idorigen, idtiro, totalkm  FROM rutas";
-                $result_rutas=$this->_database_sca->consultar($sql_rutas);
-                while($row_rutas=$this->_database_sca->fetch($result_rutas)) 
-                        $array_rutas[]=array(
-                            "idruta"=>$row_rutas[idruta],
-                            "clave"=>utf8_encode($row_rutas[clave]),
-                            "idorigen"=>$row_rutas[idorigen],
-                            "idtiro"=>$row_rutas[idtiro],
-                            "totalkm"=>$row_rutas[totalkm ],                            
-                            );
-
-
-                 //MATERIALES
-                $sql_materiales="SELECT idmaterial, descripcion FROM materiales where Estatus=1;";
-                $result_materiales=$this->_database_sca->consultar($sql_materiales);
-                
-                while($row_materiales=$this->_database_sca->fetch($result_materiales)) 
-                        $array_materiales[]=array(
-                            "idmaterial"=>$row_materiales[idmaterial],
-                            "descripcion"=>utf8_encode($row_materiales[descripcion])
-                            );
-                
-                
-                //TAGS
-                //$sql_tags="SELECT uid, idcamion, idproyecto_global as idproyecto FROM tags WHERE estado=1;";
-
-                $sql_tags = "SELECT t.uid, t.idcamion, t.idproyecto_global as idproyecto FROM tags as t WHERE t.estado=1;";
-                $result_tags=$this->_database_sca->consultar($sql_tags);
-                
-                while($row_tags=$this->_database_sca->fetch($result_tags))
-                    $array_tags[]=array(
-                        "uid"=>$row_tags[uid],
-                        "idcamion"=>$row_tags[idcamion],
-                        "idproyecto"=>$row_tags[idproyecto]);   
-                
-                //TIPOS IMAGENES
-                $sql_tipos_imagenes="SELECT id, descripcion  FROM cat_tipos_imagenes where estado = 1";
-                $result_tipos_imagenes=$this->_database_sca->consultar($sql_tipos_imagenes);
-                while($row_tipos_imagenes=$this->_database_sca->fetch($result_tipos_imagenes)) 
-                        $array_tipos_imagenes[]=array(
-                            "id"=>$row_tipos_imagenes[id],
-                            "descripcion"=>utf8_encode($row_tipos_imagenes[descripcion]),
-                            );
-                
-                //MOTIVOS DEDUCTIVA
-                $sql_d="SELECT id, motivo FROM deductivas_motivos where estatus=1;";
-                $result_d=$this->_database_sca->consultar($sql_d);
-                
-                while($row_d=$this->_database_sca->fetch($result_d)) 
-                        $array_d[]=array(
-                            "id"=>$row_d[id],
-                            "motivo"=>utf8_encode($row_d[motivo])
-                            );
-
-                            
-                            
-                $arraydata=array(
-                     "IdUsuario"=>$row[IdUsuario],
-                     "Nombre"=>utf8_encode($row[nombre]),
-                     "IdProyecto"=>$row_s[id_proyecto],
-                     "base_datos"=>$row_s[base_datos], 
-                     "empresa"=>$row_s[empresa], 
-                     "tiene_logo"=>$row_s[tiene_logo],
-                    "IdOrigen"=>$row_perfil[id_origen],
-                    "IdTiro"=>$row_perfil[id_tiro],
-                    "IdPerfil"=>$row_perfil[id_perfil],
-                     "logo"=>$row_s[logo], 
-                     "descripcion_database"=>utf8_encode($row_s[descripcion_database]),
-                     "Camiones"=>$array_camiones,
-                     "Tiros"=>$array_tiros,
-                     "Origenes"=>$array_origenes,
-                     "Rutas"=>$array_rutas,
-                     "Materiales"=>$array_materiales,
-                     "TiposImagenes"=>$array_tipos_imagenes,
-                     "Tags"=>$array_tags,
-                    "MotivosDeductiva"=>$array_d,
-                    "Configuracion"=>$array_configuracion,
-                    "Checadores"=>$array_checadores,
-                    "Celulares"=>$array_impresoras,
-                 );
-
-
-                 //print_r($arraydata);                 
-                 echo json_encode($arraydata);     
-                 
-                 }
-            else{
-            echo utf8_encode("{\"error\":\"El teléfono no tiene autorización para operar.\"}");
             }
-            ####
-                 
-            }else{
-                echo "{\"error\":\"El usuario no tiene perfil de CHECADOR favor de solicitarlo.\"}";
-            }
-            
-            } else {
+            else {
 
                 echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningun proyecto.\"}";
             }
