@@ -105,8 +105,11 @@ where telefonos.imei = '" . $imei . "'";
                             //CAMIONES
                             $this->_database_sca = SCA::getConexion();
 
+                            /*$sql_camiones = "SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago, IdEmpresa, IdSindicato, C.Estatus FROM camiones C
+                                LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca;";*/
+
                             $sql_camiones = "SELECT idcamion, Placas,PlacasCaja, M.descripcion as marca, Modelo, Ancho, largo, Alto, Economico, CubicacionParaPago, IdEmpresa, IdSindicato, C.Estatus FROM camiones C
-                                LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca;";
+                                            LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca WHERE C.Estatus=1";
                             $result_camiones = $this->_database_sca->consultar($sql_camiones);
                             while ($row_camiones = $this->_database_sca->fetch($result_camiones))
                                 $array_camiones[] = array(
@@ -213,14 +216,21 @@ where telefonos.imei = '" . $imei . "'";
                             //TAGS
                             //$sql_tags="SELECT uid, idcamion, idproyecto_global as idproyecto FROM tags WHERE estado=1;";
 
-                            $sql_tags = "SELECT t.uid, t.idcamion, t.idproyecto_global as idproyecto FROM tags as t WHERE t.estado=1;";
+                            //$sql_tags = "SELECT t.uid, t.idcamion, t.idproyecto_global as idproyecto FROM tags as t WHERE t.estado=1;";
+
+                            $sql_tags= "SELECT t.uid, t.idcamion, t.idproyecto_global as idproyecto, c.Economico, c.Estatus FROM tags as t 
+                                        JOIN camiones c on t.idcamion = c.IdCamion
+                                        WHERE t.estado=1;";
+
                             $result_tags = $this->_database_sca->consultar($sql_tags);
 
                             while ($row_tags = $this->_database_sca->fetch($result_tags))
                                 $array_tags[] = array(
                                     "uid" => $row_tags[uid],
                                     "idcamion" => $row_tags[idcamion],
-                                    "idproyecto" => $row_tags[idproyecto]);
+                                    "idproyecto" => $row_tags[idproyecto],
+                                    "Economico" => $row_tags[Economico],
+                                    "Estatus" => $row_tags[Estatus]);
 
                             //TIPOS IMAGENES
                             $sql_tipos_imagenes = "SELECT id, descripcion  FROM cat_tipos_imagenes where estado = 1";
