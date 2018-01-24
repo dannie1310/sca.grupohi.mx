@@ -282,7 +282,7 @@ where telefonos.imei = '" . $imei . "'";
                             echo json_encode($arraydata);
 
                         } else {
-                            echo utf8_encode("{\"error\":\"El usuario no tiene asignado esté teléfono. Favor de Solicitarlo.\"}");
+                            echo "{\"error\":\"El usuario no tiene asignado esté teléfono. Favor de Solicitarlo.\"}";
                         }
                     } else {
                         echo utf8_encode("{\"error\":\"El teléfono no tiene autorización para operar.\"}");
@@ -839,7 +839,7 @@ where telefonos.imei = '" . $imei . "'";
                         $num = (array_key_exists("numImpresion", $value)) ? "'" . $value["numImpresion"] . "'" : "NULL";
                         $deductiva = (array_key_exists("deductiva", $value))?"'".$value["deductiva"]."'":"NULL";
                         $idmotivo = (array_key_exists("idMotivo", $value)) && $value["idMotivo"] != 0 ?"'".$value["idMotivo"]."'":"NULL";
-
+                        $deductiva_entrada = (array_key_exists("deductiva_entrada", $value)) ?"'".$value["deductiva_entrada"]."'":"NULL";
                         $version = $_REQUEST[Version];
 
                         $ic = "INSERT INTO $_REQUEST[bd].`inicio_camion`
@@ -862,7 +862,8 @@ where telefonos.imei = '" . $imei . "'";
                             `Version`,
                             `deductiva`,
                             `idMotivo_deductiva`,
-                             `FechaCarga`)
+                             `FechaCarga`,
+                             `deductiva_entrada`)
                         VALUES
                         (
                         $value[idcamion],
@@ -883,7 +884,8 @@ where telefonos.imei = '" . $imei . "'";
                             '$version',
                             $deductiva,
                             $idmotivo,
-                            NOW());";
+                            NOW(),
+                            $deductiva_entrada);";
 
                         $this->_db->consultar($ic);
 
@@ -937,6 +939,11 @@ where telefonos.imei = '" . $imei . "'";
                         $folioMina = (array_key_exists("folioMina", $value))?"'".$value["folioMina"]."'":"NULL";
                         $folioSeguimiento = (array_key_exists("folioSeguimiento", $value))?"'".$value["folioSeguimiento"]."'":"NULL";
                         $num = (array_key_exists("numImpresion", $value))?"'".$value["numImpresion"]."'":"NULL";
+                        $deductiva_origen = (array_key_exists("deductiva_origen", $value))?"'".$value["deductiva_origen"]."'":"NULL";
+                        $deductiva_entrada = (array_key_exists("deductiva_entrada", $value))?"'".$value["deductiva_entrada"]."'":"NULL";
+                        $idmotivo_origen = (array_key_exists("idmotivo_origen", $value))&& $value["idmotivo_origen"] != 0 ?"'".$value["idmotivo_origen"]."'":"NULL";
+                        $idmotivo_entrada = (array_key_exists("idmotivo_entrada", $value))&& $value["idmotivo_entrada"] != 0 ?"'".$value["idmotivo_entrada"]."'":"NULL";
+                        $tipoViaje = (array_key_exists("tipoViaje", $value))?"'".$value["tipoViaje"]."'":"NULL";
 
                         if(!($idempresa>0)){$idempresa = 'NULL';}
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
@@ -951,7 +958,8 @@ where telefonos.imei = '" . $imei . "'";
                         $x = "INSERT INTO 
                         $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
                             FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom,
-                            CreoPrimerToque, CubicacionCamion, IdPerfil, folioMina, folioSeguimiento, numImpresion)
+                            CreoPrimerToque, CubicacionCamion, IdPerfil, folioMina, folioSeguimiento, numImpresion, deductiva_origen, deductiva_entrada, 
+                            idmotivo_origen, idmotivo_entrada, tipoViaje)
                     VALUES(
                            0,
                            NOW(), 
@@ -982,7 +990,12 @@ where telefonos.imei = '" . $imei . "'";
                            $idperfil,
                            $folioMina, 
                            $folioSeguimiento, 
-                           $num);";
+                           $num,
+                           $deductiva_origen,
+                           $deductiva_entrada,
+                           $idmotivo_origen,
+                           $idmotivo_entrada,
+                           $tipoViaje);";
 
                         $this->_db->consultar($x);
                         $x_error="";
