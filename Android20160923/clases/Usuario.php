@@ -939,10 +939,6 @@ where telefonos.imei = '" . $imei . "'";
                         $folioMina = (array_key_exists("folioMina", $value))?"'".$value["folioMina"]."'":"NULL";
                         $folioSeguimiento = (array_key_exists("folioSeguimiento", $value))?"'".$value["folioSeguimiento"]."'":"NULL";
                         $num = (array_key_exists("numImpresion", $value))?"'".$value["numImpresion"]."'":"NULL";
-                        $deductiva_origen = (array_key_exists("deductiva_origen", $value))?"'".$value["deductiva_origen"]."'":"NULL";
-                        $deductiva_entrada = (array_key_exists("deductiva_entrada", $value))?"'".$value["deductiva_entrada"]."'":"NULL";
-                        $idmotivo_origen = (array_key_exists("idmotivo_origen", $value))&& $value["idmotivo_origen"] != 0 ?"'".$value["idmotivo_origen"]."'":"NULL";
-                        $idmotivo_entrada = (array_key_exists("idmotivo_entrada", $value))&& $value["idmotivo_entrada"] != 0 ?"'".$value["idmotivo_entrada"]."'":"NULL";
                         $tipoViaje = (array_key_exists("tipoViaje", $value))?"'".$value["tipoViaje"]."'":"NULL";
 
                         if(!($idempresa>0)){$idempresa = 'NULL';}
@@ -958,8 +954,7 @@ where telefonos.imei = '" . $imei . "'";
                         $x = "INSERT INTO 
                         $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
                             FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom,
-                            CreoPrimerToque, CubicacionCamion, IdPerfil, folioMina, folioSeguimiento, numImpresion, deductiva_origen, deductiva_entrada, 
-                            idmotivo_origen, idmotivo_entrada, tipoViaje)
+                            CreoPrimerToque, CubicacionCamion, IdPerfil, folioMina, folioSeguimiento, numImpresion, tipoViaje)
                     VALUES(
                            0,
                            NOW(), 
@@ -991,10 +986,6 @@ where telefonos.imei = '" . $imei . "'";
                            $folioMina, 
                            $folioSeguimiento, 
                            $num,
-                           $deductiva_origen,
-                           $deductiva_entrada,
-                           $idmotivo_origen,
-                           $idmotivo_entrada,
                            $tipoViaje);";
 
                         $this->_db->consultar($x);
@@ -1003,14 +994,30 @@ where telefonos.imei = '" . $imei . "'";
                             $afv = $afv + $this->_db->affected();
                             $id_viaje_neto = $this->_db->retId();
                             $arreglo_id_viaje_code[$value[Code]] = $id_viaje_neto;
+                            $sumaDeductiva = 0;
                             #GENERA DEDUCTIVAS
                             if(array_key_exists("Deductiva", $value) ){
                                 if($value["Deductiva"]>0){
                                     $deductivas[$id_viaje_neto]["Deductiva"] = $value["Deductiva"];
                                     $deductivas[$id_viaje_neto]["IdMotivoDeductiva"] = $value["IdMotivoDeductiva"];
+                                    $sumaDeductiva = $sumaDeductiva + $value["Deductiva"];
                                 }
                             }
-                            
+                            if(array_key_exists("deductiva_origen", $value)){
+                                if($value["deductiva_origen"]>0){
+                                    $deductivas[$id_viaje_neto]["deductiva_origen"] = $value["deductiva_origen"];
+                                    $deductivas[$id_viaje_neto]["idmotivo_origen"] = $value["idmotivo_origen"];
+                                    $sumaDeductiva = $sumaDeductiva + $value["deductiva_origen"];
+                                }
+                            }
+                            if(array_key_exists("deductiva_entrada", $value)){
+                                if($value["deductiva_entrada"]>0){
+                                    $deductivas[$id_viaje_neto]["deductiva_entrada"] = $value["deductiva_entrada"];
+                                    $deductivas[$id_viaje_neto]["idmotivo_entrada"] = $value["idmotivo_entrada"];
+                                    $sumaDeductiva = $sumaDeductiva +$value["deductiva_entrada"];
+                                }
+                            }
+
                         }else{
                             $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $x)."','$value[Creo]' )";
                             $this->_db->consultar($x_error);
@@ -1047,8 +1054,10 @@ where telefonos.imei = '" . $imei . "'";
             #PROCESA DEDUCTIVAS
              foreach ($deductivas as $key_d => $value_d) {
                  $xd = "INSERT INTO $_REQUEST[bd].deductivas_viajes_netos 
-                  (id_viaje_neto, id_motivo, deductiva, id_registro) values
-                  ($key_d,".$value_d["IdMotivoDeductiva"].",".$value_d["Deductiva"].",$usuario_creo)";
+                  (id_viaje_neto, id_motivo, deductiva, id_registro, deductiva_origen, idmotivo_origen,
+                   deductiva_entrada, idmotivo_entrada, idmotivo_salida, deductiva_salida) values
+                  ($key_d,".$value_d["IdMotivoDeductiva"].",".$sumaDeductiva.", $usuario_creo, ".$value_d["deductiva_origen"].", ".$value_d["idmotivo_origen"].",
+                  ".$value_d["deductiva_entrada"].",".$value_d["idmotivo_entrada"].",".$value_d["IdMotivoDeductiva"].",".$value_d["Deductiva"].")";
                     $this->_db->consultar($xd);
                 if ($this->_db->affected() > 0) {
                             
