@@ -1010,8 +1010,9 @@ where telefonos.imei = '" . $imei . "'";
                                 if(array_key_exists("deductiva_entrada", $value)){
                                         $deductivas[$id_viaje_neto]["deductiva_entrada"] = $value["deductiva_entrada"];
                                         $deductivas[$id_viaje_neto]["idmotivo_entrada"] = $value["idmotivo_entrada"];
-                                        $sumaDeductiva = $sumaDeductiva +$value["deductiva_entrada"];
+                                        $sumaDeductiva = $sumaDeductiva + $value["deductiva_entrada"];
                                 }
+                                $deductivas[$id_viaje_neto]["suma"] = $sumaDeductiva;
                             }
 
                         }else{
@@ -1052,8 +1053,10 @@ where telefonos.imei = '" . $imei . "'";
                  $xd = "INSERT INTO $_REQUEST[bd].deductivas_viajes_netos 
                   (id_viaje_neto, id_motivo, deductiva, id_registro, deductiva_origen, idmotivo_origen,
                    deductiva_entrada, idmotivo_entrada, idmotivo_salida, deductiva_salida) values
-                  ($key_d,".$value_d["IdMotivoDeductiva"].",".$sumaDeductiva.", $usuario_creo, ".$value_d["deductiva_origen"].", ".$value_d["idmotivo_origen"].",
-                  ".$value_d["deductiva_entrada"].",".$value_d["idmotivo_entrada"].",".$value_d["IdMotivoDeductiva"].",".$value_d["Deductiva"].")";
+                  ($key_d, ".$value_d["IdMotivoDeductiva"].",".$value_d["suma"].", $usuario_creo,
+                   ".$value_d["deductiva_origen"].", ".$value_d["idmotivo_origen"].",
+                  ".$value_d["deductiva_entrada"].",".$value_d["idmotivo_entrada"].",
+                  ".$value_d["IdMotivoDeductiva"].",".$value_d["Deductiva"].")";
                     $this->_db->consultar($xd);
                 if ($this->_db->affected() > 0) {
                             
