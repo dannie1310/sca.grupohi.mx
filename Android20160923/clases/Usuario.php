@@ -995,24 +995,29 @@ where telefonos.imei = '" . $imei . "'";
                             $id_viaje_neto = $this->_db->retId();
                             $arreglo_id_viaje_code[$value[Code]] = $id_viaje_neto;
                             $sumaDeductiva = 0;
+                            $idmotivo = 0;
                             #GENERA DEDUCTIVAS
                             if($value["deductiva_entrada"]!= 0 || $value["deductiva_origen"]!=0 || $value["Deductiva"]!=0){
                                 if(array_key_exists("Deductiva", $value) ){
                                         $deductivas[$id_viaje_neto]["Deductiva"] = $value["Deductiva"];
                                         $deductivas[$id_viaje_neto]["IdMotivoDeductiva"] = $value["IdMotivoDeductiva"];
                                         $sumaDeductiva = $sumaDeductiva + $value["Deductiva"];
+                                        $idmotivo = $value["IdMotivoDeductiva"];
                                 }
                                 if(array_key_exists("deductiva_origen", $value)){
                                         $deductivas[$id_viaje_neto]["deductiva_origen"] = $value["deductiva_origen"];
                                         $deductivas[$id_viaje_neto]["idmotivo_origen"] = $value["idmotivo_origen"];
                                         $sumaDeductiva = $sumaDeductiva + $value["deductiva_origen"];
+                                        $idmotivo=$value["idmotivo_origen"];
                                 }
                                 if(array_key_exists("deductiva_entrada", $value)){
                                         $deductivas[$id_viaje_neto]["deductiva_entrada"] = $value["deductiva_entrada"];
                                         $deductivas[$id_viaje_neto]["idmotivo_entrada"] = $value["idmotivo_entrada"];
                                         $sumaDeductiva = $sumaDeductiva + $value["deductiva_entrada"];
+                                        $idmotivo =  $value["idmotivo_entrada"];
                                 }
                                 $deductivas[$id_viaje_neto]["suma"] = $sumaDeductiva;
+                                $deductivas[$id_viaje_neto]["motivo_suma"] = $idmotivo;
                             }
 
                         }else{
@@ -1053,7 +1058,7 @@ where telefonos.imei = '" . $imei . "'";
                  $xd = "INSERT INTO $_REQUEST[bd].deductivas_viajes_netos 
                   (id_viaje_neto, id_motivo, deductiva, id_registro, deductiva_origen, idmotivo_origen,
                    deductiva_entrada, idmotivo_entrada, idmotivo_salida, deductiva_salida) values
-                  ($key_d, ".$value_d["IdMotivoDeductiva"].",".$value_d["suma"].", $usuario_creo,
+                  ($key_d, ".$value_d["motivo_suma"].",".$value_d["suma"].", $usuario_creo,
                    ".$value_d["deductiva_origen"].", ".$value_d["idmotivo_origen"].",
                   ".$value_d["deductiva_entrada"].",".$value_d["idmotivo_entrada"].",
                   ".$value_d["IdMotivoDeductiva"].",".$value_d["Deductiva"].")";
