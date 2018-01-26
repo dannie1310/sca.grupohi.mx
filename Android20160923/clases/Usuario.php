@@ -1002,19 +1002,25 @@ where telefonos.imei = '" . $imei . "'";
                                         $deductivas[$id_viaje_neto]["Deductiva"] = $value["Deductiva"];
                                         $deductivas[$id_viaje_neto]["IdMotivoDeductiva"] = $value["IdMotivoDeductiva"];
                                         $sumaDeductiva = $sumaDeductiva + $value["Deductiva"];
-                                        $idmotivo = $value["IdMotivoDeductiva"];
+                                        if($value["IdMotivoDeductiva"]!= 0) {
+                                            $idmotivo = $value["IdMotivoDeductiva"];
+                                        }
                                 }
                                 if(array_key_exists("deductiva_origen", $value)){
                                         $deductivas[$id_viaje_neto]["deductiva_origen"] = $value["deductiva_origen"];
                                         $deductivas[$id_viaje_neto]["idmotivo_origen"] = $value["idmotivo_origen"];
                                         $sumaDeductiva = $sumaDeductiva + $value["deductiva_origen"];
-                                        $idmotivo=$value["idmotivo_origen"];
+                                        if($value["idmotivo_origen"] != 0) {
+                                            $idmotivo = $value["idmotivo_origen"];
+                                        }
                                 }
                                 if(array_key_exists("deductiva_entrada", $value)){
                                         $deductivas[$id_viaje_neto]["deductiva_entrada"] = $value["deductiva_entrada"];
                                         $deductivas[$id_viaje_neto]["idmotivo_entrada"] = $value["idmotivo_entrada"];
                                         $sumaDeductiva = $sumaDeductiva + $value["deductiva_entrada"];
-                                        $idmotivo =  $value["idmotivo_entrada"];
+                                        if($value["idmotivo_entrada"] != 0) {
+                                            $idmotivo = $value["idmotivo_entrada"];
+                                        }
                                 }
                                 $deductivas[$id_viaje_neto]["suma"] = $sumaDeductiva;
                                 $deductivas[$id_viaje_neto]["motivo_suma"] = $idmotivo;
