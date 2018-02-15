@@ -806,6 +806,7 @@ where telefonos.imei = '" . $imei . "'";
             $idsindicato = 'NULL';
             $i_deductiva = 0;
             $deductivas = array();
+            $volumen = array();
             $json_inicio_camion = $_REQUEST["inicioCamion"];
             $inicio_camion = json_decode(utf8_encode($json_inicio_camion), TRUE);// comentar para pruebas*/
             //$inicio_camion = $_REQUEST["inicioCamion"];
@@ -945,7 +946,7 @@ where telefonos.imei = '" . $imei . "'";
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
                         if(!($cubicacion_camion>0)){$cubicacion_camion = 0;}
                         if(!($creo_primer_toque>0)){$creo_primer_toque = 'NULL';}
-                        if($cubicacion_camion_tel == 0){
+                        if($cubicacion_camion_tel == '0'){
                             $cubicacion_camion = $cubicacion_camion_cam;
                         }else{
                             $cubicacion_camion = $cubicacion_camion_tel;
@@ -1026,6 +1027,18 @@ where telefonos.imei = '" . $imei . "'";
                                 $deductivas[$id_viaje_neto]["motivo_suma"] = $idmotivo;
                             }
 
+                            if($value["volumen_origen"]!=0 || $value["volumen_entrada"]!=0 || $value["volumen"]!=0){
+                                if(array_key_exists("volumen_origen",$value)){
+                                    $volumen[$id_viaje_neto]["v_o"] = $value["volumen_origen"];
+                                }
+                                if(array_key_exists("volumen_entrada",$value)){
+                                    $volumen[$id_viaje_neto]["v_e"] = $value["volumen_entrada"];
+                                }
+                                if(array_key_exists("volumen",$value)){
+                                    $volumen[$id_viaje_neto]["v"] = $value["volumen"];
+                                }
+                            }
+
                         }else{
                             $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $x)."','$value[Creo]' )";
                             $this->_db->consultar($x_error);
@@ -1077,6 +1090,20 @@ where telefonos.imei = '" . $imei . "'";
                     
                 }
              }
+
+            #PROCESA VOLUMEN
+            foreach ($volumen as $key_v => $value_v) {
+                $xd = "INSERT INTO $_REQUEST[bd].volumen_detalle (id_viaje_neto, volumen_origen, volumen_entrada, volumen,  id_registro) values ($key_v, ".$value_v["v_o"].",".$value_v["v_e"].", ".$value_v["v"].", $usuario_creo)";
+                $this->_db->consultar($xd);
+                if ($this->_db->affected() > 0) {
+
+                }else{
+                    $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $xd)."','$value[Creo]' )";
+                    $this->_db->consultar($x_error);
+
+                }
+            }
+
             #INSERTAR IMAGEN
             $json_imagenes = $_REQUEST[Imagenes];
             $imagenes = json_decode(utf8_encode($json_imagenes), TRUE); 
