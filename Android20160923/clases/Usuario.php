@@ -779,7 +779,7 @@ where telefonos.imei = '" . $imei . "'";
         #VERIFICAR QUE TENGA EL TEL�FONO ASIGNADO
 
         ######
-        $sql_tel = "SELECT *  FROM ".$_REQUEST[bd].".telefonos where imei = '".$imei."' and estatus = 1";
+        $sql_tel = "SELECT *  FROM ".$_REQUEST['bd'].".telefonos where imei = '".$imei."' and estatus = 1";
 
         $result_tel = $this->_db ->consultar($sql_tel);
 
@@ -806,7 +806,7 @@ where telefonos.imei = '" . $imei . "'";
             $idsindicato = 'NULL';
             $i_deductiva = 0;
             $deductivas = array();
-            $volumen = array();
+            $volumen_array = array();
             $json_inicio_camion = $_REQUEST["inicioCamion"];
             $inicio_camion = json_decode(utf8_encode($json_inicio_camion), TRUE);// comentar para pruebas*/
             //$inicio_camion = $_REQUEST["inicioCamion"];
@@ -946,7 +946,7 @@ where telefonos.imei = '" . $imei . "'";
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
                         if(!($cubicacion_camion>0)){$cubicacion_camion = 0;}
                         if(!($creo_primer_toque>0)){$creo_primer_toque = 'NULL';}
-                        if($cubicacion_camion_tel == '0'){
+                        if($cubicacion_camion_tel == "'0'"){
                             $cubicacion_camion = $cubicacion_camion_cam;
                         }else{
                             $cubicacion_camion = $cubicacion_camion_tel;
@@ -999,43 +999,57 @@ where telefonos.imei = '" . $imei . "'";
                             $idmotivo = 0;
                             #GENERA DEDUCTIVAS
                             if($value["deductiva_entrada"]!= 0 || $value["deductiva_origen"]!=0 || $value["Deductiva"]!=0){
-                                if(array_key_exists("Deductiva", $value) ){
+                                if(array_key_exists("Deductiva", $value) && $value["Deductiva"]!=0){
                                         $deductivas[$id_viaje_neto]["Deductiva"] = $value["Deductiva"];
                                         $deductivas[$id_viaje_neto]["IdMotivoDeductiva"] = $value["IdMotivoDeductiva"];
                                         $sumaDeductiva = $sumaDeductiva + $value["Deductiva"];
                                         if($value["IdMotivoDeductiva"]!= 0) {
                                             $idmotivo = $value["IdMotivoDeductiva"];
                                         }
+                                }else{
+                                    $deductivas[$id_viaje_neto]["Deductiva"] = '0';
+                                    $deductivas[$id_viaje_neto]["IdMotivoDeductiva"] = '0';
                                 }
-                                if(array_key_exists("deductiva_origen", $value)){
+                                if(array_key_exists("deductiva_origen", $value) && $value["deductiva_origen"]!=0 ){
                                         $deductivas[$id_viaje_neto]["deductiva_origen"] = $value["deductiva_origen"];
                                         $deductivas[$id_viaje_neto]["idmotivo_origen"] = $value["idmotivo_origen"];
                                         $sumaDeductiva = $sumaDeductiva + $value["deductiva_origen"];
                                         if($value["idmotivo_origen"] != 0) {
                                             $idmotivo = $value["idmotivo_origen"];
                                         }
+                                }else{
+                                    $deductivas[$id_viaje_neto]["deductiva_origen"] = '0';
+                                    $deductivas[$id_viaje_neto]["idmotivo_origen"] = '0';
                                 }
-                                if(array_key_exists("deductiva_entrada", $value)){
+                                if(array_key_exists("deductiva_entrada", $value) && $value["deductiva_entrada"]!= 0){
                                         $deductivas[$id_viaje_neto]["deductiva_entrada"] = $value["deductiva_entrada"];
                                         $deductivas[$id_viaje_neto]["idmotivo_entrada"] = $value["idmotivo_entrada"];
                                         $sumaDeductiva = $sumaDeductiva + $value["deductiva_entrada"];
                                         if($value["idmotivo_entrada"] != 0) {
                                             $idmotivo = $value["idmotivo_entrada"];
                                         }
+                                }else{
+                                    $deductivas[$id_viaje_neto]["deductiva_entrada"] = '0';
+                                    $deductivas[$id_viaje_neto]["idmotivo_entrada"] = '0';
                                 }
                                 $deductivas[$id_viaje_neto]["suma"] = $sumaDeductiva;
                                 $deductivas[$id_viaje_neto]["motivo_suma"] = $idmotivo;
                             }
-
-                            if($value["volumen_origen"]!=0 || $value["volumen_entrada"]!=0 || $value["volumen"]!=0){
-                                if(array_key_exists("volumen_origen",$value)){
-                                    $volumen[$id_viaje_neto]["v_o"] = $value["volumen_origen"];
+                            if($value["volumen_origen"]!=0 || $value["volumen_entrada"]!=0 || $value["volumen"]!=0) {
+                                if (array_key_exists("volumen_origen", $value) && $value["volumen_origen"] != 0) {
+                                    $volumen_array[$id_viaje_neto]["v_o"] = $value["volumen_origen"];
+                                }else{
+                                    $volumen_array[$id_viaje_neto]["v_o"] = '0';
                                 }
-                                if(array_key_exists("volumen_entrada",$value)){
-                                    $volumen[$id_viaje_neto]["v_e"] = $value["volumen_entrada"];
+                                if (array_key_exists("volumen_entrada", $value) && $value["volumen_entrada"] != 0) {
+                                    $volumen_array[$id_viaje_neto]["v_e"] = $value["volumen_entrada"];
+                                }else{
+                                    $volumen_array[$id_viaje_neto]["v_e"] = '0';
                                 }
-                                if(array_key_exists("volumen",$value)){
-                                    $volumen[$id_viaje_neto]["v"] = $value["volumen"];
+                                if (array_key_exists("volumen", $value) && $value["volumen"] != 0) {
+                                    $volumen_array[$id_viaje_neto]["v"] = $value["volumen"];
+                                }else{
+                                    $volumen_array[$id_viaje_neto]["v"] = '0';
                                 }
                             }
 
@@ -1077,7 +1091,7 @@ where telefonos.imei = '" . $imei . "'";
                  $xd = "INSERT INTO $_REQUEST[bd].deductivas_viajes_netos 
                   (id_viaje_neto, id_motivo, deductiva, id_registro, deductiva_origen, idmotivo_origen,
                    deductiva_entrada, idmotivo_entrada, idmotivo_salida, deductiva_salida) values
-                  ($key_d, ".$value_d["motivo_suma"].",".$value_d["suma"].", $usuario_creo,
+                  ($key_d, ".$value_d["motivo_suma"].",".$value_d["suma"].", '$value[Creo]',
                    ".$value_d["deductiva_origen"].", ".$value_d["idmotivo_origen"].",
                   ".$value_d["deductiva_entrada"].",".$value_d["idmotivo_entrada"].",
                   ".$value_d["IdMotivoDeductiva"].",".$value_d["Deductiva"].")";
@@ -1092,8 +1106,8 @@ where telefonos.imei = '" . $imei . "'";
              }
 
             #PROCESA VOLUMEN
-            foreach ($volumen as $key_v => $value_v) {
-                $xd = "INSERT INTO $_REQUEST[bd].volumen_detalle (id_viaje_neto, volumen_origen, volumen_entrada, volumen,  id_registro) values ($key_v, ".$value_v["v_o"].",".$value_v["v_e"].", ".$value_v["v"].", $usuario_creo)";
+            foreach ($volumen_array as $key_v => $value_v) {
+                $xd = "INSERT INTO $_REQUEST[bd].volumen_detalle (id_viaje_neto, volumen_origen, volumen_entrada, volumen, idregistro) values ($key_v, ".$value_v["v_o"].",".$value_v["v_e"].", ".$value_v["v"].", '$value[Creo]')";
                 $this->_db->consultar($xd);
                 if ($this->_db->affected() > 0) {
 
