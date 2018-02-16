@@ -1091,7 +1091,7 @@ where telefonos.imei = '" . $imei . "'";
                  $xd = "INSERT INTO $_REQUEST[bd].deductivas_viajes_netos 
                   (id_viaje_neto, id_motivo, deductiva, id_registro, deductiva_origen, idmotivo_origen,
                    deductiva_entrada, idmotivo_entrada, idmotivo_salida, deductiva_salida) values
-                  ($key_d, ".$value_d["motivo_suma"].",".$value_d["suma"].", '$value[Creo]',
+                  ($key_d, ".$value_d["motivo_suma"].",".$value_d["suma"].", $usuario_creo,
                    ".$value_d["deductiva_origen"].", ".$value_d["idmotivo_origen"].",
                   ".$value_d["deductiva_entrada"].",".$value_d["idmotivo_entrada"].",
                   ".$value_d["IdMotivoDeductiva"].",".$value_d["Deductiva"].")";
@@ -1107,7 +1107,7 @@ where telefonos.imei = '" . $imei . "'";
 
             #PROCESA VOLUMEN
             foreach ($volumen_array as $key_v => $value_v) {
-                $xd = "INSERT INTO $_REQUEST[bd].volumen_detalle (id_viaje_neto, volumen_origen, volumen_entrada, volumen, idregistro) values ($key_v, ".$value_v["v_o"].",".$value_v["v_e"].", ".$value_v["v"].", '$value[Creo]')";
+                $xd = "INSERT INTO $_REQUEST[bd].volumen_detalle (id_viaje_neto, volumen_origen, volumen_entrada, volumen, idregistro) values ($key_v, ".$value_v["v_o"].",".$value_v["v_e"].", ".$value_v["v"].", $usuario_creo)";
                 $this->_db->consultar($xd);
                 if ($this->_db->affected() > 0) {
 
