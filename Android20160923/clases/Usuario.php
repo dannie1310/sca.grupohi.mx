@@ -941,6 +941,11 @@ where telefonos.imei = '" . $imei . "'";
                         $folioSeguimiento = (array_key_exists("folioSeguimiento", $value))?"'".$value["folioSeguimiento"]."'":"NULL";
                         $num = (array_key_exists("numImpresion", $value))?"'".$value["numImpresion"]."'":"NULL";
                         $tipoViaje = (array_key_exists("tipoViaje", $value))?"'".$value["tipoViaje"]."'":"NULL";
+                        $estatus = (array_key_exists("Estatus", $value))?$value["Estatus"]:0;
+
+                        if($estatus == 1 || $estatus == 2){
+                            $estatus = 0;
+                        }
 
                         if(!($idempresa>0)){$idempresa = 'NULL';}
                         if(!($idsindicato>0)){$idsindicato = 'NULL';}
@@ -952,7 +957,8 @@ where telefonos.imei = '" . $imei . "'";
                             $cubicacion_camion = $cubicacion_camion_tel;
                         }
                         #insertar viaje
-                        $x = "INSERT INTO 
+                        if($estatus == 0) {
+                            $x = "INSERT INTO 
                         $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
                             FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom,
                             CreoPrimerToque, CubicacionCamion, IdPerfil, folioMina, folioSeguimiento, numImpresion, tipoViaje)
@@ -971,7 +977,7 @@ where telefonos.imei = '" . $imei . "'";
                            $value[IdMaterial], 
                            '$value[Observaciones]',
                            '$value[Creo]',
-                           0, 
+                           $estatus, 
                            '$value[Code]', 
                            '$value[uidTAG]',
                            '$value[Imagen]',
@@ -988,6 +994,44 @@ where telefonos.imei = '" . $imei . "'";
                            $folioSeguimiento, 
                            $num,
                            $tipoViaje);";
+                        }
+                        if($estatus == 3 || $estatus == 4){
+                            $x = "INSERT INTO $_REQUEST[bd].viajesnetos_incompletos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
+                            FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom,
+                            CreoPrimerToque, CubicacionCamion, IdPerfil, folioMina, folioSeguimiento, numImpresion, tipoViaje)
+                            VALUES(
+                           0,
+                           NOW(), 
+                           NOW(), 
+                           1, 
+                           $value[IdCamion], 
+                           $id_origen, 
+                           '$value[FechaSalida]',
+                           '$value[HoraSalida]',
+                           $value[IdTiro], 
+                           '$value[FechaLlegada]', 
+                           '$value[HoraLlegada]', 
+                           $value[IdMaterial], 
+                           '$value[Observaciones]',
+                           '$value[Creo]',
+                           $estatus, 
+                           '$value[Code]', 
+                           '$value[uidTAG]',
+                           '$value[Imagen]',
+                           '$value[IMEI]', 
+                           '$version', 
+                           '$value[CodeImagen]',
+                           $idempresa,
+                           $idsindicato,
+                           $code_random,
+                           $creo_primer_toque,
+                           $cubicacion_camion,
+                           $idperfil,
+                           $folioMina, 
+                           $folioSeguimiento, 
+                           $num,
+                           $tipoViaje);";
+                        }
 
                         $this->_db->consultar($x);
                         $x_error="";

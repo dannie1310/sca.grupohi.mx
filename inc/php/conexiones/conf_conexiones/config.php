@@ -11,7 +11,7 @@
 	$db["scatest34"] = 'scatest34';
 
 //para las configuracion de inicio de sesion
-//$host["SCA_config"] = '172.20.74.232';
+//    $host["SCA_config"] = 'localhost';
 	$host["SCA_config"] = '172.20.74.7:3306';
 	$user["SCA_config"] = 'sca';
 	$password["SCA_config"] = 'w6FCR56sLT';
