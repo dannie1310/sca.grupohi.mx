@@ -12,22 +12,22 @@ class Usuario {
         $this->_db_igh = SCA_IGH::getConexion();
     }
     #FUNCI�N PARA DESCARGA DE CAT�LOGOS PARA LA APLICACI�N DE VIAJES
-    function getData($usr, $pass) {       
+    function getData($usr, $pass) {
         $arraydata=array();
         $pass = md5($pass);
         $imei = $_REQUEST["IMEI"];
-        
+
         #VERIFICAR QUE USUARIO EXISTA
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         $result = $this->_db_igh ->consultar($sql);
-        
+
         if ($row = $this->_db_igh ->fetch($result)) {
             #OBTENER PROYECTOS
             $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database, p.empresa, p.tiene_logo, p.logo  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 "
                     . "And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
             $result_s = $this->_db ->consultar($sql_s);
-            
+
             if ($row_s = $this->_db ->fetch($result_s)) {
                 #VERIFICAR QUE TIENE ROL DE CHECADOR
                 $_SESSION["databasesca"] = $row_s[base_datos];
@@ -298,7 +298,7 @@ where telefonos.imei = '" . $imei . "'";
             }
         } else {
 
-            echo "{\"error\":\"ERROR AL INICIAR SESION.\"}"; 
+            echo "{\"error\":\"ERROR AL INICIAR SESION.\"}";
         }
 
     }
@@ -310,15 +310,15 @@ where telefonos.imei = '" . $imei . "'";
 
         $result = $this->_db_igh ->consultar($sql);
         $row = $this->_db_igh ->fetch($result);
-        
+
         if (count($row) == 4) {
             $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
 
             $result_s = $this->_db ->consultar($sql_s);
-            
+
             if ($row_s = $this->_db ->fetch($result_s)) {
-               
+
                $_SESSION["databasesca"]=$row_s[base_datos];
                $this->_database_sca = SCA::getConexion();
                $sql_perfil = "SELECT role_user.user_id
@@ -327,17 +327,17 @@ where telefonos.imei = '" . $imei . "'";
                      AND (role_user.role_id = 10)
                      AND (role_user.id_proyecto = ".$row_s[id_proyecto].")";
                 $result_perfil = $this->_db ->consultar($sql_perfil);
-                
+
                 if($row_perfil = $this->_db ->fetch($result_perfil)){
-               
+
                ########################
-                
+
                 //CAMIONES
                 $sql_camiones="SELECT idcamion, Placas, M.descripcion as marca, Modelo, Ancho, largo, Alto, economico, 0 as numero_viajes FROM camiones C
                                 LEFT JOIN marcas  M ON M.IdMarca=C.IdMarca where C.Estatus=1;";
                 $result_camiones=$this->_database_sca->consultar($sql_camiones);
-                
-                while($row_camiones=$this->_database_sca->fetch($result_camiones)) 
+
+                while($row_camiones=$this->_database_sca->fetch($result_camiones))
                         $array_camiones[]=array(
                             "idcamion"=>$row_camiones[idcamion],
                             "placas"=>$row_camiones[Placas],
@@ -349,43 +349,43 @@ where telefonos.imei = '" . $imei . "'";
                             "economico"=>utf8_encode($row_camiones[economico]),
                             "numero_viajes"=>$row_camiones["numero_viajes"],
                         );
-                        
+
                 //TAGS
                 $sql_tags="SELECT uid, idcamion, idproyecto FROM tags WHERE estado=1;";
                 $result_tags=$this->_database_sca->consultar($sql_tags);
-                
+
                 while($row_tags=$this->_database_sca->fetch($result_tags))
                     $array_tags[]=array(
                         "uid"=>$row_tags[uid],
                         "idcamion"=>$row_tags[idcamion],
-                        "idproyecto"=>$row_tags[idproyecto]);   
-                
-                //TAGS DISPONIBLES CONFIGURAR 
-                
+                        "idproyecto"=>$row_tags[idproyecto]);
+
+                //TAGS DISPONIBLES CONFIGURAR
+
                 $sql_tags="SELECT  id, uid, idcamion FROM tags_disponibles_configurar";
                 $result_tags=$this->_database_sca->consultar($sql_tags);
-                
+
                 while($row_tags=$this->_database_sca->fetch($result_tags))
                     $array_tags_disponibles_configurar[]=array(
                         "uid"=>$row_tags[uid],
                         "idcamion"=>$row_tags[idcamion],
                         "id"=>$row_tags[id]);
-                                    
-                        
+
+
                 $arraydata=array(
                      "IdUsuario"=>$row[IdUsuario],
                      "Nombre"=>utf8_encode($row[nombre]),
                      "IdProyecto"=>$row_s[id_proyecto],
-                     "base_datos"=>$row_s[base_datos], 
+                     "base_datos"=>$row_s[base_datos],
                      "descripcion_database"=>utf8_encode($row_s[descripcion_database]),
                      "Camiones"=>$array_camiones,
                      "tags"=>$array_tags,
                      "tags_disponibles_configurar"=>$array_tags_disponibles_configurar
                  );
 
-                 
-                                
-                 echo json_encode($arraydata);  
+
+
+                 echo json_encode($arraydata);
                  ##############################
                 }else{
                     echo "{\"error\":\"El usuario no tiene el perfil para asignar tags \"}";
@@ -393,7 +393,7 @@ where telefonos.imei = '" . $imei . "'";
             }else {
 
                 echo "{\"error\":\"Error al obtener los datos del proyecto. Probablemente el usuario no tenga asignado ningun proyecto. \"}";
-            } 
+            }
         }else {
            echo "{\"error\":\"Error en iniciar sesion. No se encontraron los datos que especifica.\"}";
         }
@@ -408,23 +408,23 @@ where telefonos.imei = '" . $imei . "'";
         $result = $this->_db_igh ->consultar($sql);
         $row = $this->_db_igh ->fetch($result);
 
-        
+
         if ($this->_db_igh->affected()>0) {
-            
+
 //            $sql_valido = "select if( vigencia > NOW() OR vigencia is null, 1,0) AS valido from sca_configuracion.permisos_alta_tag where idusuario = ".$row["IdUsuario"].";";
 //            $result_valido = $this->_db ->consultar($sql_valido);
 //            $row_valido = $this->_db ->fetch($result_valido);
 //            if($row_valido["valido"] == 1){
-                
+
             $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
 
             $result_s = $this->_db ->consultar($sql_s);
 
 
-            
+
             if ($row_s = $this->_db ->fetch($result_s)) {
-               
+
                $_SESSION["databasesca"]=$row_s[base_datos];
                ####################
                 $sql_perfil = "SELECT role_user.user_id
@@ -435,37 +435,37 @@ where telefonos.imei = '" . $imei . "'";
                 $result_perfil = $this->_db ->consultar($sql_perfil);
                 if($row_perfil = $this->_db ->fetch($result_perfil)){
                ######################
-               
+
                $this->_database_sca = SCA::getConexion();
-                
+
                 //SINDICATOS
-               
+
                $sql = "SELECT sindicatos.Descripcion as sindicato, sindicatos.IdSindicato as id from sindicatos where Estatus = 1;
  ";
                $result=$this->_database_sca->consultar($sql);
-                
+
                 while($row_sindicato=$this->_database_sca->fetch($result)){
                     $array_sindicatos[]=array(
                         "id"=>utf8_encode($row_sindicato[id]),
                         "sindicato"=>utf8_encode($row_sindicato[sindicato]),
                         );
                 }
-                
+
                 //EMPRESAS
-               
+
                $sqlE = "SELECT empresas.razonSocial as empresa, empresas.IdEmpresa as id from empresas where Estatus = 1;
  ";
                $resultE=$this->_database_sca->consultar($sqlE);
-                
+
                 while($row_empresa=$this->_database_sca->fetch($resultE)){
                     $array_empresas[]=array(
                         "id"=>utf8_encode($row_empresa[id]),
                         "empresa"=>utf8_encode($row_empresa[empresa]),
                         );
                 }
-                
+
                 //CAMIONES
-                
+
                 $sql_tags="SELECT 
                     camiones.IdSindicato,
                     camiones.IdEmpresa,
@@ -500,7 +500,7 @@ where telefonos.imei = '" . $imei . "'";
        LEFT OUTER JOIN operadores operadores
           ON (camiones.IdOperador = operadores.IdOperador) ";
                 $result_tags=$this->_database_sca->consultar($sql_tags);
-                
+
                 while($row_tags=$this->_database_sca->fetch($result_tags))
                     $array_camiones[]=array(
                         "id_camion"=>utf8_encode($row_tags[id_camion]),
@@ -527,7 +527,7 @@ where telefonos.imei = '" . $imei . "'";
                         "cubicacion_para_pago"=>utf8_encode($row_tags[cubicacion_para_pago]),
                         "estatus"=>utf8_encode($row_tags[estatus]),
                         );
-                
+
                 $sql_tipos_imagenes="select 'f' as id, 'Frente' as descripcion
                 union 
                 select 'd','Derecha'
@@ -536,17 +536,17 @@ where telefonos.imei = '" . $imei . "'";
                 union 
                 select 'a','Atras'";
                 $result_tipos_imagenes=$this->_database_sca->consultar($sql_tipos_imagenes);
-                while($row_tipos_imagenes=$this->_database_sca->fetch($result_tipos_imagenes)) 
+                while($row_tipos_imagenes=$this->_database_sca->fetch($result_tipos_imagenes))
                         $array_tipos_imagenes[]=array(
                             "id"=>$row_tipos_imagenes[id],
                             "descripcion"=>utf8_encode($row_tipos_imagenes[descripcion]),
                             );
-                        
+
                 $arraydata=array(
                     "IdUsuario"=>$row[IdUsuario],
                     "Nombre"=>utf8_encode($row[nombre]),
                     "IdProyecto"=>$row_s[id_proyecto],
-                    "base_datos"=>$row_s[base_datos], 
+                    "base_datos"=>$row_s[base_datos],
                     "descripcion_database"=>utf8_encode($row_s[descripcion_database]),
                     "camiones"=>$array_camiones,
                     "sindicatos"=>$array_sindicatos,
@@ -554,16 +554,16 @@ where telefonos.imei = '" . $imei . "'";
                     'tipos_imagen'=>$array_tipos_imagenes,
                  );
 
-                 
-                                
-                 echo json_encode($arraydata); 
+
+
+                 echo json_encode($arraydata);
             }else{
                 echo utf8_encode("{\"error\":\"El usuario no tiene el perfil para utilizar el cat�logo de camiones \"}");
             }
             }else {
 
                 echo "{\"error\":\"Error al obtener los datos. \"}";
-            } 
+            }
 //            }else{
 //                echo "{\"error\":\"No tiene los privilegios para dar de alta tags en los proyectos.\"}";
 //            }
@@ -581,53 +581,53 @@ where telefonos.imei = '" . $imei . "'";
         $result = $this->_db_igh ->consultar($sql);
         $row = $this->_db_igh ->fetch($result);
 
-        
+
         if ($this->_db_igh->affected()>0) {
-            
+
             $sql_valido = "select if( vigencia > NOW() OR vigencia is null, 1,0) AS valido from sca_configuracion.permisos_alta_tag where idusuario = ".$row["IdUsuario"].";";
             $result_valido = $this->_db ->consultar($sql_valido);
             $row_valido = $this->_db ->fetch($result_valido);
             if($row_valido["valido"] == 1){
-                
+
             $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
 
             $result_s = $this->_db ->consultar($sql_s);
 
 
-            
+
             if ($row_s = $this->_db ->fetch($result_s)) {
-               
+
                $_SESSION["databasesca"]=$row_s[base_datos];
                $this->_database_sca = SCA::getConexion();
-                
-                
-                
+
+
+
                 //PROYECTOS
-                
+
                 $sql_tags="SELECT  id_proyecto, descripcion FROM sca_configuracion.proyectos where status = 1";
                 $result_tags=$this->_database_sca->consultar($sql_tags);
-                
+
                 while($row_tags=$this->_database_sca->fetch($result_tags))
                     $array_proyectos[]=array(
                         "id_proyecto"=>$row_tags[id_proyecto],
                         "descripcion"=>utf8_encode($row_tags[descripcion]),
                         );
-                                    
-                        
+
+
                 $arraydata=array(
                      "IdUsuario"=>$row[IdUsuario],
                      "Nombre"=>utf8_encode($row[nombre]),
                      "proyectos"=>$array_proyectos
                  );
 
-                 
-                                
-                 echo json_encode($arraydata);  
+
+
+                 echo json_encode($arraydata);
             }else {
 
                 echo "{\"error\":\"Error al obtener los datos de configuraci�n. \"}";
-            } 
+            }
             }else{
                 echo "{\"error\":\"No tiene los privilegios para dar de alta tags en los proyectos.\"}";
             }
@@ -656,7 +656,7 @@ where telefonos.imei = '" . $imei . "'";
                     $x="INSERT INTO 
                             ".$_REQUEST['bd'].".tags (uid, idcamion, idproyecto, idproyecto_global, fecha_asignacion, asigno) 
                         VALUES('".$value['uid']."',".$value['idcamion'].",1, ".$value['idproyecto_global'].",NOW(),'".$usr."');";
-                    
+
                     $this->_db->consultar($x);
                     $registros++;
                 }
@@ -669,12 +669,12 @@ where telefonos.imei = '" . $imei . "'";
                     echo "{\"error\":\"No ha mandado ning�n registro para sincronizar.\"}";
                 }
             }
-            
+
         ELSE{
-            
+
             echo "{\"error\":\"Datos de inicio de sesi�n no validos.\"}";
         }
-        
+
         //RETURN $registros;
     }
     #Funci�n utilizada para registrar los datos enviados por la aplicaci�n de registro de tags (App Registro)
@@ -683,12 +683,12 @@ where telefonos.imei = '" . $imei . "'";
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         $result = $this->_db_igh ->consultar($sql);
         if ($row = $this->_db_igh ->fetch($result)) {
-            
+
             $sql_valido = "select if( vigencia > NOW() OR vigencia is null, 1,0) AS valido from sca_configuracion.permisos_alta_tag where idusuario = ".$row["IdUsuario"].";";
             $result_valido = $this->_db ->consultar($sql_valido);
             $row_valido = $this->_db ->fetch($result_valido);
             if($row_valido["valido"] == 1){
-            
+
             $cadenajsonx=json_encode($_REQUEST);
             $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
             if(isset($_REQUEST['tags_nuevos'])){
@@ -699,8 +699,8 @@ where telefonos.imei = '" . $imei . "'";
                 $registros = 0;
                 $previos = 0;
                 foreach ($datos_altas as $key => $value) {
-                    
-                    
+
+
                      $x_v = "select count(*) as existe from sca_configuracion.tags 
                         where uid = '".$value['uid']."';";
 
@@ -709,8 +709,8 @@ where telefonos.imei = '" . $imei . "'";
                     if($row_valida["existe"] == 1){
                         $previos = $previos + 1;
                     }else{
-                    
-                    
+
+
                         $x="INSERT INTO 
                                 sca_configuracion.tags (uid, id_proyecto, estado, registro, fecha_registro) 
                             VALUES('".$value['uid']."',".$value['id_proyecto'].",1, '".$usr."',NOW());";
@@ -732,18 +732,18 @@ where telefonos.imei = '" . $imei . "'";
                 }else{
                     echo "{\"error\":\"No tiene privilegios vigentes para dar de alta tags.\"}";
                 }
-                
-                
-                
-                
-                
+
+
+
+
+
             }
-            
+
         ELSE{
-            
+
             echo "{\"error\":\"Datos de inicio de sesi�n no validos.\"}";
         }
-        
+
         //RETURN $registros;
     }
 #Funci�n utilizada para registrar los datos enviados por la aplicaci�n (App Viajes)
@@ -824,24 +824,26 @@ where telefonos.imei = '" . $imei . "'";
                         where IdCamion = $value[idcamion] and fecha_origen = '$value[fecha_origen]';";
                     }
 
-                    $result_v_inicio = $this->_db->consultar($x_i);
-                    $row_valida_i = $this->_db->fetch($result_v_inicio);
-                    if($row_valida_i["existe"] > 0){
-                        //if(0==1){
-                        $previos_i = $previos_i + 1;
-                    }
-                    else {
-                        #insertar inicio
-                        $folioMina = (array_key_exists("foliomina", $value)) ? "'" . $value["foliomina"] . "'" : "NULL";
-                        $folioSeguimiento = (array_key_exists("folioseguimiento", $value)) ? "'" . $value["folioseguimiento"] . "'" : "NULL";
-                        $volumen = (array_key_exists("volumen", $value)) ? "'" . $value["volumen"] . "'" : "NULL";
-                        $code = (array_key_exists("Code", $value)) ? "'" . $value["Code"] . "'" : "NULL";
-                        $tipo = (array_key_exists("tipo_suministro", $value)) ? "'" . $value["tipo_suministro"] . "'" : "NULL";
-                        $num = (array_key_exists("numImpresion", $value)) ? "'" . $value["numImpresion"] . "'" : "NULL";
-                        $deductiva = (array_key_exists("deductiva", $value))?"'".$value["deductiva"]."'":"NULL";
-                        $idmotivo = (array_key_exists("idMotivo", $value)) && $value["idMotivo"] != 0 ?"'".$value["idMotivo"]."'":"NULL";
-                        $deductiva_entrada = (array_key_exists("deductiva_entrada", $value)) ?"'".$value["deductiva_entrada"]."'":"NULL";
-                        $version = $_REQUEST[Version];
+                        $result_v_inicio = $this->_db->consultar($x_i);
+                        $row_valida_i = $this->_db->fetch($result_v_inicio);
+                        if($row_valida_i["existe"] > 0){
+                            //if(0==1){
+                            $previos_i = $previos_i + 1;
+                        }
+                        else {
+                            #insertar inicio
+                            $folioMina = (array_key_exists("foliomina", $value)) ? "'" . $value["foliomina"] . "'" : "NULL";
+                            $folioSeguimiento = (array_key_exists("folioseguimiento", $value)) ? "'" . $value["folioseguimiento"] . "'" : "NULL";
+                            $volumen = (array_key_exists("volumen", $value)) ? "'" . $value["volumen"] . "'" : "NULL";
+                            $code = (array_key_exists("Code", $value)) ? "'" . $value["Code"] . "'" : "NULL";
+                            $tipo = (array_key_exists("tipo_suministro", $value)) ? "'" . $value["tipo_suministro"] . "'" : "NULL";
+                            $num = (array_key_exists("numImpresion", $value)) ? "'" . $value["numImpresion"] . "'" : "NULL";
+                            $deductiva = (array_key_exists("deductiva", $value))?"'".$value["deductiva"]."'":"NULL";
+                            $idmotivo = (array_key_exists("idMotivo", $value)) && $value["idMotivo"] != 0 ?"'".$value["idMotivo"]."'":"NULL";
+                            $deductiva_entrada = (array_key_exists("deductiva_entrada", $value)) ?"'".$value["deductiva_entrada"]."'":"NULL";
+                            $latitud_origen = (array_key_exists("latitud_origen", $value))?"'".$value["latitud_origen"]."'":"NULL";
+                            $longitud_origen = (array_key_exists("longitud_origen", $value))?"'".$value["longitud_origen"]."'":"NULL";
+                            $version = $_REQUEST[Version];
 
                         $ic = "INSERT INTO $_REQUEST[bd].`inicio_camion`
                         (
@@ -864,7 +866,9 @@ where telefonos.imei = '" . $imei . "'";
                             `deductiva`,
                             `idMotivo_deductiva`,
                              `FechaCarga`,
-                             `deductiva_entrada`)
+                             `deductiva_entrada`,
+                             `latitud_origen`,
+                             `longitud_origen`)
                         VALUES
                         (
                         $value[idcamion],
@@ -886,7 +890,9 @@ where telefonos.imei = '" . $imei . "'";
                             $deductiva,
                             $idmotivo,
                             NOW(),
-                            $deductiva_entrada);";
+                            $deductiva_entrada,
+                            $latitud_origen,
+                            $longitud_origen);";
 
                         $this->_db->consultar($ic);
 
@@ -910,11 +916,11 @@ where telefonos.imei = '" . $imei . "'";
                 }
             }
             if ($viajes_a_registrar > 0) {
-                
+
                 foreach ($data_viajes as $key => $value) {
-                    
+
                     #validar que viaje no exista
-                    
+
                     $x_v = "select count(*) as existe from $_REQUEST[bd].viajesnetos  
                         where IdCamion = $value[IdCamion] and FechaSalida = '$value[FechaSalida]' "
                             . "and HoraSalida='$value[HoraSalida]' and FechaLlegada='$value[FechaLlegada]' "
@@ -926,7 +932,7 @@ where telefonos.imei = '" . $imei . "'";
                     //if(0==1){
                         $previos = $previos + 1;
                     }
-                    else{  
+                    else{
                         #obtener sindicato y empresa del camion
                         $cubicacion_camion = 0;
                         $idempresa = $this->_db->regresaDatos2($_REQUEST[bd].".camiones","IdEmpresa","IdCamion",$value[IdCamion]);
@@ -961,7 +967,8 @@ where telefonos.imei = '" . $imei . "'";
                             $x = "INSERT INTO 
                         $_REQUEST[bd].viajesnetos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
                             FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom,
-                            CreoPrimerToque, CubicacionCamion, IdPerfil, folioMina, folioSeguimiento, numImpresion, tipoViaje)
+                            CreoPrimerToque, CubicacionCamion, IdPerfil, folioMina, folioSeguimiento, numImpresion, tipoViaje,
+                            latitud_origen, longitud_origen, latitud_tiro, longitud_tiro)
                     VALUES(
                            0,
                            NOW(), 
@@ -993,10 +1000,14 @@ where telefonos.imei = '" . $imei . "'";
                            $folioMina, 
                            $folioSeguimiento, 
                            $num,
-                           $tipoViaje);";
-                        }
-                        if($estatus == 3 || $estatus == 4){
-                            $x = "INSERT INTO $_REQUEST[bd].viajesnetos_incompletos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
+                           $tipoViaje,
+                           $latitud_origen,
+                           $longitud_origen,
+                           $latitud_tiro,
+                           $longitud_tiro);";
+                            }
+                            if($estatus == 3 || $estatus == 4){
+                                $x = "INSERT INTO $_REQUEST[bd].viajesnetos_incompletos(IdArchivoCargado, FechaCarga, HoraCarga, IdProyecto, IdCamion, IdOrigen, FechaSalida, HoraSalida, IdTiro,
                             FechaLlegada, HoraLlegada, IdMaterial, Observaciones,Creo,Estatus,Code,uidTAG,Imagen01,imei,Version,CodeImagen,IdEmpresa,IdSindicato,CodeRandom,
                             CreoPrimerToque, CubicacionCamion, IdPerfil, folioMina, folioSeguimiento, numImpresion, tipoViaje)
                             VALUES(
@@ -1030,8 +1041,10 @@ where telefonos.imei = '" . $imei . "'";
                            $folioMina, 
                            $folioSeguimiento, 
                            $num,
-                           $tipoViaje);";
-                        }
+                           $tipoViaje,
+                           $latitud_tiro,
+                           $longitud_tiro);";
+                            }
 
                         $this->_db->consultar($x);
                         $x_error="";
@@ -1109,7 +1122,7 @@ where telefonos.imei = '" . $imei . "'";
                     }
                 }
             }
-            
+
             if (isset($_REQUEST[coordenadas])) {
                 $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$_REQUEST[coordenadas]')"); //coordenadas
                 //$data_coordenada = $_REQUEST[coordenadas];
@@ -1141,11 +1154,11 @@ where telefonos.imei = '" . $imei . "'";
                   ".$value_d["IdMotivoDeductiva"].",".$value_d["Deductiva"].")";
                     $this->_db->consultar($xd);
                 if ($this->_db->affected() > 0) {
-                            
+
                 }else{
                     $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $xd)."','$value[Creo]' )";
                     $this->_db->consultar($x_error);
-                    
+
                 }
              }
 
@@ -1164,7 +1177,7 @@ where telefonos.imei = '" . $imei . "'";
 
             #INSERTAR IMAGEN
             $json_imagenes = $_REQUEST[Imagenes];
-            $imagenes = json_decode(utf8_encode($json_imagenes), TRUE); 
+            $imagenes = json_decode(utf8_encode($json_imagenes), TRUE);
             $cantidad_imagenes_a_registrar = count($imagenes);
             $cantidad_imagenes_sin_viaje_neto = 0;
             $imagenes_registradas = array();
@@ -1193,7 +1206,7 @@ where telefonos.imei = '" . $imei . "'";
                     }
                 }
             }
-            
+
             $json_imagenes_registradas = json_encode($imagenes_registradas);
 
             //preg_replace("[\n|\r|\n\r]", ' ', $x_v)
@@ -1220,13 +1233,13 @@ where telefonos.imei = '" . $imei . "'";
     }
 
     function cargaImagenesViajes(){
-        
+
         //$version = $_REQUEST[Version];
         $cadenajsonx = json_encode($_REQUEST);
         $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
         $usr = $_REQUEST["usr"];
         $json_imagenes = $_REQUEST[Imagenes];
-        $imagenes = json_decode(utf8_encode($json_imagenes), TRUE); 
+        $imagenes = json_decode(utf8_encode($json_imagenes), TRUE);
         $cantidad_imagenes_a_registrar = count($imagenes);
         $cantidad_imagenes_sin_viaje_neto = 0;
         $cantidad_imagenes = 0;
@@ -1238,10 +1251,10 @@ where telefonos.imei = '" . $imei . "'";
             $ir = 0;
             $inr = 0;
             foreach ($imagenes as $key_i => $value_i) {
-                
-                
+
+
                 $sql_vn = "SELECT IdViajeNeto FROM $_REQUEST[bd].viajesnetos where CodeImagen='".$value_i[CodeImagen]."' ;";
-                
+
                 $result_vn = $this->_db ->consultar($sql_vn);
                 if ($row_vn = $this->_db ->fetch($result_vn)){
                     $id_viaje_neto_i = $row_vn["IdViajeNeto"];
@@ -1268,7 +1281,7 @@ where telefonos.imei = '" . $imei . "'";
                     }
                     //$cantidad_imagenes++;
                 }else{
-                    
+
                     $imagenes_no_registradas_sv[$cantidad_imagenes_sin_viaje_neto] = $value_i["idImagen"];
                     $x_error = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $x_imagen)."','$usr' )";
                     $this->_db->consultar($x_error);
@@ -1294,7 +1307,7 @@ where telefonos.imei = '" . $imei . "'";
         $sql = "SELECT IdUsuario, Descripcion as nombre FROM igh.users where Usuario='$usr' and Clave='$pass' ;";
         $result = $this->_db_igh ->consultar($sql);
         if ($row = $this->_db_igh ->fetch($result)) {
-            
+
             ##################
             $sql_s="Select p.id_proyecto, p.base_datos, p.descripcion as descripcion_database  from proyectos p
                     inner join usuarios_proyectos up on p.id_proyecto=up.id_proyecto where id_Usuario_intranet=$row[IdUsuario]  and p.status=1 And p.id_proyecto!=5555 order by p.id_Proyecto desc limit 1;";
@@ -1302,7 +1315,7 @@ where telefonos.imei = '" . $imei . "'";
             $result_s = $this->_db ->consultar($sql_s);
 
 
-            
+
             if ($row_s = $this->_db ->fetch($result_s)) {
             ####################
                 $sql_perfil = "SELECT role_user.user_id
@@ -1311,12 +1324,12 @@ where telefonos.imei = '" . $imei . "'";
                      AND (role_user.role_id = 19)
                      AND (role_user.id_proyecto = ".$row_s[id_proyecto].")";
                 $result_perfil = $this->_db ->consultar($sql_perfil);
-                
+
                 if($row_perfil = $this->_db ->fetch($result_perfil)){
-               
-               
-               
-               
+
+
+
+
                ######################
             //if($this->accesoValidoActualizacionCamiones($row["IdUsuario"], $_REQUEST[id_proyecto])){
                 $cadenajsonx=json_encode($_REQUEST);
@@ -1351,7 +1364,7 @@ where telefonos.imei = '" . $imei . "'";
                                 . "CubicacionReal=".$datos_preparados["cu_real"].", "
                                 . "CubicacionParaPago=".$datos_preparados["cu_pago"]." "
                                 . "WHERE IdCamion=".$datos_preparados["id_camion"]."";*/
-                            
+
                             $x="INSERT INTO $_REQUEST[bd].solicitud_actualizacion_camion(IdCamion
                                 ,IdSindicato
                                 ,IdEmpresa
@@ -1391,10 +1404,10 @@ where telefonos.imei = '" . $imei . "'";
                                 . "".$datos_preparados["disminucion"].", "
                                 . "".$datos_preparados["cu_real"].", "
                                 . "".$datos_preparados["cu_pago"].", "
-                                . "'".$datos_preparados["economico"]."', "    
+                                . "'".$datos_preparados["economico"]."', "
                                 . "'".$_REQUEST["IMEI"]."', "
                                 . "'".$_REQUEST["usr"]."', "
-                                . "'".$_REQUEST["Version"]."' "        
+                                . "'".$_REQUEST["Version"]."' "
                                 . ")";
                             //echo $x;
                             $this->_db->consultar($x);
@@ -1407,7 +1420,7 @@ where telefonos.imei = '" . $imei . "'";
                                     $error = $error + $this->_db->affected();
                                 }
                             }
-                            
+
                         }
                         #AQUI VAN LOS MENSAJES QUE QUITE
                     }
@@ -1461,10 +1474,10 @@ where telefonos.imei = '" . $imei . "'";
                                 . "".$datos_preparados["disminucion"].", "
                                 . "".$datos_preparados["cu_real"].", "
                                 . "".$datos_preparados["cu_pago"].", "
-                                . "'".$datos_preparados["economico"]."', "    
+                                . "'".$datos_preparados["economico"]."', "
                                 . "'".$_REQUEST["IMEI"]."', "
                                 . "'".$_REQUEST["usr"]."', "
-                                . "'".$_REQUEST["Version"]."' "        
+                                . "'".$_REQUEST["Version"]."' "
                                 . ")";
                             $this->_db->consultar($x);
                             if($this->_db->affected()>=0){
@@ -1476,9 +1489,9 @@ where telefonos.imei = '" . $imei . "'";
                                     $error_solicitudes = $error_solicitudes + $this->_db->affected();
                                 }
                             }
-                            
+
                         }
-                        
+
                     }
                     ###############################
                     if (($actualizados+$error) == $a_registrar && ($solicitudes_registradas+$error_solicitudes)== $a_solicitar_activacion)
@@ -1489,7 +1502,7 @@ where telefonos.imei = '" . $imei . "'";
                             echo "{\"error_actualizaciones\":\"No se actualizaron todos los camiones. $actualizados _ $error _ $a_registrar \"}";
                         else if(($actualizados+$error) != $a_registrar && ($solicitudes_registradas+$error_solicitudes)!= $a_solicitar_activacion)
                             echo "{\"error_ambos\":\"Actualizacion de Camiones y Registro de Solicitudes Incorrecto.\"}";
-                    
+
                 }else{
                     echo utf8_encode("{\"error\":\"No ha mandado ning�n registro para sincronizar.\"}");
                     }
@@ -1505,15 +1518,15 @@ where telefonos.imei = '" . $imei . "'";
             echo utf8_encode("{\"error\":\"Datos de inicio de sesi�n no validos.\"}");
         }
     }
-    
+
     function cargaImagenesCamiones(){
-        
+
         //$version = $_REQUEST[Version];
         $cadenajsonx = json_encode($_REQUEST);
         $this->_db->consultar("INSERT INTO $_REQUEST[bd].json (json) values('$cadenajsonx')");
         $usr = $_REQUEST["usr"];
         $json_imagenes = $_REQUEST[Imagenes];
-        $imagenes = json_decode(utf8_encode($json_imagenes), TRUE); 
+        $imagenes = json_decode(utf8_encode($json_imagenes), TRUE);
         $cantidad_imagenes_a_registrar = count($imagenes);
         $cantidad_imagenes = 0;
         $bd = $_REQUEST["bd"];
@@ -1522,12 +1535,12 @@ where telefonos.imei = '" . $imei . "'";
             $ir = 0;
             $inr = 0;
             foreach ($imagenes as $key_i => $value_i) {
-                
-                
-                
+
+
+
 //                $x_errori = "insert into $_REQUEST[bd].cosultas_erroneas(consulta,registro) values('".str_replace("'", "\'", $sql_vn)."','eli' )";
 //                            $this->_db->consultar($x_errori);
-                
+
                     $id_tipo_imagen = ($value_i[idtipo_imagen]=="a")?"t":$value_i[idtipo_imagen];
                     if(array_key_exists("estatus", $value_i)){
                         if($value_i["estatus"]==1){
@@ -1558,7 +1571,7 @@ where telefonos.imei = '" . $imei . "'";
                         $inr++;
                     }
                     //$cantidad_imagenes++;
-               
+
                 $i++;
             }
             $json_imagenes_registradas = json_encode($imagenes_registradas);
@@ -1572,13 +1585,13 @@ where telefonos.imei = '" . $imei . "'";
         }
     }
     private function preparaDatos($bd, array $datos){
-        
+
         $datos_salida = array();
         $id_sindicato = $this->regresaIdSindicato($bd,$datos["sindicato"]);
         $id_empresa = $this->regresaIdEmpresa($bd,$datos["empresa"]);
         $id_operador = $this->regresaIdOperador($bd,$datos["operador"],$datos["licencia"], $datos["vigencia"]);
         $id_marca = $this->regresaIdMarca($bd,$datos["marca"]);
-        
+
         $datos_salida["id_sindicato"] = $id_sindicato;
         $datos_salida["id_empresa"] = $id_empresa;
         $datos_salida["id_operador"] = $id_operador;
@@ -1597,7 +1610,7 @@ where telefonos.imei = '" . $imei . "'";
         $datos_salida["cu_pago"] = $this->eliminaCaracteresEspecialesN($datos["cu_pago"]);
         $datos_salida["id_camion"] = $datos["id_camion"];
         $datos_salida["economico"] = $datos["economico"];
-        
+
         return $datos_salida;
     }
     private function accesoValidoActualizacionCamiones($id_usuario, $id_proyecto){
@@ -1695,7 +1708,7 @@ where telefonos.imei = '" . $imei . "'";
 
 
     function eliminaCaracteresEspeciales($entrada){
-        $string = str_replace(        
+        $string = str_replace(
              array("\\", "�", "�", "-", "~",
                  "#", "@", "|", "!", "\"",
                  "�", "$", "%", "&", "/",
@@ -1704,14 +1717,14 @@ where telefonos.imei = '" . $imei . "'";
                  "+", "}", "{", "�", "�",
                  ">", "<", ";", ",", ":",
                  ),
-             '',        
-             $entrada    
+             '',
+             $entrada
              );
         return $string;
     }
-    
+
     function eliminaCaracteresEspecialesN($entrada){
-        $string = str_replace(        
+        $string = str_replace(
              array("\\", "�", "�", "-", "~",
                  "#", "@", "|", "!", "\"",
                   "$", "%", "&", "/",
@@ -1719,8 +1732,8 @@ where telefonos.imei = '" . $imei . "'";
                  "�", "[", "^", "`", "]",
                  "+", "}", "{", "�", "�",
                  ">", "<", ";", ",", ":"),
-             '',        
-             $entrada    
+             '',
+             $entrada
              );
         return $string;
     }
